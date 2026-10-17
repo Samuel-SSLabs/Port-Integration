@@ -598,7 +598,7 @@ const PORTS_DATABASE = [
   {
     "id": "gta-lcs-recomp",
     "nome": "Grand Theft Auto: Liberty City Stories (LCS Recomp)",
-    "console": "PS1",
+    "console": "PSP",
     "consoleNome": "PSP / PS2",
     "codigoJogo": "ULUS-10041",
     "status": "Totalmente Jogável",
@@ -798,7 +798,7 @@ const PORTS_DATABASE = [
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
     "repo": "Unowa001/crackdown-recomp",
-    "repoUrl": "https://github.com/crackdown-recomp",
+    "repoUrl": "https://github.com/Unowa001/crackdown-recomp",
     "descricao": "Port nativo de Crackdown (2007) do Xbox 360 para PC com taxas de quadros desbloqueadas, suporte a monitores ultrawide e instalador de assets integrado.",
     "termoBuscaCapa": "Crackdown_(video_game)",
     "capaManual": null,
@@ -3848,7 +3848,7 @@ const PORTS_DATABASE = [
   },
   {
     "id": "mario-3d-all-stars-pc",
-    "nome": "Super Mario 3D All-Stars (PC Extraction Ports)",
+    "nome": "Super Mario 64 PC Port (sm64ex — Switch Assets)",
     "console": "Switch",
     "consoleNome": "Nintendo Switch",
     "codigoJogo": "010049900F546000",
@@ -3856,18 +3856,19 @@ const PORTS_DATABASE = [
     "statusTipo": "jogavel",
     "repo": "sm64pc/sm64ex",
     "repoUrl": "https://github.com/sm64pc/sm64ex",
-    "descricao": "Utilitários e ports que extraem os assets e código aprimorados do Switch para execução nativa em 4K e 60 FPS com ray tracing no PC.",
-    "termoBuscaCapa": "Super_Mario_3D_All-Stars",
+    "descricao": "Port nativo de Super Mario 64 para PC compatível com extração de assets do Switch (3D All-Stars), permitindo execução em 4K e 60 FPS com suporte a ray tracing via Render96.",
+    "termoBuscaCapa": "Super_Mario_64",
     "capaManual": null,
     "dataAtualizacao": "2026-10-15T10:00:00Z",
     "stars": 4120,
     "versaoPadrao": "v1.2.0",
     "tags": [
       "Switch",
-      "Mario 3D All-Stars",
-      "Nintendo",
-      "Sunshine",
-      "Galaxy"
+      "N64",
+      "Mario",
+      "sm64ex",
+      "4K",
+      "Render96"
     ]
   },
   {
@@ -4119,7 +4120,7 @@ function portMatchesConsole(port, key) {
   if (cAtivo === 'n64') return pConsole === 'n64';
   if (cAtivo === 'switch') return pConsole === 'switch';
   if (cAtivo === 'ps2_ps1' || cAtivo === 'ps2' || cAtivo === 'ps1') {
-    return pConsole === 'ps2' || pConsole === 'ps1' || pConsole === 'ps3';
+    return pConsole === 'ps2' || pConsole === 'ps1';
   }
   if (cAtivo === 'gc_wii' || cAtivo === 'gamecube' || cAtivo === 'wii') {
     return pConsole === 'gc' || pConsole === 'gamecube' || pConsole === 'wii' || pConsole === 'wiiu';
@@ -4639,8 +4640,12 @@ async function carregarCapaInteligente(port) {
 
   coverApiQueue.add(async () => {
     try {
-      const termo = (port.termoBuscaCapa || port.nome).trim();
-      const tituloFormatado = termo.replace(/\s+/g, '_');
+      const termoBruto = (port.termoBuscaCapa || port.nome).trim();
+      let termoDecodificado = termoBruto;
+      try {
+        termoDecodificado = decodeURIComponent(termoBruto);
+      } catch (e) {}
+      const tituloFormatado = termoDecodificado.replace(/\s+/g, '_');
 
       const resSummary = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(tituloFormatado)}`);
       if (resSummary.ok) {
@@ -4651,7 +4656,9 @@ async function carregarCapaInteligente(port) {
             coverUrl = data.originalimage.source;
           }
           salvarCapaCache(port.id, coverUrl, 'wikipedia');
-          aplicarImagemCapa(imgElem, shimmerElem, originElem, coverUrl, 'Capa Oficial Wikipedia');
+          if (imgElem.isConnected) {
+            aplicarImagemCapa(imgElem, shimmerElem, originElem, coverUrl, 'Capa Oficial Wikipedia');
+          }
           return;
         }
       }
@@ -4678,6 +4685,7 @@ async function carregarCapaInteligente(port) {
 }
 
 function aplicarImagemCapa(imgElem, shimmerElem, originElem, url, label) {
+  if (!imgElem || !imgElem.isConnected) return;
   imgElem.onload = () => {
     imgElem.classList.add('loaded');
     if (shimmerElem) shimmerElem.style.display = 'none';
@@ -4823,7 +4831,10 @@ async function carregarMetadadosGitHub(port) {
           if (dataRepo.updated_at) dataAtualizacao = dataRepo.updated_at;
           if (dataRepo.description && !discordDetectado) {
             const dMatch = dataRepo.description.match(/(?:https?:\/\/)?(?:discord\.(?:gg|com\/invite)\/[a-zA-Z0-9_-]+)/i);
-            if (dMatch) discordDetectado = dMatch[0];
+            if (dMatch) {
+              const rawUrl = dMatch[0];
+              discordDetectado = rawUrl.startsWith('http') ? rawUrl : `https://${rawUrl}`;
+            }
           }
         }
 
@@ -4888,11 +4899,23 @@ function aplicarMetadadosGitHubNoCard(portId, data) {
   }
 
   if (starsElem) {
-    if (typeof data.stars === 'number') {
-      starsElem.innerHTML = `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>${data.stars.toLocaleString('pt-BR')}`;
-    } else {
-      starsElem.innerHTML = `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>${data.stars || 'Ativo'}`;
-    }
+    starsElem.innerHTML = '';
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'icon-svg star-icon-svg');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    polygon.setAttribute('points', '12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2');
+    svg.appendChild(polygon);
+
+    const texto = document.createTextNode(
+      typeof data.stars === 'number'
+        ? data.stars.toLocaleString('pt-BR')
+        : (data.stars || 'Ativo')
+    );
+
+    starsElem.appendChild(svg);
+    starsElem.appendChild(texto);
   }
 }
 
@@ -4999,42 +5022,6 @@ function configurarModalSugestoes() {
           enviadoComSucesso = true;
         }
       } catch (workerErr) {}
-
-      if (!enviadoComSucesso && typeof DISCORD_SUGGEST_WEBHOOK !== 'undefined' && DISCORD_SUGGEST_WEBHOOK) {
-        try {
-          const payload = {
-            username: 'The Rock',
-            embeds: [
-              {
-                title: '🎮 Nova Sugestão de Port Nativo',
-                description: 'Uma nova indicação de port nativo foi enviada pelo portal **Port Integration**.',
-                color: 8141549,
-                fields: [
-                  { name: '🕹️ Jogo / Projeto', value: nome, inline: true },
-                  { name: '💻 Plataforma Original', value: plataforma, inline: true },
-                  { name: '🔗 Repositório / Link', value: repo || '*Não informado*', inline: false },
-                  { name: '📝 Detalhes / Observações', value: detalhes || '*Nenhuma observação informada.*', inline: false },
-                  { name: '👤 Enviado por / Contato', value: contato || '*Anônimo / Comunidade*', inline: true }
-                ],
-                footer: {
-                  text: 'Port Integration • SSLabs Ecosystem'
-                },
-                timestamp: new Date().toISOString()
-              }
-            ]
-          };
-
-          const res = await fetch(DISCORD_SUGGEST_WEBHOOK, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(payload)
-          });
-
-          if (res.ok || res.status === 204) {
-            enviadoComSucesso = true;
-          }
-        } catch (webhookErr) {}
-      }
 
       if (enviadoComSucesso) {
         if (statusMsg) {
