@@ -1,0 +1,14 @@
+name = "sslabs-port-proxy"
+main = "cloudflare-worker.js"
+compatibility_date = "2024-10-01"
+
+# Instruções rápidas para deploy via Terminal (CLI):
+# 1. Faça login na Cloudflare:
+#    npx wrangler login
+#
+# 2. Defina o token do GitHub (não exposto no código):
+#    npx wrangler secret put GITHUB_TOKEN
+#    (Cole o token gerado no GitHub quando solicitado)
+#
+# 3. Publique na Cloudflare:
+#    npx wrangler deploy

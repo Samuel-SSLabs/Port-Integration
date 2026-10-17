@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Port Integration</title>
+  <meta name="description" content="Buscador e catálogo integrado da SSLabs de ports nativos de jogos de consoles para PC, com releases mais recentes do GitHub e capas automáticas.">
+
+  <!-- Favicon Oficial SSLabs (.ico e .png exclusivamente) -->
+  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+  <link rel="icon" type="image/png" href="./assets/favicon.png">
+  <link rel="apple-touch-icon" href="./assets/favicon.png">
+
+  <!-- Fontes Locais SSLabs -->
+  <link rel="preload" href="./assets/fonts/Inter_18pt-Regular.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="./assets/fonts/Inter_18pt-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="./assets/fonts/JetBrainsMono-Regular.ttf" as="font" type="font/ttf" crossorigin>
+
+  <link rel="stylesheet" href="./styles.css">
+
+  <script>
+    (function() {
+      try {
+        var savedTheme = localStorage.getItem('port_integration_theme');
+        if (savedTheme) {
+          document.documentElement.setAttribute('data-theme', savedTheme);
+        } else {
+          document.documentElement.setAttribute('data-theme', 'dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Faixa de gradiente no topo (padrão SSLabs) -->
+  <div class="top-gradient-stripe"></div>
+
+  <!-- Cabeçalho Principal -->
+  <header class="site-header">
+    <div class="header-container">
+      
+      <!-- Logo / Marca com suporte automático a tema claro e escuro -->
+      <a href="./index.html" class="header-brand" id="brandLink" title="Port Integration — SSLabs">
+        <img src="./assets/logo-sslabs.png" alt="SSLabs Logo" class="brand-logo-img logo-light-mode">
+        <img src="./assets/logo-sslabs-white.png" alt="SSLabs Logo" class="brand-logo-img logo-dark-mode">
+        <div class="brand-title-group">
+          <span class="brand-title-main">Port<span class="brand-title-highlight">Integration</span></span>
+          <span class="brand-title-sub">PC Native Ports Hub</span>
+        </div>
+      </a>
+
+      <!-- Barra de Busca Centralizada com Drawer -->
+      <div class="header-search-wrapper" id="headerSearchWrapper">
+        <svg class="icon-svg search-icon-inside" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+
+        <input
+          type="search"
+          id="searchInput"
+          class="search-input-box"
+          placeholder="Buscar port, jogo, console (PS4, N64, PS2, Xbox...) ou autor..."
+          autocomplete="off"
+          spellcheck="false"
+        >
+
+        <div class="search-kbd-shortcut" id="searchKbd" title="Pressione / para buscar">/</div>
+
+        <button type="button" class="search-clear-btn" id="searchClearBtn" title="Limpar pesquisa" aria-label="Limpar pesquisa">
+          <svg class="icon-svg" style="width: 14px; height: 14px;" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Drawer de Resultados Rápidos ao Digitar -->
+        <div class="search-drawer" id="searchDrawer" aria-label="Resultados Rápidos">
+          <div class="search-drawer-header">
+            <span class="search-drawer-title">Sugestões de Ports</span>
+            <span class="search-drawer-count" id="searchDrawerCount">0 encontrados</span>
+          </div>
+          <div class="search-drawer-list" id="searchDrawerList">
+            <!-- Preenchido via app.js -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Ações do Cabeçalho -->
+      <div class="header-actions">
+        <!-- Alternador de Tema Claro / Escuro -->
+        <button type="button" class="action-icon-btn" id="themeToggleBtn" title="Alternar tema claro/escuro" aria-label="Alternar tema">
+          <svg class="icon-svg theme-icon-sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-svg theme-icon-moon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Botão Github Geral da SSLabs -->
+        <a href="https://github.com/Samuel-SSLabs" target="_blank" rel="noopener noreferrer" class="action-icon-btn github-btn" title="Explorar SSLabs no GitHub" aria-label="GitHub">
+          <svg class="icon-svg" viewBox="0 0 24 24">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Container Principal -->
+  <main class="main-wrapper">
+    
+    <!-- Hero Banner -->
+    <section class="hero-section">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        <span>170+ Ports Nativos Verificados • Releases Mais Recentes</span>
+      </div>
+      <h1 class="hero-title">Ports Nativos para Computador</h1>
+      <p class="hero-desc">
+        Catálogo unificado de recompilações estáticas e ports nativos de consoles para PC (PS5, PS4, Switch, Xbox 360, N64, PS2, GameCube, Wii e outros).
+      </p>
+
+      <!-- Estatísticas Rápidas -->
+      <div class="hero-stats-row">
+        <div class="stat-item">
+          <span class="stat-number" id="statTotalPorts">0</span>
+          <span class="stat-label">Ports Ativos</span>
+        </div>
+        <div class="stat-separator"></div>
+        <div class="stat-item">
+          <span class="stat-number" id="statTotalConsoles">0</span>
+          <span class="stat-label">Plataformas</span>
+        </div>
+        <div class="stat-separator"></div>
+        <div class="stat-item">
+          <span class="stat-number" id="statApiStatus" style="color: #10b981;">Online</span>
+          <span class="stat-label">Status da Varredura</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Barra de Filtros e Categorias -->
+    <section class="filter-bar-section">
+      <div class="filter-pills-wrap" id="platformFilterPills">
+        <button type="button" class="filter-pill active" data-console="todos">
+          <span>Todos</span>
+          <span class="filter-pill-count" id="countPill_todos">0</span>
+        </button>
+        <button type="button" class="filter-pill" data-console="PS5">
+          <span class="pill-dot ps5-dot"></span>
+          <span>PlayStation 5</span>
+          <span class="filter-pill-count" id="countPill_PS5">0</span>
+        </button>
+        <button type="button" class="filter-pill" data-console="PS4">
+          <span class="pill-dot ps4-dot"></span>
+          <span>PlayStation 4</span>
+          <span class="filter-pill-count" id="countPill_PS4">0</span>
+        </button>
+        <button type="button" class="filter-pill" data-console="XBOX360">
+          <span class="pill-dot xbox360-dot"></span>
+          <span>Xbox 360</span>
+          <span class="filter-pill-count" id="countPill_XBOX360">0</span>
+        </button>
+        <button type="button" class="filter-pill" data-console="XBOX">
+          <span class="pill-dot xbox-dot"></span>
+          <span>Xbox Clássico</span>
+          <span class="filter-pill-count" id="countPill_XBOX">0</span>
+        </button>
+        <button type="button" class="filter-pill" data-console="N64">
+          <span class="pill-dot n64-dot"></span>
+          <span>Nintendo 64</span>
+          <span class="filter-pill-count" id="countPill_N64">0</span>
+        </button>
+        <button type="button" class="filter-pill" data-console="PS2_PS1">
+          <span class="pill-dot ps2-dot"></span>
+          <span>PS2 & PS1</span>
+          <span class="filter-pill-count" id="countPill_PS2_PS1">0</span>
+        </button>
+        <button type="button" class="filter-pill" data-console="GC_WII">
+          <span class="pill-dot gc-dot"></span>
+          <span>GameCube & Wii</span>
+          <span class="filter-pill-count" id="countPill_GC_WII">0</span>
+        </button>
+        <button type="button" class="filter-pill" data-console="Switch">
+          <span class="pill-dot switch-dot"></span>
+          <span>Nintendo Switch</span>
+          <span class="filter-pill-count" id="countPill_Switch">0</span>
+        </button>
+        <button type="button" class="filter-pill" data-console="Retro">
+          <span class="pill-dot outros-dot"></span>
+          <span>Portáteis & Retro</span>
+          <span class="filter-pill-count" id="countPill_Retro">0</span>
+        </button>
+        <button type="button" class="filter-pill" data-console="PC">
+          <span class="pill-dot pc-dot"></span>
+          <span>PC / Remakes</span>
+          <span class="filter-pill-count" id="countPill_PC">0</span>
+        </button>
+      </div>
+
+      <div class="filter-sort-wrap">
+        <label for="sortSelect" class="sort-label">Ordenar:</label>
+        <select id="sortSelect" class="sort-select">
+          <option value="recentes" selected>Releases Mais Recentes</option>
+          <option value="estrelas">Mais Estrelas (Stars)</option>
+          <option value="nome">Nome (A - Z)</option>
+        </select>
+      </div>
+    </section>
+
+    <!-- Indicador de Resultados de Busca -->
+    <div class="search-status-bar" id="searchStatusBar" style="display: none;">
+      <div class="search-status-text">
+        Resultados para a busca: <strong id="searchStatusQuery">""</strong>
+        <span class="search-status-count" id="searchStatusCount">(0 encontrados)</span>
+      </div>
+      <button type="button" class="btn-clear-search-bar" id="btnResetSearch">
+        Limpar busca
+      </button>
+    </div>
+
+    <!-- Grade de Cards de Ports (Padrão Catálogo da Loja) -->
+    <section class="ports-grid-section">
+      <div class="ports-grid" id="portsGrid">
+        <!-- Renderizado dinamicamente pelo app.js -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Rodapé Institucional SSLabs -->
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand-info">
+        <div class="footer-logo-row">
+          <img src="./assets/logo-sslabs.png" alt="SSLabs Logo" class="footer-logo logo-light-mode">
+          <img src="./assets/logo-sslabs-white.png" alt="SSLabs Logo" class="footer-logo logo-dark-mode">
+          <span class="footer-title">Port Integration</span>
+        </div>
+        <p class="footer-text">
+          Hub oficial da SSLabs para localização, catalogação e acompanhamento em tempo real de ports nativos de consoles para PC.
+        </p>
+        <p class="footer-disclaimer">
+          ⚠️ <strong>Aviso legal:</strong> Os ports nativos exigem que o usuário possua uma cópia legalmente adquirida do jogo original (bring your own game dump). Este site não armazena, hospeda nem compartilha arquivos executáveis protegidos por direitos autorais, ROMs ou ISOs.
+        </p>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 SSLabs Ecosystem. Todos os direitos reservados.</span>
+        <div class="footer-links">
+          <a href="https://github.com/Samuel-SSLabs" target="_blank" rel="noopener noreferrer">SSLabs GitHub</a>
+          <span>•</span>
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botão Flutuante de Sugestões (Canto Inferior Direito) -->
+  <button type="button" class="floating-suggest-btn" id="openSuggestBtn" title="Sugerir um novo port ou atualização">
+    <svg class="icon-svg suggest-btn-icon" viewBox="0 0 24 24">
+      <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/>
+    </svg>
+    <span class="suggest-btn-text">Sugerir Port</span>
+  </button>
+
+  <!-- Modal Interativo de Sugestões -->
+  <div class="suggest-modal-overlay" id="suggestModalOverlay" aria-hidden="true">
+    <div class="suggest-modal-box" role="dialog" aria-labelledby="suggestModalTitle">
+      <div class="suggest-modal-header">
+        <div class="suggest-modal-title-group">
+          <div class="suggest-modal-icon-badge">
+            <svg class="icon-svg" style="width: 20px; height: 20px;" viewBox="0 0 24 24">
+              <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="suggest-modal-title" id="suggestModalTitle">Sugerir Novo Port / Atualização</h3>
+            <p class="suggest-modal-subtitle">Conhece um port nativo ou recompilação que não está no site? Envie para indexarmos!</p>
+          </div>
+        </div>
+        <button type="button" class="suggest-modal-close" id="closeSuggestBtn" aria-label="Fechar modal">
+          <svg class="icon-svg" style="width: 18px; height: 18px;" viewBox="0 0 24 24">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <form id="suggestForm" class="suggest-form">
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="suggestGameName" class="form-label">Nome do Jogo / Port <span class="required">*</span></label>
+            <input type="text" id="suggestGameName" class="form-input" placeholder="Ex: Demon's Souls, Jak II, Burnout 3..." required>
+          </div>
+          <div class="form-group w-auto">
+            <label for="suggestPlatform" class="form-label">Plataforma Original <span class="required">*</span></label>
+            <select id="suggestPlatform" class="form-select" required>
+              <option value="PS5">PlayStation 5</option>
+              <option value="PS4">PlayStation 4</option>
+              <option value="XBOX360">Xbox 360</option>
+              <option value="XBOX">Xbox Clássico</option>
+              <option value="N64">Nintendo 64</option>
+              <option value="PS2">PlayStation 2</option>
+              <option value="PS1">PlayStation 1</option>
+              <option value="Switch">Nintendo Switch</option>
+              <option value="GameCube">GameCube / Wii</option>
+              <option value="Retro">Portáteis & Retro</option>
+              <option value="PC">PC / Outros</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="suggestRepoUrl" class="form-label">Link do Repositório (GitHub / GitLab / Website)</label>
+          <input type="url" id="suggestRepoUrl" class="form-input" placeholder="https://github.com/autor/nome-do-port">
+        </div>
+
+        <div class="form-group">
+          <label for="suggestDetails" class="form-label">Informações Adicionais / Observações</label>
+          <textarea id="suggestDetails" class="form-textarea" rows="3" placeholder="Estado do port (jogável, em desenvolvimento), instruções de compilação ou requisitos..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="suggestContact" class="form-label">Seu Nome, Usuário do Discord ou E-mail (Opcional)</label>
+          <input type="text" id="suggestContact" class="form-input" placeholder="Ex: @seu_usuario ou seu_email@exemplo.com">
+        </div>
+
+        <div class="suggest-actions-bar">
+          <button type="submit" class="btn-submit-suggest" id="btnSubmitSuggest">
+            <svg class="icon-svg" style="width: 16px; height: 16px; margin-right: 6px;" viewBox="0 0 24 24">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+            <span>Enviar Sugestão</span>
+          </button>
+
+          <button type="button" class="btn-github-issue" id="btnOpenGithubIssue" title="Abrir formulário de Issue diretamente no GitHub">
+            <svg class="icon-svg" style="width: 16px; height: 16px; margin-right: 6px;" viewBox="0 0 24 24">
+              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+            </svg>
+            <span>Abrir no GitHub Issue</span>
+          </button>
+        </div>
+
+        <div class="suggest-status-msg" id="suggestStatusMsg" style="display: none;"></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="./app.js"></script>
+</body>
+</html>

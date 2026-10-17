@@ -1,0 +1,9 @@
+# Backups locais de desenvolvimento
+backups/
+
+# Caches temporários e logs
+.wrangler/
+node_modules/
+*.log
+.DS_Store
+Thumbs.db
