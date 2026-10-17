@@ -132,22 +132,58 @@
         Catálogo unificado de recompilações estáticas e ports nativos de consoles para PC (PS5, PS4, Switch, Xbox 360, N64, PS2, GameCube, Wii e outros).
       </p>
 
-      <!-- Estatísticas Rápidas -->
-      <div class="hero-stats-row">
-        <div class="stat-item">
-          <span class="stat-number" id="statTotalPorts">0</span>
-          <span class="stat-label">Ports Ativos</span>
+      <!-- Dashboard Hero: Contagem de Ports + Card de Status do AnyPS5 em Paralelo -->
+      <div class="hero-dashboard-row">
+        <!-- Estatísticas Rápidas -->
+        <div class="hero-stats-row">
+          <div class="stat-item">
+            <span class="stat-number" id="statTotalPorts">0</span>
+            <span class="stat-label">Ports Ativos</span>
+          </div>
+          <div class="stat-separator"></div>
+          <div class="stat-item">
+            <span class="stat-number" id="statTotalConsoles">0</span>
+            <span class="stat-label">Plataformas</span>
+          </div>
+          <div class="stat-separator"></div>
+          <div class="stat-item">
+            <span class="stat-number" id="statApiStatus" style="color: #10b981;">Online</span>
+            <span class="stat-label">Status da Varredura</span>
+          </div>
         </div>
-        <div class="stat-separator"></div>
-        <div class="stat-item">
-          <span class="stat-number" id="statTotalConsoles">0</span>
-          <span class="stat-label">Plataformas</span>
-        </div>
-        <div class="stat-separator"></div>
-        <div class="stat-item">
-          <span class="stat-number" id="statApiStatus" style="color: #10b981;">Online</span>
-          <span class="stat-label">Status da Varredura</span>
-        </div>
+
+        <!-- Card de Status do AnyPS5 (Interativo com badges em tempo real) -->
+        <a href="https://github.com/boykopovar/AnyPS5" target="_blank" rel="noopener noreferrer" class="anyps5-status-card" id="anyps5StatusCard" title="AnyPS5: Relinker nativo de PS5 para PC. Clique para abrir o repositório oficial">
+          <div class="anyps5-card-top">
+            <div class="anyps5-tag-group">
+              <span class="anyps5-tag-badge">PS5 TOOLCHAIN</span>
+              <span class="anyps5-name">AnyPS5 Relinker</span>
+              <span class="anyps5-live-pill"><span class="pulse-dot"></span>Ao Vivo</span>
+            </div>
+            <svg class="anyps5-arrow-icon" viewBox="0 0 24 24" width="16" height="16">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </div>
+
+          <div class="anyps5-badges-row">
+            <div class="anyps5-badge-wrap" title="Status das bibliotecas PRX do sistema PS5">
+              <img src="https://boykopovar.github.io/AnyPS5/badge-libraries.svg" alt="Progresso das Bibliotecas AnyPS5" class="anyps5-badge-img" loading="lazy">
+            </div>
+            <div class="anyps5-badge-wrap" title="Progresso das instruções de GPU Shaders">
+              <img src="https://boykopovar.github.io/AnyPS5/badge-shaders.svg" alt="Progresso dos Shaders AnyPS5" class="anyps5-badge-img" loading="lazy">
+            </div>
+          </div>
+
+          <!-- Informações extras reveladas no hover -->
+          <div class="anyps5-hover-info">
+            <p class="anyps5-hover-text">
+              Relinker nativo e reimplementação de bibliotecas PRX de PS5 para Windows e Linux sem emulação.
+            </p>
+            <span class="anyps5-hover-cta">Explorar repositório no GitHub ↗</span>
+          </div>
+        </a>
       </div>
     </section>
 
@@ -270,8 +306,10 @@
 
   <!-- Botão Flutuante de Sugestões (Canto Inferior Direito) -->
   <button type="button" class="floating-suggest-btn" id="openSuggestBtn" title="Sugerir um novo port ou atualização">
-    <svg class="icon-svg suggest-btn-icon" viewBox="0 0 24 24">
-      <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/>
+    <svg class="suggest-outline-icon" viewBox="0 0 24 24" width="20" height="20">
+      <path d="M9 18h6"></path>
+      <path d="M10 22h4"></path>
+      <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
     </svg>
     <span class="suggest-btn-text">Sugerir Port</span>
   </button>
@@ -282,8 +320,10 @@
       <div class="suggest-modal-header">
         <div class="suggest-modal-title-group">
           <div class="suggest-modal-icon-badge">
-            <svg class="icon-svg" style="width: 20px; height: 20px;" viewBox="0 0 24 24">
-              <path d="M12 2a7 7 0 0 0-7 7c0 2.38 1.19 4.47 3 5.74V17a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-2.26c1.81-1.27 3-3.36 3-5.74a7 7 0 0 0-7-7M9 21a1 1 0 0 0 1 1h4a1 1 0 0 0 1-1v-1H9v1z"/>
+            <svg class="suggest-outline-icon" style="width: 20px; height: 20px;" viewBox="0 0 24 24">
+              <path d="M9 18h6"></path>
+              <path d="M10 22h4"></path>
+              <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
             </svg>
           </div>
           <div>
@@ -345,13 +385,6 @@
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
             <span>Enviar Sugestão</span>
-          </button>
-
-          <button type="button" class="btn-github-issue" id="btnOpenGithubIssue" title="Abrir formulário de Issue diretamente no GitHub">
-            <svg class="icon-svg" style="width: 16px; height: 16px; margin-right: 6px;" viewBox="0 0 24 24">
-              <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-            </svg>
-            <span>Abrir no GitHub Issue</span>
           </button>
         </div>
 
