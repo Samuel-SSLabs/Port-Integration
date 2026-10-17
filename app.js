@@ -1,20 +1,9 @@
-
-// ── CONFIGURAÇÃO DE PROXY CLOUDFLARE WORKER & GITHUB API ──
-const CLOUDFLARE_WORKER_PROXY = 'https://sslabs-port-proxy.sstudioslabs.workers.dev';
-const GITHUB_CACHE_TTL_MS = 24 * 60 * 60 * 1000; // 24 Horas de Cache Inteligente Local
-
-/**
- * PORT INTEGRATION — MOTOR PRINCIPAL (SSLABS ECOSYSTEM)
- * - Catálogo completo de ports nativos para PC (160+ projetos verificados • Recomps IA)
- * - Varredura massiva de decompilações e recompilações estáticas
- * - Ordenação nativa por releases mais recentes do GitHub
- * - Capa do Shadow of the Colossus fixada na versão Remake 2018 (PS4)
- * - Busca inteligente de capas oficiais via Wikipedia REST API / OpenGraph
- * - Sincronização em tempo real com a API do GitHub com fallback seguro
- * - Sincronização bidirecional de busca com URL (?q=... & ?console=...)
- */
-
 'use strict';
+
+const CLOUDFLARE_WORKER_PROXY = 'https://sslabs-port-proxy.sstudioslabs.workers.dev';
+const DISCORD_SUGGEST_WEBHOOK = '';
+const GITHUB_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+
 
 try {
   localStorage.removeItem('port_cover_shadow-of-the-colossus-pc');
@@ -4162,39 +4151,52 @@ document.addEventListener('DOMContentLoaded', () => {
   configurarEventosFiltros();
   configurarCliqueCards();
   configurarModalSugestoes();
+  configurarBotaoVoltarAoTopo();
   atualizarEstatisticasHero();
   renderizarCatalogo();
 });
 
 // ── CONTROLE DE TEMA (CLARO / ESCURO) ──
 function inicializarTema() {
-  const themeToggleBtn = document.getElementById('themeToggleBtn');
-  const sunIcon = themeToggleBtn?.querySelector('.theme-icon-sun');
-  const moonIcon = themeToggleBtn?.querySelector('.theme-icon-moon');
+  const themeButtons = [
+    document.getElementById('themeToggleBtn'),
+    document.getElementById('themeToggleBtnFooter')
+  ].filter(Boolean);
 
   function atualizarIconesTema(tema) {
-    if (!sunIcon || !moonIcon) return;
-    if (tema === 'dark') {
-      sunIcon.style.display = 'inline-block';
-      moonIcon.style.display = 'none';
-    } else {
-      sunIcon.style.display = 'none';
-      moonIcon.style.display = 'inline-block';
-    }
+    themeButtons.forEach(btn => {
+      const sunIcon = btn.querySelector('.theme-icon-sun');
+      const moonIcon = btn.querySelector('.theme-icon-moon');
+      const label = btn.querySelector('.footer-theme-label');
+
+      if (sunIcon && moonIcon) {
+        if (tema === 'dark') {
+          sunIcon.style.display = 'inline-block';
+          moonIcon.style.display = 'none';
+        } else {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'inline-block';
+        }
+      }
+
+      if (label) {
+        label.textContent = tema === 'dark' ? 'Modo Claro' : 'Modo Escuro';
+      }
+    });
   }
 
   const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
   atualizarIconesTema(currentTheme);
 
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', () => {
+  themeButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
       const active = document.documentElement.getAttribute('data-theme');
       const novoTema = active === 'dark' ? 'light' : 'dark';
       document.documentElement.setAttribute('data-theme', novoTema);
       localStorage.setItem('port_integration_theme', novoTema);
       atualizarIconesTema(novoTema);
     });
-  }
+  });
 }
 
 // ── SUPORTE A FILTROS VIA URL (?q=... e ?console=...) ──
@@ -4564,8 +4566,8 @@ function renderizarCatalogo() {
 
             ${(port.discordUrl || DISCORD_MAP[port.repo.toLowerCase()]) ? `
             <a href="${port.discordUrl || DISCORD_MAP[port.repo.toLowerCase()]}" target="_blank" rel="noopener noreferrer" class="btn-card-discord" title="Entrar no servidor oficial do Discord">
-              <svg class="icon-svg discord-icon-filled" style="width: 16px; height: 16px;" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09-.01-.02-.04-.03-.07-.03-1.5.26-2.93.71-4.27 1.33-.01 0-.02.01-.03.02-2.72 4.07-3.47 8.03-3.1 11.95 0 .02.01.04.03.05 1.8 1.32 3.53 2.12 5.24 2.65.03.01.06 0 .07-.02.4-.55.76-1.13 1.07-1.74.02-.04 0-.08-.04-.09-.57-.22-1.11-.48-1.64-.78-.04-.02-.04-.08-.01-.11.11-.08.22-.17.33-.25.02-.02.05-.02.07-.01 3.44 1.57 7.15 1.57 10.55 0 .02-.01.05-.01.07.01.11.09.22.17.33.26.04.03.04.09-.01.11-.52.31-1.07.56-1.64.78-.04.01-.05.06-.04.09.32.61.68 1.19 1.07 1.74.03.01.06.02.09.01 1.72-.53 3.45-1.33 5.25-2.65.02-.01.03-.03.03-.05.44-4.53-.73-8.46-3.1-11.95-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12 0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12 0 1.17-.83 2.12-1.89 2.12z"/>
+              <svg class="discord-svg-filled" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
               </svg>
               <span>Discord</span>
             </a>
@@ -4928,7 +4930,6 @@ function configurarModalSugestoes() {
   const closeBtn = document.getElementById('closeSuggestBtn');
   const overlay = document.getElementById('suggestModalOverlay');
   const form = document.getElementById('suggestForm');
-  const btnGithubIssue = document.getElementById('btnOpenGithubIssue');
   const statusMsg = document.getElementById('suggestStatusMsg');
   const submitBtn = document.getElementById('btnSubmitSuggest');
 
@@ -4960,36 +4961,13 @@ function configurarModalSugestoes() {
     }
   });
 
-  // Abertura de Issue pré-formatada no GitHub
-  if (btnGithubIssue) {
-    btnGithubIssue.addEventListener('click', () => {
-      const nome = document.getElementById('suggestGameName')?.value.trim() || '';
-      const plataforma = document.getElementById('suggestPlatform')?.value || 'Multiplataforma';
-      const repo = document.getElementById('suggestRepoUrl')?.value.trim() || '';
-      const detalhes = document.getElementById('suggestDetails')?.value.trim() || '';
-      const contato = document.getElementById('suggestContact')?.value.trim() || '';
-
-      const issueTitle = encodeURIComponent(`[Port Suggestion] ${nome || 'Novo Port Nativo'}`);
-      const issueBody = encodeURIComponent(
-        `### 🎮 Sugestão de Port Nativo\n\n` +
-        `- **Nome do Jogo:** ${nome || 'Não especificado'}\n` +
-        `- **Plataforma:** ${plataforma}\n` +
-        `- **Repositório / Link:** ${repo || 'Não informado'}\n` +
-        `- **Observações:** \n${detalhes || 'Nenhuma informação adicional.'}\n\n` +
-        `- **Sugerido por:** ${contato || 'Comunidade SSLabs'}\n`
-      );
-
-      window.open(`https://github.com/Samuel-SSLabs/port-integration/issues/new?title=${issueTitle}&body=${issueBody}`, '_blank', 'noopener,noreferrer');
-    });
-  }
-
-  // Envio da Sugestão via Discord Webhook / Mailto
+  // Envio da Sugestão via Discord Webhook Oficial
   if (form) {
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       const nome = document.getElementById('suggestGameName')?.value.trim() || '';
-      const plataforma = document.getElementById('suggestPlatform')?.value || '';
+      const plataforma = document.getElementById('suggestPlatform')?.value || 'Multiplataforma';
       const repo = document.getElementById('suggestRepoUrl')?.value.trim() || '';
       const detalhes = document.getElementById('suggestDetails')?.value.trim() || '';
       const contato = document.getElementById('suggestContact')?.value.trim() || '';
@@ -4998,63 +4976,116 @@ function configurarModalSugestoes() {
 
       if (submitBtn) {
         submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Enviando...';
+        submitBtn.innerHTML = `<span>Enviando sugestão...</span>`;
       }
 
       let enviadoComSucesso = false;
 
-      // 1. Tenta envio direto para o Cloudflare Worker (/api/suggest) caso haja webhook configurado
       try {
-        const payload = {
-          jogo: nome,
-          plataforma,
-          repoUrl: repo,
-          detalhes,
-          contato,
-          dataEnvio: new Date().toISOString()
-        };
-
         const res = await fetch(`${CLOUDFLARE_WORKER_PROXY}/api/suggest`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
+          body: JSON.stringify({
+            jogo: nome,
+            plataforma,
+            repoUrl: repo,
+            detalhes,
+            contato,
+            dataEnvio: new Date().toISOString()
+          })
         });
 
-        if (res.ok) {
+        if (res.ok || res.status === 204) {
           enviadoComSucesso = true;
         }
-      } catch (err) {}
+      } catch (workerErr) {}
 
-      // 2. Se o Worker ainda não estiver com rota ativa, utiliza fallback do mailto
-      if (!enviadoComSucesso) {
-        const mailtoSubject = encodeURIComponent(`[Port Integration] Sugestão: ${nome} (${plataforma})`);
-        const mailtoBody = encodeURIComponent(
-          `Sugestão de Port Nativo:\n\n` +
-          `Jogo: ${nome}\n` +
-          `Plataforma: ${plataforma}\n` +
-          `Link: ${repo}\n` +
-          `Detalhes: ${detalhes}\n` +
-          `Contato: ${contato}\n`
-        );
-        window.open(`mailto:samuelsslabs@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`, '_blank');
+      if (!enviadoComSucesso && typeof DISCORD_SUGGEST_WEBHOOK !== 'undefined' && DISCORD_SUGGEST_WEBHOOK) {
+        try {
+          const payload = {
+            username: 'The Rock',
+            embeds: [
+              {
+                title: '🎮 Nova Sugestão de Port Nativo',
+                description: 'Uma nova indicação de port nativo foi enviada pelo portal **Port Integration**.',
+                color: 8141549,
+                fields: [
+                  { name: '🕹️ Jogo / Projeto', value: nome, inline: true },
+                  { name: '💻 Plataforma Original', value: plataforma, inline: true },
+                  { name: '🔗 Repositório / Link', value: repo || '*Não informado*', inline: false },
+                  { name: '📝 Detalhes / Observações', value: detalhes || '*Nenhuma observação informada.*', inline: false },
+                  { name: '👤 Enviado por / Contato', value: contato || '*Anônimo / Comunidade*', inline: true }
+                ],
+                footer: {
+                  text: 'Port Integration • SSLabs Ecosystem'
+                },
+                timestamp: new Date().toISOString()
+              }
+            ]
+          };
+
+          const res = await fetch(DISCORD_SUGGEST_WEBHOOK, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          if (res.ok || res.status === 204) {
+            enviadoComSucesso = true;
+          }
+        } catch (webhookErr) {}
       }
 
-      if (statusMsg) {
-        statusMsg.className = 'suggest-status-msg success';
-        statusMsg.style.display = 'block';
-        statusMsg.textContent = 'Obrigado! Sua sugestão foi processada e será analisada para inclusão no catálogo.';
+      if (enviadoComSucesso) {
+        if (statusMsg) {
+          statusMsg.className = 'suggest-status-msg success';
+          statusMsg.style.display = 'block';
+          statusMsg.textContent = '✅ Sugestão enviada com sucesso ao Discord da SSLabs! Muito obrigado pela contribuição.';
+        }
+        form.reset();
+        setTimeout(() => {
+          fecharModal();
+        }, 2500);
+      } else {
+        if (statusMsg) {
+          statusMsg.className = 'suggest-status-msg error';
+          statusMsg.style.display = 'block';
+          statusMsg.textContent = '❌ Não foi possível entregar no momento. Por favor, tente novamente em alguns instantes.';
+        }
       }
-
-      form.reset();
 
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = `<svg class="icon-svg" style="width: 16px; height: 16px; margin-right: 6px;" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg><span>Enviar Sugestão</span>`;
+        submitBtn.innerHTML = `
+          <svg class="icon-svg" style="width: 16px; height: 16px; margin-right: 6px;" viewBox="0 0 24 24">
+            <line x1="22" y1="2" x2="11" y2="13"></line>
+            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+          </svg>
+          <span>Enviar Sugestão</span>
+        `;
       }
-
-      setTimeout(() => {
-        fecharModal();
-      }, 2500);
     });
   }
 }
+
+// ── BOTÃO DE VOLTAR AO TOPO (SCROLL TO TOP) ──
+function configurarBotaoVoltarAoTopo() {
+  const backToTopBtn = document.getElementById('backToTopBtn');
+  if (!backToTopBtn) return;
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+      backToTopBtn.classList.add('visible');
+    } else {
+      backToTopBtn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+

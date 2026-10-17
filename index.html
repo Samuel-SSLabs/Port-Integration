@@ -132,7 +132,7 @@
         Catálogo unificado de recompilações estáticas e ports nativos de consoles para PC (PS5, PS4, Switch, Xbox 360, N64, PS2, GameCube, Wii e outros).
       </p>
 
-      <!-- Dashboard Hero: Contagem de Ports + Card de Status do AnyPS5 em Paralelo -->
+      <!-- Dashboard Hero: Contagem de Ports + Card de Status do AnyPS5 Lado a Lado -->
       <div class="hero-dashboard-row">
         <!-- Estatísticas Rápidas -->
         <div class="hero-stats-row">
@@ -152,14 +152,20 @@
           </div>
         </div>
 
-        <!-- Card de Status do AnyPS5 (Interativo com badges em tempo real) -->
+        <!-- Card de Status do AnyPS5 Lado a Lado (Tamanho Fixo e Estável) -->
         <a href="https://github.com/boykopovar/AnyPS5" target="_blank" rel="noopener noreferrer" class="anyps5-status-card" id="anyps5StatusCard" title="AnyPS5: Relinker nativo de PS5 para PC. Clique para abrir o repositório oficial">
-          <div class="anyps5-card-top">
-            <div class="anyps5-tag-group">
-              <span class="anyps5-tag-badge">PS5 TOOLCHAIN</span>
+          <div class="anyps5-card-inner">
+            <div class="anyps5-header-line">
               <span class="anyps5-name">AnyPS5 Relinker</span>
               <span class="anyps5-live-pill"><span class="pulse-dot"></span>Ao Vivo</span>
             </div>
+            <div class="anyps5-badges-line">
+              <img src="https://boykopovar.github.io/AnyPS5/badge-libraries.svg" alt="Progresso das Bibliotecas AnyPS5" class="anyps5-badge-img" loading="lazy">
+              <img src="https://boykopovar.github.io/AnyPS5/badge-shaders.svg" alt="Progresso dos Shaders AnyPS5" class="anyps5-badge-img" loading="lazy">
+            </div>
+          </div>
+
+          <div class="anyps5-arrow-wrap">
             <svg class="anyps5-arrow-icon" viewBox="0 0 24 24" width="16" height="16">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               <polyline points="15 3 21 3 21 9"></polyline>
@@ -167,21 +173,28 @@
             </svg>
           </div>
 
-          <div class="anyps5-badges-row">
-            <div class="anyps5-badge-wrap" title="Status das bibliotecas PRX do sistema PS5">
-              <img src="https://boykopovar.github.io/AnyPS5/badge-libraries.svg" alt="Progresso das Bibliotecas AnyPS5" class="anyps5-badge-img" loading="lazy">
+          <!-- Popover Flutuante com Mais Informações (Não altera o tamanho do card) -->
+          <div class="anyps5-hover-popover" role="tooltip">
+            <div class="anyps5-popover-header">
+              <span class="anyps5-popover-title">boykopovar / AnyPS5</span>
             </div>
-            <div class="anyps5-badge-wrap" title="Progresso das instruções de GPU Shaders">
-              <img src="https://boykopovar.github.io/AnyPS5/badge-shaders.svg" alt="Progresso dos Shaders AnyPS5" class="anyps5-badge-img" loading="lazy">
-            </div>
-          </div>
-
-          <!-- Informações extras reveladas no hover -->
-          <div class="anyps5-hover-info">
-            <p class="anyps5-hover-text">
-              Relinker nativo e reimplementação de bibliotecas PRX de PS5 para Windows e Linux sem emulação.
+            <p class="anyps5-popover-desc">
+              Relinker nativo e reimplementação de bibliotecas PRX de PS5 para Windows e Linux sem emulação nem máquina virtual.
             </p>
-            <span class="anyps5-hover-cta">Explorar repositório no GitHub ↗</span>
+            <div class="anyps5-popover-stats">
+              <div class="anyps5-popover-stat-item">
+                <span class="anyps5-popover-stat-lbl">System Libraries*</span>
+                <span class="anyps5-popover-stat-val">~89.6%</span>
+              </div>
+              <div class="anyps5-popover-stat-sep"></div>
+              <div class="anyps5-popover-stat-item">
+                <span class="anyps5-popover-stat-lbl">GPU Shaders</span>
+                <span class="anyps5-popover-stat-val">100.0%</span>
+              </div>
+            </div>
+            <div class="anyps5-popover-footer">
+              <span>Acessar repositório oficial no GitHub ↗</span>
+            </div>
           </div>
         </a>
       </div>
@@ -295,6 +308,24 @@
 
       <div class="footer-bottom">
         <span>© 2026 SSLabs Ecosystem. Todos os direitos reservados.</span>
+        <!-- Alternador de Tema no Rodapé (Mobile) -->
+        <button type="button" class="footer-theme-toggle-btn" id="themeToggleBtnFooter" title="Alternar tema claro/escuro" aria-label="Alternar tema">
+          <svg class="icon-svg theme-icon-sun" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="icon-svg theme-icon-moon" viewBox="0 0 24 24" style="display: none;">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <span class="footer-theme-label">Modo Claro</span>
+        </button>
         <div class="footer-links">
           <a href="https://github.com/Samuel-SSLabs" target="_blank" rel="noopener noreferrer">SSLabs GitHub</a>
           <span>•</span>
@@ -304,15 +335,25 @@
     </div>
   </footer>
 
-  <!-- Botão Flutuante de Sugestões (Canto Inferior Direito) -->
-  <button type="button" class="floating-suggest-btn" id="openSuggestBtn" title="Sugerir um novo port ou atualização">
-    <svg class="suggest-outline-icon" viewBox="0 0 24 24" width="20" height="20">
-      <path d="M9 18h6"></path>
-      <path d="M10 22h4"></path>
-      <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
-    </svg>
-    <span class="suggest-btn-text">Sugerir Port</span>
-  </button>
+  <!-- Ações Flutuantes (Canto Inferior Direito) -->
+  <div class="floating-actions-wrap">
+    <!-- Botão de Voltar ao Topo (Scroll to Top) -->
+    <button type="button" class="floating-back-to-top-btn" id="backToTopBtn" title="Voltar ao topo da página" aria-label="Voltar ao topo">
+      <svg class="back-to-top-icon" viewBox="0 0 24 24" width="20" height="20">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
+    <!-- Botão de Sugestões -->
+    <button type="button" class="floating-suggest-btn" id="openSuggestBtn" title="Sugerir um novo port ou atualização">
+      <svg class="suggest-outline-icon" viewBox="0 0 24 24" width="20" height="20">
+        <path d="M9 18h6"></path>
+        <path d="M10 22h4"></path>
+        <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"></path>
+      </svg>
+      <span class="suggest-btn-text">Sugerir Port</span>
+    </button>
+  </div>
 
   <!-- Modal Interativo de Sugestões -->
   <div class="suggest-modal-overlay" id="suggestModalOverlay" aria-hidden="true">
