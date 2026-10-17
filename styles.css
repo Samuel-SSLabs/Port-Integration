@@ -916,6 +916,7 @@ body {
 .ps5-dot { background-color: #0070d1; box-shadow: 0 0 6px rgba(0, 112, 209, 0.5); }
 .ps4-dot { background-color: var(--console-ps4-light); }
 .ps2-dot { background-color: var(--console-ps2); }
+.ps1-dot { background-color: #94a3b8; }
 .n64-dot { background-color: var(--console-n64); }
 .gc-dot { background-color: var(--console-gamecube); }
 .switch-dot { background-color: var(--console-switch); }

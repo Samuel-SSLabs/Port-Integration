@@ -4115,19 +4115,19 @@ function portMatchesConsole(port, key) {
   if (cAtivo === 'todos') return true;
   if (cAtivo === 'ps5') return pConsole === 'ps5';
   if (cAtivo === 'ps4') return pConsole === 'ps4';
+  if (cAtivo === 'ps2') return pConsole === 'ps2';
+  if (cAtivo === 'ps1') return pConsole === 'ps1';
   if (cAtivo === 'xone' || cAtivo === 'xboxone' || cAtivo === 'series') {
     return pConsole === 'xone' || pConsole === 'xboxone' || pConsole === 'series' || pConsole === 'xsx';
   }
   if (cAtivo === 'xbox360') return pConsole === 'xbox360';
-  if (cAtivo === 'xbox') {
-    return pConsole === 'xbox' || pConsole === 'xone' || pConsole === 'xboxone' || pConsole === 'series';
-  }
-  if (cAtivo === 'n64') return pConsole === 'n64';
+  if (cAtivo === 'xbox') return pConsole === 'xbox';
   if (cAtivo === 'switch') return pConsole === 'switch';
-  if (cAtivo === 'ps2_ps1' || cAtivo === 'ps2' || cAtivo === 'ps1') {
+  if (cAtivo === 'n64') return pConsole === 'n64';
+  if (cAtivo === 'ps2_ps1') {
     return pConsole === 'ps2' || pConsole === 'ps1';
   }
-  if (cAtivo === 'gc_wii' || cAtivo === 'gamecube' || cAtivo === 'wii') {
+  if (cAtivo === 'gc_wii' || cAtivo === 'gamecube' || cAtivo === 'wii' || cAtivo === 'gc') {
     return pConsole === 'gc' || pConsole === 'gamecube' || pConsole === 'wii' || pConsole === 'wiiu';
   }
   if (cAtivo === 'retro' || cAtivo === 'portateis') {
@@ -4423,7 +4423,7 @@ function atualizarEstatisticasHero() {
     statTotalConsoles.textContent = consolesUnicos.size;
   }
 
-  const filterKeys = ['todos', 'PS5', 'PS4', 'XBOX360', 'XBOX', 'N64', 'PS2_PS1', 'GC_WII', 'Switch', 'Retro', 'PC'];
+  const filterKeys = ['todos', 'PS5', 'PS4', 'PS2', 'PS1', 'XONE', 'XBOX360', 'XBOX', 'Switch', 'N64', 'GC_WII', 'Retro', 'PC'];
   filterKeys.forEach(key => {
     const el = document.getElementById('countPill_' + key);
     if (el) {
