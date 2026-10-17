@@ -45,7 +45,11 @@ const SEARCH_QUERIES = [
   '"ps1recomp" in:description',
   '"rexglue" in:description',
   '"ps4" "pc port"',
-  '"ps5" "pc port"'
+  '"ps5" "pc port"',
+  '"xbox one" "pc port"',
+  '"xbox series" "pc port"',
+  '"azimuth" "forza"',
+  '"azimuth" "pc port"'
 ];
 
 // Nomes de repositórios que são compiladores/ferramentas base, NÃO jogos específicos
@@ -60,7 +64,13 @@ const REJECT_EXACT_NAMES = new Set([
   'the-forge',
   'the_forge',
   'libretro',
-  'retroarch'
+  'retroarch',
+  'gamecuberecompiled',
+  'gcrecomp',
+  'gcrecompilation',
+  'ps3recomp',
+  'recompfrontend',
+  'recomp-frontend'
 ]);
 
 // Termos que indicam homebrew em console, emuladores, IA, ferramentas ou listas
@@ -109,6 +119,23 @@ const REJECT_KEYWORDS = [
   'static recompilation tool',
   'static recompiler for',
   'recompiler tool',
+  // IA / Modelos de linguagem / Inference engines
+  'inference engine',
+  'rtx 5090',
+  'qwen',
+  'llm',
+  'language model',
+  'deep learning',
+  'neural network',
+  'ninfer',
+  'ai model',
+  // Aplicativos de produtividade / Documentos / Utilitários de desktop
+  'document viewer',
+  'pdf viewer',
+  'comic books, and tiffs',
+  'gnome papers',
+  'reader for pdf',
+  'office suite',
   // Mobile / Outros
   'android port',
   'android only',
@@ -182,23 +209,68 @@ function carregarReposCadastrados() {
 
 function adivinharConsole(repoData) {
   const text = `${repoData.name} ${repoData.description || ''} ${(repoData.topics || []).join(' ')}`.toLowerCase();
+
+  // Consoles específicos por ordem de precedência (evitando que 'xbox' genérico capture outros consoles)
   if (text.includes('ps5') || text.includes('playstation 5')) return { code: 'PS5', name: 'PlayStation 5' };
-  if (text.includes('ps4') || text.includes('playstation 4')) return { code: 'PS4', name: 'PlayStation 4' };
-  if (text.includes('xbox 360') || text.includes('x360') || text.includes('xenon')) return { code: 'XBOX360', name: 'Xbox 360' };
+  if (text.includes('ps4') || text.includes('playstation 4') || text.includes('nathan drake collection')) return { code: 'PS4', name: 'PlayStation 4' };
+  if (text.includes('ps2') || text.includes('playstation 2') || text.includes('ps2recomp')) return { code: 'PS2', name: 'PlayStation 2' };
+  if (text.includes('ps1') || text.includes('playstation 1') || text.includes('psx') || text.includes('ps1recomp') || text.includes('crash team racing')) return { code: 'PS1', name: 'PlayStation 1' };
+  if (text.includes('psp') || text.includes('playstation portable')) return { code: 'PSP', name: 'PlayStation Portable' };
+  if (text.includes('gamecube') || text.includes('game cube') || text.includes('wii') || text.includes('super mario sunshine')) return { code: 'GC', name: 'GameCube' };
+  if (text.includes('n64') || text.includes('nintendo 64') || text.includes('n64recomp') || text.includes('banjo-tooie') || text.includes('banjo tooie')) return { code: 'N64', name: 'Nintendo 64' };
+  if (text.includes('gba') || text.includes('game boy advance') || text.includes('gameboy advance')) return { code: 'GBA', name: 'Game Boy Advance' };
+  if (text.includes('3ds') || text.includes('nintendo 3ds')) return { code: '3DS', name: 'Nintendo 3DS' };
+  if (text.includes('nds') || text.includes('nintendo ds')) return { code: 'NDS', name: 'Nintendo DS' };
+  if (text.includes('switch') || text.includes('nx') || text.includes('nintendo switch')) return { code: 'Switch', name: 'Nintendo Switch' };
+  if (text.includes('xbox series') || text.includes('series x') || text.includes('series s')) return { code: 'XONE', name: 'Xbox Series X/S' };
+  if (text.includes('xbox one') || text.includes('xone') || text.includes('xb1') || text.includes('azimuth')) return { code: 'XONE', name: 'Xbox One' };
+  if (text.includes('xbox 360') || text.includes('x360') || text.includes('xenon') || text.includes('xenonrecomp') || text.includes('rexglue')) return { code: 'XBOX360', name: 'Xbox 360' };
   if (text.includes('xbox')) return { code: 'XBOX', name: 'Xbox Clássico' };
-  if (text.includes('n64') || text.includes('nintendo 64')) return { code: 'N64', name: 'Nintendo 64' };
-  if (text.includes('switch') || text.includes('nx')) return { code: 'Switch', name: 'Nintendo Switch' };
-  if (text.includes('ps2') || text.includes('playstation 2')) return { code: 'PS2', name: 'PlayStation 2' };
-  if (text.includes('ps1') || text.includes('playstation 1') || text.includes('psx')) return { code: 'PS1', name: 'PlayStation 1' };
-  if (text.includes('gamecube') || text.includes('wii')) return { code: 'GC', name: 'GameCube' };
-  if (text.includes('psp')) return { code: 'PSP', name: 'PlayStation Portable' };
+  if (text.includes('dreamcast')) return { code: 'DC', name: 'Dreamcast' };
+  if (text.includes('saturn') || text.includes('sega saturn')) return { code: 'SAT', name: 'Sega Saturn' };
+  if (text.includes('genesis') || text.includes('mega drive')) return { code: 'MD', name: 'Mega Drive' };
+
   return { code: 'PC', name: 'PC Nativo' };
 }
 
-function formatarNomeAmigavel(nome) {
+const SIGLAS_JOGOS = {
+  'sms': 'Super Mario Sunshine',
+  'cvlod': 'Castlevania: Legacy of Darkness',
+  'gr2': 'Gravity Rush 2',
+  'xmd': 'X-Men Destiny',
+  'swrots': 'Star Wars: Episode III - Revenge of the Sith',
+  'acgc': 'Animal Crossing (GameCube)',
+  'ctr': 'Crash Team Racing',
+  'tka': 'Techno Kitten Adventure',
+  'doa3': 'Dead or Alive 3',
+  'sf': 'Star Fox'
+};
+
+function formatarNomeAmigavel(nome, desc = '') {
+  const baseLimpa = nome
+    .replace(/[-_]/g, ' ')
+    .replace(/\b(pc|port|recomp|recompiled|standalone|decomp)\b/gi, '')
+    .trim()
+    .toLowerCase();
+
+  if (SIGLAS_JOGOS[baseLimpa]) {
+    return SIGLAS_JOGOS[baseLimpa];
+  }
+
+  // Tenta extrair o título real da descrição se disponível
+  if (desc) {
+    const match = desc.match(/(?:native\s+(?:windows|pc)\s+port\s+of|unofficial\s+(?:windows|pc)\s+port\s+of|recompilation\s+of)\s+([^,.:;()]+?)(?:\s+(?:for|using|with|by|done|\(|based|built|\.|$))/i);
+    if (match && match[1]) {
+      const extraido = match[1].replace(/^(a|an|the)\s+/i, '').trim();
+      if (extraido.length >= 3 && extraido.length <= 40 && !extraido.toLowerCase().includes('engine') && !extraido.toLowerCase().includes('decompilation')) {
+        return extraido.replace(/\b\w/g, l => l.toUpperCase());
+      }
+    }
+  }
+
   return nome
     .replace(/[-_]/g, ' ')
-    .replace(/\b(pc|port|recomp|recompiled|standalone)\b/gi, '')
+    .replace(/\b(pc|port|recomp|recompiled|standalone|decomp)\b/gi, '')
     .trim()
     .replace(/\s+/g, ' ')
     .replace(/\b\w/g, l => l.toUpperCase());
@@ -206,7 +278,7 @@ function formatarNomeAmigavel(nome) {
 
 async function descobrirNovosPorts() {
   console.log('=====================================================');
-  console.log('   PORT INTEGRATION — DISCOVER PORTS V4 (JOGOS PC)   ');
+  console.log('   PORT INTEGRATION — DISCOVER PORTS V5 (JOGOS PC)   ');
   console.log('   Filtro Rígido: Apenas Games Nativos para Computador');
   console.log('=====================================================\n');
 
@@ -312,7 +384,7 @@ async function descobrirNovosPorts() {
 
     const portAprovado = {
       id: item.name.toLowerCase().replace(/[^a-z0-9_-]/g, '-') + '-pc',
-      nome: formatarNomeAmigavel(item.name) || item.name,
+      nome: formatarNomeAmigavel(item.name, item.description) || item.name,
       console: plataforma.code,
       consoleNome: plataforma.name,
       codigoJogo: 'AUTODISCOVER',
@@ -321,7 +393,7 @@ async function descobrirNovosPorts() {
       repo: item.full_name,
       repoUrl: item.html_url,
       descricao: item.description || 'Port nativo para PC com compilações oficiais disponíveis no GitHub.',
-      termoBuscaCapa: formatarNomeAmigavel(item.name) || item.name,
+      termoBuscaCapa: formatarNomeAmigavel(item.name, item.description) || item.name,
       capaManual: null,
       dataAtualizacao: dataRelease,
       stars: item.stargazers_count,
