@@ -1,19 +1,21 @@
 #!/usr/bin/env node
 
 /**
- * PORT INTEGRATION — DISCOVER PORTS SCRIPT (SSLABS ECOSYSTEM) - V3 (BLINDAGEM TOTAL)
+ * PORT INTEGRATION — DISCOVER PORTS SCRIPT (SSLABS ECOSYSTEM) - V4 (PERFEIÇÃO E PRECISÃO)
  * 
- * Script autônomo e de alta precisão para descoberta exclusiva de PORTS NATIVOS DE JOGOS PARA PC.
+ * Script autônomo e de alta precisão para descoberta de PORTS NATIVOS DE JOGOS PARA PC.
  * 
- * Filtros de Qualidade Reforçados:
- *  1. 🎯 Destino Obrigatório: O projeto DEVE ser direcionado para PC (Windows / Linux / Steam Deck).
- *     Descarta automaticamente ports que rodam NO PS5, NO Switch ou em consoles (homebrew/jailbreak).
- *  2. 🚫 Bloqueio de Emuladores: Rejeita PPSSPP, RPCS3, PCSX2, etc. (mesmo se portados para PS5).
- *  3. 🛠️ Bloqueio de Ferramentas / Frameworks / IA: Descarta llama.cpp, descompiladores de Android/Java, Spring Boot, etc.
- *  4. 💻 Linguagens Compiladas Nativas: Aceita apenas C, C++, Rust, C#, Zig ou Assembly. Rejeita Python/Java/JS.
- *  5. 📦 Releases com Executáveis (.zip, .exe, .7z) = Aceita com apenas 10 ⭐.
- *     Releases apenas com código-fonte = Exige 25+ ⭐.
- *  6. ❌ Exclusão imediata de Forks, Repositórios Arquivados e Listas ("awesome-", etc.).
+ * Filtros de Qualidade:
+ *  1. 🎮 Apenas Jogos: Rejeita toolchains e compiladores base (PS2Recomp, N64Recomp, XenonRecomp, ReXGlue, etc.).
+ *  2. 🚫 Bloqueio de Emuladores: Rejeita PPSSPP, RPCS3, PCSX2, etc. (mesmo rodando no PS5).
+ *  3. 🎯 Destino PC: O jogo DEVE ter como alvo PC (Windows, Linux, Steam Deck, Vulkan, DirectX, Recomp engines).
+ *     Descarta automaticamente homebrews que rodam DENTRO de consoles (PS5 jailbreak, Switch atmosphere).
+ *  4. 🛠️ Bloqueio de Não-Jogos: Descarta IAs (llama.cpp), descompiladores de Java/Android, Spring Boot, etc.
+ *  5. 💻 Linguagens Nativas: Aceita apenas C, C++, Rust, C#, Zig ou Assembly. Rejeita Python, Java, JS.
+ *  6. 📦 Regra Híbrida de Releases:
+ *     - Release com executáveis (.zip, .exe, .7z) = Aceita com apenas 10 ⭐.
+ *     - Release apenas com código-fonte = Exige 25+ ⭐.
+ *  7. ❌ Exclusão imediata de Forks, Repositórios Arquivados e Listas ("awesome-", etc.).
  */
 
 'use strict';
@@ -28,20 +30,38 @@ const OUTPUT_FILE = path.resolve(__dirname, '../novos_ports_sugeridos.json');
 const MIN_STARS_COM_EXECUTAVEL = 10;
 const MIN_STARS_SEM_EXECUTAVEL = 25;
 
-// Queries focadas EXCLUSIVAMENTE em ports com destino para PC
+// Queries abrangentes para encontrar ports de jogos de todas as eras
 const SEARCH_QUERIES = [
   '"native pc port"',
   '"native windows port"',
   'topic:pc-port',
+  'topic:recomp',
+  'topic:decomp',
   '"recompiled" "pc" in:description',
   '"pc port" in:name',
   '"n64recomp" in:description',
   '"xenonrecomp" in:description',
   '"ps2recomp" in:description',
   '"ps1recomp" in:description',
+  '"rexglue" in:description',
   '"ps4" "pc port"',
   '"ps5" "pc port"'
 ];
+
+// Nomes de repositórios que são compiladores/ferramentas base, NÃO jogos específicos
+const REJECT_EXACT_NAMES = new Set([
+  'ps2recomp',
+  'xenonrecomp',
+  'n64recomp',
+  'ps1recomp',
+  'rexglue',
+  'wiicompiled',
+  'anyps5',
+  'the-forge',
+  'the_forge',
+  'libretro',
+  'retroarch'
+]);
 
 // Termos que indicam homebrew em console, emuladores, IA, ferramentas ou listas
 const REJECT_KEYWORDS = [
@@ -85,13 +105,17 @@ const REJECT_KEYWORDS = [
   'spring boot',
   'download manager',
   'adaptive triggers',
+  'recompilation tool',
+  'static recompilation tool',
+  'static recompiler for',
+  'recompiler tool',
   // Mobile / Outros
   'android port',
   'android only',
   'ios port'
 ];
 
-// Palavras obrigatórias: o projeto DEVE falar que roda em computador
+// Palavras que indicam que o jogo roda em computador ou usa motores nativos de PC
 const PC_TARGET_KEYWORDS = [
   'pc',
   'windows',
@@ -101,10 +125,17 @@ const PC_TARGET_KEYWORDS = [
   'steam deck',
   'steamdeck',
   'x86',
-  'x64'
+  'x64',
+  'crossplatform',
+  'multiplatform',
+  'rexglue',
+  'xenonrecomp',
+  'n64recomp',
+  'ps2recomp',
+  'ps1recomp'
 ];
 
-// Linguagens aceitas para ports nativos de jogos
+// Linguagens nativas de jogos compilados
 const ALLOWED_LANGUAGES = new Set(['C', 'C++', 'Rust', 'C#', 'Zig', 'Assembly']);
 
 async function fetchFromGithub(endpoint) {
@@ -175,8 +206,8 @@ function formatarNomeAmigavel(nome) {
 
 async function descobrirNovosPorts() {
   console.log('=====================================================');
-  console.log('   PORT INTEGRATION — DISCOVER PORTS V3 (BLINDADO)   ');
-  console.log('   Foco Exclusivo: Ports de Console para Computador  ');
+  console.log('   PORT INTEGRATION — DISCOVER PORTS V4 (JOGOS PC)   ');
+  console.log('   Filtro Rígido: Apenas Games Nativos para Computador');
   console.log('=====================================================\n');
 
   const reposJaCadastrados = carregarReposCadastrados();
@@ -186,7 +217,7 @@ async function descobrirNovosPorts() {
 
   for (const query of SEARCH_QUERIES) {
     console.log(`Buscando por: "${query}"...`);
-    const searchResult = await fetchFromGithub(`/search/repositories?q=${encodeURIComponent(query)}&sort=stars&order=desc&per_page=20`);
+    const searchResult = await fetchFromGithub(`/search/repositories?q=${encodeURIComponent(query)}&sort=stars&order=desc&per_page=25`);
     
     if (searchResult && Array.isArray(searchResult.items)) {
       for (const item of searchResult.items) {
@@ -194,6 +225,7 @@ async function descobrirNovosPorts() {
         const nomeLower = item.name.toLowerCase();
         const descLower = (item.description || '').toLowerCase();
         const combinedText = `${nomeLower} ${descLower} ${(item.topics || []).join(' ')}`.toLowerCase();
+        const repoShort = fullRepo.split('/')[1] || '';
 
         // 1. Já catalogado?
         if (reposJaCadastrados.has(fullRepo) || candidatos.has(fullRepo)) {
@@ -205,36 +237,35 @@ async function descobrirNovosPorts() {
           continue;
         }
 
-        // 3. Estrelas preliminares (mínimo 10 ⭐)
+        // 3. É a ferramenta/compilador em si (PS2Recomp, N64Recomp, etc.) em vez de um jogo?
+        if (REJECT_EXACT_NAMES.has(nomeLower) || REJECT_EXACT_NAMES.has(repoShort)) {
+          continue;
+        }
+
+        // 4. Estrelas preliminares (mínimo 10 ⭐)
         if (item.stargazers_count < MIN_STARS_COM_EXECUTAVEL) {
           continue;
         }
 
-        // 4. Linguagem de programação permitida (C, C++, Rust, C#, Zig)
+        // 5. Linguagem permitida (C, C++, Rust, C#, Zig, Assembly)
         if (item.language && !ALLOWED_LANGUAGES.has(item.language)) {
-          // Rejeita linguagens como Python, Java, JavaScript, HTML que não são ports de jogos
           continue;
         }
 
-        // 5. Rejeição de palavras proibidas (emuladores, homebrew em console, IA, ferramentas)
+        // 6. Termos proibidos (emuladores, homebrew em console, IA, utilitários)
         const temTermoRejeitado = REJECT_KEYWORDS.some(keyword => combinedText.includes(keyword));
         if (temTermoRejeitado) {
           continue;
         }
 
-        // 6. DEVE ser destinado para PC (Windows / Linux / Steam Deck)
-        const ehParaPC = PC_TARGET_KEYWORDS.some(pcWord => {
-          const regex = new RegExp(`\\b${pcWord}\\b`, 'i');
-          return regex.test(combinedText);
-        });
-
-        if (!ehParaPC) {
-          // Se não menciona que roda em PC, descarta (evita homebrews de console)
+        // 7. Descarta repositórios explicitamente focados em Android ou iOS
+        if (fullRepo.includes('-android') || fullRepo.includes('_android') || fullRepo.endsWith('android') || fullRepo.includes('-ios')) {
           continue;
         }
 
-        // 7. Descarta repositórios explicitamente focados em Android/iOS
-        if (fullRepo.includes('-android') || fullRepo.includes('_android') || fullRepo.endsWith('android') || fullRepo.includes('-ios')) {
+        // 8. O projeto DEVE ser voltado para PC (Windows / Linux / Steam Deck)
+        const ehParaPC = PC_TARGET_KEYWORDS.some(pcWord => combinedText.includes(pcWord));
+        if (!ehParaPC) {
           continue;
         }
 
@@ -251,7 +282,7 @@ async function descobrirNovosPorts() {
   for (const [fullRepo, item] of candidatos.entries()) {
     const releases = await fetchFromGithub(`/repos/${item.full_name}/releases`);
 
-    // 7. OBRIGATÓRIO: Ter pelo menos uma release oficial
+    // 9. OBRIGATÓRIO: Ter pelo menos uma release oficial
     if (!releases || !Array.isArray(releases) || releases.length === 0) {
       console.log(`  ❌ [Descartado] ${item.full_name} (${item.stargazers_count} ⭐) — Sem releases.`);
       continue;
@@ -264,7 +295,7 @@ async function descobrirNovosPorts() {
       return aName.endsWith('.zip') || aName.endsWith('.7z') || aName.endsWith('.exe') || aName.endsWith('.tar.gz') || aName.endsWith('.rar');
     });
 
-    // 8. Regra Híbrida: Sem executáveis para download exige >= 25 estrelas
+    // 10. Regra Híbrida: Sem executáveis para download exige >= 25 estrelas
     if (!hasDownloadableBinaries && item.stargazers_count < MIN_STARS_SEM_EXECUTAVEL) {
       console.log(`  ❌ [Descartado] ${item.full_name} (${item.stargazers_count} ⭐) — Sem executável anexado (exige >= ${MIN_STARS_SEM_EXECUTAVEL} ⭐).`);
       continue;
@@ -304,7 +335,7 @@ async function descobrirNovosPorts() {
   }
 
   console.log(`\n=====================================================`);
-  console.log(`Total de ports novos aprovados: ${novosAprovados.length}`);
+  console.log(`Total de jogos aprovados: ${novosAprovados.length}`);
   console.log(`=====================================================\n`);
 
   if (novosAprovados.length > 0) {
