@@ -20,7 +20,7 @@ jobs:
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
 
       - name: Executar Varredura de Novos Ports
         env:
@@ -28,7 +28,7 @@ jobs:
         run: node scripts/discover-ports.js --append
 
       - name: Criar Pull Request com Novos Ports
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: 'feat: novos ports nativos descobertos automaticamente'
