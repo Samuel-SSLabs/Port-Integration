@@ -5498,8 +5498,8 @@ function renderizarCatalogo() {
             <span class="badge-status">${port.codigoJogo || 'Port Nativo PC'}</span>
           </div>
 
-          <div class="card-cover-origin" id="cover_origin_${port.id}">
-            ${capaPrevia ? (obterTextoTraduzido('cards.coverOfficial') || 'Capa Oficial') : (obterTextoTraduzido('cards.coverSearching') || 'Buscando Capa...')}
+          <div class="card-cover-origin" id="cover_origin_${port.id}" data-origin-type="${capaPrevia ? 'official' : 'searching'}">
+            ${traduzirBadgeCapa(capaPrevia ? 'official' : 'searching', idiomaAtual)}
           </div>
         </div>
 
@@ -5514,7 +5514,7 @@ function renderizarCatalogo() {
             <span>${escapeHtml(port.repo)}</span>
           </div>
 
-          <p class="port-desc">${escapeHtml(traduzirDescricao(port.descricao, idiomaAtual))}</p>
+          <p class="port-desc">${escapeHtml(traduzirDescricao(port.descricao, idiomaAtual, port.id))}</p>
 
           <!-- Metadados Sincronizados com o GitHub -->
           <div class="port-github-meta" id="github_meta_${port.id}">
@@ -5609,13 +5609,13 @@ async function carregarCapaInteligente(port) {
   if (!imgElem) return;
 
   if (port.capaManual) {
-    aplicarImagemCapa(imgElem, shimmerElem, originElem, port.capaManual, 'Capa Oficial Remake');
+    aplicarImagemCapa(imgElem, shimmerElem, originElem, port.capaManual, 'remake');
     return;
   }
 
   const cacheada = obterCapaCacheada(port);
   if (cacheada) {
-    aplicarImagemCapa(imgElem, shimmerElem, originElem, cacheada, 'Capa Oficial');
+    aplicarImagemCapa(imgElem, shimmerElem, originElem, cacheada, 'official');
     return;
   }
 
@@ -5638,7 +5638,7 @@ async function carregarCapaInteligente(port) {
           }
           salvarCapaCache(port.id, coverUrl, 'wikipedia');
           if (imgElem.isConnected) {
-            aplicarImagemCapa(imgElem, shimmerElem, originElem, coverUrl, 'Capa Oficial Wikipedia');
+            aplicarImagemCapa(imgElem, shimmerElem, originElem, coverUrl, 'wikipedia');
           }
           return;
         }
@@ -5652,7 +5652,7 @@ async function carregarCapaInteligente(port) {
           if (pages.length > 0 && pages[0].thumbnail && pages[0].thumbnail.source) {
             const coverUrl = pages[0].thumbnail.source;
             salvarCapaCache(port.id, coverUrl, 'wikipedia_search');
-            aplicarImagemCapa(imgElem, shimmerElem, originElem, coverUrl, 'Capa Oficial Wikipedia');
+            aplicarImagemCapa(imgElem, shimmerElem, originElem, coverUrl, 'wikipedia');
             return;
           }
         }
@@ -5661,22 +5661,45 @@ async function carregarCapaInteligente(port) {
 
     const githubPreviewUrl = `https://opengraph.githubassets.com/1/${port.repo}`;
     salvarCapaCache(port.id, githubPreviewUrl, 'github_preview');
-    aplicarImagemCapa(imgElem, shimmerElem, originElem, githubPreviewUrl, 'GitHub Preview');
+    aplicarImagemCapa(imgElem, shimmerElem, originElem, githubPreviewUrl, 'github_preview');
   });
 }
 
-function aplicarImagemCapa(imgElem, shimmerElem, originElem, url, label) {
+function traduzirBadgeCapa(tipo, lang = idiomaAtual) {
+  const loc = (typeof LOCALES !== 'undefined' && LOCALES[lang]) ? LOCALES[lang] : (typeof LOCALES !== 'undefined' ? LOCALES.pt : {});
+  if (tipo === 'wikipedia') {
+    return loc.cards?.coverOfficialWikipedia || (lang === 'en' ? 'Official Cover Wikipedia' : (lang === 'es' ? 'Portada Oficial Wikipedia' : 'Capa Oficial Wikipedia'));
+  }
+  if (tipo === 'remake') {
+    return loc.cards?.coverRemake || (lang === 'en' ? 'Official Remake Cover' : (lang === 'es' ? 'Portada Oficial Remake' : 'Capa Oficial Remake'));
+  }
+  if (tipo === 'github_preview') {
+    return loc.cards?.coverGithub || 'GitHub Preview';
+  }
+  if (tipo === 'searching') {
+    return loc.cards?.coverSearching || (lang === 'en' ? 'Fetching Cover...' : (lang === 'es' ? 'Buscando Portada...' : 'Buscando Capa...'));
+  }
+  return loc.cards?.coverOfficial || (lang === 'en' ? 'Official Cover' : (lang === 'es' ? 'Portada Oficial' : 'Capa Oficial'));
+}
+
+function aplicarImagemCapa(imgElem, shimmerElem, originElem, url, originType = 'official') {
   if (!imgElem || !imgElem.isConnected) return;
   imgElem.onload = () => {
     imgElem.classList.add('loaded');
     if (shimmerElem) shimmerElem.style.display = 'none';
-    if (originElem) originElem.textContent = label;
+    if (originElem) {
+      originElem.dataset.originType = originType;
+      originElem.textContent = traduzirBadgeCapa(originType, idiomaAtual);
+    }
   };
   imgElem.onerror = () => {
     imgElem.src = './assets/favicon.png';
     imgElem.classList.add('loaded');
     if (shimmerElem) shimmerElem.style.display = 'none';
-    if (originElem) originElem.textContent = 'SSLabs Hub';
+    if (originElem) {
+      originElem.dataset.originType = 'hub';
+      originElem.textContent = 'SSLabs Hub';
+    }
   };
   imgElem.src = url;
 }
@@ -6201,138 +6224,80 @@ function configurarEventosApoio() {
 // ── SISTEMA DE INTERNACIONALIZAÇÃO (i18n: PT / EN / ES) ──
 let idiomaAtual = 'pt';
 
-function traduzirDescricao(texto, lang) {
+function traduzirDescricao(texto, lang, portId) {
+  if (!texto || lang === 'pt') return texto;
+
+  if (portId && typeof LOCALES !== 'undefined' && LOCALES[lang]?.portDescriptions?.[portId]) {
+    return LOCALES[lang].portDescriptions[portId];
+  }
+
+  return traduzirDescricaoFallback(texto, lang);
+}
+
+function traduzirDescricaoFallback(texto, lang) {
   if (!texto || lang === 'pt') return texto;
 
   if (lang === 'en') {
     return texto
-      .replace(/Port nativo e conversão moderna para PC do /g, "Native PC port and modern conversion of ")
-      .replace(/Port nativo e conversão moderna para PC de /g, "Native PC port and modern conversion of ")
-      .replace(/Port nativo e recompilador do /g, "Native port and recompiler for ")
-      .replace(/Port nativo para PC de /g, "Native PC port of ")
-      .replace(/Port nativo para PC do /g, "Native PC port of ")
-      .replace(/Port nativo para PC da /g, "Native PC port of ")
-      .replace(/Port nativo de /g, "Native port of ")
-      .replace(/Port nativo do /g, "Native port of ")
-      .replace(/Recompilação estática nativa para PC do /g, "Static native PC recompilation of ")
-      .replace(/Recompilação estática nativa para PC de /g, "Static native PC recompilation of ")
-      .replace(/Recompilação estática nativa para PC da /g, "Static native PC recompilation of ")
-      .replace(/Recompilação nativa para PC de /g, "Native PC recompilation of ")
-      .replace(/Recompilação nativa para PC do /g, "Native PC recompilation of ")
-      .replace(/Recompilação nativa para PC da /g, "Native PC recompilation of ")
-      .replace(/Recompilação nativa em C de /g, "Native C recompilation of ")
-      .replace(/Engenharia reversa e port nativo de /g, "Reverse-engineered native port of ")
-      .replace(/Descompilação completa e port nativo de /g, "Full decompilation and native port of ")
-      .replace(/Recriação e port nativo de motor para PC de /g, "Engine recreation and native PC port of ")
-      .replace(/Reimplementação e port nativo de /g, "Native reimplementation and port of ")
-      .replace(/Reimplementação nativa em C de /g, "Native C reimplementation of ")
+      .replace(/^Port nativo e conversão moderna para PC do /gi, "Native PC port and modern conversion of ")
+      .replace(/^Port nativo e conversão moderna para PC de /gi, "Native PC port and modern conversion of ")
+      .replace(/^Port nativo para computadores de /gi, "Native PC port of ")
+      .replace(/^Port nativo para computadores do /gi, "Native PC port of ")
+      .replace(/^Port nativo para PC de /gi, "Native PC port of ")
+      .replace(/^Port nativo para PC do /gi, "Native PC port of ")
+      .replace(/^Port nativo de /gi, "Native port of ")
+      .replace(/^Port nativo do /gi, "Native port of ")
+      .replace(/^Execução e port nativo para PC de /gi, "Native PC execution and port of ")
+      .replace(/^Recompilação estática nativa para PC do /gi, "Static native PC recompilation of ")
+      .replace(/^Recompilação estática nativa para PC de /gi, "Static native PC recompilation of ")
+      .replace(/^Recompilação nativa para PC de /gi, "Native PC recompilation of ")
+      .replace(/^Recompilação nativa para PC do /gi, "Native PC recompilation of ")
+      .replace(/^Engenharia reversa e port nativo de /gi, "Reverse-engineered native port of ")
+      .replace(/^Descompilação completa e port nativo de /gi, "Full decompilation and native port of ")
+      .replace(/via conversão direta de binários x86-64 para Vulkan em 60\/120 FPS\./g, "via direct x86-64 binary conversion to Vulkan at 60/120 FPS.")
+      .replace(/executando assets e binários x86-64 do PS5 através de camada gráfica Vulkan com suporte a controle DualSense\./g, "running PS5 x86-64 assets and binaries via a Vulkan graphics layer with DualSense controller support.")
       .replace(/baseado na descompilação de /g, "based on the decompilation of ")
       .replace(/baseado na recompilação de /g, "based on the recompilation of ")
-      .replace(/baseado na engenharia reversa de /g, "based on reverse engineering of ")
       .replace(/com launcher configurável e suporte a /g, "with configurable launcher and support for ")
-      .replace(/com suporte a cutscenes em alta definição via IA/g, "with support for AI-upscaled HD cutscenes")
-      .replace(/com suporte a resoluções ultrawide e volante moderno/g, "with ultrawide resolution support and modern steering wheel support")
-      .replace(/com suporte a resoluções ultrawide/g, "with ultrawide resolution support")
       .replace(/com suporte a /g, "with support for ")
       .replace(/suporte a controles modernos/g, "modern controller support")
       .replace(/suporte a 60 FPS, widescreen/g, "support for 60 FPS, widescreen")
       .replace(/suporte a 60 FPS e widescreen/g, "support for 60 FPS and widescreen")
       .replace(/e taxas de quadros desbloqueadas/g, "and unlocked framerates")
-      .replace(/taxas de quadros desbloqueadas/g, "unlocked framerates")
-      .replace(/taxa de quadros destravada/g, "unlocked framerate")
-      .replace(/e melhorias de qualidade de vida/g, "and quality of life improvements")
+      .replace(/melhorias de qualidade de vida/g, "quality of life improvements")
       .replace(/melhorias gráficas/g, "graphical enhancements")
-      .replace(/renderizador DirectX\/OpenGL moderno/g, "modern DirectX/OpenGL renderer")
       .replace(/rodando nativamente em sistemas modernos/g, "running natively on modern systems")
-      .replace(/trazendo de volta o clássico snowboarding em alta fidelidade/g, "bringing back classic snowboarding in high fidelity")
-      .replace(/do clássico de corrida/g, "of the classic racing game")
-      .replace(/do clássico shooter sobrenatural/g, "of the supernatural shooter classic")
-      .replace(/do clássico jogo de combate de/g, "of the classic combat game")
-      .replace(/do aclamado RPG de ação 2D/g, "of the acclaimed 2D action RPG")
-      .replace(/do survival horror cult/g, "of the cult survival horror")
-      .replace(/da remasterização cancelada de/g, "of the cancelled remaster of")
-      .replace(/do Xbox original para PC/g, "from the original Xbox for PC")
-      .replace(/do Xbox original/g, "from the original Xbox")
-      .replace(/de Xbox 360/g, "for Xbox 360")
-      .replace(/do Xbox 360/g, "for Xbox 360")
-      .replace(/de PlayStation 2/g, "for PlayStation 2")
-      .replace(/do PlayStation 2/g, "for PlayStation 2")
-      .replace(/de PS1/g, "for PS1")
-      .replace(/do PS1/g, "for PS1")
-      .replace(/de PS2/g, "for PS2")
-      .replace(/do PS2/g, "for PS2")
-      .replace(/de PS4/g, "for PS4")
-      .replace(/do PS4/g, "for PS4")
-      .replace(/de PS5/g, "for PS5")
-      .replace(/do PS5/g, "for PS5")
-      .replace(/do Nintendo Switch/g, "for Nintendo Switch")
-      .replace(/de Nintendo Switch/g, "for Nintendo Switch")
-      .replace(/do Nintendo 64/g, "for Nintendo 64")
-      .replace(/de Nintendo 64/g, "for Nintendo 64")
-      .replace(/do GameCube/g, "for GameCube")
-      .replace(/de GameCube/g, "for GameCube")
       .replace(/para PC/g, "for PC");
   }
 
   if (lang === 'es') {
     return texto
-      .replace(/Port nativo e conversão moderna para PC do /g, "Port nativo y conversión moderna para PC de ")
-      .replace(/Port nativo e conversão moderna para PC de /g, "Port nativo y conversión moderna para PC de ")
-      .replace(/Port nativo e recompilador do /g, "Port nativo y recompilador de ")
-      .replace(/Port nativo para PC de /g, "Port nativo para PC de ")
-      .replace(/Port nativo para PC do /g, "Port nativo para PC de ")
-      .replace(/Port nativo para PC da /g, "Port nativo para PC de ")
-      .replace(/Port nativo de /g, "Port nativo de ")
-      .replace(/Port nativo do /g, "Port nativo de ")
-      .replace(/Recompilação estática nativa para PC do /g, "Recompilación estática nativa para PC de ")
-      .replace(/Recompilação estática nativa para PC de /g, "Recompilación estática nativa para PC de ")
-      .replace(/Recompilação estática nativa para PC da /g, "Recompilación estática nativa para PC de ")
-      .replace(/Recompilação nativa para PC de /g, "Recompilación nativa para PC de ")
-      .replace(/Recompilação nativa para PC do /g, "Recompilación nativa para PC de ")
-      .replace(/Recompilação nativa para PC da /g, "Recompilación nativa para PC de ")
-      .replace(/Recompilação nativa em C de /g, "Recompilación nativa en C de ")
-      .replace(/Engenharia reversa e port nativo de /g, "Ingeniería inversa y port nativo de ")
-      .replace(/Descompilação completa e port nativo de /g, "Descompilación completa y port nativo de ")
-      .replace(/Recriação e port nativo de motor para PC de /g, "Recreación de motor y port nativo para PC de ")
-      .replace(/Reimplementação e port nativo de /g, "Reimplementación y port nativo de ")
-      .replace(/Reimplementação nativa em C de /g, "Reimplementación nativa en C de ")
+      .replace(/^Port nativo e conversão moderna para PC do /gi, "Port nativo y conversión moderna para PC de ")
+      .replace(/^Port nativo e conversão moderna para PC de /gi, "Port nativo y conversión moderna para PC de ")
+      .replace(/^Port nativo para computadores de /gi, "Port nativo para PC de ")
+      .replace(/^Port nativo para computadores do /gi, "Port nativo para PC de ")
+      .replace(/^Port nativo para PC de /gi, "Port nativo para PC de ")
+      .replace(/^Port nativo para PC do /gi, "Port nativo para PC de ")
+      .replace(/^Port nativo de /gi, "Port nativo de ")
+      .replace(/^Port nativo do /gi, "Port nativo de ")
+      .replace(/^Execução e port nativo para PC de /gi, "Ejecución y port nativo para PC de ")
+      .replace(/^Recompilação estática nativa para PC do /gi, "Recompilación estática nativa para PC de ")
+      .replace(/^Recompilação estática nativa para PC de /gi, "Recompilación estática nativa para PC de ")
+      .replace(/^Recompilação nativa para PC de /gi, "Recompilación nativa para PC de ")
+      .replace(/^Recompilação nativa para PC do /gi, "Recompilación nativa para PC de ")
+      .replace(/^Engenharia reversa e port nativo de /gi, "Ingeniería inversa y port nativo de ")
+      .replace(/^Descompilação completa e port nativo de /gi, "Descompilación completa y port nativo de ")
+      .replace(/via conversão direta de binários x86-64 para Vulkan em 60\/120 FPS\./g, "mediante conversión directa de binarios x86-64 a Vulkan a 60/120 FPS.")
+      .replace(/executando assets e binários x86-64 do PS5 através de camada gráfica Vulkan com suporte a controle DualSense\./g, "ejecutando assets y binarios x86-64 de PS5 a través de capa gráfica Vulkan con soporte para mando DualSense.")
       .replace(/baseado na descompilação de /g, "basado en la descompilación de ")
       .replace(/baseado na recompilação de /g, "basado en la recompilación de ")
       .replace(/com launcher configurável e suporte a /g, "con launcher configurable y soporte para ")
       .replace(/com suporte a /g, "con soporte para ")
       .replace(/suporte a controles modernos/g, "soporte para mandos modernos")
       .replace(/e taxas de quadros desbloqueadas/g, "y tasa de cuadros desbloqueada")
-      .replace(/taxas de quadros desbloqueadas/g, "tasa de cuadros desbloqueada")
-      .replace(/taxa de quadros destravada/g, "tasa de cuadros desbloqueada")
-      .replace(/e melhorias de qualidade de vida/g, "y mejoras de calidad de vida")
+      .replace(/melhorias de qualidade de vida/g, "mejoras de calidad de vida")
       .replace(/melhorias gráficas/g, "mejoras gráficas")
       .replace(/rodando nativamente em sistemas modernos/g, "ejecutándose nativamente en sistemas modernos")
-      .replace(/do clássico de corrida/g, "del clásico juego de carreras")
-      .replace(/do clássico shooter sobrenatural/g, "del clásico shooter sobrenatural")
-      .replace(/do clássico jogo de combate de/g, "del clásico juego de combate de")
-      .replace(/do aclamado RPG de ação 2D/g, "del aclamado RPG de acción 2D")
-      .replace(/do survival horror cult/g, "del survival horror de culto")
-      .replace(/da remasterização cancelada de/g, "de la remasterización cancelada de")
-      .replace(/do Xbox original para PC/g, "de la Xbox original para PC")
-      .replace(/do Xbox original/g, "de la Xbox original")
-      .replace(/de Xbox 360/g, "de Xbox 360")
-      .replace(/do Xbox 360/g, "de Xbox 360")
-      .replace(/de PlayStation 2/g, "de PlayStation 2")
-      .replace(/do PlayStation 2/g, "de PlayStation 2")
-      .replace(/de PS1/g, "de PS1")
-      .replace(/do PS1/g, "de PS1")
-      .replace(/de PS2/g, "de PS2")
-      .replace(/do PS2/g, "de PS2")
-      .replace(/de PS4/g, "de PS4")
-      .replace(/do PS4/g, "de PS4")
-      .replace(/de PS5/g, "de PS5")
-      .replace(/do PS5/g, "de PS5")
-      .replace(/do Nintendo Switch/g, "de Nintendo Switch")
-      .replace(/de Nintendo Switch/g, "de Nintendo Switch")
-      .replace(/do Nintendo 64/g, "de Nintendo 64")
-      .replace(/de Nintendo 64/g, "de Nintendo 64")
-      .replace(/do GameCube/g, "de GameCube")
-      .replace(/de GameCube/g, "de GameCube")
       .replace(/para PC/g, "para PC");
   }
 
@@ -6429,17 +6394,21 @@ function definirIdioma(lang, atualizarUrl = true) {
 
   const loc = LOCALES[lang];
 
-  // Injetar bandeiras SVG oficiais nos seletores
+  // Injetar bandeiras SVG oficiais nos botões de seletor
   ['currentLangFlag', 'currentLangFlagFooter'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.innerHTML = loc.flagSvg;
+    if (el && loc.flagSvg) {
+      el.innerHTML = loc.flagSvg;
+    }
   });
   ['currentLangCode', 'currentLangCodeFooter'].forEach(id => {
     const el = document.getElementById(id);
-    if (el) el.textContent = loc.langCode;
+    if (el && loc.langCode) {
+      el.textContent = loc.langCode;
+    }
   });
 
-  // Atualizar opções nos dropdowns (garantindo bandeiras SVG)
+  // Atualizar opções nos dropdowns (garantindo bandeiras SVG e classe ativa)
   document.querySelectorAll('.lang-dropdown-menu').forEach(menu => {
     menu.querySelectorAll('.lang-option-btn').forEach(btn => {
       const optLang = btn.dataset.lang;
@@ -6471,21 +6440,21 @@ function definirIdioma(lang, atualizarUrl = true) {
 
   // Atualizar barra de pesquisa
   const searchInput = document.getElementById('searchInput');
-  if (searchInput && loc.header && loc.header.searchPlaceholder) {
+  if (searchInput && loc.header?.searchPlaceholder) {
     searchInput.placeholder = loc.header.searchPlaceholder;
   }
   const searchClearBtn = document.getElementById('searchClearBtn');
-  if (searchClearBtn && loc.header && loc.header.searchClear) {
+  if (searchClearBtn && loc.header?.searchClear) {
     searchClearBtn.title = loc.header.searchClear;
   }
   const btnResetSearch = document.getElementById('btnResetSearch');
-  if (btnResetSearch && loc.header && loc.header.searchClearBtn) {
+  if (btnResetSearch && loc.header?.searchClearBtn) {
     btnResetSearch.textContent = loc.header.searchClearBtn;
   }
 
   // Atualizar rótulo e opções de ordenação
   const sortLabel = document.querySelector('.sort-label');
-  if (sortLabel && loc.sort && loc.sort.label) {
+  if (sortLabel && loc.sort?.label) {
     sortLabel.textContent = loc.sort.label;
   }
   const sortSelect = document.getElementById('sortSelect');
@@ -6514,11 +6483,11 @@ function definirIdioma(lang, atualizarUrl = true) {
 
   // Atualizar popover e card do AnyPS5
   const anyps5Desc = document.querySelector('.anyps5-popover-desc');
-  if (anyps5Desc && loc.hero && loc.hero.anyps5Desc) {
+  if (anyps5Desc && loc.hero?.anyps5Desc) {
     anyps5Desc.textContent = loc.hero.anyps5Desc;
   }
   const anyps5Footer = document.querySelector('.anyps5-popover-footer span');
-  if (anyps5Footer && loc.hero && loc.hero.anyps5Repo) {
+  if (anyps5Footer && loc.hero?.anyps5Repo) {
     anyps5Footer.textContent = loc.hero.anyps5Repo;
   }
 
@@ -6599,215 +6568,50 @@ function definirIdioma(lang, atualizarUrl = true) {
 
   // Atualizar rodapé
   if (loc.footer) {
-    const btnSupport = document.querySelector('#openSupportModalBtn span:last-child');
-    if (btnSupport) btnSupport.textContent = loc.footer.supportBtn;
+    const btnSupport = document.querySelector('#openSupportModalBtn span');
+    if (btnSupport && loc.footer.supportBtn) btnSupport.textContent = loc.footer.supportBtn;
+    const btnSupportParent = document.getElementById('openSupportModalBtn');
+    if (btnSupportParent && loc.footer.supportBtnAria) {
+      btnSupportParent.title = loc.footer.supportBtnAria;
+      btnSupportParent.setAttribute('aria-label', loc.footer.supportBtnAria);
+    }
     const disclaimer = document.querySelector('.footer-disclaimer');
-    if (disclaimer) disclaimer.innerHTML = loc.footer.disclaimer;
+    if (disclaimer && loc.footer.disclaimer) disclaimer.innerHTML = loc.footer.disclaimer;
     const brandDesc = document.querySelector('.footer-text');
-    if (brandDesc) brandDesc.textContent = loc.footer.brandDesc;
+    if (brandDesc && loc.footer.brandDesc) brandDesc.textContent = loc.footer.brandDesc;
     const rights = document.querySelector('.footer-bottom-brand span');
-    if (rights) rights.textContent = loc.footer.rights;
+    if (rights && loc.footer.rights) rights.textContent = loc.footer.rights;
   }
 
-  // Re-renderizar o catálogo completo com os textos traduzidos
+  // Atualizar todos os badges de capa dos cards já visíveis na tela
+  document.querySelectorAll('.card-cover-origin').forEach(badge => {
+    const tipo = badge.dataset.originType || (badge.textContent.includes('Wikipedia') ? 'wikipedia' : (badge.textContent.includes('Remake') ? 'remake' : (badge.textContent.includes('GitHub') ? 'github_preview' : 'official')));
+    badge.textContent = traduzirBadgeCapa(tipo, lang);
+  });
+
+  // Atualizar todas as descrições dos cards já visíveis na tela
+  document.querySelectorAll('.port-card').forEach(card => {
+    const portId = card.getAttribute('data-id');
+    const descEl = card.querySelector('.port-desc');
+    if (portId && descEl) {
+      const portObj = PORTS_DATABASE.find(p => p.id === portId);
+      if (portObj) {
+        descEl.textContent = traduzirDescricao(portObj.descricao, lang, portObj.id);
+      }
+    }
+  });
+
+  // Atualizar tooltips dos cards
+  document.querySelectorAll('.btn-card-github').forEach(btn => {
+    btn.title = loc.cards?.btnGithubTitle || 'GitHub';
+  });
+  document.querySelectorAll('.btn-card-discord').forEach(btn => {
+    btn.title = loc.cards?.btnDiscordTitle || 'Discord';
+  });
+
+  // Re-renderizar o catálogo completo com os filtros e textos atualizados
   if (typeof renderizarCatalogo === 'function') {
     renderizarCatalogo();
-  }
-}
-
-function configurarEventosSeletorIdiomas() {
-  function setupDropdown(wrapperId, btnId, menuId) {
-    const wrapper = document.getElementById(wrapperId);
-    const btn = document.getElementById(btnId);
-    const menu = document.getElementById(menuId);
-    if (!wrapper || !btn || !menu) return;
-
-    btn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const estaAberto = wrapper.classList.contains('open');
-      document.querySelectorAll('.lang-dropdown-wrapper').forEach(w => w.classList.remove('open'));
-      if (!estaAberto) {
-        wrapper.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-      } else {
-        btn.setAttribute('aria-expanded', 'false');
-      }
-    });
-
-    menu.querySelectorAll('.lang-option-btn').forEach(opt => {
-      opt.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const lang = opt.getAttribute('data-lang');
-        definirIdioma(lang, true);
-        wrapper.classList.remove('open');
-        btn.setAttribute('aria-expanded', 'false');
-      });
-    });
-  }
-
-  setupDropdown('langDropdownWrapper', 'langSelectorBtn', 'langDropdownMenu');
-  setupDropdown('langDropdownWrapperFooter', 'langSelectorBtnFooter', 'langDropdownMenuFooter');
-
-  document.addEventListener('click', () => {
-    document.querySelectorAll('.lang-dropdown-wrapper').forEach(w => {
-      w.classList.remove('open');
-      const b = w.querySelector('.lang-selector-btn');
-      if (b) b.setAttribute('aria-expanded', 'false');
-    });
-  });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      document.querySelectorAll('.lang-dropdown-wrapper').forEach(w => {
-        w.classList.remove('open');
-        const b = w.querySelector('.lang-selector-btn');
-        if (b) b.setAttribute('aria-expanded', 'false');
-      });
-    }
-  });
-}
-
-
-function obterTextoTraduzido(caminho, lang = idiomaAtual) {
-  if (typeof LOCALES === 'undefined' || !LOCALES[lang]) return '';
-  const partes = caminho.split('.');
-  let obj = LOCALES[lang];
-  for (const p of partes) {
-    if (obj && obj[p] !== undefined) {
-      obj = obj[p];
-    } else {
-      return '';
-    }
-  }
-  return obj;
-}
-
-function definirIdioma(lang, atualizarUrl = true) {
-  if (typeof LOCALES === 'undefined' || !LOCALES[lang]) return;
-  idiomaAtual = lang;
-  try {
-    localStorage.setItem('port_language', lang);
-  } catch (e) {}
-
-  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : (lang === 'es' ? 'es-ES' : 'en-US');
-
-  // Atualizar URL com ?lang= silenciosamente
-  if (atualizarUrl && window.history && window.history.replaceState) {
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', lang);
-    window.history.replaceState({}, '', url.toString());
-  }
-
-  const loc = LOCALES[lang];
-
-  // Atualizar botões do seletor
-  ['currentLangFlag', 'currentLangFlagFooter'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = loc.langFlag;
-  });
-  ['currentLangCode', 'currentLangCodeFooter'].forEach(id => {
-    const el = document.getElementById(id);
-    if (el) el.textContent = loc.langCode;
-  });
-
-  // Atualizar classes ativas nos dropdowns
-  document.querySelectorAll('.lang-option-btn').forEach(btn => {
-    if (btn.dataset.lang === lang) {
-      btn.classList.add('active');
-    } else {
-      btn.classList.remove('active');
-    }
-  });
-
-  // Atualizar elementos estáticos com data-i18n
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const path = el.getAttribute('data-i18n');
-    const txt = obterTextoTraduzido(path, lang);
-    if (txt) el.textContent = txt;
-  });
-
-  // Atualizar elementos estáticos com data-i18n-html
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const path = el.getAttribute('data-i18n-html');
-    const txt = obterTextoTraduzido(path, lang);
-    if (txt) el.innerHTML = txt;
-  });
-
-  // Atualizar placeholders
-  const searchInput = document.getElementById('searchInput');
-  if (searchInput && loc.header && loc.header.searchPlaceholder) {
-    searchInput.placeholder = loc.header.searchPlaceholder;
-  }
-
-  // Atualizar select de ordenação
-  const sortSelect = document.getElementById('sortSelect');
-  if (sortSelect && loc.sort) {
-    const val = sortSelect.value;
-    const opts = sortSelect.options;
-    for (let i = 0; i < opts.length; i++) {
-      const v = opts[i].value;
-      if (v === 'releases' && loc.sort.releases) opts[i].textContent = loc.sort.releases;
-      if (v === 'recent' && loc.sort.recent) opts[i].textContent = loc.sort.recent;
-      if (v === 'az' && loc.sort.az) opts[i].textContent = loc.sort.az;
-      if (v === 'za' && loc.sort.za) opts[i].textContent = loc.sort.za;
-      if (v === 'stars' && loc.sort.stars) opts[i].textContent = loc.sort.stars;
-    }
-    sortSelect.value = val;
-  }
-
-  // Atualizar títulos dos filtros de plataformas
-  if (loc.filters) {
-    document.querySelectorAll('.filter-pill').forEach(pill => {
-      const consoleKey = pill.getAttribute('data-console');
-      const textSpan = pill.querySelector('span:not(.pill-dot):not(.filter-pill-count)');
-      if (textSpan && loc.filters[consoleKey]) {
-        textSpan.textContent = loc.filters[consoleKey];
-      }
-    });
-  }
-
-  // Atualizar modal de sugestões
-  if (loc.suggestModal) {
-    const sugTitle = document.getElementById('suggestModalTitle');
-    if (sugTitle) sugTitle.textContent = loc.suggestModal.title;
-    const sugSub = document.querySelector('.suggest-modal-subtitle');
-    if (sugSub) sugSub.textContent = loc.suggestModal.subtitle;
-    const inputName = document.getElementById('suggestGameName');
-    if (inputName) inputName.placeholder = loc.suggestModal.placeholderName;
-    const inputRepo = document.getElementById('suggestRepoUrl');
-    if (inputRepo) inputRepo.placeholder = loc.suggestModal.placeholderRepo;
-    const inputDet = document.getElementById('suggestDetails');
-    if (inputDet) inputDet.placeholder = loc.suggestModal.placeholderDetails;
-    const inputCont = document.getElementById('suggestContact');
-    if (inputCont) inputCont.placeholder = loc.suggestModal.placeholderContact;
-    const btnSub = document.getElementById('btnSubmitSuggest');
-    if (btnSub) {
-      const span = btnSub.querySelector('span');
-      if (span) span.textContent = loc.suggestModal.btnSubmit;
-    }
-  }
-
-  // Atualizar modal de apoio
-  if (loc.supportModal) {
-    const supTitle = document.getElementById('supportModalTitle');
-    if (supTitle) supTitle.textContent = loc.supportModal.title;
-    const supSub = document.querySelector('.support-modal-subtitle');
-    if (supSub) supSub.textContent = loc.supportModal.subtitle;
-
-    const btnCopyPixText = document.querySelector('#btnCopyPix .btn-copy-text');
-    if (btnCopyPixText) btnCopyPixText.textContent = loc.supportModal.pixCopy;
-    const qrToggleText = document.getElementById('qrToggleText');
-    if (qrToggleText) {
-      const isOpen = document.getElementById('pixQrContainer')?.style.display !== 'none';
-      qrToggleText.textContent = isOpen ? loc.supportModal.pixHideQr : loc.supportModal.pixShowQr;
-    }
-    const btnCopyBinText = document.querySelector('#btnCopyBinanceUid .btn-copy-binance-text');
-    if (btnCopyBinText) btnCopyBinText.textContent = loc.supportModal.binanceCopy;
-  }
-
-  // Re-renderizar cards de jogos com o status traduzido
-  if (typeof renderizarCards === 'function') {
-    renderizarCards();
   }
 }
 

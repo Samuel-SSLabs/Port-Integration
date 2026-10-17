@@ -2736,11 +2736,10 @@ body {
 
 
 .svg-flag {
-  width: 18px;
-  height: 13px;
+  width: 20px;
+  height: 14px;
   border-radius: 2px;
-  display: inline-block;
-  vertical-align: middle;
+  display: block;
   flex-shrink: 0;
   box-shadow: 0 0 1px rgba(0, 0, 0, 0.4);
 }
@@ -2750,4 +2749,8 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  width: 20px;
+  height: 14px;
+  flex-shrink: 0;
+  line-height: 1;
 }
