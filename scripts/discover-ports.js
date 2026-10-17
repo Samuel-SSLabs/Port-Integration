@@ -1,22 +1,19 @@
 #!/usr/bin/env node
 
 /**
- * PORT INTEGRATION — DISCOVER PORTS SCRIPT (SSLABS ECOSYSTEM) - V2 (FILTRO AVANÇADO)
+ * PORT INTEGRATION — DISCOVER PORTS SCRIPT (SSLABS ECOSYSTEM) - V3 (BLINDAGEM TOTAL)
  * 
- * Script autônomo para varredura e descoberta automatizada de ports nativos REAIS no GitHub.
+ * Script autônomo e de alta precisão para descoberta exclusiva de PORTS NATIVOS DE JOGOS PARA PC.
  * 
- * Filtros de Qualidade Implementados:
- *  1. ❌ Exclusão de Forks e Repositórios Arquivados.
- *  2. ❌ Exclusão de Listas/Agregadores ("awesome", "curated", "list", etc.).
- *  3. ❌ Exclusão de Ferramentas, Scripts e Descompiladores puros (ex: decomp.wtf, scraper).
- *  4. ❌ Exclusão de Ports exclusivos para Android/iOS ou Emuladores genéricos.
- *  5. ⭐ Mínimo de 25 estrelas para evitar projetos abandonados ou testes individuais.
- *  6. 📦 OBRIGATÓRIO: O repositório DEVE possuir pelo menos 1 Release publicada no GitHub.
- *     (Garante que há binários, compilações ou tags oficiais prontas para uso).
- * 
- * Uso:
- *   node scripts/discover-ports.js
- *   node scripts/discover-ports.js --append   (adiciona os novos ports aprovados ao app.js)
+ * Filtros de Qualidade Reforçados:
+ *  1. 🎯 Destino Obrigatório: O projeto DEVE ser direcionado para PC (Windows / Linux / Steam Deck).
+ *     Descarta automaticamente ports que rodam NO PS5, NO Switch ou em consoles (homebrew/jailbreak).
+ *  2. 🚫 Bloqueio de Emuladores: Rejeita PPSSPP, RPCS3, PCSX2, etc. (mesmo se portados para PS5).
+ *  3. 🛠️ Bloqueio de Ferramentas / Frameworks / IA: Descarta llama.cpp, descompiladores de Android/Java, Spring Boot, etc.
+ *  4. 💻 Linguagens Compiladas Nativas: Aceita apenas C, C++, Rust, C#, Zig ou Assembly. Rejeita Python/Java/JS.
+ *  5. 📦 Releases com Executáveis (.zip, .exe, .7z) = Aceita com apenas 10 ⭐.
+ *     Releases apenas com código-fonte = Exige 25+ ⭐.
+ *  6. ❌ Exclusão imediata de Forks, Repositórios Arquivados e Listas ("awesome-", etc.).
  */
 
 'use strict';
@@ -28,40 +25,87 @@ const WORKER_PROXY = 'https://sslabs-port-proxy.sstudioslabs.workers.dev';
 const APP_JS_PATH = path.resolve(__dirname, '../app.js');
 const OUTPUT_FILE = path.resolve(__dirname, '../novos_ports_sugeridos.json');
 
-const MIN_STARS_COM_EXECUTAVEL = 10; // Para ports recém-criados que já publicaram executáveis (.zip, .exe, .7z)
-const MIN_STARS_SEM_EXECUTAVEL = 25; // Para ports que possuem release apenas com código-fonte
+const MIN_STARS_COM_EXECUTAVEL = 10;
+const MIN_STARS_SEM_EXECUTAVEL = 25;
 
+// Queries focadas EXCLUSIVAMENTE em ports com destino para PC
 const SEARCH_QUERIES = [
+  '"native pc port"',
+  '"native windows port"',
   'topic:pc-port',
-  'topic:recomp',
-  'topic:decompilation',
   '"recompiled" "pc" in:description',
-  '"native windows port" in:description',
-  '"static recompiler" in:description',
-  '"ps4" "pc port" in:description',
-  '"ps5" "native" in:description'
+  '"pc port" in:name',
+  '"n64recomp" in:description',
+  '"xenonrecomp" in:description',
+  '"ps2recomp" in:description',
+  '"ps1recomp" in:description',
+  '"ps4" "pc port"',
+  '"ps5" "pc port"'
 ];
 
-// Termos que indicam listas, emuladores, ferramentas ou mobile (não são ports nativos de jogos para PC)
+// Termos que indicam homebrew em console, emuladores, IA, ferramentas ou listas
 const REJECT_KEYWORDS = [
+  // Listas e agregadores
   'awesome',
   'curated',
-  'collection',
+  'collection of',
+  // Emuladores puros
   'emulator',
+  'ppsspp',
+  'rpcs3',
+  'pcsx2',
+  'yuzu',
+  'ryujinx',
+  'xenia',
+  'cemu',
+  'dolphin',
+  // Homebrew rodando NO console (não no PC)
+  'for ps5',
+  'for the ps5',
+  'on ps5',
+  'on the ps5',
+  'jailbroken ps5',
+  'ps5 homebrew',
+  'ps5 app store',
+  'for nintendo switch',
+  'switch homebrew',
+  'atmosphere',
+  // Ferramentas, IA e utilitários não-jogos
   'decomp.wtf',
   'ai agent',
+  'llama.cpp',
+  'gguf',
   'scraper',
   'crawler',
   'tutorial',
   'guide',
-  'launcher only',
+  'boilerplate',
+  'framework',
+  'sdk',
+  'spring boot',
+  'download manager',
+  'adaptive triggers',
+  // Mobile / Outros
   'android port',
   'android only',
-  'ios port',
-  'homebrew menu',
-  'devkit',
-  'asset extractor only'
+  'ios port'
 ];
+
+// Palavras obrigatórias: o projeto DEVE falar que roda em computador
+const PC_TARGET_KEYWORDS = [
+  'pc',
+  'windows',
+  'win32',
+  'win64',
+  'linux',
+  'steam deck',
+  'steamdeck',
+  'x86',
+  'x64'
+];
+
+// Linguagens aceitas para ports nativos de jogos
+const ALLOWED_LANGUAGES = new Set(['C', 'C++', 'Rust', 'C#', 'Zig', 'Assembly']);
 
 async function fetchFromGithub(endpoint) {
   const token = process.env.GITHUB_TOKEN;
@@ -131,8 +175,8 @@ function formatarNomeAmigavel(nome) {
 
 async function descobrirNovosPorts() {
   console.log('=====================================================');
-  console.log('   PORT INTEGRATION — DESCOBERTA RIGOROSA DE PORTS   ');
-  console.log('   Filtros: >= 25 estrelas + Com Releases no GitHub   ');
+  console.log('   PORT INTEGRATION — DISCOVER PORTS V3 (BLINDADO)   ');
+  console.log('   Foco Exclusivo: Ports de Console para Computador  ');
   console.log('=====================================================\n');
 
   const reposJaCadastrados = carregarReposCadastrados();
@@ -149,7 +193,7 @@ async function descobrirNovosPorts() {
         const fullRepo = item.full_name.toLowerCase();
         const nomeLower = item.name.toLowerCase();
         const descLower = (item.description || '').toLowerCase();
-        const combinedText = `${nomeLower} ${descLower}`;
+        const combinedText = `${nomeLower} ${descLower} ${(item.topics || []).join(' ')}`.toLowerCase();
 
         // 1. Já catalogado?
         if (reposJaCadastrados.has(fullRepo) || candidatos.has(fullRepo)) {
@@ -161,34 +205,55 @@ async function descobrirNovosPorts() {
           continue;
         }
 
-        // 3. Estrelas preliminares (aceita a partir de 10 ⭐ para checagem de binários)
+        // 3. Estrelas preliminares (mínimo 10 ⭐)
         if (item.stargazers_count < MIN_STARS_COM_EXECUTAVEL) {
           continue;
         }
 
-        // 4. Termos rejeitados (listas, emuladores, IA, ferramentas)
+        // 4. Linguagem de programação permitida (C, C++, Rust, C#, Zig)
+        if (item.language && !ALLOWED_LANGUAGES.has(item.language)) {
+          // Rejeita linguagens como Python, Java, JavaScript, HTML que não são ports de jogos
+          continue;
+        }
+
+        // 5. Rejeição de palavras proibidas (emuladores, homebrew em console, IA, ferramentas)
         const temTermoRejeitado = REJECT_KEYWORDS.some(keyword => combinedText.includes(keyword));
         if (temTermoRejeitado) {
           continue;
         }
 
-        // Adiciona à lista preliminar para checagem de releases
+        // 6. DEVE ser destinado para PC (Windows / Linux / Steam Deck)
+        const ehParaPC = PC_TARGET_KEYWORDS.some(pcWord => {
+          const regex = new RegExp(`\\b${pcWord}\\b`, 'i');
+          return regex.test(combinedText);
+        });
+
+        if (!ehParaPC) {
+          // Se não menciona que roda em PC, descarta (evita homebrews de console)
+          continue;
+        }
+
+        // 7. Descarta repositórios explicitamente focados em Android/iOS
+        if (fullRepo.includes('-android') || fullRepo.includes('_android') || fullRepo.endsWith('android') || fullRepo.includes('-ios')) {
+          continue;
+        }
+
         candidatos.set(fullRepo, item);
       }
     }
   }
 
-  console.log(`\nCandidatos preliminares encontrados: ${candidatos.size}`);
-  console.log('Verificando existência de Releases publicadas no GitHub...\n');
+  console.log(`\nCandidatos preliminares válidos: ${candidatos.size}`);
+  console.log('Inspecionando Releases oficiais no GitHub...\n');
 
   const novosAprovados = [];
 
   for (const [fullRepo, item] of candidatos.entries()) {
-    // 5. OBRIGATÓRIO: Verificar se o repositório possui Releases oficiais
     const releases = await fetchFromGithub(`/repos/${item.full_name}/releases`);
 
+    // 7. OBRIGATÓRIO: Ter pelo menos uma release oficial
     if (!releases || !Array.isArray(releases) || releases.length === 0) {
-      console.log(`  ❌ [Descartado] ${item.full_name} (${item.stargazers_count} ⭐) — Sem releases publicadas.`);
+      console.log(`  ❌ [Descartado] ${item.full_name} (${item.stargazers_count} ⭐) — Sem releases.`);
       continue;
     }
 
@@ -199,10 +264,9 @@ async function descobrirNovosPorts() {
       return aName.endsWith('.zip') || aName.endsWith('.7z') || aName.endsWith('.exe') || aName.endsWith('.tar.gz') || aName.endsWith('.rar');
     });
 
-    // Regra Híbrida Inteligente:
-    // Se NÃO tiver binários compilados para download (.zip, .exe), exige o corte maior de estrelas (>= 25)
+    // 8. Regra Híbrida: Sem executáveis para download exige >= 25 estrelas
     if (!hasDownloadableBinaries && item.stargazers_count < MIN_STARS_SEM_EXECUTAVEL) {
-      console.log(`  ❌ [Descartado] ${item.full_name} (${item.stargazers_count} ⭐) — Release sem executável anexado (exige >= ${MIN_STARS_SEM_EXECUTAVEL} ⭐).`);
+      console.log(`  ❌ [Descartado] ${item.full_name} (${item.stargazers_count} ⭐) — Sem executável anexado (exige >= ${MIN_STARS_SEM_EXECUTAVEL} ⭐).`);
       continue;
     }
 
@@ -240,7 +304,7 @@ async function descobrirNovosPorts() {
   }
 
   console.log(`\n=====================================================`);
-  console.log(`Total de ports novos aprovados com Releases: ${novosAprovados.length}`);
+  console.log(`Total de ports novos aprovados: ${novosAprovados.length}`);
   console.log(`=====================================================\n`);
 
   if (novosAprovados.length > 0) {
@@ -265,7 +329,6 @@ async function descobrirNovosPorts() {
       console.log('  node scripts/discover-ports.js --append\n');
     }
   } else {
-    // Se nenhum passou no filtro rigoroso, limpa o arquivo para evitar PR vazio
     if (fs.existsSync(OUTPUT_FILE)) {
       fs.unlinkSync(OUTPUT_FILE);
     }
