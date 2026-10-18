@@ -6373,62 +6373,134 @@ function traduzirDescricaoFallback(texto, lang) {
   return texto;
 }
 
-function detectarIdiomaPadrao() {
-  // 1. Prioridade 1: Parâmetro da URL (?lang=pt | en | es)
+// ── SISTEMA DE DETECÇÃO AUTOMÁTICA POR GEOLOCALIZAÇÃO DE IP (GeoIP) ──
+const PAISES_LUSOFONOS = ['BR', 'PT', 'AO', 'MZ', 'CV', 'GW', 'ST', 'TL', 'MO'];
+const PAISES_HISPANOFONOS = [
+  'ES', 'MX', 'AR', 'CO', 'CL', 'PE', 'VE', 'EC', 'GT', 'CU',
+  'BO', 'DO', 'HN', 'PY', 'SV', 'NI', 'CR', 'PA', 'UY', 'GQ', 'PR'
+];
+
+function mapearCodigoPaisParaIdioma(codigoPais) {
+  if (!codigoPais) return null;
+  const c = codigoPais.toUpperCase().trim();
+  if (PAISES_LUSOFONOS.includes(c)) return 'pt';
+  if (PAISES_HISPANOFONOS.includes(c)) return 'es';
+  // Todo o restante do mundo (EUA, Reino Unido, Europa, Ásia, Oceania, etc.) recebe Inglês
+  return 'en';
+}
+
+async function consultarGeolocalizacaoIp() {
+  const provedores = [
+    {
+      url: 'https://ipwho.is/',
+      extrairPais: (data) => (data && data.success !== false) ? data.country_code : null
+    },
+    {
+      url: 'https://api.country.is/',
+      extrairPais: (data) => (data && data.country) ? data.country : null
+    }
+  ];
+
+  for (const prov of provedores) {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 2500);
+      const res = await fetch(prov.url, { signal: controller.signal });
+      clearTimeout(timeoutId);
+      if (res.ok) {
+        const json = await res.json();
+        const pais = prov.extrairPais(json);
+        if (pais && pais.length === 2) {
+          const idioma = mapearCodigoPaisParaIdioma(pais);
+          return { pais: pais.toUpperCase(), idioma };
+        }
+      }
+    } catch (e) {
+      // Falha silenciosa para tentar o próximo provedor
+    }
+  }
+  return null;
+}
+
+function detectarIdiomaSincronoInicial() {
+  // 1. URL explícita (?lang=pt | en | es)
   const urlParam = new URLSearchParams(window.location.search).get('lang');
   if (urlParam && (urlParam === 'pt' || urlParam === 'en' || urlParam === 'es')) {
-    return urlParam;
+    return { idioma: urlParam, manual: true };
   }
 
-  // 2. Prioridade 2: Escolha manual previamente salva pelo usuário
-  const salvo = localStorage.getItem('port_language');
-  if (salvo && (salvo === 'pt' || salvo === 'en' || salvo === 'es')) {
-    return salvo;
-  }
-
-  // 3. Prioridade 3: Detecção inteligente por Fuso-Horário / Região Geográfica
+  // 2. Escolha manual prévia do usuário no botão de idioma
   try {
-    const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '').toLowerCase();
-    
-    // Regiões lusófonas (Brasil, Portugal, etc.)
-    if (tz.includes('sao_paulo') || tz.includes('recife') || tz.includes('fortaleza') || 
-        tz.includes('cuiaba') || tz.includes('manaus') || tz.includes('belem') || 
-        tz.includes('porto_velho') || tz.includes('boa_vista') || tz.includes('rio_branco') || 
-        tz.includes('bahia') || tz.includes('maceio') || tz.includes('lisbon') || 
-        tz.includes('madeira') || tz.includes('azores')) {
-      return 'pt';
-    }
-
-    // Regiões hispânicas (Espanha e América Latina)
-    if (tz.includes('madrid') || tz.includes('barcelona') || tz.includes('buenos_aires') || 
-        tz.includes('cordoba') || tz.includes('santiago') || tz.includes('bogota') || 
-        tz.includes('mexico_city') || tz.includes('monterrey') || tz.includes('tijuana') || 
-        tz.includes('lima') || tz.includes('caracas') || tz.includes('montevideo') || 
-        tz.includes('asuncion') || tz.includes('la_paz') || tz.includes('quito') || 
-        tz.includes('guayaquil') || tz.includes('havana') || tz.includes('santo_domingo') || 
-        tz.includes('panama') || tz.includes('costa_rica') || tz.includes('guatemala') || 
-        tz.includes('el_salvador') || tz.includes('tegucigalpa') || tz.includes('managua')) {
-      return 'es';
+    const manual = localStorage.getItem('port_language_manual');
+    if (manual && (manual === 'pt' || manual === 'en' || manual === 'es')) {
+      return { idioma: manual, manual: true };
     }
   } catch (e) {}
 
-  // 4. Prioridade 4: Idioma do Sistema Operacional / Navegador
-  const navLangs = navigator.languages || [navigator.language || navigator.userLanguage || ''];
-  for (const nl of navLangs) {
-    const l = (nl || '').toLowerCase();
-    if (l.startsWith('pt')) return 'pt';
-    if (l.startsWith('es')) return 'es';
-    if (l.startsWith('en')) return 'en';
-  }
+  // 3. Cache de IP da sessão atual (evita refetch em F5 na mesma sessão)
+  try {
+    const geoSalvo = sessionStorage.getItem('port_geoip_lang');
+    if (geoSalvo && (geoSalvo === 'pt' || geoSalvo === 'en' || geoSalvo === 'es')) {
+      return { idioma: geoSalvo, manual: false };
+    }
+  } catch (e) {}
 
-  // 5. Fallback padrão: Português
-  return 'pt';
+  // 4. Estimativa provisória rápida por idioma do navegador (antes da resposta do IP)
+  try {
+    const navLangs = navigator.languages || [navigator.language || ''];
+    for (const nl of navLangs) {
+      const l = (nl || '').toLowerCase();
+      if (l.startsWith('pt')) return { idioma: 'pt', manual: false };
+      if (l.startsWith('es')) return { idioma: 'es', manual: false };
+      if (l.startsWith('en')) return { idioma: 'en', manual: false };
+    }
+  } catch (e) {}
+
+  // 5. Estimativa por fuso horário
+  try {
+    const tz = (Intl.DateTimeFormat().resolvedOptions().timeZone || '').toLowerCase();
+    if (tz.includes('sao_paulo') || tz.includes('recife') || tz.includes('fortaleza') || 
+        tz.includes('cuiaba') || tz.includes('manaus') || tz.includes('belem') || 
+        tz.includes('lisbon') || tz.includes('madeira') || tz.includes('azores')) {
+      return { idioma: 'pt', manual: false };
+    }
+    if (tz.includes('madrid') || tz.includes('barcelona') || tz.includes('buenos_aires') || 
+        tz.includes('santiago') || tz.includes('bogota') || tz.includes('mexico_city') || 
+        tz.includes('lima') || tz.includes('caracas') || tz.includes('montevideo')) {
+      return { idioma: 'es', manual: false };
+    }
+  } catch (e) {}
+
+  return { idioma: 'pt', manual: false };
 }
 
 function inicializarSistemaIdiomas() {
-  idiomaAtual = detectarIdiomaPadrao();
-  definirIdioma(idiomaAtual, false);
+  // Limpeza de chave legada para não travar detecções por IP
+  try {
+    localStorage.removeItem('port_language');
+  } catch (e) {}
+
+  const init = detectarIdiomaSincronoInicial();
+  idiomaAtual = init.idioma;
+  definirIdioma(idiomaAtual, false, false);
   configurarEventosSeletorIdiomas();
+
+  // Se não foi escolha manual na URL nem clique deliberado no botão,
+  // consulta a localização real do IP em background (detecta VPN e país automaticamente)
+  if (!init.manual) {
+    consultarGeolocalizacaoIp().then(geo => {
+      if (geo && geo.idioma) {
+        try {
+          sessionStorage.setItem('port_geoip_lang', geo.idioma);
+          sessionStorage.setItem('port_geoip_country', geo.pais);
+        } catch (e) {}
+        console.log('[SSLabs i18n] Geolocalização por IP: ' + geo.pais + ' -> Idioma: ' + geo.idioma);
+        if (geo.idioma !== idiomaAtual) {
+          definirIdioma(geo.idioma, false, false);
+        }
+      }
+    }).catch(() => {});
+  }
 }
 
 function obterTextoTraduzido(caminho, lang = idiomaAtual) {
@@ -6445,7 +6517,7 @@ function obterTextoTraduzido(caminho, lang = idiomaAtual) {
   return obj;
 }
 
-function definirIdioma(lang, atualizarUrl = true) {
+function definirIdioma(lang, atualizarUrl = true, manual = false) {
   if (typeof LOCALES === 'undefined' || !LOCALES[lang]) return;
   idiomaAtual = lang;
   try {
@@ -6707,7 +6779,7 @@ function configurarEventosSeletorIdiomas() {
       opt.addEventListener('click', (e) => {
         e.stopPropagation();
         const lang = opt.getAttribute('data-lang');
-        definirIdioma(lang, true);
+        definirIdioma(lang, true, true);
         wrapper.classList.remove('open');
         btn.setAttribute('aria-expanded', 'false');
       });
