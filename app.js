@@ -65,6 +65,75 @@ const DISCORD_MAP = {
 // ── BANCO DE DADOS DE PORTS NATIVOS (BASE CONSOLIDADA: 160+ PROJETOS) ──
 const PORTS_DATABASE = [
   {
+    "id": "project-midas-pc",
+    "nome": "Project Midas",
+    "console": "N64",
+    "consoleNome": "Nintendo 64",
+    "codigoJogo": "N64-PROJECTMID",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "murkantor/Project-Midas",
+    "repoUrl": "https://github.com/murkantor/Project-Midas",
+    "descricao": "PC port of GE for Windows and Linux, built from the N64 decompilation. Widescreen, mouse look, modern controller support and in-game settings. Co-op, netplay and mods in development.",
+    "termoBuscaCapa": "Project Midas",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-18T02:31:54Z",
+    "stars": 122,
+    "versaoPadrao": "v1.0.1",
+    "tags": [
+      "N64",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
+    "id": "jetmoto2-recomp-pc",
+    "nome": "JetMoto2",
+    "console": "PS1",
+    "consoleNome": "PlayStation 1",
+    "codigoJogo": "SCUS-94167",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "goodshepherd23/JetMoto2-Recomp",
+    "repoUrl": "https://github.com/goodshepherd23/JetMoto2-Recomp",
+    "descricao": "Jet Moto 2 Recompiled - native PC build of Jet Moto 2: Championship Edition (PS1, SCUS-94167) via RecompOne static recompilation. Bring your own disc.",
+    "termoBuscaCapa": "JetMoto2",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-17T17:47:58Z",
+    "stars": 10,
+    "versaoPadrao": "v0.1.4",
+    "tags": [
+      "PS1",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C#"
+    ]
+  },
+  {
+    "id": "shadowofthecolossus-pc-framegen-pc",
+    "nome": "ShadowOfTheColossus FrameGen",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA08809",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "nakaionyt/ShadowOfTheColossus-PC-FrameGen",
+    "repoUrl": "https://github.com/nakaionyt/ShadowOfTheColossus-PC-FrameGen",
+    "descricao": "Shadow of the Colossus (PS4) native PC port with DLSS-G / FSR 3 frame generation: 30 FPS locked, 60 shown. F7 uncaps live. Bring your own game files.",
+    "termoBuscaCapa": "ShadowOfTheColossus FrameGen",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-17T17:08:26Z",
+    "stars": 10,
+    "versaoPadrao": "v0.57-fg2",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "crashbandicoot-launcher-pc",
     "nome": "Crash Bandicoot",
     "console": "PS1",
