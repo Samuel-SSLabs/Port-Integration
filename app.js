@@ -5410,6 +5410,7 @@ document.addEventListener('DOMContentLoaded', () => {
   configurarBotaoVoltarAoTopo();
   configurarEventosApoio();
   atualizarEstatisticasHero();
+  sincronizarStatusAnyPS5();
   renderizarCatalogo();
 });
 
@@ -5685,6 +5686,72 @@ function atualizarEstatisticasHero() {
 
   const legacyCountTodos = document.getElementById('countPillTodos');
   if (legacyCountTodos) legacyCountTodos.textContent = state.ports.length;
+}
+
+// ── SINCRONIZAÇÃO EM TEMPO REAL DO ANYPS5 (LIBRARIES & SHADERS) ──
+async function sincronizarStatusAnyPS5() {
+  const libEl = document.getElementById('anyps5PopoverLibrariesVal');
+  const shaderEl = document.getElementById('anyps5PopoverShadersVal');
+  if (!libEl && !shaderEl) return;
+
+  function extrairValorSvg(svgText) {
+    if (!svgText) return null;
+    try {
+      if (typeof DOMParser !== 'undefined') {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(svgText, 'image/svg+xml');
+        const texts = doc.querySelectorAll('text');
+        if (texts && texts.length >= 2) {
+          const val = texts[texts.length - 1].textContent.trim();
+          if (val) return val;
+        }
+        const svgTag = doc.querySelector('svg');
+        if (svgTag && svgTag.hasAttribute('aria-label')) {
+          const aria = svgTag.getAttribute('aria-label');
+          const match = aria.match(/:\s*([0-9.]+%?)/);
+          if (match && match[1]) return match[1].trim();
+        }
+      }
+    } catch (e) {}
+
+    // Fallback por regex se o parser XML falhar
+    const regexMatch = svgText.match(/<text[^>]*>([0-9.]+%?)<\/text>/gi);
+    if (regexMatch && regexMatch.length >= 2) {
+      const last = regexMatch[regexMatch.length - 1].replace(/<[^>]+>/g, '').trim();
+      if (last) return last;
+    }
+    const ariaMatch = svgText.match(/aria-label="[^"]*?:\s*([0-9.]+%?)"/i);
+    if (ariaMatch && ariaMatch[1]) return ariaMatch[1].trim();
+    return null;
+  }
+
+  // 1. Sincronizar Bibliotecas
+  try {
+    const resLib = await fetch('https://boykopovar.github.io/AnyPS5/badge-libraries.svg', { cache: 'no-cache' });
+    if (resLib.ok) {
+      const svgText = await resLib.text();
+      const val = extrairValorSvg(svgText);
+      if (val && libEl) {
+        libEl.textContent = val.includes('%') ? val : `${val}%`;
+      }
+    }
+  } catch (err) {
+    // Offline ou bloqueio de rede: mantém valor estático sincronizado (90.32%)
+  }
+
+  // 2. Sincronizar Shaders
+  try {
+    const resShader = await fetch('https://boykopovar.github.io/AnyPS5/badge-shaders.svg', { cache: 'no-cache' });
+    if (resShader.ok) {
+      const svgText = await resShader.text();
+      const val = extrairValorSvg(svgText);
+      if (val && shaderEl) {
+        shaderEl.textContent = val.includes('%') ? val : `${val}%`;
+      }
+    }
+  } catch (err) {
+    // Offline ou bloqueio de rede: mantém valor estático sincronizado (100.0%)
+  }
 }
 
 // ── RENDERIZAÇÃO DO CATÁLOGO DE CARDS (TIPO LOJA) ──

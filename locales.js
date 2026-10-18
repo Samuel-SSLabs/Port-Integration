@@ -32,6 +32,7 @@ const LOCALES = {
       statPlayable: "Totalmente Jogáveis",
       statDev: "Em Desenvolvimento",
       statConsoles: "Plataformas",
+      statScanStatus: "Status",
       anyps5Live: "Ao Vivo",
       anyps5Desc: "Relinker nativo e reimplementação de bibliotecas PRX de PS5 para Windows e Linux sem emulação nem máquina virtual.",
       anyps5Repo: "Acessar repositório oficial no GitHub ↗"
@@ -104,7 +105,7 @@ const LOCALES = {
       error: "Erro ao enviar sugestão. Tente novamente."
     },
     supportModal: {
-      title: "Apoie o Port Integration",
+      title: "Apoie o PortIntegration",
       subtitle: "Ajude a manter nossos rastreadores e catálogo 100% livres e gratuitos!",
       closeAria: "Fechar modal",
       pixTitle: "PIX Direto (Brasil)",
@@ -129,7 +130,7 @@ const LOCALES = {
       brandDesc: "Hub oficial da SSLabs para localização, catalogação e acompanhamento em tempo real de ports nativos de consoles para PC.",
       disclaimer: "⚠️ <strong>Aviso legal:</strong> Os ports nativos exigem que o usuário possua uma cópia legalmente adquirida do jogo original (bring your own game dump). Este site não armazena, hospeda nem compartilha arquivos executáveis protegidos por direitos autorais, ROMs ou ISOs.",
       supportBtn: "Apoie o Projeto",
-      supportBtnAria: "Apoiar o projeto Port Integration",
+      supportBtnAria: "Apoiar o projeto PortIntegration",
       repoLink: "Repositório do Projeto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Escuro",
@@ -160,6 +161,7 @@ const LOCALES = {
       statPlayable: "Fully Playable",
       statDev: "In Progress",
       statConsoles: "Platforms",
+      statScanStatus: "Status",
       anyps5Live: "Live",
       anyps5Desc: "Native relinker and PRX library reimplementation from PS5 to Windows and Linux without emulation or virtual machines.",
       anyps5Repo: "Access official GitHub repository ↗"
@@ -232,7 +234,7 @@ const LOCALES = {
       error: "Error sending suggestion. Please try again."
     },
     supportModal: {
-      title: "Support Port Integration",
+      title: "Support PortIntegration",
       subtitle: "Help keep our daily scanners, servers, and catalog 100% free and open!",
       closeAria: "Close modal",
       pixTitle: "Direct PIX (Brazil)",
@@ -257,7 +259,7 @@ const LOCALES = {
       brandDesc: "Official SSLabs hub for tracking, indexing, and real-time status of native console ports for PC.",
       disclaimer: "⚠️ <strong>Legal disclaimer:</strong> Native ports require users to possess a legally acquired copy of the original game (bring your own game dump). This site does not host, store, or share copyrighted game executables, ROMs, or ISOs.",
       supportBtn: "Support Project",
-      supportBtnAria: "Support the Port Integration project",
+      supportBtnAria: "Support the PortIntegration project",
       repoLink: "Project Repository",
       themeLabelLight: "Light Mode",
       themeLabelDark: "Dark Mode",
@@ -499,6 +501,7 @@ const LOCALES = {
       statPlayable: "Totalmente Jugables",
       statDev: "En Desarrollo",
       statConsoles: "Plataformas",
+      statScanStatus: "Estado",
       anyps5Live: "En Vivo",
       anyps5Desc: "Relinker nativo y reimplementación de librerías PRX de PS5 para Windows y Linux sin emulación ni máquina virtual.",
       anyps5Repo: "Acceder al repositorio oficial en GitHub ↗"
@@ -571,7 +574,7 @@ const LOCALES = {
       error: "Error al enviar la sugerencia. Inténtalo de nuevo."
     },
     supportModal: {
-      title: "Apoya a Port Integration",
+      title: "Apoya a PortIntegration",
       subtitle: "¡Ayuda a mantener nuestros rastreadores diarios y catálogo 100% libres y gratuitos!",
       closeAria: "Cerrar modal",
       pixTitle: "PIX Directo (Brasil)",
@@ -596,7 +599,7 @@ const LOCALES = {
       brandDesc: "Hub oficial de SSLabs para localización, catalogación y seguimiento en tiempo real de ports nativos de consolas para PC.",
       disclaimer: "⚠️ <strong>Aviso legal:</strong> Los ports nativos requieren que el usuario posea una copia legalmente adquirida del juego original (bring your own game dump). Este sitio no almacena, aloja ni comparte ejecutables protegidos por derechos de autor, ROMs o ISOs.",
       supportBtn: "Apoya el Proyecto",
-      supportBtnAria: "Apoyar el proyecto Port Integration",
+      supportBtnAria: "Apoyar el proyecto PortIntegration",
       repoLink: "Repositorio del Proyecto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Oscuro",

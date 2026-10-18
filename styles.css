@@ -51,6 +51,7 @@
   --sslabs-blue-light: #a78bfa;
   --sslabs-cyan: #8b5cf6;
   --sslabs-brand-subtle: rgba(124, 58, 237, 0.08);
+  --sslabs-gradient-header: linear-gradient(90deg, #6d28d9 0%, #7c3aed 40%, #8b5cf6 75%, #a78bfa 100%);
 
   /* Paletas dos Consoles */
   --console-ps4: #00439c;
@@ -125,15 +126,20 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Faixa de gradiente no topo (Oculta para visual limpo e confiável) ── */
+/* ── Faixa de gradiente no topo ── */
 .top-gradient-stripe {
-  display: none;
+  height: 4px;
+  width: 100%;
+  background: var(--sslabs-gradient-header);
+  position: sticky;
+  top: 0;
+  z-index: 1001;
 }
 
 /* ── Cabeçalho Principal ── */
 .site-header {
   position: sticky;
-  top: 0;
+  top: 4px;
   z-index: 1000;
   background: var(--header-bg);
   backdrop-filter: blur(14px);
@@ -1468,11 +1474,11 @@ body {
 }
 
 .footer-donate-btn:hover {
-  background: rgba(244, 63, 94, 0.18);
-  border-color: rgba(244, 63, 94, 0.55);
+  background: rgba(244, 63, 94, 0.16);
+  border-color: rgba(244, 63, 94, 0.45);
   color: #fda4af;
   transform: translateY(-1px);
-  box-shadow: 0 4px 14px rgba(244, 63, 94, 0.22);
+  box-shadow: none;
 }
 
 .footer-donate-btn .donate-heart-icon {
@@ -1491,9 +1497,10 @@ body {
 }
 
 [data-theme="light"] .footer-donate-btn:hover {
-  background: rgba(225, 29, 72, 0.15);
-  border-color: rgba(225, 29, 72, 0.45);
+  background: rgba(225, 29, 72, 0.12);
+  border-color: rgba(225, 29, 72, 0.35);
   color: #be123c;
+  box-shadow: none;
 }
 
 .footer-bottom-actions {
