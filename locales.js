@@ -268,6 +268,7 @@ const LOCALES = {
       rights: "© 2026 SSLabs Ecosystem. All rights reserved."
     },
     portDescriptions: {
+  "gran-turismo-sport-rygt-pc": "Native PC port of Gran Turismo Sport (PS4) for Windows via Ryty with shadGT Vulkan renderer, featuring full races, 4-player splitscreen and high framerates.",
   "flow-ps3-port-pc": "First native PC port of thatgamecompany's flOw, rebuilt from the PS3 binary through static recompilation.",
   "yakuza-dead-souls-recomp-pc": "Static recompilation project for Yakuza: Dead Souls (Ryu ga Gotoku OF THE END) from PlayStation 3 to PC.",
   "drakengard-3-recomp-pc": "Static recompilation of Drakengard 3 (PS3) to native PC using the ps3recomp architecture.",
@@ -615,6 +616,7 @@ const LOCALES = {
       rights: "© 2026 SSLabs Ecosystem. Todos los derechos reservados."
     },
     portDescriptions: {
+  "gran-turismo-sport-rygt-pc": "Port nativo de Gran Turismo Sport (PS4) para Windows mediante Ryty con renderizador Vulkan shadGT, con carreras completas, pantalla dividida para 4 jugadores y alta tasa de cuadros.",
   "flow-ps3-port-pc": "Primer port nativo para PC de flOw de thatgamecompany, reconstruido a partir del binario de PS3 mediante recompilación estática.",
   "yakuza-dead-souls-recomp-pc": "Proyecto de recompilación estática de Yakuza: Dead Souls (Ryu ga Gotoku OF THE END) de PlayStation 3 para PC.",
   "drakengard-3-recomp-pc": "Recompilación estática de Drakengard 3 (PS3) para PC nativo usando la arquitectura de ps3recomp.",

@@ -142,6 +142,7 @@ const LOCAL_COVERS_MANIFEST = [
   "goldeneye-007-metal",
   "goldeneye-007-xbla-pc-recomp-pc",
   "gr2_pc-pc",
+  "gran-turismo-sport-rygt-pc",
   "gta-lcs-recomp",
   "gtteancum-sote-recomp",
   "gumpolas-tootawersrecomp",
@@ -288,6 +289,30 @@ const LOCAL_COVERS_MANIFEST = [
 const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
+  {
+    "id": "gran-turismo-sport-rygt-pc",
+    "nome": "Gran Turismo Sport (RyGT)",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA03220",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "mlgprorektm8/RyGT",
+    "repoUrl": "https://github.com/mlgprorektm8/RyGT",
+    "descricao": "Port nativo de Gran Turismo Sport (PS4) para Windows via Ryty com renderizador Vulkan shadGT, com suporte a corridas completas, splitscreen para 4 jogadores e alta taxa de quadros.",
+    "termoBuscaCapa": "Gran Turismo Sport",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-18T13:24:27Z",
+    "stars": 102,
+    "versaoPadrao": "gt-sport-2026-10-18",
+    "tags": [
+      "PS4",
+      "Ryty",
+      "Vulkan",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
   {
     "id": "flow-ps3-port-pc",
     "nome": "flOw",
