@@ -1370,7 +1370,7 @@ const PORTS_DATABASE = [
     "repoUrl": "https://github.com/AjncSystem/ShadowOfTheColossus-PC",
     "descricao": "Port nativo para Windows do remake de Shadow of the Colossus (PS4, CUSA08809). Requer dump pessoal do jogo.",
     "termoBuscaCapa": "Shadow_of_the_Colossus_(2018_video_game)",
-    "capaManual": "./assets/covers/shadow_2018.jpg",
+    "capaManual": null,
     "dataAtualizacao": "2026-10-17T12:50:00Z",
     "stars": 935,
     "versaoPadrao": "v0.57",

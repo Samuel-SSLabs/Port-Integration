@@ -44,15 +44,13 @@
 }
 
 :root, [data-theme="light"] {
-  /* Identidade SSLabs — Paleta Roxo Suave & Elegante */
+  /* Identidade SSLabs — Paleta Sólida e Confiável */
   --color-primary: #7c3aed;
   --sslabs-blue-primary: #7c3aed;
   --sslabs-blue-hover: #6d28d9;
   --sslabs-blue-light: #a78bfa;
   --sslabs-cyan: #8b5cf6;
-  --sslabs-blue-glow: rgba(124, 58, 237, 0.28);
-  --sslabs-gradient: linear-gradient(135deg, #7c3aed 0%, #8b5cf6 50%, #a78bfa 100%);
-  --sslabs-gradient-header: linear-gradient(90deg, #6d28d9 0%, #7c3aed 40%, #8b5cf6 75%, #a78bfa 100%);
+  --sslabs-brand-subtle: rgba(124, 58, 237, 0.08);
 
   /* Paletas dos Consoles */
   --console-ps4: #00439c;
@@ -127,20 +125,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── Faixa de gradiente no topo ── */
+/* ── Faixa de gradiente no topo (Oculta para visual limpo e confiável) ── */
 .top-gradient-stripe {
-  height: 4px;
-  width: 100%;
-  background: var(--sslabs-gradient-header);
-  position: sticky;
-  top: 0;
-  z-index: 1001;
+  display: none;
 }
 
 /* ── Cabeçalho Principal ── */
 .site-header {
   position: sticky;
-  top: 4px;
+  top: 0;
   z-index: 1000;
   background: var(--header-bg);
   backdrop-filter: blur(14px);
@@ -257,11 +250,11 @@ body {
 
 .search-input-box:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px var(--sslabs-blue-glow);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
 }
 
 .search-input-box:focus ~ .search-icon-inside {
-  color: var(--sslabs-blue-light);
+  color: var(--text-main);
 }
 
 /* Oculta botão nativo de cancelamento dos navegadores (WebKit, Blink, Edge) */
@@ -517,14 +510,15 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
-  padding: 0.38rem 0.95rem;
-  background: var(--bg-surface-subtle);
+  padding: 0.35rem 0.85rem;
+  background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
   border-radius: 9999px;
-  font-size: 0.8rem;
-  font-weight: 500;
-  color: var(--sslabs-blue-light);
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-muted);
   margin-bottom: 1.25rem;
+  letter-spacing: 0.01em;
 }
 
 .pulse-dot {
@@ -533,35 +527,27 @@ body {
   background-color: #10b981;
   border-radius: 50%;
   display: inline-block;
-  box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  animation: pulseGreen 2s infinite;
+  animation: pulseGreen 2s infinite ease-in-out;
 }
 
 @keyframes pulseGreen {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-  }
-  70% {
+  0%, 100% {
+    opacity: 1;
     transform: scale(1);
-    box-shadow: 0 0 0 8px rgba(16, 185, 129, 0);
   }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  50% {
+    opacity: 0.4;
+    transform: scale(0.85);
   }
 }
 
 .hero-title {
-  font-size: 2.45rem;
+  font-size: 2.5rem;
   font-weight: 800;
   letter-spacing: -0.03em;
   line-height: 1.15;
   margin-bottom: 0.85rem;
   color: var(--text-main);
-  background: var(--sslabs-gradient);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
 .hero-desc {
@@ -897,7 +883,6 @@ body {
   background: var(--sslabs-blue-primary);
   border-color: var(--sslabs-blue-primary);
   color: #ffffff;
-  box-shadow: 0 2px 10px var(--sslabs-blue-glow);
 }
 
 .filter-pill-count {
@@ -930,15 +915,15 @@ body {
   display: inline-block;
 }
 
-.ps5-dot { background-color: #0070d1; box-shadow: 0 0 6px rgba(0, 112, 209, 0.5); }
+.ps5-dot { background-color: #0070d1; }
 .ps4-dot { background-color: var(--console-ps4-light); }
 .ps2-dot { background-color: var(--console-ps2); }
 .ps1-dot { background-color: #94a3b8; }
 .n64-dot { background-color: var(--console-n64); }
 .gc-dot { background-color: var(--console-gamecube); }
 .switch-dot { background-color: var(--console-switch); }
-.xbox360-dot { background-color: #107c10; box-shadow: 0 0 6px rgba(16, 124, 16, 0.5); }
-.xone-dot { background-color: #107c10; box-shadow: 0 0 6px rgba(16, 124, 16, 0.5); }
+.xbox360-dot { background-color: #107c10; }
+.xone-dot { background-color: #107c10; }
 .xbox-dot { background-color: #0b5e0b; }
 .outros-dot { background-color: var(--console-outros); }
 .pc-dot { background-color: #38bdf8; }
@@ -1031,26 +1016,29 @@ body {
   flex-direction: column;
   background: var(--bg-surface);
   border: 1px solid var(--border-subtle);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
-  box-shadow: var(--card-shadow);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
   text-decoration: none;
   color: inherit;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 0.25s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   position: relative;
   cursor: pointer;
 }
 
 .port-card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--card-shadow-hover);
-  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+  border-color: rgba(255, 255, 255, 0.22);
+}
+
+[data-theme="light"] .port-card {
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
 }
 
 [data-theme="light"] .port-card:hover {
   border-color: #cbd5e1;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.09);
 }
 
 /* ── Container da Capa do Jogo ── */
@@ -1122,15 +1110,14 @@ body {
 }
 
 .badge-console {
-  font-size: 0.72rem;
+  font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.25rem 0.65rem;
+  padding: 0.22rem 0.55rem;
   border-radius: 6px;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
   color: #ffffff;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.18);
 }
 
 .badge-console.ps5 { background: #0070d1; border: 1px solid rgba(56, 189, 248, 0.4); }
@@ -1152,26 +1139,29 @@ body {
 .badge-console.outros { background: var(--console-outros); border: 1px solid rgba(168, 85, 247, 0.4); }
 
 .badge-status {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 600;
   padding: 0.2rem 0.55rem;
   border-radius: 6px;
   background: rgba(15, 23, 42, 0.85);
-  color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.35);
-  backdrop-filter: blur(6px);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
 }
 
 .card-cover-origin {
   position: absolute;
   bottom: 0.5rem;
-  right: 0.75rem;
+  right: 0.65rem;
   z-index: 2;
   font-size: 0.65rem;
-  color: rgba(255, 255, 255, 0.85);
-  background: rgba(0, 0, 0, 0.6);
-  padding: 2px 6px;
-  border-radius: 4px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.88);
+  background: rgba(15, 23, 42, 0.82);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+  padding: 2px 7px;
+  border-radius: 5px;
 }
 
 /* ── Corpo do Card ── */
@@ -1240,7 +1230,6 @@ body {
   border-radius: 50%;
   background-color: #10b981;
   display: inline-block;
-  box-shadow: 0 0 4px #10b981;
 }
 
 .port-version-text {
@@ -1278,16 +1267,16 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  padding: 0.62rem 0.85rem;
-  background: var(--sslabs-blue-primary);
-  border: 1px solid var(--sslabs-blue-hover);
-  color: #ffffff;
+  padding: 0.58rem 0.85rem;
+  background: #1e293b;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f8fafc;
   border-radius: 8px;
   font-size: 0.84rem;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   white-space: nowrap;
   position: relative;
   z-index: 12;
@@ -1295,14 +1284,27 @@ body {
   -webkit-tap-highlight-color: transparent;
 }
 
+[data-theme="light"] .btn-card-github {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #0f172a;
+}
+
+.btn-card-github:hover {
+  background: #334155;
+  border-color: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+}
+
+[data-theme="light"] .btn-card-github:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  color: #0f172a;
+}
+
 .btn-card-github *,
 .btn-card-discord * {
   pointer-events: none;
-}
-
-.port-card:hover .btn-card-github {
-  background: var(--sslabs-blue-hover);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
 }
 
 .btn-card-discord {
@@ -1310,16 +1312,16 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.45rem;
-  padding: 0.62rem 0.85rem;
+  padding: 0.58rem 0.85rem;
   background: rgba(88, 101, 242, 0.12);
-  border: 1px solid rgba(88, 101, 242, 0.35);
+  border: 1px solid rgba(88, 101, 242, 0.28);
   color: #5865F2;
   border-radius: 8px;
   font-size: 0.84rem;
   font-weight: 600;
   cursor: pointer;
   text-decoration: none;
-  transition: all 0.2s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   white-space: nowrap;
   position: relative;
   z-index: 12;
@@ -1328,17 +1330,15 @@ body {
 }
 
 [data-theme="dark"] .btn-card-discord {
-  background: rgba(88, 101, 242, 0.22);
-  border-color: rgba(88, 101, 242, 0.5);
-  color: #7983f5;
+  background: rgba(88, 101, 242, 0.15);
+  border-color: rgba(88, 101, 242, 0.35);
+  color: #818cf8;
 }
 
 .btn-card-discord:hover {
   background: #5865F2 !important;
   color: #ffffff !important;
   border-color: #5865F2 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
-  transform: translateY(-1px);
 }
 
 /* ── Estado Vazio (Nenhum Resultado) ── */
@@ -1811,21 +1811,20 @@ body {
   gap: 0.5rem;
   background: #ff5e5b;
   color: #ffffff;
-  border: none;
+  border: 1px solid #e84d4a;
   border-radius: 8px;
   padding: 0.65rem 1.15rem;
   font-size: 0.85rem;
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 4px 14px -2px rgba(255, 94, 91, 0.4);
+  transition: background 0.15s, transform 0.15s, border-color 0.15s;
 }
 
 .btn-kofi-support:hover {
   background: #e84d4a;
+  border-color: #d13e3b;
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px -2px rgba(255, 94, 91, 0.5);
   color: #ffffff;
 }
 
@@ -1915,21 +1914,20 @@ body {
   gap: 0.5rem;
   background: #f0b90b;
   color: #181a20;
-  border: none;
+  border: 1px solid #d9a507;
   border-radius: 8px;
   padding: 0.65rem 1.15rem;
   font-size: 0.85rem;
   font-weight: 700;
   text-decoration: none;
   cursor: pointer;
-  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 4px 14px -2px rgba(240, 185, 11, 0.35);
+  transition: background 0.15s, transform 0.15s, border-color 0.15s;
 }
 
 .btn-binance-support:hover {
   background: #fcd535;
+  border-color: #f0b90b;
   transform: translateY(-1px);
-  box-shadow: 0 6px 18px -2px rgba(240, 185, 11, 0.45);
   color: #181a20;
 }
 
@@ -2437,8 +2435,9 @@ body {
   justify-content: center;
   width: 38px;
   height: 38px;
-  background: var(--sslabs-blue-glow);
-  color: var(--sslabs-blue-light);
+  background: rgba(124, 58, 237, 0.12);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  color: #a78bfa;
   border-radius: 10px;
   flex-shrink: 0;
 }
@@ -2525,7 +2524,7 @@ body {
 .form-select:focus,
 .form-textarea:focus {
   border-color: var(--border-focus);
-  box-shadow: 0 0 0 3px var(--sslabs-blue-glow);
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.2);
 }
 
 .form-textarea {
@@ -2544,20 +2543,20 @@ body {
 .btn-submit-suggest {
   display: inline-flex;
   align-items: center;
-  padding: 0.65rem 1.15rem;
-  background: var(--sslabs-gradient);
+  padding: 0.65rem 1.25rem;
+  background: #6d28d9;
+  border: 1px solid #7c3aed;
   color: #ffffff;
-  border: none;
   border-radius: 8px;
   font-size: 0.86rem;
   font-weight: 600;
   cursor: pointer;
-  transition: filter 0.2s ease, transform 0.15s ease;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
 }
 
 .btn-submit-suggest:hover {
-  filter: brightness(1.1);
-  transform: translateY(-1px);
+  background: #5b21b6;
+  border-color: #6d28d9;
 }
 
 .suggest-status-msg {
@@ -2716,9 +2715,9 @@ body {
 }
 
 .lang-option-btn.active {
-  background: var(--sslabs-blue-glow);
-  color: var(--sslabs-blue-light);
-  font-weight: 700;
+  background: rgba(124, 58, 237, 0.12);
+  color: #8b5cf6;
+  font-weight: 600;
 }
 
 .lang-option-flag {
