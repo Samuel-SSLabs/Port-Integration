@@ -279,6 +279,29 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "acfa-port-pc",
+    "nome": "ARMORED CORE",
+    "console": "PC",
+    "consoleNome": "PC Nativo",
+    "codigoJogo": "PC-ACFAPORT",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "SulphurS16/ACFA-Port",
+    "repoUrl": "https://github.com/SulphurS16/ACFA-Port",
+    "descricao": "Unofficial native Windows port of ARMORED CORE for Answer (PS3), built from your own copy of the game. Part of Project Glintburn.",
+    "termoBuscaCapa": "ARMORED CORE",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-18T12:02:29Z",
+    "stars": 11,
+    "versaoPadrao": "v0.7.2",
+    "tags": [
+      "PC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "bloodborne_mac_port-pc",
     "nome": "Bloodborne Mac",
     "console": "PS4",
