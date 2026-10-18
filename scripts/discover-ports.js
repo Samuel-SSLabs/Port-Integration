@@ -46,6 +46,10 @@ const SEARCH_QUERIES = [
   '"rexglue" in:description',
   '"ps4" "pc port"',
   '"ps5" "pc port"',
+  '"ps3" "pc port"',
+  '"playstation 3" "pc port"',
+  '"ps3recomp" in:description',
+  'topic:ps3-port',
   '"xbox one" "pc port"',
   '"xbox series" "pc port"',
   '"azimuth" "forza"',
@@ -219,6 +223,7 @@ function adivinharConsole(repoData) {
   // Consoles específicos por ordem de precedência (evitando que 'xbox' genérico capture outros consoles)
   if (/\b(ps5|playstation\s*5)\b/i.test(text)) return { code: 'PS5', name: 'PlayStation 5' };
   if (/\b(ps4|playstation\s*4|nathan drake collection)\b/i.test(text)) return { code: 'PS4', name: 'PlayStation 4' };
+  if (/\b(ps3|playstation\s*3|ps3recomp)\b/i.test(text)) return { code: 'PS3', name: 'PlayStation 3' };
   if (/\b(ps2|playstation\s*2|ps2recomp)\b/i.test(text)) return { code: 'PS2', name: 'PlayStation 2' };
   if (/\b(ps1|playstation\s*1|psx|ps1recomp|crash team racing)\b/i.test(text)) return { code: 'PS1', name: 'PlayStation 1' };
   if (/\b(psp|playstation portable)\b/i.test(text)) return { code: 'PSP', name: 'PlayStation Portable' };
@@ -603,6 +608,10 @@ function extrairSerialPorConsole(texto, consoleCode) {
 
   if (['PS1', 'PS2', 'PSP'].includes(consoleCode)) {
     const m = texto.match(/\b(SLUS|SLES|SCUS|SCES|SLPM|SCCS|ULUS|ULES|UCUS|UCES)[-_ ]?(\d{5})\b/i);
+    if (m) return `${m[1].toUpperCase()}-${m[2]}`;
+  }
+  if (consoleCode === 'PS3') {
+    const m = texto.match(/\b(BLUS|BLES|BCUS|BCES|BLJM|BLJS|NPUB|NPEB)[-_ ]?(\d{5})\b/i);
     if (m) return `${m[1].toUpperCase()}-${m[2]}`;
   }
   if (['PS4', 'PS5'].includes(consoleCode)) {

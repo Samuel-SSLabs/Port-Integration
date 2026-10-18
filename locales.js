@@ -268,6 +268,12 @@ const LOCALES = {
       rights: "© 2026 SSLabs Ecosystem. All rights reserved."
     },
     portDescriptions: {
+  "flow-ps3-port-pc": "First native PC port of thatgamecompany's flOw, rebuilt from the PS3 binary through static recompilation.",
+  "yakuza-dead-souls-recomp-pc": "Static recompilation project for Yakuza: Dead Souls (Ryu ga Gotoku OF THE END) from PlayStation 3 to PC.",
+  "drakengard-3-recomp-pc": "Static recompilation of Drakengard 3 (PS3) to native PC using the ps3recomp architecture.",
+  "tokyo-jungle-recomp-pc": "Static recompilation of Sony Japan Studio's cult classic Tokyo Jungle to a native Windows x86-64 executable.",
+  "twisted-metal-2012-recomp-pc": "Static recompilation of Twisted Metal (2012, Eat Sleep Play) from PS3 to native Windows executable via ps3recomp.",
+  "acfa-port-pc": "Unofficial native Windows port of ARMORED CORE for Answer (PS3), built from your own copy of the game.",
   "crashbandicoot-launcher-pc": "Native PC port of Crash Bandicoot based on the decompilation of PS1 with configurable launcher and support for 60 FPS e widescreen.",
   "sms-pc-port-pc": "Native PC port of Super Mario Sunshine with support for AI-upscaled HD cutscenes, widescreen and unlocked framerates.",
   "rage-racer-pc-pc": "Native PC port of clássico de corrida Rage Racer (PS1) da Namco, running natively on modern systems.",
@@ -609,6 +615,12 @@ const LOCALES = {
       rights: "© 2026 SSLabs Ecosystem. Todos los derechos reservados."
     },
     portDescriptions: {
+  "flow-ps3-port-pc": "Primer port nativo para PC de flOw de thatgamecompany, reconstruido a partir del binario de PS3 mediante recompilación estática.",
+  "yakuza-dead-souls-recomp-pc": "Proyecto de recompilación estática de Yakuza: Dead Souls (Ryu ga Gotoku OF THE END) de PlayStation 3 para PC.",
+  "drakengard-3-recomp-pc": "Recompilación estática de Drakengard 3 (PS3) para PC nativo usando la arquitectura de ps3recomp.",
+  "tokyo-jungle-recomp-pc": "Recompilación estática del clásico de culto Tokyo Jungle de Sony Japan Studio para ejecutable nativo de Windows x86-64.",
+  "twisted-metal-2012-recomp-pc": "Recompilación estática de Twisted Metal (2012, Eat Sleep Play) de PS3 para ejecutable nativo de Windows mediante ps3recomp.",
+  "acfa-port-pc": "Port nativo no oficial de ARMORED CORE for Answer (PS3) para Windows a partir de tu propia copia del juego.",
   "crashbandicoot-launcher-pc": "Port nativo para PC de Crash Bandicoot basado en la descompilación de PS1 con launcher configurable y soporte para 60 FPS e widescreen.",
   "sms-pc-port-pc": "Port nativo para PC de Super Mario Sunshine con soporte para cinemáticas en alta definición mediante IA, widescreen y tasa de cuadros desbloqueada.",
   "rage-racer-pc-pc": "Port nativo para PC de clássico de corrida Rage Racer (PS1) da Namco, ejecutándose nativamente en sistemas modernos.",
