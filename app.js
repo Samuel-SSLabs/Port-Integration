@@ -63,6 +63,220 @@ const DISCORD_MAP = {
 };
 
 // ── BANCO DE DADOS DE PORTS NATIVOS (BASE CONSOLIDADA: 160+ PROJETOS) ──
+// ── MANIFESTO DE CAPAS LOCAIS PRÉ-OTIMIZADAS EM WEBP ──
+const LOCAL_COVERS_MANIFEST = [
+  "2-ship-2-harkinian",
+  "999sian-melee-pc",
+  "acgc-pc-port-pc",
+  "aikatore-recvx-enhanced-recomp",
+  "alexbeavs-ps1-ports-parasite-eve-recomp",
+  "alexbeavs-ps1-ports-syphon-filter-2-recomp",
+  "ape-escape-recomp",
+  "astros-playroom-ps5-pc",
+  "asuras-wrath-recomp-pc",
+  "banjo-recomp-n64",
+  "banjo-tooie-scurvy-dog-port-pc",
+  "battletanx-global-assault-pc-port-pc",
+  "beatrixzy-pgr4-recomp",
+  "birabittoh-eternalsonatareprise",
+  "birabittoh-kameorepowered",
+  "birabittoh-nocturnerecomp",
+  "black-fps-pc",
+  "bloodborne-recomp-native",
+  "bloodborne-supermedo-pc",
+  "blue-dragon-recomp",
+  "body-harvest-recomp-pc",
+  "burnout-3-takedawn",
+  "burnout-revenge-recomp",
+  "burnout3-pc-pc",
+  "carlosrmz009-littleplanet",
+  "castlevania-sotn-recomp",
+  "cdlewis-snowboardkids2-recomp",
+  "celeste-native-decomp",
+  "cellenseres-sssv-recomp",
+  "chrissotraidis-bluewake",
+  "chrissotraidis-sunpad",
+  "clickingmaster-ssrecomp",
+  "codepdbh-psprecomp-vcs-android",
+  "condemned2recomp-pc",
+  "conker-recompiled",
+  "cps2-recomp-arcade",
+  "crackdown-recomp",
+  "crackdown-xbox360-recompiled-pc",
+  "crash-bandicoot-2-recomp",
+  "crashbandicoot-launcher-pc",
+  "ctr-pc-port-pc",
+  "cvlod_recomp-pc",
+  "danielgomesvieira2000-wave-race-64-recomp",
+  "danisandoval-fukami",
+  "dantes-inferno-recomp",
+  "def-jam-ffny-recomp",
+  "demons-souls-ps5-pc",
+  "devilutionx-diablo",
+  "diddy-kong-racing-recomp",
+  "dinosaurplanetrecomp-dino-recomp",
+  "doa3-re-pc",
+  "donkey-kong-64-recomp",
+  "dorpxp-driftdroid",
+  "dragons-crown-pro-pc-pc",
+  "driveclub-pc-port",
+  "eandis-sdoj-recomp",
+  "elliotttate-dkc1recomp",
+  "estacado-the-darkness-recomp-pc",
+  "expansionpak-moderngekko",
+  "fabioap-cpu-tekken3recomp",
+  "fable-2-recomp",
+  "faligame-lost-odyssey-hd-remaster",
+  "felipeprado0-gow3-pc",
+  "fifa-street-pc-port-pc",
+  "forza-horizon-2-azimuth",
+  "forza-horizon-recomp",
+  "frankhun88453-cod3recomp",
+  "gears-judgment-recomp",
+  "genrythefox0-project-2099",
+  "god-of-war-ps2-recomp",
+  "goldeneye-007-metal",
+  "goldeneye-007-xbla-pc-recomp-pc",
+  "gr2_pc-pc",
+  "gta-lcs-recomp",
+  "gtteancum-sote-recomp",
+  "gumpolas-tootawersrecomp",
+  "harvestmoon64recomp-harvestmoon64recomp",
+  "hollywoodakeem-svr07-recomp",
+  "hybrid-heaven-recomp-pc",
+  "ico-ps2-pc",
+  "iexplosiverage-dbz-burst-limit-recompiled",
+  "infamous-second-son-pc",
+  "jackandbeans-snap64recomp",
+  "jackpoison-prog-ringout",
+  "jcsix694-def-jam-vendetta-recomp",
+  "jet-set-radio-future-recomp",
+  "jorge262007-fftarecomp",
+  "jorjbarbosa-naruto-rise-recomp",
+  "kaikoclanworth1-wwe-svr2011-pc",
+  "kawaiibunga-mkvdcu-recomp",
+  "keepvaibin-nebula",
+  "klexster-god-of-war-recomp",
+  "klorfmorf-goemon64recomp",
+  "laytonmotdmpcport-pc",
+  "letsgo-recomp-pc",
+  "lfarroco-ogre-battle-64-recomp",
+  "linkssy2-roadrash64recompiled",
+  "littlebitua-dprecomp",
+  "lost-odyssey-recomp",
+  "m1ndcrap-sega-superstars-tennis-rematch",
+  "madelrandel-blip-nfsmw-recompiled",
+  "mario-3d-all-stars-pc",
+  "mario-kart-64-spaghettikart",
+  "masterspike52-redahm",
+  "masterspike52-renut",
+  "medievil_2019_pc_port-pc",
+  "megaman64recomp-megaman64recompiled",
+  "midnight-club-la-recomp",
+  "mstan-megamanx4recomp",
+  "mstan-megamanxsnesrecomp",
+  "mstan-metroidprimehuntersrecomp",
+  "mstan-supermarioworldrecomp",
+  "mstan-supermetroidrecomp",
+  "mstan-tomba2recomp",
+  "mstan-tombarecomp",
+  "nebadasswifty-masseffect-nx",
+  "nevercookfirst-dimensionsrecomp",
+  "nikolaygorb-perfectdarkzerorecomp",
+  "ninja-gaiden-black-recomp",
+  "norain211-doaxvb-re",
+  "novapowers0-bloodyroar2recomp",
+  "novapowers0-dbz-budokai-3-hd-collection",
+  "opencmr2-pc",
+  "opencommunityedition-opence",
+  "opengoal-jak-project",
+  "openlara-tomb-raider",
+  "opentricky-pc",
+  "opokxeno-xenogears-recomp",
+  "parkerallan-doa3-recomp",
+  "paulcombal-mw2-recompiled",
+  "peiikai-lasrecomp",
+  "perfect-dark-pc",
+  "pilotwings-64-recomp-pc",
+  "portingpete-black-2006-recomp",
+  "pt-pc-native",
+  "rage-racer-pc-pc",
+  "rage-wars-recompiled-pc",
+  "red-tv141-dc2-ps2recomp",
+  "resident-evil-3-recomp",
+  "revosucks-bm64recomp",
+  "sacredstonesrecomp-pc",
+  "sal063-ac6-recomp",
+  "sal063-ace-combat-x-recompilation",
+  "sampreeth004-nfs-carbon-recomp",
+  "saulob-geometry-wars-retro-evolved-2-recompiled",
+  "saulob-hard-corps-uprising-recompiled",
+  "sciaschi-cbfd-recompiled",
+  "sf-pc-port-pc",
+  "shadow-of-the-colossus-pc",
+  "ship-of-harkinian",
+  "silent-hill-2-recomp-ps2",
+  "silent-hill-decomp-pc",
+  "silent-hill-downpour-recomp",
+  "sinan-karakaya-dq8-recompiled",
+  "sirhalo23-ridgeracer6-recompilation",
+  "skate-3-recomp",
+  "skullburglar-pc",
+  "sm64-coop-dx",
+  "sms-pc-port-pc",
+  "solarcookies-tip-recomp",
+  "sonic-1-2-decompilation",
+  "sonic-cd-decompilation",
+  "sonic-mania-decomp",
+  "sonic-mania-decomp-pc",
+  "sonic-unleashed-recomp",
+  "sonicdcer-dnzhrecomp",
+  "ssbu-recomp-pc",
+  "star-fox-64-starship",
+  "super-mario-64-pc",
+  "super-mario-odyssey-decomp",
+  "super-mario-sunshine-pc",
+  "supermedo-wet-recomp",
+  "swrots-pc-pc",
+  "technicallycomputers-klonoa-door-to-phantomile",
+  "technicallycomputers-marvel-vs-capcom-clash-of-super-heroes-recomp",
+  "technicallycomputers-metal-slug-x-recomp",
+  "technicallycomputers-street-fighter-alpha-3-recomp",
+  "technicallycomputers-twistedmetal4recomp",
+  "tekrantgaming-earthworm-jim-hd-recompiled",
+  "tekrantgaming-king-kong-recompiled",
+  "tgp482-scda-xberecomp",
+  "thatguymcd-glover-r",
+  "thatguymcd-rocket-r",
+  "the-darkness-recomp",
+  "the-last-guardian-pc",
+  "the-order-1886-pc-port-pc",
+  "thps2-cumulative-patch-pc",
+  "timftw21-burnout2-recompilation",
+  "tk22-26-jetforcegemini-recomp",
+  "tka-pc-port-pc",
+  "tony-hawks-project-8-recomp",
+  "uncharted-nathan-drake-collection-pc",
+  "uncharted-the-nathan-drake-collection-pc-port-pc",
+  "unchiga-yugiohforbiddenmemoriesrecomp",
+  "underdecoded-gen2recomped",
+  "vandal-hearts-pc",
+  "whompay-fncreborn",
+  "wipeout-rewrite-pc",
+  "wivi514-dead-rising-2-case-west-xenon-recomp",
+  "wivi514-dead-rising-2-case-zero-xenon-recomp",
+  "xmd-recompiled-pc",
+  "yestermester-thesimpsonsgamerecomp",
+  "zaps166-nfsiise",
+  "zelda-64-recompiled",
+  "zelda-alttp-zelda3",
+  "zelda-botw-switch-decomp",
+  "zelda-twilight-princess-dusklight",
+  "zelda-wind-waker-hd-pc",
+  "zombies-ate-my-neighbors-pc-port-pc"
+];
+const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
+
 const PORTS_DATABASE = [
   {
     "id": "project-midas-pc",
@@ -2369,7 +2583,7 @@ const PORTS_DATABASE = [
     "repo": "fgsfdsfgs/perfect_dark",
     "repoUrl": "https://github.com/fgsfdsfgs/perfect_dark",
     "descricao": "Port nativo para PC de Perfect Dark da Rare com suporte a mouse e teclado nativos, 60+ FPS, FOV customizável e multiplayer split-screen.",
-    "termoBuscaCapa": "Perfect_Dark_(video_game)",
+    "termoBuscaCapa": "Perfect_Dark",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T19:13:00Z",
     "stars": 2060,
@@ -3440,7 +3654,7 @@ const PORTS_DATABASE = [
     "repo": "eandis/SDOJ-Recomp",
     "repoUrl": "https://github.com/eandis/SDOJ-Recomp",
     "descricao": "Port nativo para PC do reverenciado shoot-em-up bullet hell da Cave com lag de input imperceptível.",
-    "termoBuscaCapa": "DoDonPachi_SaidaiOuJou",
+    "termoBuscaCapa": "DoDonPachi",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T18:00:00Z",
     "stars": 250,
@@ -5542,22 +5756,24 @@ function renderizarCatalogo() {
 
   const html = filtrados.map(port => {
     const consoleClass = port.console.toLowerCase();
-    const capaPrevia = obterCapaCacheada(port);
+    const capaInfo = obterCapaDisponivel(port);
+    const temCapa = Boolean(capaInfo);
     const versaoInicial = port.versaoPadrao || 'Port Nativo';
     const starsInicial = port.stars ? `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>${port.stars.toLocaleString('pt-BR')}` : `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Ativo`;
 
     return `
       <article class="port-card" data-id="${port.id}" data-repo-url="${port.repoUrl}" title="Clique para abrir o repositório ${port.repo} no GitHub">
         
-        <!-- Container da Capa com Carregamento Inteligente -->
+        <!-- Container da Capa com Carregamento Híbrido Ultrarrápido -->
         <div class="port-image-container" id="cover_container_${port.id}">
-          <div class="shimmer-placeholder" id="shimmer_${port.id}" style="${capaPrevia ? 'display: none;' : ''}"></div>
+          <div class="shimmer-placeholder" id="shimmer_${port.id}" style="${temCapa ? 'display: none;' : ''}"></div>
           
           <img 
-            src="${capaPrevia || ''}" 
+            src="${temCapa ? capaInfo.url : ''}" 
             alt="Capa oficial de ${escapeHtml(port.nome)}" 
-            class="port-thumb ${capaPrevia ? 'loaded' : ''}" 
+            class="port-thumb ${temCapa ? 'loaded' : ''}" 
             id="cover_img_${port.id}"
+            ${capaInfo && capaInfo.local ? `onerror="aoFalharCapaLocal(this, '${port.id}')"` : ''}
             loading="lazy"
             decoding="async"
           >
@@ -5567,8 +5783,8 @@ function renderizarCatalogo() {
             <span class="badge-status">${port.codigoJogo || 'Port Nativo PC'}</span>
           </div>
 
-          <div class="card-cover-origin" id="cover_origin_${port.id}" data-origin-type="${capaPrevia ? 'official' : 'searching'}">
-            ${traduzirBadgeCapa(capaPrevia ? 'official' : 'searching', idiomaAtual)}
+          <div class="card-cover-origin" id="cover_origin_${port.id}" data-origin-type="${temCapa ? capaInfo.tipo : 'searching'}">
+            ${traduzirBadgeCapa(temCapa ? capaInfo.tipo : 'searching', idiomaAtual)}
           </div>
         </div>
 
@@ -5625,7 +5841,10 @@ function renderizarCatalogo() {
   container.innerHTML = html;
 
   filtrados.forEach(port => {
-    carregarCapaInteligente(port);
+    const capa = obterCapaDisponivel(port);
+    if (!capa) {
+      carregarCapaInteligente(port);
+    }
     carregarMetadadosGitHub(port);
   });
 }
@@ -5633,6 +5852,41 @@ function renderizarCatalogo() {
 // ── REDIRECIONAMENTO AO GITHUB AO CLICAR NO CARD ──
 function redirecionarAoGithub(url) {
   window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+// ── OBTENÇÃO DA CAPA (LOCAL PRÉ-CONVERTIDA WEBP / MANUAL / CACHE ONLINE) ──
+function obterCapaDisponivel(port) {
+  if (port.capaManual) {
+    return { url: port.capaManual, tipo: 'remake', local: false };
+  }
+  if (typeof LOCAL_COVERS_SET !== 'undefined' && LOCAL_COVERS_SET.has(port.id)) {
+    return { url: `./assets/covers/${port.id}.webp`, tipo: 'official', local: true };
+  }
+  const cacheada = obterCapaCacheada(port);
+  if (cacheada) {
+    return { url: cacheada, tipo: 'wikipedia', local: false };
+  }
+  return null;
+}
+
+// Fallback resiliente caso a capa local (.webp) falhe no carregamento
+function aoFalharCapaLocal(imgElem, portId) {
+  if (typeof LOCAL_COVERS_SET !== 'undefined') {
+    LOCAL_COVERS_SET.delete(portId);
+  }
+  const port = PORTS_DATABASE.find(p => p.id === portId);
+  if (!port) return;
+
+  const shimmerElem = document.getElementById(`shimmer_${portId}`);
+  const originElem = document.getElementById(`cover_origin_${portId}`);
+  if (shimmerElem) shimmerElem.style.display = 'block';
+  if (originElem) {
+    originElem.dataset.originType = 'searching';
+    originElem.textContent = traduzirBadgeCapa('searching', idiomaAtual);
+  }
+  imgElem.removeAttribute('onerror');
+  imgElem.classList.remove('loaded');
+  carregarCapaInteligente(port);
 }
 
 // ── MÓDULO DE BUSCA INTELIGENTE DE CAPAS OFICIAIS ──
@@ -5677,14 +5931,9 @@ async function carregarCapaInteligente(port) {
 
   if (!imgElem) return;
 
-  if (port.capaManual) {
-    aplicarImagemCapa(imgElem, shimmerElem, originElem, port.capaManual, 'remake');
-    return;
-  }
-
-  const cacheada = obterCapaCacheada(port);
-  if (cacheada) {
-    aplicarImagemCapa(imgElem, shimmerElem, originElem, cacheada, 'official');
+  const capaDisponivel = obterCapaDisponivel(port);
+  if (capaDisponivel) {
+    aplicarImagemCapa(imgElem, shimmerElem, originElem, capaDisponivel.url, capaDisponivel.tipo);
     return;
   }
 
