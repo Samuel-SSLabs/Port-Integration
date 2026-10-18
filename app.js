@@ -290,6 +290,51 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "ac4-port-pc",
+    "nome": "ARMORED CORE 4",
+    "console": "PS3",
+    "consoleNome": "PlayStation 3",
+    "codigoJogo": "BLUS-30027",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "SulphurS16/AC4-Port",
+    "repoUrl": "https://github.com/SulphurS16/AC4-Port",
+    "descricao": "Unofficial native Windows port of ARMORED CORE 4 (PS3), built from your own copy of the game. Part of Project Glintburn.",
+    "termoBuscaCapa": "ARMORED CORE 4",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-16T17:51:45Z",
+    "stars": 10,
+    "versaoPadrao": "v0.5.0",
+    "tags": [
+      "PS3",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "terrariaogc-pc",
+    "nome": "TerrariaOGC",
+    "console": "PS3",
+    "consoleNome": "PlayStation 3",
+    "codigoJogo": "PS3-TERRARIAOG",
+    "status": "Jogável (Source Port)",
+    "statusTipo": "jogavel",
+    "repo": "PPrism/TerrariaOGC",
+    "repoUrl": "https://github.com/PPrism/TerrariaOGC",
+    "descricao": "A functional decompilation & PC port of the console version of Terraria released on the Xbox 360 & PS3 in 2013.",
+    "termoBuscaCapa": "TerrariaOGC",
+    "capaManual": null,
+    "dataAtualizacao": "2026-04-30T09:16:31Z",
+    "stars": 67,
+    "versaoPadrao": "1.03",
+    "tags": [
+      "PS3",
+      "AutoDiscover",
+      "C#"
+    ]
+  },
+  {
     "id": "gran-turismo-sport-rygt-pc",
     "nome": "Gran Turismo Sport (RyGT)",
     "console": "PS4",
