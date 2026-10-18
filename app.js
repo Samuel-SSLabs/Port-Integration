@@ -7079,7 +7079,6 @@ function inicializarSistemaIdiomas() {
           sessionStorage.setItem('port_geoip_lang', geo.idioma);
           sessionStorage.setItem('port_geoip_country', geo.pais);
         } catch (e) {}
-        console.log('[SSLabs i18n] Geolocalização por IP: ' + geo.pais + ' -> Idioma: ' + geo.idioma);
         if (geo.idioma !== idiomaAtual) {
           definirIdioma(geo.idioma, false, false);
         }
