@@ -5768,15 +5768,29 @@ function renderizarCatalogo() {
         <div class="port-image-container" id="cover_container_${port.id}">
           <div class="shimmer-placeholder" id="shimmer_${port.id}" style="${temCapa ? 'display: none;' : ''}"></div>
           
+          ${temCapa && capaInfo.local ? `
+          <picture id="cover_pic_${port.id}">
+            <source srcset="./assets/covers/${port.id}.avif" type="image/avif">
+            <img 
+              src="${capaInfo.url}" 
+              alt="Capa oficial de ${escapeHtml(port.nome)}" 
+              class="port-thumb loaded" 
+              id="cover_img_${port.id}"
+              onerror="aoFalharCapaLocal(this, '${port.id}')"
+              loading="lazy"
+              decoding="async"
+            >
+          </picture>
+          ` : `
           <img 
             src="${temCapa ? capaInfo.url : ''}" 
             alt="Capa oficial de ${escapeHtml(port.nome)}" 
             class="port-thumb ${temCapa ? 'loaded' : ''}" 
             id="cover_img_${port.id}"
-            ${capaInfo && capaInfo.local ? `onerror="aoFalharCapaLocal(this, '${port.id}')"` : ''}
             loading="lazy"
             decoding="async"
           >
+          `}
 
           <div class="card-badges-top">
             <span class="badge-console ${consoleClass}">${port.console}</span>
@@ -5869,13 +5883,26 @@ function obterCapaDisponivel(port) {
   return null;
 }
 
-// Fallback resiliente caso a capa local (.webp) falhe no carregamento
+// Fallback resiliente caso a capa local (.avif/.webp) falhe no carregamento
 function aoFalharCapaLocal(imgElem, portId) {
   if (typeof LOCAL_COVERS_SET !== 'undefined') {
     LOCAL_COVERS_SET.delete(portId);
   }
   const port = PORTS_DATABASE.find(p => p.id === portId);
   if (!port) return;
+
+  const picElem = document.getElementById(`cover_pic_${portId}`);
+  let targetImg = imgElem;
+  if (picElem) {
+    const cleanImg = document.createElement('img');
+    cleanImg.id = `cover_img_${portId}`;
+    cleanImg.className = 'port-thumb';
+    cleanImg.loading = 'lazy';
+    cleanImg.decoding = 'async';
+    cleanImg.alt = `Capa oficial de ${port.nome}`;
+    picElem.replaceWith(cleanImg);
+    targetImg = cleanImg;
+  }
 
   const shimmerElem = document.getElementById(`shimmer_${portId}`);
   const originElem = document.getElementById(`cover_origin_${portId}`);
@@ -5884,8 +5911,8 @@ function aoFalharCapaLocal(imgElem, portId) {
     originElem.dataset.originType = 'searching';
     originElem.textContent = traduzirBadgeCapa('searching', idiomaAtual);
   }
-  imgElem.removeAttribute('onerror');
-  imgElem.classList.remove('loaded');
+  targetImg.removeAttribute('onerror');
+  targetImg.classList.remove('loaded');
   carregarCapaInteligente(port);
 }
 

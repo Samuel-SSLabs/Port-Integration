@@ -132,19 +132,26 @@ async function buscarUrlCapaWikipedia(port) {
   return `https://opengraph.githubassets.com/1/${port.repo}`;
 }
 
-// Converter imagem para WebP otimizado via ImageMagick
-function converterParaWebP(inputBuffer, outputPath) {
+// Converter imagem para a dupla WebP e AVIF via ImageMagick
+function converterParaFormatos(inputBuffer, webpPath, avifPath) {
   const tempInput = path.join(COVERS_DIR, `temp_${Date.now()}_${Math.random().toString(36).substring(7)}.tmp`);
   fs.writeFileSync(tempInput, inputBuffer);
 
   try {
-    // Redimensiona proporcionalmente para largura máxima de 600px, qualidade 82% e remove metadados
-    execSync(`magick "${tempInput}" -resize "600x>" -quality 82 -strip "${outputPath}"`, { stdio: 'ignore' });
+    // 1. WebP (qualidade 82%, largura max 600px, sem metadados)
+    execSync(`magick "${tempInput}" -resize "600x>" -quality 82 -strip "${webpPath}"`, { stdio: 'ignore' });
+    // 2. AVIF (qualidade 65%, largura max 600px, sem metadados)
+    execSync(`magick "${tempInput}" -resize "600x>" -quality 65 -strip "${avifPath}"`, { stdio: 'ignore' });
   } finally {
     if (fs.existsSync(tempInput)) {
       try { fs.unlinkSync(tempInput); } catch (e) {}
     }
   }
+}
+
+// Gerar AVIF diretamente a partir de um WebP já existente
+function gerarAvifAPartirDeWebp(webpPath, avifPath) {
+  execSync(`magick "${webpPath}" -quality 65 -strip "${avifPath}"`, { stdio: 'ignore' });
 }
 
 // Atualizar o manifesto em app.js e manifest.json
@@ -181,7 +188,7 @@ function atualizarManifesto(portsComCapa) {
 // Função Principal
 async function main() {
   console.log('================================================================');
-  console.log('   PORT INTEGRATION — OTIMIZADOR DE CAPAS (WEBP CONVERTER)     ');
+  console.log('   PORT INTEGRATION — OTIMIZADOR DE CAPAS (DUPLA AVIF + WEBP)  ');
   console.log('================================================================');
 
   const args = process.argv.slice(2);
@@ -197,24 +204,25 @@ async function main() {
 
   for (const port of ports) {
     const destWebp = path.join(COVERS_DIR, `${port.id}.webp`);
-    if (fs.existsSync(destWebp) && !isForce) {
+    const destAvif = path.join(COVERS_DIR, `${port.id}.avif`);
+    if (fs.existsSync(destWebp) && fs.existsSync(destAvif) && !isForce) {
       portsComCapa.add(port.id);
     } else {
       pendentes.push(port);
     }
   }
 
-  console.log(`✅ Capas locais já existentes: ${portsComCapa.size}`);
-  console.log(`⏳ Capas pendentes de download/conversão: ${pendentes.length}`);
+  console.log(`✅ Capas locais completas (AVIF + WebP): ${portsComCapa.size}`);
+  console.log(`⏳ Capas pendentes de download/geração: ${pendentes.length}`);
 
   if (pendentes.length === 0) {
-    console.log('✨ Todas as capas já estão otimizadas em WebP!');
+    console.log('✨ Todas as capas já estão otimizadas na dupla AVIF + WebP!');
     atualizarManifesto(portsComCapa);
     return;
   }
 
   const fila = pendentes.slice(0, limit);
-  console.log(`\n🚀 Iniciando processamento de ${fila.length} capa(s)...\n`);
+  console.log(`\n🚀 Iniciando processamento de ${fila.length} jogo(s)...\n`);
 
   let sucessos = 0;
   let falhas = 0;
@@ -222,20 +230,31 @@ async function main() {
   for (let i = 0; i < fila.length; i++) {
     const port = fila[i];
     const destWebp = path.join(COVERS_DIR, `${port.id}.webp`);
+    const destAvif = path.join(COVERS_DIR, `${port.id}.avif`);
     process.stdout.write(`[${i + 1}/${fila.length}] ${port.nome} ... `);
 
     try {
-      const urlCapa = await buscarUrlCapaWikipedia(port);
-      if (!urlCapa) {
-        throw new Error('Nenhuma URL encontrada');
+      if (fs.existsSync(destWebp) && !isForce) {
+        // Já tem WebP, só gerar o AVIF direto
+        gerarAvifAPartirDeWebp(destWebp, destAvif);
+        const statsAvif = fs.statSync(destAvif);
+        const statsWebp = fs.statSync(destWebp);
+        console.log(`OK! (WebP: ${(statsWebp.size / 1024).toFixed(1)} KB | AVIF: ${(statsAvif.size / 1024).toFixed(1)} KB)`);
+      } else {
+        // Baixar da Wikipedia e gerar ambos
+        const urlCapa = await buscarUrlCapaWikipedia(port);
+        if (!urlCapa) {
+          throw new Error('Nenhuma URL encontrada');
+        }
+
+        const imgBuffer = await fetchUrl(urlCapa);
+        converterParaFormatos(imgBuffer, destWebp, destAvif);
+
+        const statsAvif = fs.statSync(destAvif);
+        const statsWebp = fs.statSync(destWebp);
+        console.log(`OK! (WebP: ${(statsWebp.size / 1024).toFixed(1)} KB | AVIF: ${(statsAvif.size / 1024).toFixed(1)} KB)`);
       }
 
-      const imgBuffer = await fetchUrl(urlCapa);
-      converterParaWebP(imgBuffer, destWebp);
-
-      const stats = fs.statSync(destWebp);
-      const kb = (stats.size / 1024).toFixed(1);
-      console.log(`OK! (${kb} KB)`);
       portsComCapa.add(port.id);
       sucessos++;
     } catch (err) {
@@ -243,8 +262,8 @@ async function main() {
       falhas++;
     }
 
-    // Delay gentil para respeitar os servidores da Wikimedia
-    await new Promise(r => setTimeout(r, 200));
+    // Delay suave
+    await new Promise(r => setTimeout(r, 80));
   }
 
   console.log('\n================================================================');
