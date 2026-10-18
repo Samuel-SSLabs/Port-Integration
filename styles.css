@@ -923,6 +923,7 @@ body {
 
 .ps5-dot { background-color: #0070d1; }
 .ps4-dot { background-color: var(--console-ps4-light); }
+.ps3-dot { background-color: #2563eb; }
 .ps2-dot { background-color: var(--console-ps2); }
 .ps1-dot { background-color: #94a3b8; }
 .n64-dot { background-color: var(--console-n64); }

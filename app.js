@@ -67,6 +67,7 @@ const DISCORD_MAP = {
 const LOCAL_COVERS_MANIFEST = [
   "2-ship-2-harkinian",
   "999sian-melee-pc",
+  "acfa-port-pc",
   "acgc-pc-port-pc",
   "aikatore-recvx-enhanced-recomp",
   "alexbeavs-ps1-ports-parasite-eve-recomp",
@@ -84,6 +85,7 @@ const LOCAL_COVERS_MANIFEST = [
   "black-fps-pc",
   "bloodborne-recomp-native",
   "bloodborne-supermedo-pc",
+  "bloodborne_mac_port-pc",
   "blue-dragon-recomp",
   "body-harvest-recomp-pc",
   "burnout-3-takedawn",
@@ -151,6 +153,7 @@ const LOCAL_COVERS_MANIFEST = [
   "jackpoison-prog-ringout",
   "jcsix694-def-jam-vendetta-recomp",
   "jet-set-radio-future-recomp",
+  "jetmoto2-recomp-pc",
   "jorge262007-fftarecomp",
   "jorjbarbosa-naruto-rise-recomp",
   "kaikoclanworth1-wwe-svr2011-pc",
@@ -199,6 +202,7 @@ const LOCAL_COVERS_MANIFEST = [
   "perfect-dark-pc",
   "pilotwings-64-recomp-pc",
   "portingpete-black-2006-recomp",
+  "project-midas-pc",
   "pt-pc-native",
   "rage-racer-pc-pc",
   "rage-wars-recompiled-pc",
@@ -214,6 +218,7 @@ const LOCAL_COVERS_MANIFEST = [
   "sciaschi-cbfd-recompiled",
   "sf-pc-port-pc",
   "shadow-of-the-colossus-pc",
+  "shadowofthecolossus-pc-framegen-pc",
   "ship-of-harkinian",
   "silent-hill-2-recomp-ps2",
   "silent-hill-decomp-pc",
@@ -280,22 +285,22 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 const PORTS_DATABASE = [
   {
     "id": "acfa-port-pc",
-    "nome": "ARMORED CORE",
-    "console": "PC",
-    "consoleNome": "PC Nativo",
-    "codigoJogo": "PC-ACFAPORT",
+    "nome": "Armored Core: For Answer",
+    "console": "PS3",
+    "consoleNome": "PlayStation 3",
+    "codigoJogo": "BLUS-30193",
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
     "repo": "SulphurS16/ACFA-Port",
     "repoUrl": "https://github.com/SulphurS16/ACFA-Port",
     "descricao": "Unofficial native Windows port of ARMORED CORE for Answer (PS3), built from your own copy of the game. Part of Project Glintburn.",
-    "termoBuscaCapa": "ARMORED CORE",
+    "termoBuscaCapa": "Armored Core For Answer",
     "capaManual": null,
     "dataAtualizacao": "2026-10-18T12:02:29Z",
     "stars": 11,
     "versaoPadrao": "v0.7.2",
     "tags": [
-      "PC",
+      "PS3",
       "AutoDiscover",
       "Binário Disponível",
       "C++"
@@ -312,7 +317,7 @@ const PORTS_DATABASE = [
     "repo": "Wooloomooloo2/bloodborne_mac_port",
     "repoUrl": "https://github.com/Wooloomooloo2/bloodborne_mac_port",
     "descricao": "WIP macOS (Apple Silicon) port of the native Bloodborne PC port — Rosetta 2 + MoltenVK/Metal",
-    "termoBuscaCapa": "Bloodborne Mac",
+    "termoBuscaCapa": "Bloodborne",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T11:19:30Z",
     "stars": 65,
@@ -326,7 +331,7 @@ const PORTS_DATABASE = [
   },
   {
     "id": "project-midas-pc",
-    "nome": "Project Midas",
+    "nome": "Project Midas (GoldenEye 007)",
     "console": "N64",
     "consoleNome": "Nintendo 64",
     "codigoJogo": "N64-PROJECTMID",
@@ -335,7 +340,7 @@ const PORTS_DATABASE = [
     "repo": "murkantor/Project-Midas",
     "repoUrl": "https://github.com/murkantor/Project-Midas",
     "descricao": "PC port of GE for Windows and Linux, built from the N64 decompilation. Widescreen, mouse look, modern controller support and in-game settings. Co-op, netplay and mods in development.",
-    "termoBuscaCapa": "Project Midas",
+    "termoBuscaCapa": "GoldenEye 007",
     "capaManual": null,
     "dataAtualizacao": "2026-10-18T02:31:54Z",
     "stars": 122,
@@ -349,7 +354,7 @@ const PORTS_DATABASE = [
   },
   {
     "id": "jetmoto2-recomp-pc",
-    "nome": "JetMoto2",
+    "nome": "Jet Moto 2",
     "console": "PS1",
     "consoleNome": "PlayStation 1",
     "codigoJogo": "SCUS-94167",
@@ -358,7 +363,7 @@ const PORTS_DATABASE = [
     "repo": "goodshepherd23/JetMoto2-Recomp",
     "repoUrl": "https://github.com/goodshepherd23/JetMoto2-Recomp",
     "descricao": "Jet Moto 2 Recompiled - native PC build of Jet Moto 2: Championship Edition (PS1, SCUS-94167) via RecompOne static recompilation. Bring your own disc.",
-    "termoBuscaCapa": "JetMoto2",
+    "termoBuscaCapa": "Jet Moto 2",
     "capaManual": null,
     "dataAtualizacao": "2026-10-17T17:47:58Z",
     "stars": 10,
@@ -372,7 +377,7 @@ const PORTS_DATABASE = [
   },
   {
     "id": "shadowofthecolossus-pc-framegen-pc",
-    "nome": "ShadowOfTheColossus FrameGen",
+    "nome": "Shadow of the Colossus FrameGen",
     "console": "PS4",
     "consoleNome": "PlayStation 4",
     "codigoJogo": "CUSA08809",
@@ -381,7 +386,7 @@ const PORTS_DATABASE = [
     "repo": "nakaionyt/ShadowOfTheColossus-PC-FrameGen",
     "repoUrl": "https://github.com/nakaionyt/ShadowOfTheColossus-PC-FrameGen",
     "descricao": "Shadow of the Colossus (PS4) native PC port with DLSS-G / FSR 3 frame generation: 30 FPS locked, 60 shown. F7 uncaps live. Bring your own game files.",
-    "termoBuscaCapa": "ShadowOfTheColossus FrameGen",
+    "termoBuscaCapa": "Shadow of the Colossus",
     "capaManual": null,
     "dataAtualizacao": "2026-10-17T17:08:26Z",
     "stars": 10,
@@ -5410,6 +5415,7 @@ function portMatchesConsole(port, key) {
   if (cAtivo === 'todos') return true;
   if (cAtivo === 'ps5') return pConsole === 'ps5';
   if (cAtivo === 'ps4') return pConsole === 'ps4';
+  if (cAtivo === 'ps3') return pConsole === 'ps3';
   if (cAtivo === 'ps2') return pConsole === 'ps2';
   if (cAtivo === 'ps1') return pConsole === 'ps1';
   if (cAtivo === 'xone' || cAtivo === 'xboxone' || cAtivo === 'series') {
@@ -5721,7 +5727,7 @@ function atualizarEstatisticasHero() {
     statTotalConsoles.textContent = consolesUnicos.size;
   }
 
-  const filterKeys = ['todos', 'PS5', 'PS4', 'PS2', 'PS1', 'XONE', 'XBOX360', 'XBOX', 'Switch', 'N64', 'GC_WII', 'Retro', 'PC'];
+  const filterKeys = ['todos', 'PS5', 'PS4', 'PS3', 'PS2', 'PS1', 'XONE', 'XBOX360', 'XBOX', 'Switch', 'N64', 'GC_WII', 'Retro', 'PC'];
   filterKeys.forEach(key => {
     const el = document.getElementById('countPill_' + key);
     if (el) {
