@@ -279,6 +279,29 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "bloodborne_mac_port-pc",
+    "nome": "Bloodborne Mac",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA03173",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Wooloomooloo2/bloodborne_mac_port",
+    "repoUrl": "https://github.com/Wooloomooloo2/bloodborne_mac_port",
+    "descricao": "WIP macOS (Apple Silicon) port of the native Bloodborne PC port — Rosetta 2 + MoltenVK/Metal",
+    "termoBuscaCapa": "Bloodborne Mac",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-16T11:19:30Z",
+    "stars": 65,
+    "versaoPadrao": "mac-v0.4.0",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "project-midas-pc",
     "nome": "Project Midas",
     "console": "N64",
