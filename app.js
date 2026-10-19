@@ -2811,6 +2811,33 @@ const PORTS_DATABASE = [
     ]
   },
   {
+    "id": "finesthourremastered-pc",
+    "nome": "Call of Duty: Finest Hour (Remastered)",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "4156002A",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "crazyriddler/FinestHourRemastered",
+    "repoUrl": "https://github.com/crazyriddler/FinestHourRemastered",
+    "descricao": "Recompilação estática nativa para PC de Call of Duty: Finest Hour (Xbox) em Direct3D 12 com suporte a mouse e teclado, até 360 FPS, widescreen e gráficos remasterizados opcionais.",
+    "termoBuscaCapa": "Call_of_Duty:_Finest_Hour",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-18T16:17:00Z",
+    "stars": 85,
+    "versaoPadrao": "latest",
+    "tags": [
+      "XBOX",
+      "Recomp",
+      "Binário Disponível",
+      "Spark Unlimited",
+      "Activision",
+      "FPS",
+      "Direct3D 12",
+      "C++"
+    ]
+  },
+  {
     "id": "super-mario-64-pc",
     "nome": "Super Mario 64 (sm64ex)",
     "console": "N64",
