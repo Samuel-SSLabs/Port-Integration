@@ -290,6 +290,52 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "athelas-pc",
+    "nome": "Athelas",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "4BEA88F9",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Shagg88/Athelas",
+    "repoUrl": "https://github.com/Shagg88/Athelas",
+    "descricao": "Play The Return of the King (PC and Xbox) and The Two Towers (Xbox) on a modern PC",
+    "termoBuscaCapa": "Athelas",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-18T23:08:02Z",
+    "stars": 65,
+    "versaoPadrao": "1.1.2",
+    "tags": [
+      "XBOX",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
+    "id": "scooby-doo-refrightened-pc",
+    "nome": "Scooby Doo Refrightened",
+    "console": "GC",
+    "consoleNome": "GameCube",
+    "codigoJogo": "GIHE78",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "josiahg2502-glitch/Scooby-Doo-Refrightened",
+    "repoUrl": "https://github.com/josiahg2502-glitch/Scooby-Doo-Refrightened",
+    "descricao": "Statically recompiled PC port of Scooby-Doo! Night of 100 Frights (GameCube): true widescreen, up to 4K, HDR, gamepads, launcher.",
+    "termoBuscaCapa": "Scooby Doo Refrightened",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-18T12:39:39Z",
+    "stars": 17,
+    "versaoPadrao": "v1.0.2",
+    "tags": [
+      "GC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "ac4-port-pc",
     "nome": "ARMORED CORE 4",
     "console": "PS3",
