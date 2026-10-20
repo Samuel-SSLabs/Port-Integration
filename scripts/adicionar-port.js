@@ -306,11 +306,48 @@ async function adicionarPort(argInput) {
   console.log('================================================================\n');
 }
 
-const inputArg = process.argv[2];
-if (!inputArg) {
-  console.log('Uso: node scripts/adicionar-port.js "<link ou usuario/repo>"');
-  console.log('Exemplo: node scripts/adicionar-port.js "https://github.com/arnaldolima1/gow-ascension-pc"');
-  process.exit(0);
+async function main() {
+  const args = process.argv.slice(2);
+  if (args.length === 0) {
+    console.log('Uso: node scripts/adicionar-port.js "<link ou usuario/repo>"');
+    console.log('      node scripts/adicionar-port.js --batch "repo1,repo2"');
+    console.log('      node scripts/adicionar-port.js --batch ["repo1", "repo2"]');
+    process.exit(0);
+  }
+
+  const batchIdx = args.indexOf('--batch');
+  if (batchIdx !== -1 && args[batchIdx + 1]) {
+    const raw = args[batchIdx + 1].trim();
+    let lista = [];
+    try {
+      lista = JSON.parse(raw);
+    } catch (e) {
+      lista = raw.split(/[\r\n,;]+/).map(s => s.trim()).filter(Boolean);
+    }
+
+    if (!Array.isArray(lista) || lista.length === 0) {
+      console.error('Nenhum repositório válido fornecido no lote.');
+      process.exit(1);
+    }
+
+    console.log(`Processando lote de ${lista.length} repositórios...\n`);
+    for (let i = 0; i < lista.length; i++) {
+      const item = lista[i];
+      try {
+        console.log(`[Lote ${i+1}/${lista.length}] Processando: ${item}`);
+        await adicionarPort(item);
+      } catch (err) {
+        console.error(`❌ Falha ao processar ${item}: ${err.message}`);
+      }
+    }
+    console.log('\n🎉 Lote de processamento concluído!');
+    return;
+  }
+
+  await adicionarPort(args[0]);
 }
 
-adicionarPort(inputArg);
+main().catch(err => {
+  console.error(err);
+  process.exit(1);
+});
