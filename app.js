@@ -364,6 +364,33 @@ const PORTS_DATABASE = [
     ]
   },
   {
+    "id": "catmidori-gogoackman1recomp-pc",
+    "nome": "Go! Go! Ackman (SNES Recomp)",
+    "console": "RETRO",
+    "consoleNome": "Super Nintendo (SNES)",
+    "codigoJogo": "SHVC-ACKJ-JPN",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "catmidori/gogoackman1recomp",
+    "repoUrl": "https://github.com/catmidori/gogoackman1recomp",
+    "descricao": "Recompilação estática nativa para PC de Go! Go! Ackman (SNES) com suporte a widescreen, vibração no controle, shaders, turbo, rewind, run-ahead, save states e traduções em português e inglês.",
+    "termoBuscaCapa": "Go!_Go!_Ackman",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-20T18:46:00Z",
+    "stars": 15,
+    "versaoPadrao": "v1.0.0",
+    "tags": [
+      "Retro",
+      "SNES",
+      "Recomp",
+      "Banpresto",
+      "Akira Toriyama",
+      "Widescreen",
+      "PT-BR",
+      "C"
+    ]
+  },
+  {
     "id": "naruto-the-broken-bond-pc-port-pc",
     "nome": "Naruto The Broken Bond",
     "console": "XBOX360",
