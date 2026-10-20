@@ -23,7 +23,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const WORKER_PROXY = 'https://sslabs-port-proxy.sstudioslabs.workers.dev';
+const WORKER_PROXY = 'https://sslabs-port-proxy-alt.l55941616.workers.dev';
 const APP_JS_PATH = path.resolve(__dirname, '../app.js');
 const OUTPUT_FILE = path.resolve(__dirname, '../novos_ports_sugeridos.json');
 
@@ -919,7 +919,78 @@ async function enriquecerCodigosExistentes() {
   }
 }
 
-if (process.argv.includes('--enrich-codes')) {
+
+async function sincronizarMetadadosExistentes() {
+  console.log('=====================================================');
+  console.log('   PORT INTEGRATION — SINCRONIZAÇÃO DE METADADOS     ');
+  console.log('      (Atualização de Estrelas, Versões e Releases)  ');
+  console.log('=====================================================\n');
+
+  let appCode = fs.readFileSync(APP_JS_PATH, 'utf8');
+  const match = appCode.match(/const PORTS_DATABASE = (\[[\s\S]*?\n\];)/);
+  if (!match) {
+    console.error('PORTS_DATABASE não encontrado em app.js!');
+    return;
+  }
+
+  const database = new Function(`return ${match[1]}`)();
+  console.log(`Total de ports a verificar: ${database.length}\n`);
+
+  let atualizados = 0;
+
+  for (let i = 0; i < database.length; i++) {
+    const port = database[i];
+    if (!port.repo || !port.repo.includes('/')) continue;
+
+    try {
+      // 1. Consulta dados do repositório (estrelas)
+      const repoInfo = await fetchFromGithub(`/repos/${port.repo}`);
+      if (repoInfo && typeof repoInfo.stargazers_count === 'number') {
+        if (port.stars !== repoInfo.stargazers_count) {
+          console.log(`  ⭐ [${port.nome}] Estrelas: ${port.stars} -> ${repoInfo.stargazers_count}`);
+          port.stars = repoInfo.stargazers_count;
+          atualizados++;
+        }
+        if (repoInfo.updated_at && !port.dataAtualizacao) {
+          port.dataAtualizacao = repoInfo.updated_at;
+        }
+      }
+
+      // 2. Consulta releases mais recentes
+      const releases = await fetchFromGithub(`/repos/${port.repo}/releases`);
+      if (Array.isArray(releases) && releases.length > 0) {
+        const latest = releases[0];
+        const latestVersion = latest.tag_name || latest.name;
+        if (latestVersion && port.versaoPadrao !== latestVersion) {
+          console.log(`  📦 [${port.nome}] Nova Release detectada: ${port.versaoPadrao || 'N/A'} -> ${latestVersion}`);
+          port.versaoPadrao = latestVersion;
+          if (latest.published_at) {
+            port.dataAtualizacao = latest.published_at;
+          }
+          atualizados++;
+        }
+      }
+
+      // Pausa leve para respeitar os limites
+      await new Promise(r => setTimeout(r, 150));
+    } catch (e) {
+      console.warn(`  ⚠️ Falha ao atualizar ${port.repo}: ${e.message}`);
+    }
+  }
+
+  if (atualizados > 0) {
+    const novoDb = 'const PORTS_DATABASE = ' + JSON.stringify(database, null, 2) + ';';
+    appCode = appCode.replace(/const PORTS_DATABASE = \[\s\S]*?\n\];/, novoDb);
+    fs.writeFileSync(APP_JS_PATH, appCode, 'utf8');
+    console.log(`\n✅ Sucesso! ${atualizados} metadados atualizados com sucesso em app.js.`);
+  } else {
+    console.log('\nTodos os metadados já estavam 100% atualizados.');
+  }
+}
+
+if (process.argv.includes('--sync-meta')) {
+  sincronizarMetadadosExistentes();
+} else if (process.argv.includes('--enrich-codes')) {
   enriquecerCodigosExistentes();
 } else {
   descobrirNovosPorts();

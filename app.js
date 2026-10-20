@@ -1,6 +1,6 @@
 'use strict';
 
-const WORKER_PADRAO_URL = 'https://sslabs-port-proxy.sstudioslabs.workers.dev';
+const WORKER_PADRAO_URL = 'https://sslabs-port-proxy-alt.l55941616.workers.dev';
 let CLOUDFLARE_WORKER_PROXY = (typeof window !== 'undefined' && localStorage.getItem('sslabs_worker_override')) || WORKER_PADRAO_URL;
 const DISCORD_SUGGEST_WEBHOOK = '';
 const MODO_ESTATICO_ECONOMICO = true;
