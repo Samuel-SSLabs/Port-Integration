@@ -1,8 +1,39 @@
 'use strict';
 
-const CLOUDFLARE_WORKER_PROXY = 'https://sslabs-port-proxy.sstudioslabs.workers.dev';
+// ── CONFIGURAÇÃO DE CONEXÃO & CLOUDFLARE WORKER PROXY (BUILD 33) ──
+// URL padrão do Worker oficial da SSLabs.
+// Permite substituição dinâmica pelo usuário via localStorage ou alteração direta desta constante.
+const WORKER_PADRAO_URL = 'https://sslabs-port-proxy.sstudioslabs.workers.dev';
+let CLOUDFLARE_WORKER_PROXY = (typeof window !== 'undefined' && localStorage.getItem('sslabs_worker_override')) || WORKER_PADRAO_URL;
 const DISCORD_SUGGEST_WEBHOOK = '';
-const GITHUB_CACHE_TTL_MS = 24 * 60 * 60 * 1000;
+
+// Modo Estático Econômico: quando true, renderiza o catálogo 100% a partir do PORTS_DATABASE local,
+// consumindo ZERO requisições ao Cloudflare Worker no carregamento e nos filtros.
+// Isso elimina 440 requisições por visitante, protege contra o estouro de cota (100k req/dia)
+// e garante carregamento instantâneo do catálogo.
+const MODO_ESTATICO_ECONOMICO = true;
+
+// Cache estendido para metadados salvos no localStorage: 7 dias (604.800.000 ms)
+const GITHUB_CACHE_TTL_MS = 7 * 24 * 60 * 60 * 1000;
+
+// Utilitário global para alternar dinamicamente o Worker via console do navegador:
+// Exemplo: window.definirWorkerProxy('https://meu-worker.workers.dev')
+// Exemplo para voltar ao padrão: window.definirWorkerProxy(null)
+if (typeof window !== 'undefined') {
+  window.definirWorkerProxy = function(novaUrl) {
+    if (novaUrl && typeof novaUrl === 'string') {
+      const urlLimpa = novaUrl.trim().replace(/\/$/, '');
+      localStorage.setItem('sslabs_worker_override', urlLimpa);
+      CLOUDFLARE_WORKER_PROXY = urlLimpa;
+      console.info(`[Port Integration] Cloudflare Worker alternativo configurado: ${urlLimpa}`);
+    } else {
+      localStorage.removeItem('sslabs_worker_override');
+      CLOUDFLARE_WORKER_PROXY = WORKER_PADRAO_URL;
+      console.info('[Port Integration] Cloudflare Worker restaurado para a URL padrão.');
+    }
+    return CLOUDFLARE_WORKER_PROXY;
+  };
+}
 
 
 try {
@@ -6363,7 +6394,18 @@ function renderizarCatalogo() {
     if (!capa) {
       carregarCapaInteligente(port);
     }
-    carregarMetadadosGitHub(port);
+    
+    // No Modo Estático Econômico, evita o bombardeio automático de 440 requisições ao Worker por visitante.
+    // Os dados locais de PORTS_DATABASE (versaoPadrao, stars) já foram embutidos no HTML de forma ultrarrápida.
+    if (!MODO_ESTATICO_ECONOMICO) {
+      carregarMetadadosGitHub(port);
+    } else {
+      // Se houver dados já cacheados localmente no localStorage, aplica-os silenciosamente sem bater na rede
+      const cache = obterCacheGitHub(port.repo);
+      if (cache) {
+        aplicarMetadadosGitHubNoCard(port.id, cache);
+      }
+    }
   });
 }
 
@@ -6639,7 +6681,7 @@ function construirGithubApiUrl(endpoint) {
   return `https://api.github.com${endpoint}`;
 }
 
-async function carregarMetadadosGitHub(port) {
+async function carregarMetadadosGitHub(port, forcarAtualizacao = false) {
   const verTextElem = document.getElementById(`ver_text_${port.id}`);
   const starsElem = document.getElementById(`stars_${port.id}`);
 
@@ -6651,6 +6693,16 @@ async function carregarMetadadosGitHub(port) {
     port.stars = cache.stars || port.stars;
     if (cache.dataAtualizacao) port.dataAtualizacao = cache.dataAtualizacao;
     if (cache.discordUrl && !port.discordUrl) port.discordUrl = cache.discordUrl;
+    return;
+  }
+
+  // Em modo estático e sem forçar requisição, preserva a cota do Worker mantendo os dados estáticos locais
+  if (MODO_ESTATICO_ECONOMICO && !forcarAtualizacao) {
+    aplicarMetadadosGitHubNoCard(port.id, {
+      versao: port.versaoPadrao || 'Port Ativo',
+      stars: port.stars || 'Ativo',
+      dataAtualizacao: port.dataAtualizacao
+    });
     return;
   }
 
@@ -6673,7 +6725,7 @@ async function carregarMetadadosGitHub(port) {
 
       try {
         const resRepo = await fetch(construirGithubApiUrl(`/repos/${port.repo}`));
-        if (resRepo.status === 403 || resRepo.status === 429) {
+        if (resRepo.status === 403 || resRepo.status === 429 || resRepo.status === 530) {
           marcarRateLimitBloqueado();
           throw new Error('GitHub API Rate Limit atingido');
         }
@@ -6858,7 +6910,8 @@ function configurarModalSugestoes() {
       let enviadoComSucesso = false;
 
       try {
-        const res = await fetch(`${CLOUDFLARE_WORKER_PROXY}/api/suggest`, {
+        const baseWorker = (CLOUDFLARE_WORKER_PROXY && CLOUDFLARE_WORKER_PROXY.trim().length > 0) ? CLOUDFLARE_WORKER_PROXY.replace(/\/$/, '') : WORKER_PADRAO_URL;
+        const res = await fetch(`${baseWorker}/api/suggest`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
