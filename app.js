@@ -290,6 +290,75 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "infamous-second-son-pc-port-pc",
+    "nome": "InFAMOUS Second Son",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "PS4-INFAMOUSSE",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "Castlesea/infamous-second-son-pc-port",
+    "repoUrl": "https://github.com/Castlesea/infamous-second-son-pc-port",
+    "descricao": "Native Windows port of inFAMOUS Second Son (PS4): custom runtime + Vulkan renderer derived from shadPS4. Bring your own game.",
+    "termoBuscaCapa": "InFAMOUS Second Son",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-19T21:56:04Z",
+    "stars": 44,
+    "versaoPadrao": "v2026.10.19-controls",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "naruto-the-broken-bond-pc-port-pc",
+    "nome": "Naruto The Broken Bond",
+    "console": "XBOX360",
+    "consoleNome": "Xbox 360",
+    "codigoJogo": "XBOX360-NARUTOTHEB",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Auremana666/Naruto-The-Broken-Bond-PC-Port",
+    "repoUrl": "https://github.com/Auremana666/Naruto-The-Broken-Bond-PC-Port",
+    "descricao": "Unofficial PC port of Naruto: The Broken Bond (Xbox 360) - static recompilation with a full PC options menu. Bring your own game ISO.",
+    "termoBuscaCapa": "Naruto The Broken Bond",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-19T14:37:17Z",
+    "stars": 12,
+    "versaoPadrao": "v1.0",
+    "tags": [
+      "XBOX360",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "unicorn_overlord_pc-pc",
+    "nome": "Unicorn Overlord",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA36381",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "hachi23/unicorn_overlord_pc",
+    "repoUrl": "https://github.com/hachi23/unicorn_overlord_pc",
+    "descricao": "Unicorn Overlord (PS4) native PC port",
+    "termoBuscaCapa": "Unicorn Overlord",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-20T07:45:47Z",
+    "stars": 60,
+    "versaoPadrao": "v1.2.0",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "athelas-pc",
     "nome": "Athelas",
     "console": "XBOX",
