@@ -6063,9 +6063,12 @@ function atualizarDrawerBusca(termo) {
       </div>
     `;
   } else {
-    searchDrawerList.innerHTML = resultados.slice(0, 6).map(port => `
+    searchDrawerList.innerHTML = resultados.slice(0, 6).map(port => {
+      const capa = obterCapaDisponivel(port);
+      const capaSrc = capa ? capa.url : './assets/favicon.png';
+      return `
       <a href="${port.repoUrl}" target="_blank" rel="noopener noreferrer" class="search-drawer-item">
-        <img src="${obterCapaCacheada(port) || './assets/favicon.png'}" class="search-drawer-thumb" alt="${port.nome}" id="drawer_thumb_${port.id}">
+        <img src="${capaSrc}" class="search-drawer-thumb" alt="${escapeHtml(port.nome)}" id="drawer_thumb_${port.id}" loading="lazy" onerror="this.src='./assets/favicon.png'">
         <div class="search-drawer-info">
           <div class="search-drawer-title-row">
             <span class="search-drawer-name">${escapeHtml(port.nome)}</span>
@@ -6074,7 +6077,8 @@ function atualizarDrawerBusca(termo) {
           <span class="search-drawer-repo">${escapeHtml(port.repo)}</span>
         </div>
       </a>
-    `).join('');
+      `;
+    }).join('');
   }
 
   searchDrawer.classList.add('open');
