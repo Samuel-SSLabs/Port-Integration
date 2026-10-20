@@ -6,12 +6,10 @@
   <title>SSLabs | PortIntegration</title>
   <meta name="description" content="Buscador e catálogo integrado da SSLabs de ports nativos de jogos de consoles para PC, com releases mais recentes do GitHub e capas automáticas.">
 
-  <!-- Favicon Oficial SSLabs (.ico e .png exclusivamente) -->
   <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
   <link rel="icon" type="image/png" href="./assets/favicon.png">
   <link rel="apple-touch-icon" href="./assets/favicon.png">
 
-  <!-- Fontes Locais SSLabs -->
   <link rel="preload" href="./assets/fonts/Inter_18pt-Regular.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="./assets/fonts/Inter_18pt-SemiBold.ttf" as="font" type="font/ttf" crossorigin>
   <link rel="preload" href="./assets/fonts/JetBrainsMono-Regular.ttf" as="font" type="font/ttf" crossorigin>
@@ -33,14 +31,11 @@
 </head>
 <body>
 
-  <!-- Faixa Estilizada de Gradiente no Topo -->
   <div class="top-gradient-stripe"></div>
 
-  <!-- Cabeçalho Principal -->
   <header class="site-header">
     <div class="header-container">
-      
-      <!-- Logo / Marca com suporte automático a tema claro e escuro -->
+
       <a href="./index.html" class="header-brand" id="brandLink" title="PortIntegration — SSLabs">
         <img src="./assets/logo-sslabs.png" alt="SSLabs Logo" class="brand-logo-img logo-light-mode">
         <img src="./assets/logo-sslabs-white.png" alt="SSLabs Logo" class="brand-logo-img logo-dark-mode">
@@ -50,7 +45,6 @@
         </div>
       </a>
 
-      <!-- Barra de Busca Centralizada com Drawer -->
       <div class="header-search-wrapper" id="headerSearchWrapper">
         <svg class="icon-svg search-icon-inside" viewBox="0 0 24 24" aria-hidden="true">
           <circle cx="11" cy="11" r="8"></circle>
@@ -76,21 +70,19 @@
           </svg>
         </button>
 
-        <!-- Drawer de Resultados Rápidos ao Digitar -->
         <div class="search-drawer" id="searchDrawer" aria-label="Resultados Rápidos">
           <div class="search-drawer-header">
             <span class="search-drawer-title">Sugestões de Ports</span>
             <span class="search-drawer-count" id="searchDrawerCount">0 encontrados</span>
           </div>
           <div class="search-drawer-list" id="searchDrawerList">
-            <!-- Preenchido via app.js -->
+
           </div>
         </div>
       </div>
 
-      <!-- Ações do Cabeçalho -->
       <div class="header-actions">
-        <!-- Seletor de Idiomas (PT | EN | ES) -->
+
         <div class="lang-dropdown-wrapper" id="langDropdownWrapper">
           <button type="button" class="lang-selector-btn" id="langSelectorBtn" title="Alterar idioma" aria-label="Idioma" aria-expanded="false">
             <span class="lang-flag" id="currentLangFlag"><svg class="svg-flag" viewBox="0 0 640 480" width="20" height="14" aria-hidden="true"><path fill="#009b3a" d="M0 0h640v480H0z"/><path fill="#fedf00" d="M320 40l280 200-280 200L40 240z"/><circle fill="#002776" cx="320" cy="240" r="120"/><path fill="#fff" d="M200 240c0-66.27 53.73-120 120-120 23.3 0 45.1 6.64 63.6 18.1-13.6-6.6-28.8-10.3-44.8-10.3-55.2 0-100 44.8-100 100 0 4.1.2 8.1.8 12.2H200z"/></svg></span>
@@ -115,7 +107,6 @@
           </div>
         </div>
 
-        <!-- Alternador de Tema Claro / Escuro -->
         <button type="button" class="action-icon-btn" id="themeToggleBtn" title="Alternar tema claro/escuro" aria-label="Alternar tema">
           <svg class="icon-svg theme-icon-sun" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="5"></circle>
@@ -133,7 +124,6 @@
           </svg>
         </button>
 
-        <!-- Botão Github Geral da SSLabs -->
         <a href="https://github.com/Samuel-SSLabs" target="_blank" rel="noopener noreferrer" class="action-icon-btn github-btn" title="Explorar SSLabs no GitHub" aria-label="GitHub">
           <svg class="icon-svg" viewBox="0 0 24 24">
             <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
@@ -144,19 +134,16 @@
     </div>
   </header>
 
-  <!-- Container Principal -->
   <main class="main-wrapper">
-    
-    <!-- Hero Banner -->
+
     <section class="hero-section">
       <h1 class="hero-title" data-i18n="hero.title">Ports Nativos para Computador</h1>
       <p class="hero-desc" data-i18n="hero.desc">
         Catálogo unificado de recompilações estáticas e ports nativos de consoles para PC (PS5, PS4, Switch, Xbox 360, N64, PS2, GameCube, Wii e outros).
       </p>
 
-      <!-- Dashboard Hero: Contagem de Ports + Card de Status do AnyPS5 Lado a Lado -->
       <div class="hero-dashboard-row">
-        <!-- Estatísticas Rápidas -->
+
         <div class="hero-stats-row">
           <div class="stat-item">
             <span class="stat-number" id="statTotalPorts">0</span>
@@ -174,7 +161,6 @@
           </div>
         </div>
 
-        <!-- Card de Status do AnyPS5 Lado a Lado (Tamanho Fixo e Estável) -->
         <a href="https://github.com/boykopovar/AnyPS5" target="_blank" rel="noopener noreferrer" class="anyps5-status-card" id="anyps5StatusCard" title="AnyPS5: Relinker nativo de PS5 para PC. Clique para abrir o repositório oficial">
           <div class="anyps5-card-inner">
             <div class="anyps5-header-line">
@@ -195,7 +181,6 @@
             </svg>
           </div>
 
-          <!-- Popover Flutuante com Mais Informações (Não altera o tamanho do card) -->
           <div class="anyps5-hover-popover" role="tooltip">
             <div class="anyps5-popover-header">
               <span class="anyps5-popover-title">boykopovar / AnyPS5</span>
@@ -222,7 +207,6 @@
       </div>
     </section>
 
-    <!-- Barra de Filtros e Categorias -->
     <section class="filter-bar-section">
       <div class="filter-pills-wrap" id="platformFilterPills">
         <button type="button" class="filter-pill active" data-console="todos">
@@ -306,7 +290,6 @@
       </div>
     </section>
 
-    <!-- Indicador de Resultados de Busca -->
     <div class="search-status-bar" id="searchStatusBar" style="display: none;">
       <div class="search-status-text">
         Resultados para a busca: <strong id="searchStatusQuery">""</strong>
@@ -317,16 +300,14 @@
       </button>
     </div>
 
-    <!-- Grade de Cards de Ports (Padrão Catálogo da Loja) -->
     <section class="ports-grid-section">
       <div class="ports-grid" id="portsGrid">
-        <!-- Renderizado dinamicamente pelo app.js -->
+
       </div>
     </section>
 
   </main>
 
-  <!-- Rodapé Institucional SSLabs -->
   <footer class="site-footer">
     <div class="footer-container">
       <div class="footer-brand-info">
@@ -349,7 +330,7 @@
         </div>
 
         <div class="footer-bottom-actions">
-          <!-- Seletor de Idiomas no Rodapé (Mobile) -->
+
           <div class="lang-dropdown-wrapper footer-lang-wrapper" id="langDropdownWrapperFooter">
             <button type="button" class="lang-selector-btn footer-lang-btn" id="langSelectorBtnFooter" title="Alterar idioma" aria-label="Idioma" aria-expanded="false">
               <span class="lang-flag" id="currentLangFlagFooter"><svg class="svg-flag" viewBox="0 0 640 480" width="20" height="14" aria-hidden="true"><path fill="#009b3a" d="M0 0h640v480H0z"/><path fill="#fedf00" d="M320 40l280 200-280 200L40 240z"/><circle fill="#002776" cx="320" cy="240" r="120"/><path fill="#fff" d="M200 240c0-66.27 53.73-120 120-120 23.3 0 45.1 6.64 63.6 18.1-13.6-6.6-28.8-10.3-44.8-10.3-55.2 0-100 44.8-100 100 0 4.1.2 8.1.8 12.2H200z"/></svg></span>
@@ -374,7 +355,6 @@
             </div>
           </div>
 
-          <!-- Botão Discreto de Apoio ao Projeto -->
           <button type="button" class="footer-donate-btn" id="openSupportModalBtn" title="Apoiar o projeto PortIntegration" aria-label="Apoiar o projeto PortIntegration">
             <svg class="donate-heart-icon" viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
               <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -382,7 +362,6 @@
             <span data-i18n="footer.supportBtn">Apoie o Projeto</span>
           </button>
 
-          <!-- Alternador de Tema no Rodapé (Mobile) -->
         <button type="button" class="footer-theme-toggle-btn" id="themeToggleBtnFooter" title="Alternar tema claro/escuro" aria-label="Alternar tema">
           <svg class="icon-svg theme-icon-sun" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="5"></circle>
@@ -411,16 +390,14 @@
     </div>
   </footer>
 
-  <!-- Ações Flutuantes (Canto Inferior Direito) -->
   <div class="floating-actions-wrap">
-    <!-- Botão de Voltar ao Topo (Scroll to Top) -->
+
     <button type="button" class="floating-back-to-top-btn" id="backToTopBtn" title="Voltar ao topo da página" aria-label="Voltar ao topo">
       <svg class="back-to-top-icon" viewBox="0 0 24 24" width="20" height="20">
         <polyline points="18 15 12 9 6 15"></polyline>
       </svg>
     </button>
 
-    <!-- Botão de Sugestões -->
     <button type="button" class="floating-suggest-btn" id="openSuggestBtn" title="Sugerir um novo port ou atualização" aria-label="Sugerir um novo port ou atualização">
       <svg class="suggest-outline-icon" viewBox="0 0 24 24" width="20" height="20">
         <path d="M9 18h6"></path>
@@ -431,7 +408,6 @@
     </button>
   </div>
 
-  <!-- Modal Interativo de Sugestões -->
   <div class="suggest-modal-overlay" id="suggestModalOverlay" aria-hidden="true">
     <div class="suggest-modal-box" role="dialog" aria-labelledby="suggestModalTitle">
       <div class="suggest-modal-header">
@@ -511,7 +487,6 @@
     </div>
   </div>
 
-  <!-- Modal Interativo de Apoio ao Projeto (PIX & Ko-fi) -->
   <div class="support-modal-overlay" id="supportModalOverlay" aria-hidden="true">
     <div class="support-modal-box" role="dialog" aria-labelledby="supportModalTitle">
       <div class="support-modal-header">
@@ -535,7 +510,7 @@
       </div>
 
       <div class="support-modal-body">
-        <!-- Opção 1: PIX Direto -->
+
         <div class="support-modal-card pix-card">
           <div class="support-card-header">
             <div class="support-method-badge pix-badge">
@@ -579,7 +554,6 @@
           </div>
         </div>
 
-        <!-- Opção 2: Ko-fi -->
         <div class="support-modal-card kofi-card">
           <div class="support-card-header">
             <div class="support-method-badge kofi-badge">
@@ -610,7 +584,6 @@
           </div>
         </div>
 
-        <!-- Opção 3: Binance / Criptomoedas -->
         <div class="support-modal-card binance-card">
           <div class="support-card-header">
             <div class="support-method-badge binance-badge">
