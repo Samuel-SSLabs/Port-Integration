@@ -123,6 +123,7 @@ const LOCAL_COVERS_MANIFEST = [
   "crackdown-xbox360-recompiled-pc",
   "crash-bandicoot-2-recomp",
   "crashbandicoot-launcher-pc",
+  "ctr-nitrofueled-pc",
   "ctr-pc-port-pc",
   "cvlod_recomp-pc",
   "danielgomesvieira2000-wave-race-64-recomp",
@@ -314,6 +315,75 @@ const LOCAL_COVERS_MANIFEST = [
 const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
+  {
+    "id": "littlebigplanet-3---pc",
+    "nome": "LittleBigPlanet 3",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "PS4-PORT",
+    "status": "Port Nativo PC",
+    "statusTipo": "playable",
+    "repo": "TheNIKITO/LittleBigPlanet-3---PC",
+    "repoUrl": "https://github.com/TheNIKITO/LittleBigPlanet-3---PC",
+    "descricao": "Port nativo e não oficial de LittleBigPlanet 3 (PS4) para Windows, em andamento. Nenhum arquivo do jogo incluído.",
+    "termoBuscaCapa": "LittleBigPlanet_3",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-18T15:32:06Z",
+    "stars": 0,
+    "versaoPadrao": "Port Nativo",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "C++",
+      "Port Nativo"
+    ]
+  },
+  {
+    "id": "ctr-nitrofueled-pc",
+    "nome": "CTR NitroFueled",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "PS4-PORT",
+    "status": "Port Nativo PC",
+    "statusTipo": "playable",
+    "repo": "GetLostIn/CTR-NitroFueled-PC",
+    "repoUrl": "https://github.com/GetLostIn/CTR-NitroFueled-PC",
+    "descricao": "Crash Team Racing: Nitro-Fueled (PS4) running natively on Windows 10/11. Windows fork of SacredFire, built on bbport and shadPS4. No game files included.",
+    "termoBuscaCapa": "CTR_NitroFueled",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-19T05:02:09Z",
+    "stars": 560,
+    "versaoPadrao": "v0.4",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "C++",
+      "Port Nativo"
+    ]
+  },
+  {
+    "id": "shaolinmonksrecomp-pc",
+    "nome": "ShaolinMonksRecomp",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "XBOX-PORT",
+    "status": "Port Nativo PC",
+    "statusTipo": "playable",
+    "repo": "OAleex/ShaolinMonksRecomp",
+    "repoUrl": "https://github.com/OAleex/ShaolinMonksRecomp",
+    "descricao": "Native port of Mortal Kombat: Shaolin Monks (Xbox) through static recompilation.",
+    "termoBuscaCapa": "ShaolinMonksRecomp",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-19T00:32:39Z",
+    "stars": 155,
+    "versaoPadrao": "0.2.0",
+    "tags": [
+      "XBOX",
+      "AutoDiscover",
+      "C++",
+      "Port Nativo"
+    ]
+  },
   {
     "id": "athelas-pc",
     "nome": "Athelas",

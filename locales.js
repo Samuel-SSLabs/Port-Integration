@@ -268,6 +268,9 @@ const LOCALES = {
       rights: "© 2026 SSLabs Ecosystem. All rights reserved."
     },
     portDescriptions: {
+  "littlebigplanet-3---pc": "Port nativo e não oficial de LittleBigPlanet 3 (PS4) para Windows, em andamento. Nenhum arquivo do jogo incluído.",
+  "ctr-nitrofueled-pc": "Crash Team Racing: Nitro-Fueled (PS4) running natively on Windows 10/11. Windows fork of SacredFire, built on bbport and shadPS4. No game files included.",
+  "shaolinmonksrecomp-pc": "Native port of Mortal Kombat: Shaolin Monks (Xbox) through static recompilation.",
   "athelas-pc": "Play The Return of the King (PC and Xbox) and The Two Towers (Xbox) on a modern PC",
   "god-of-war-ascension-pc": "Static recompilation of God of War: Ascension (PS3) to run natively on PC via ps3recomp, featuring D3D12/Vulkan renderers and PT-BR audio/subtitles support.",
   "gran-turismo-sport-rygt-pc": "Native PC port of Gran Turismo Sport (PS4) for Windows via Ryty with shadGT Vulkan renderer, featuring full races, 4-player splitscreen and high framerates.",
@@ -618,6 +621,9 @@ const LOCALES = {
       rights: "© 2026 SSLabs Ecosystem. Todos los derechos reservados."
     },
     portDescriptions: {
+  "littlebigplanet-3---pc": "Port nativo e não oficial de LittleBigPlanet 3 (PS4) para Windows, em andamento. Nenhum arquivo do jogo incluído.",
+  "ctr-nitrofueled-pc": "Crash Team Racing: Nitro-Fueled (PS4) running natively on Windows 10/11. Windows fork of SacredFire, built on bbport and shadPS4. No game files included.",
+  "shaolinmonksrecomp-pc": "Native port of Mortal Kombat: Shaolin Monks (Xbox) through static recompilation.",
   "athelas-pc": "Play The Return of the King (PC and Xbox) and The Two Towers (Xbox) on a modern PC",
   "god-of-war-ascension-pc": "Recompilación estática de God of War: Ascension (PS3) para PC nativo mediante ps3recomp, con renderizado en D3D12/Vulkan y soporte para audio y textos en PT-BR.",
   "gran-turismo-sport-rygt-pc": "Port nativo de Gran Turismo Sport (PS4) para Windows mediante Ryty con renderizador Vulkan shadGT, con carreras completas, pantalla dividida para 4 jugadores y alta tasa de cuadros.",
