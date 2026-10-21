@@ -30,3 +30,10 @@ Thumbs.db
 .idea/
 *.sublime-project
 *.sublime-workspace
+
+# Arquivos de IA, Assistentes e Regras Locais de Bancada
+GEMINI.md
+.gemini/
+.agent/
+scratch/
+Saida/

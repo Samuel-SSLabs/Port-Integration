@@ -100,21 +100,65 @@ function adivinharConsole(name, desc = '', topics = []) {
   return { code: 'PC', name: 'PC Nativo' };
 }
 
+const ACRONYMS_MAP = {
+  gow: 'God of War',
+  mgs: 'Metal Gear Solid',
+  rdr: 'Red Dead Redemption',
+  gta: 'Grand Theft Auto',
+  re: 'Resident Evil',
+  sh: 'Silent Hill',
+  ff: 'Final Fantasy',
+  dmc: 'Devil May Cry',
+  nfsu: 'Need for Speed Underground',
+  nfs: 'Need for Speed'
+};
+
 function formatarNomeJogo(repoName, repoDesc = '') {
+  // Se a descrição tem o título explícito antes de parênteses ou pontuação
+  if (repoDesc) {
+    const matchDesc = repoDesc.match(/^([A-Za-z0-9\s:_-]{3,40})(?:\s*\(|\s*,|\s*-|\s*is\s|\s*an?\s)/i);
+    if (matchDesc && matchDesc[1].trim().length >= 4) {
+      const candidato = matchDesc[1].trim();
+      if (!/^(a|an|the|this|native|unofficial|pc|port|decomp)\b/i.test(candidato)) {
+        return candidato;
+      }
+    }
+  }
+
   // Limpar prefixos e sufixos comuns
   let n = repoName
-    .replace(/-pc$/i, '')
-    .replace(/-recomp$/i, '')
-    .replace(/_pc$/i, '')
-    .replace(/-port$/i, '')
-    .replace(/-decomp$/i, '')
+    .replace(/[-_]pc$/i, '')
+    .replace(/[-_]recomp$/i, '')
+    .replace(/[-_]port$/i, '')
+    .replace(/[-_]decomp$/i, '')
     .replace(/[-_]/g, ' ')
     .trim();
 
+  // Substituir siglas comuns no início
+  const words = n.split(/\s+/);
+  if (words.length > 0 && ACRONYMS_MAP[words[0].toLowerCase()]) {
+    words[0] = ACRONYMS_MAP[words[0].toLowerCase()];
+    return words.join(' ');
+  }
+
   // Capitalizar palavras
-  return n.split(' ')
+  return words
     .map(p => p.charAt(0).toUpperCase() + p.slice(1))
     .join(' ');
+}
+
+function getMagickCommand() {
+  try {
+    execSync('magick -version', { stdio: 'ignore' });
+    return 'magick';
+  } catch (e) {
+    try {
+      execSync('convert -version', { stdio: 'ignore' });
+      return 'convert';
+    } catch (e2) {
+      return null;
+    }
+  }
 }
 
 async function baixarCapaWikipedia(nomeJogo, idJogo) {
@@ -153,10 +197,27 @@ async function baixarCapaWikipedia(nomeJogo, idJogo) {
       const buf = await fetchUrl(imageUrl);
       fs.writeFileSync(tempInput, buf);
 
-      execSync(`magick "${tempInput}" -resize "600x>" -quality 82 -strip "${webpPath}"`, { stdio: 'ignore' });
-      execSync(`magick "${tempInput}" -resize "600x>" -quality 65 -strip "${avifPath}"`, { stdio: 'ignore' });
+      const cmd = getMagickCommand();
+      if (!cmd) {
+        console.warn('  ⚠️ Nem "magick" nem "convert" foram encontrados no PATH.');
+        fs.unlinkSync(tempInput);
+        return false;
+      }
+
+      let gerouWebp = false;
+      try {
+        execSync(`${cmd} "${tempInput}" -resize "600x>" -quality 82 -strip "${webpPath}"`, { stdio: 'ignore' });
+        gerouWebp = fs.existsSync(webpPath);
+      } catch (errWebp) {
+        console.warn(`  ⚠️ Erro ao gerar WebP: ${errWebp.message}`);
+      }
+
+      try {
+        execSync(`${cmd} "${tempInput}" -resize "600x>" -quality 65 -strip "${avifPath}"`, { stdio: 'ignore' });
+      } catch (errAvif) {}
+
       fs.unlinkSync(tempInput);
-      return true;
+      return gerouWebp;
     }
   } catch (err) {
     if (fs.existsSync(tempInput)) fs.unlinkSync(tempInput);
@@ -198,7 +259,16 @@ async function adicionarPort(argInput) {
 
   const consoleDetectado = adivinharConsole(repoData.name, repoData.description, repoData.topics);
   const nomeJogo = formatarNomeJogo(repoData.name, repoData.description);
-  const idJogo = repoData.name.toLowerCase().replace(/[^a-z0-9_-]/g, '') + '-pc';
+    const cleanBase = repoData.name.toLowerCase()
+    .replace(/[^a-z0-9_-]/g, '')
+    .replace(/[-_]pc$/, '')
+    .replace(/[-_]recomp$/, '');
+  
+  let idBase = cleanBase;
+  if (/^gow/i.test(idBase)) {
+    idBase = idBase.replace(/^gow/, 'god-of-war');
+  }
+  const idJogo = `${idBase}-pc`;
 
   console.log(`   Nome detectado:  ${nomeJogo}`);
   console.log(`   Console:         ${consoleDetectado.name} (${consoleDetectado.code})`);

@@ -315,26 +315,29 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
-    "id": "gow-ascension-pc-pc",
-    "nome": "Gow Ascension",
+    "id": "god-of-war-ascension-pc",
+    "nome": "God of War: Ascension (PC Native)",
     "console": "PS3",
     "consoleNome": "PlayStation 3",
-    "codigoJogo": "PS3-PORT",
-    "status": "Port Nativo PC",
-    "statusTipo": "playable",
+    "codigoJogo": "BCES-01741",
+    "status": "Em Desenvolvimento",
+    "statusTipo": "wip",
     "repo": "arnaldolima1/gow-ascension-pc",
     "repoUrl": "https://github.com/arnaldolima1/gow-ascension-pc",
-    "descricao": "God of War: Ascension (PS3), an experiment in static recompilation to run natively on PC, on ps3recomp. No game data included.",
-    "termoBuscaCapa": "Gow_Ascension",
+    "descricao": "Recompilação estática de God of War: Ascension (PS3) rodando nativamente no PC via ps3recomp, com renderização em D3D12/Vulkan e suporte a áudio e textos em PT-BR.",
+    "termoBuscaCapa": "God_of_War:_Ascension",
     "capaManual": null,
     "dataAtualizacao": "2026-10-21T00:00:05Z",
     "stars": 107,
     "versaoPadrao": "Port Nativo",
     "tags": [
       "PS3",
-      "AutoDiscover",
-      "Python",
-      "Port Nativo"
+      "ps3recomp",
+      "Em Desenvolvimento",
+      "DirectX 12",
+      "Vulkan",
+      "PT-BR",
+      "C++"
     ]
   },
   {
