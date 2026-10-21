@@ -268,6 +268,7 @@ const LOCALES = {
       rights: "© 2026 SSLabs Ecosystem. All rights reserved."
     },
     portDescriptions: {
+  "gow-ascension-pc-pc": "God of War: Ascension (PS3), an experiment in static recompilation to run natively on PC, on ps3recomp. No game data included.",
   "god-of-war-ascension-pc": "Static recompilation of God of War: Ascension (PS3) to run natively on PC via ps3recomp, featuring D3D12/Vulkan renderers and PT-BR audio/subtitles support.",
   "gran-turismo-sport-rygt-pc": "Native PC port of Gran Turismo Sport (PS4) for Windows via Ryty with shadGT Vulkan renderer, featuring full races, 4-player splitscreen and high framerates.",
   "flow-ps3-port-pc": "First native PC port of thatgamecompany's flOw, rebuilt from the PS3 binary through static recompilation.",
@@ -617,6 +618,7 @@ const LOCALES = {
       rights: "© 2026 SSLabs Ecosystem. Todos los derechos reservados."
     },
     portDescriptions: {
+  "gow-ascension-pc-pc": "God of War: Ascension (PS3), an experiment in static recompilation to run natively on PC, on ps3recomp. No game data included.",
   "god-of-war-ascension-pc": "Recompilación estática de God of War: Ascension (PS3) para PC nativo mediante ps3recomp, con renderizado en D3D12/Vulkan y soporte para audio y textos en PT-BR.",
   "gran-turismo-sport-rygt-pc": "Port nativo de Gran Turismo Sport (PS4) para Windows mediante Ryty con renderizador Vulkan shadGT, con carreras completas, pantalla dividida para 4 jugadores y alta tasa de cuadros.",
   "flow-ps3-port-pc": "Primer port nativo para PC de flOw de thatgamecompany, reconstruido a partir del binario de PS3 mediante recompilación estática.",
