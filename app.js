@@ -316,16 +316,16 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 const PORTS_DATABASE = [
   {
     "id": "athelas-pc",
-    "nome": "Play The Return of the King",
+    "nome": "Athelas",
     "console": "XBOX",
     "consoleNome": "Xbox Clássico",
-    "codigoJogo": "XBOX-PORT",
-    "status": "Port Nativo PC",
-    "statusTipo": "playable",
+    "codigoJogo": "4BEA88F9",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
     "repo": "Shagg88/Athelas",
     "repoUrl": "https://github.com/Shagg88/Athelas",
     "descricao": "Play The Return of the King (PC and Xbox) and The Two Towers (Xbox) on a modern PC",
-    "termoBuscaCapa": "Play_The_Return_of_the_King",
+    "termoBuscaCapa": "Athelas",
     "capaManual": null,
     "dataAtualizacao": "2026-10-20T01:31:09Z",
     "stars": 83,
@@ -333,6 +333,7 @@ const PORTS_DATABASE = [
     "tags": [
       "XBOX",
       "AutoDiscover",
+      "Binário Disponível",
       "C",
       "Port Nativo"
     ]

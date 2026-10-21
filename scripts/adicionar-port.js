@@ -114,18 +114,7 @@ const ACRONYMS_MAP = {
 };
 
 function formatarNomeJogo(repoName, repoDesc = '') {
-  // Se a descrição tem o título explícito antes de parênteses ou pontuação
-  if (repoDesc) {
-    const matchDesc = repoDesc.match(/^([A-Za-z0-9\s:_-]{3,40})(?:\s*\(|\s*,|\s*-|\s*is\s|\s*an?\s)/i);
-    if (matchDesc && matchDesc[1].trim().length >= 4) {
-      const candidato = matchDesc[1].trim();
-      if (!/^(a|an|the|this|native|unofficial|pc|port|decomp)\b/i.test(candidato)) {
-        return candidato;
-      }
-    }
-  }
-
-  // Limpar prefixos e sufixos comuns
+  // Limpar prefixos e sufixos comuns do nome do repositório
   let n = repoName
     .replace(/[-_]pc$/i, '')
     .replace(/[-_]recomp$/i, '')
@@ -134,7 +123,7 @@ function formatarNomeJogo(repoName, repoDesc = '') {
     .replace(/[-_]/g, ' ')
     .trim();
 
-  // Substituir siglas comuns no início
+  // Substituir siglas comuns no início (gow -> God of War, etc.)
   const words = n.split(/\s+/);
   if (words.length > 0 && ACRONYMS_MAP[words[0].toLowerCase()]) {
     words[0] = ACRONYMS_MAP[words[0].toLowerCase()];
