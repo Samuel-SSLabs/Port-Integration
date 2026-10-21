@@ -90,7 +90,6 @@ const LOCAL_COVERS_MANIFEST = [
   "ape-escape-recomp",
   "astros-playroom-ps5-pc",
   "asuras-wrath-recomp-pc",
-  "athelas-pc",
   "banjo-recomp-n64",
   "banjo-tooie-scurvy-dog-port-pc",
   "battletanx-global-assault-pc-port-pc",
@@ -434,29 +433,6 @@ const PORTS_DATABASE = [
       "AutoDiscover",
       "Binário Disponível",
       "C++"
-    ]
-  },
-  {
-    "id": "athelas-pc",
-    "nome": "Athelas",
-    "console": "XBOX",
-    "consoleNome": "Xbox Clássico",
-    "codigoJogo": "4BEA88F9",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
-    "repo": "Shagg88/Athelas",
-    "repoUrl": "https://github.com/Shagg88/Athelas",
-    "descricao": "Play The Return of the King (PC and Xbox) and The Two Towers (Xbox) on a modern PC",
-    "termoBuscaCapa": "Athelas",
-    "capaManual": null,
-    "dataAtualizacao": "2026-10-18T23:08:02Z",
-    "stars": 65,
-    "versaoPadrao": "1.1.2",
-    "tags": [
-      "XBOX",
-      "AutoDiscover",
-      "Binário Disponível",
-      "C"
     ]
   },
   {

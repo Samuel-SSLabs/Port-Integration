@@ -7,6 +7,11 @@ on:
         description: 'Lista de repositórios para processar (JSON ou separados por vírgula)'
         required: true
         type: string
+      uploader:
+        description: 'Nome do usuário que enviou pelo PortManager'
+        required: false
+        default: 'Samuel'
+        type: string
 
 permissions:
   contents: write
@@ -38,13 +43,26 @@ jobs:
 
       - name: Commit e Push das Modificações
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          UPLOADER="${{ inputs.uploader }}"
+          if [ "$UPLOADER" = "Samuel" ] || [ "$UPLOADER" = "samuel" ]; then
+            git config user.name "Samuel"
+            git config user.email "78222767+Samuel-SSLabs@users.noreply.github.com"
+          elif [ "$UPLOADER" = "Thiago" ] || [ "$UPLOADER" = "thiago" ]; then
+            git config user.name "Thiago"
+            git config user.email "thiago@sslabs.internal"
+          elif [ "$UPLOADER" = "Miguel" ] || [ "$UPLOADER" = "miguel" ]; then
+            git config user.name "Miguel"
+            git config user.email "miguel@sslabs.internal"
+          else
+            git config user.name "${UPLOADER:-Samuel}"
+            git config user.email "78222767+Samuel-SSLabs@users.noreply.github.com"
+          fi
+
           if [ -n "$(git status --porcelain)" ]; then
             git add app.js assets/covers/ locales.js
-            git commit -m "feat(auto): novos ports adicionados via Cloud Manager"
+            git commit -m "feat(auto): novos ports adicionados via PortManager por ${UPLOADER:-Samuel}"
             git push origin main
-            echo "Ports adicionados e publicados na main com sucesso!"
+            echo "Ports adicionados e publicados na main com sucesso por ${UPLOADER:-Samuel}!"
           else
             echo "Nenhuma modificação gerada."
           fi

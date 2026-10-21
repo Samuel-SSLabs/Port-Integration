@@ -161,7 +161,7 @@ function getMagickCommand() {
   }
 }
 
-async function baixarCapaWikipedia(nomeJogo, idJogo) {
+async function baixarCapaWikipedia(nomeJogo, idJogo, repoSlug = null) {
   const webpPath = path.join(COVERS_DIR, `${idJogo}.webp`);
   const avifPath = path.join(COVERS_DIR, `${idJogo}.avif`);
   const tempInput = path.join(COVERS_DIR, `temp_${idJogo}.jpg`);
@@ -190,6 +190,11 @@ async function baixarCapaWikipedia(nomeJogo, idJogo) {
           else if (first && first.thumbnail) imageUrl = first.thumbnail.source;
         }
       } catch (e) {}
+    }
+
+    // 3. Fallback: GitHub OpenGraph Preview Card
+    if (!imageUrl && repoSlug) {
+      imageUrl = `https://opengraph.githubassets.com/1/${repoSlug}`;
     }
 
     if (imageUrl) {
@@ -277,7 +282,7 @@ async function adicionarPort(argInput) {
   console.log(`   ID do Port:      ${idJogo}\n`);
 
   console.log('2. Baixando e convertendo capas (WebP + AVIF)...');
-  const temCapaLocal = await baixarCapaWikipedia(nomeJogo, idJogo);
+  const temCapaLocal = await baixarCapaWikipedia(nomeJogo, idJogo, repoSlug);
 
   // 3. Montar objeto do Port
   const tagsList = [
