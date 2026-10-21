@@ -315,32 +315,6 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
-    "id": "god-of-war-ascension-pc",
-    "nome": "God of War: Ascension (PC Native)",
-    "console": "PS3",
-    "consoleNome": "PlayStation 3",
-    "codigoJogo": "BCES-01741",
-    "status": "Em Desenvolvimento",
-    "statusTipo": "wip",
-    "repo": "arnaldolima1/gow-ascension-pc",
-    "repoUrl": "https://github.com/arnaldolima1/gow-ascension-pc",
-    "descricao": "Recompilação estática de God of War: Ascension (PS3) rodando nativamente no PC via ps3recomp, com renderização em D3D12/Vulkan e suporte a áudio e textos em PT-BR.",
-    "termoBuscaCapa": "God_of_War:_Ascension",
-    "capaManual": null,
-    "dataAtualizacao": "2026-10-20T15:27:22Z",
-    "stars": 67,
-    "versaoPadrao": "Em Desenvolvimento",
-    "tags": [
-      "PS3",
-      "ps3recomp",
-      "Em Desenvolvimento",
-      "DirectX 12",
-      "Vulkan",
-      "PT-BR",
-      "C++"
-    ]
-  },
-  {
     "id": "infamous-second-son-pc-port-pc",
     "nome": "InFAMOUS Second Son",
     "console": "PS4",
