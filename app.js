@@ -90,6 +90,7 @@ const LOCAL_COVERS_MANIFEST = [
   "ape-escape-recomp",
   "astros-playroom-ps5-pc",
   "asuras-wrath-recomp-pc",
+  "athelas-pc",
   "banjo-recomp-n64",
   "banjo-tooie-scurvy-dog-port-pc",
   "battletanx-global-assault-pc-port-pc",
@@ -313,6 +314,29 @@ const LOCAL_COVERS_MANIFEST = [
 const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
+  {
+    "id": "athelas-pc",
+    "nome": "Play The Return of the King",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "XBOX-PORT",
+    "status": "Port Nativo PC",
+    "statusTipo": "playable",
+    "repo": "Shagg88/Athelas",
+    "repoUrl": "https://github.com/Shagg88/Athelas",
+    "descricao": "Play The Return of the King (PC and Xbox) and The Two Towers (Xbox) on a modern PC",
+    "termoBuscaCapa": "Play_The_Return_of_the_King",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-20T01:31:09Z",
+    "stars": 83,
+    "versaoPadrao": "1.1.3",
+    "tags": [
+      "XBOX",
+      "AutoDiscover",
+      "C",
+      "Port Nativo"
+    ]
+  },
   {
     "id": "god-of-war-ascension-pc",
     "nome": "God of War: Ascension (PC Native)",
