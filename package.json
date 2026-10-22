@@ -1,0 +1,12 @@
+{
+  "name": "port-integration",
+  "version": "1.059.0",
+  "description": "SSLabs Ecosystem • Port Integration Hub",
+  "scripts": {
+    "gerenciador": "node scripts/gerenciador-server.js",
+    "sync-meta": "node scripts/discover-ports.js --sync-meta",
+    "discover": "node scripts/discover-ports.js --append",
+    "enrich": "node scripts/discover-ports.js --enrich-codes",
+    "covers": "node scripts/otimizar-capas.js"
+  }
+}

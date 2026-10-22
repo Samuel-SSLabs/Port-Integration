@@ -1,0 +1,6 @@
+# SSLabs PortIntegration - Robots Exclusion Standard
+User-agent: *
+Allow: /
+
+# Sitemap oficial
+Sitemap: https://portintegration.pages.dev/sitemap.xml
