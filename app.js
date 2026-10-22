@@ -340,6 +340,98 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "killzonerecomp-pc",
+    "nome": "Killzone",
+    "console": "PS2",
+    "consoleNome": "PlayStation 2",
+    "codigoJogo": "SCUS-97402",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "drakolordx7/KillzoneRecomp",
+    "repoUrl": "https://github.com/drakolordx7/KillzoneRecomp",
+    "descricao": "Native PC port of Killzone (PS2) via static recompilation. Mouse and keyboard, 120+ fps, upscaling. Bring your own disc.",
+    "termoBuscaCapa": "Killzone",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-22T03:24:07Z",
+    "stars": 90,
+    "versaoPadrao": "v0.1.2-alpha",
+    "tags": [
+      "PS2",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "3on3nhl-recomp-pc",
+    "nome": "3 On 3 NHL Arcade",
+    "console": "XBOX360",
+    "consoleNome": "Xbox 360",
+    "codigoJogo": "58410975",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Wndwsqrrl/3on3NHL-recomp",
+    "repoUrl": "https://github.com/Wndwsqrrl/3on3NHL-recomp",
+    "descricao": "Native PC port of 3 on 3 NHL Arcade (Xbox 360) via static recompilation.",
+    "termoBuscaCapa": "3 On 3 NHL Arcade",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-06T17:26:44Z",
+    "stars": 10,
+    "versaoPadrao": "v0.1.1",
+    "tags": [
+      "XBOX360",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C#"
+    ]
+  },
+  {
+    "id": "wipeout_pc-pc",
+    "nome": "Wipeout",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA07671",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "AbdelmoumenDeghbouche/wipeout_pc",
+    "repoUrl": "https://github.com/AbdelmoumenDeghbouche/wipeout_pc",
+    "descricao": "WipEout Omega Collection (PS4) native PC port for Windows: original x86-64 code on the CPU, PS4 runtime, shadPS4 Vulkan video core. Early development. No game files included.",
+    "termoBuscaCapa": "Wipeout",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-22T08:06:51Z",
+    "stars": 46,
+    "versaoPadrao": "windows-v0.2.1",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "driveclub-port-pc",
+    "nome": "Driveclub",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA00003",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "qnfn/Driveclub-Port",
+    "repoUrl": "https://github.com/qnfn/Driveclub-Port",
+    "descricao": "Driveclub PS4 PC Port",
+    "termoBuscaCapa": "Driveclub",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-21T18:26:39Z",
+    "stars": 15,
+    "versaoPadrao": "windows-v0.4.6",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "driv3r-decompilation-pc",
     "nome": "DRIV3R (Driver 3)",
     "console": "PC",
