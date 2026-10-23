@@ -8316,45 +8316,92 @@ if (reportOverlayEl) {
   });
 }
 
-// ── MONITOR DE PRESENÇA EM TEMPO REAL (CLOUDFLARE PRESENCE) ──
-function iniciarMonitorPresenca() {
-  const countEls = document.querySelectorAll('.live-presence-count');
-  if (!countEls || countEls.length === 0) return;
+// ── MONITOR DE PRESENÇA EM TEMPO REAL OTIMIZADO (CLOUDFLARE) ──
+const INTERVALO_PING = 180000; // 3 minutos (reduz o tráfego em ~78% comparado a 40s)
+let timerLoop = null;
+let valorOnlineBase = 12;
 
-  let sessionId = sessionStorage.getItem('sslabs_presence_sid');
-  if (!sessionId) {
-    sessionId = 'sid_' + Math.random().toString(36).substring(2, 12);
-    sessionStorage.setItem('sslabs_presence_sid', sessionId);
+function obterUrlApiOnline() {
+  if (typeof CLOUDFLARE_WORKER_PROXY !== 'undefined' && CLOUDFLARE_WORKER_PROXY) {
+    return CLOUDFLARE_WORKER_PROXY.replace(/\/$/, '') + '/api/online';
   }
+  return '/api/online';
+}
 
-  // Calculo orgânico realista baseado no ciclo horário
-  function calcularPresencaOrganica() {
-    const hora = new Date().getHours();
-    // Horário de pico (14h as 23h): 14 a 28 usuários. Madrugada: 6 a 12 usuários.
-    const base = (hora >= 13 && hora <= 23) ? 18 : 9;
-    const variacao = Math.floor(Math.sin(Date.now() / 60000) * 4) + Math.floor(Math.random() * 3);
-    return Math.max(5, base + variacao);
-  }
+// 1. Função de sincronização com o Worker
+async function sincronizarPresenca() {
+  if (typeof document !== 'undefined' && document.hidden) return; // Não envia nada se a aba estiver em segundo plano
 
-  async function atualizarPresenca() {
-    try {
-      const res = await fetch(`${CLOUDFLARE_WORKER_PROXY}/api/presence?sid=${sessionId}`, {
-        method: 'GET',
-        cache: 'no-store'
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data && typeof data.activeUsers === 'number' && data.activeUsers > 0) {
-          countEls.forEach(el => el.textContent = data.activeUsers);
-          return;
-        }
+  try {
+    const url = obterUrlApiOnline();
+    const res = await fetch(url, { method: 'POST' });
+    if (res.ok) {
+      const data = await res.json();
+      const onlineNum = (typeof data.online === 'number') ? data.online : ((typeof data.activeUsers === 'number') ? data.activeUsers : valorOnlineBase);
+      if (onlineNum > 0) {
+        valorOnlineBase = onlineNum;
+        atualizarDisplay(valorOnlineBase);
       }
-    } catch (e) {}
-
-    // Fallback dinâmico suave
-    const val = calcularPresencaOrganica(); countEls.forEach(el => el.textContent = val);
+    }
+  } catch (err) {
+    // Falha silenciosa de rede para preservar estabilidade da interface
   }
+}
 
-  atualizarPresenca();
-  setInterval(atualizarPresenca, 40000); // Heartbeat a cada 40s
+// 2. Atualização visual no HTML (compatível com id contador-online e classes .live-presence-count)
+function atualizarDisplay(valor) {
+  const elementoUnico = document.getElementById('contador-online');
+  if (elementoUnico) elementoUnico.innerText = valor;
+
+  const elementos = document.querySelectorAll('.live-presence-count');
+  elementos.forEach(el => {
+    el.textContent = valor;
+  });
+}
+
+// 3. Efeito visual contínuo (zero requisições de rede)
+// Faz o número flutuar sutilmente (+/- 1) a cada 25 segundos para parecer ativo
+setInterval(() => {
+  if (typeof document !== 'undefined' && !document.hidden && valorOnlineBase > 3) {
+    const oscilacao = Math.random() > 0.5 ? 1 : -1;
+    atualizarDisplay(valorOnlineBase + oscilacao);
+  }
+}, 25000);
+
+// 4. Controle inteligente de abas (Page Visibility API)
+function iniciarMonitoramento() {
+  sincronizarPresenca();
+  if (timerLoop) clearInterval(timerLoop);
+  timerLoop = setInterval(sincronizarPresenca, INTERVALO_PING);
+}
+
+// Alias de retrocompatibilidade para o ciclo de inicialização
+function iniciarMonitorPresenca() {
+  iniciarMonitoramento();
+}
+
+if (typeof document !== 'undefined') {
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      // Para imediatamente as requisições quando a pessoa sai da aba
+      if (timerLoop) clearInterval(timerLoop);
+    } else {
+      // Retoma no instante em que a aba volta ao foco
+      sincronizarPresenca();
+      if (timerLoop) clearInterval(timerLoop);
+      timerLoop = setInterval(sincronizarPresenca, INTERVALO_PING);
+    }
+  });
+}
+
+// 5. Baixa imediata ao fechar a página (sendBeacon não trava o navegador)
+if (typeof window !== 'undefined') {
+  window.addEventListener('pagehide', () => {
+    const url = obterUrlApiOnline() + '?saida=1';
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(url);
+    } else {
+      fetch(url, { method: 'POST', keepalive: true }).catch(() => {});
+    }
+  });
 }
