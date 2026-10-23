@@ -4642,30 +4642,6 @@ const PORTS_DATABASE = [
     ]
   },
   {
-    "id": "klexster-god-of-war-recomp",
-    "nome": "God of War I & II (PS2 Recomp)",
-    "console": "PS2",
-    "consoleNome": "PlayStation 2",
-    "codigoJogo": "SCUS-97399",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
-    "repo": "Klexster/god-of-war-recomp",
-    "repoUrl": "https://github.com/Klexster/god-of-war-recomp",
-    "descricao": "Recompilação estática completa de God of War 1 e 2 rodando nativamente no PC com resolução 4K, 120 FPS e suporte a mouse/teclado.",
-    "termoBuscaCapa": "God_of_War_(2005_video_game)",
-    "capaManual": null,
-    "dataAtualizacao": "2026-10-16T18:00:00Z",
-    "stars": 250,
-    "versaoPadrao": "v1.0.0",
-    "tags": [
-      "PS2",
-      "Sony Santa Monica",
-      "Kratos",
-      "Hack and Slash",
-      "PS2Recomp"
-    ]
-  },
-  {
     "id": "felipeprado0-gow3-pc",
     "nome": "God of War III Remastered (PC Native)",
     "console": "PS4",
