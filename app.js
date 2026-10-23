@@ -340,6 +340,51 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "newsuperpaperbros-pc",
+    "nome": "Super Paper Mario",
+    "console": "GC",
+    "consoleNome": "GameCube",
+    "codigoJogo": "R8PE01",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "josiahg2502-glitch/NewSuperPaperBros",
+    "repoUrl": "https://github.com/josiahg2502-glitch/NewSuperPaperBros",
+    "descricao": "Native PC port of Super Paper Mario (Wii) by static recompilation: 4K, cinematic widescreen, 120 fps, HQ music, HD textures, gamepad and pointer support. Bring your own disc.",
+    "termoBuscaCapa": "Super Paper Mario",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-18T16:49:09Z",
+    "stars": 111,
+    "versaoPadrao": "v1.0.3",
+    "tags": [
+      "GC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "pandora-tower-pc-pc",
+    "nome": "Pandora Tower",
+    "console": "PC",
+    "consoleNome": "PC Nativo",
+    "codigoJogo": "PC-PANDORATOW",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "RecompPort/pandora-tower-pc",
+    "repoUrl": "https://github.com/RecompPort/pandora-tower-pc",
+    "descricao": "Pandora's Tower PC v1.0    Native Windows port created using static recompilation (wiikit).  Does not include any game files: you'll need your own copy (ISO),  and the game is compiled on your PC during installation (about 5 minutes).",
+    "termoBuscaCapa": "Pandora Tower",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-14T17:12:45Z",
+    "stars": 13,
+    "versaoPadrao": "recompiled",
+    "tags": [
+      "PC",
+      "AutoDiscover",
+      "Binário Disponível"
+    ]
+  },
+  {
     "id": "killzonerecomp-pc",
     "nome": "Killzone",
     "console": "PS2",
