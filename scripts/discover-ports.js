@@ -245,6 +245,24 @@ function adivinharConsole(repoData) {
 }
 
 const MAP_OVERRIDE_JOGOS = {
+  'sciaschi/CBFD-Recompiled': {
+    codigoJogo: 'NUS-NFUE',
+    nome: "Conker's Bad Fur Day (CBFD Recomp)",
+    console: 'N64',
+    consoleNome: 'Nintendo 64',
+    termoBuscaCapa: "Conker's_Bad_Fur_Day",
+    descricao: "Recompilação estática de Conker's Bad Fur Day (N64) para PC com suporte a multiplayer local e online, humor sem censura e 60 FPS cravados.",
+    tags: ['N64', 'Rareware', 'Comedy', 'Multiplayer', 'N64Recomp', 'Binário Disponível']
+  },
+  'Conker64Recomp/conker64-recompiled': {
+    codigoJogo: 'NUS-NFUE',
+    nome: "Conker's Bad Fur Day (conker64-recompiled)",
+    console: 'N64',
+    consoleNome: 'Nintendo 64',
+    termoBuscaCapa: "Conker's_Bad_Fur_Day",
+    descricao: "Port nativo de Conker's Bad Fur Day (N64) via Static MIPS Recompilation com renderização SDL2, áudio original e suporte a widescreen panorâmico.",
+    tags: ['N64', 'Rare', 'Conker', 'Recompilação', 'Widescreen']
+  },
   'VitoMiguelF/crashott-pc': {
     codigoJogo: '4541081B',
     nome: 'Crash of the Titans',
