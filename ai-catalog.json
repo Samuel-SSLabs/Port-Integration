@@ -8,9 +8,10 @@
   },
   "entries": [
     {
-      "identifier": "urn:air:sslabs:port-catalog",
+      "identifier": "urn:air:portintegration.pages.dev:catalog:ports",
       "displayName": "Catálogo de Ports Nativos para PC",
-      "mediaType": "application/json",
+      "type": "application/ai-catalog+json",
+      "mediaType": "application/ai-catalog+json",
       "description": "Índice estruturado com mais de 260 projetos de recompilação estática e ports nativos de jogos de consoles (PS5, PS4, Xbox, Switch, N64) para Windows e Linux sem emulação.",
       "tags": [
         "gaming",
@@ -33,7 +34,7 @@
         "verificar status jogável de Bloodborne PC"
       ],
       "url": "https://portintegration.pages.dev/llms.txt",
-      "version": "1.072.0",
+      "version": "1.073.0",
       "updatedAt": "2026-10-24T12:00:00Z"
     }
   ]

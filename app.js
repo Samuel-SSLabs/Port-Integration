@@ -6649,21 +6649,27 @@ const state = {
   cacheCapas: {}
 };
 
-// ── INICIALIZAÇÃO DA APLICAÇÃO ──
+// ── INICIALIZAÇÃO DA APLICAÇÃO OTIMIZADA (FASE CRÍTICA + IDLE BACKGROUND) ──
 document.addEventListener('DOMContentLoaded', () => {
-  inicializarSistemaIdiomas();
+  // 1. FASE CRÍTICA IMEDIATA (< 15ms): Pinta a interface inicial instantaneamente
   inicializarTema();
   inicializarFiltrosURL();
+  renderizarCatalogo();
+  atualizarEstatisticasHero();
+  configurarCliqueCards();
   configurarEventosBusca();
   configurarEventosFiltros();
-  configurarCliqueCards();
-  configurarModalSugestoes();
-  configurarBotaoVoltarAoTopo();
-  configurarEventosApoio();
-  atualizarEstatisticasHero();
-  sincronizarStatusAnyPS5();
-  renderizarCatalogo();
-  iniciarMonitorPresenca();
+
+  // 2. FASE SECUNDÁRIA (Executa em tempo ocioso sem bloquear FCP, LCP e TBT)
+  const agendarSegundoPlano = window.requestIdleCallback || ((cb) => setTimeout(cb, 200));
+  agendarSegundoPlano(() => {
+    inicializarSistemaIdiomas();
+    configurarModalSugestoes();
+    configurarBotaoVoltarAoTopo();
+    configurarEventosApoio();
+    sincronizarStatusAnyPS5();
+    iniciarMonitorPresenca();
+  });
 });
 
 // ── CONTROLE DE TEMA (CLARO / ESCURO) ──
