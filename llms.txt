@@ -1,0 +1,21 @@
+# PortIntegration
+
+> PortIntegration é um catálogo aberto e curado da SSLabs reunindo projetos de recompilação estática e ports nativos de jogos de consoles (PS5, PS4, PS3, PS2, PS1, Xbox 360, Xbox Clássico, Switch, Nintendo 64, GameCube, Wii, GBA e SNES) rodando nativamente no computador (Windows e Linux).
+
+O projeto centraliza metadados oficiais, seriais de identificação, repositórios públicos no GitHub e capas de mais de 260 jogos portados sem uso de emulação tradicional.
+
+## Recursos e Navegação
+- [Catálogo Web Principal](https://portintegration.pages.dev/): Interface de busca com filtros por console, ordenação por estrelas e releases.
+- [Catálogo Agêntico JSON](https://portintegration.pages.dev/.well-known/ai-catalog.json): Especificação de descoberta em formato padronizado ARD e WebMCP.
+- [Repositório Aberto no GitHub](https://github.com/Samuel-SSLabs/Port-Integration): Código-fonte e banco de dados aberto do catálogo.
+
+## Plataformas no Catálogo
+- [PlayStation 4 e 5](https://portintegration.pages.dev/?console=ps4): Ports nativos baseados em shadPS4, AnyPS5 e tradução de shaders para Vulkan.
+- [Xbox 360 e Clássico](https://portintegration.pages.dev/?console=xbox360): Recompilações estáticas baseadas em XenonRecomp e XboxXBERecomp.
+- [Nintendo 64](https://portintegration.pages.dev/?console=n64): Ports nativos via N64Recomp e descompilações C.
+- [Nintendo Switch](https://portintegration.pages.dev/?console=switch): Recompilações de binários AArch64 com renderização em Vulkan.
+- [Retro e Portáteis](https://portintegration.pages.dev/?console=retro): Ports de Game Boy Advance, Nintendo DS, PS1, PS2 e Super Nintendo.
+
+## Optional
+- [AnyPS5 Project](https://github.com/boykopovar/AnyPS5): Reimplementação nativa de bibliotecas de sistema do PlayStation 5 para PC.
+- [SSLabs EcoSystem](https://github.com/Samuel-SSLabs): Organização e ferramentas de infraestrutura.

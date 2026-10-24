@@ -1,0 +1,40 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "SSLabs PortIntegration",
+    "identifier": "did:web:portintegration.pages.dev",
+    "documentationUrl": "https://github.com/Samuel-SSLabs/Port-Integration",
+    "logoUrl": "https://portintegration.pages.dev/assets/logo-sslabs.png"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:sslabs:port-catalog",
+      "displayName": "Catálogo de Ports Nativos para PC",
+      "mediaType": "application/json",
+      "description": "Índice estruturado com mais de 260 projetos de recompilação estática e ports nativos de jogos de consoles (PS5, PS4, Xbox, Switch, N64) para Windows e Linux sem emulação.",
+      "tags": [
+        "gaming",
+        "native-ports",
+        "recompilation",
+        "pc-gaming",
+        "decompilation",
+        "emulation-free"
+      ],
+      "skills": [
+        "SearchPorts",
+        "FilterByConsole",
+        "GetGameRepository",
+        "CheckPlayabilityStatus"
+      ],
+      "representativeQueries": [
+        "encontrar ports nativos de PS4 para PC",
+        "jogos de Nintendo 64 recompilados para computador",
+        "ports nativos de Xbox clássico para Windows",
+        "verificar status jogável de Bloodborne PC"
+      ],
+      "url": "https://portintegration.pages.dev/llms.txt",
+      "version": "1.072.0",
+      "updatedAt": "2026-10-24T12:00:00Z"
+    }
+  ]
+}
