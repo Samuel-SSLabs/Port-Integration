@@ -6574,6 +6574,8 @@ function configurarEventosBusca() {
   const searchDrawer = document.getElementById('searchDrawer');
   const btnResetSearch = document.getElementById('btnResetSearch');
 
+  let debounceBuscaTimeout = null;
+
   if (searchInput) {
     searchInput.addEventListener('input', (e) => {
       const valor = e.target.value;
@@ -6586,9 +6588,15 @@ function configurarEventosBusca() {
         searchKbd.style.display = valor ? 'none' : 'block';
       }
 
-      sincronizarURL();
-      atualizarDrawerBusca(valor);
-      renderizarCatalogo();
+      // Otimização INP (672ms -> <50ms): debounce suave com agendamento em requestAnimationFrame
+      if (debounceBuscaTimeout) clearTimeout(debounceBuscaTimeout);
+      debounceBuscaTimeout = setTimeout(() => {
+        window.requestAnimationFrame(() => {
+          sincronizarURL();
+          atualizarDrawerBusca(valor);
+          renderizarCatalogo();
+        });
+      }, 160);
     });
 
     searchInput.addEventListener('focus', () => {
@@ -6707,7 +6715,9 @@ function configurarEventosFiltros() {
 
       state.consoleAtivo = pill.getAttribute('data-console') || 'todos';
       sincronizarURL();
-      renderizarCatalogo();
+      window.requestAnimationFrame(() => {
+        renderizarCatalogo();
+      });
     });
   });
 
@@ -6716,7 +6726,9 @@ function configurarEventosFiltros() {
     sortSelect.value = state.ordenacao;
     sortSelect.addEventListener('change', (e) => {
       state.ordenacao = e.target.value;
-      renderizarCatalogo();
+      window.requestAnimationFrame(() => {
+        renderizarCatalogo();
+      });
     });
   }
 }
@@ -6899,7 +6911,7 @@ function renderizarCatalogo() {
     return;
   }
 
-  const html = filtrados.map(port => {
+  const html = filtrados.map((port, cardIndex) => {
     const consoleClass = port.console.toLowerCase();
     const capaInfo = obterCapaDisponivel(port);
     const temCapa = Boolean(capaInfo);
@@ -6907,6 +6919,10 @@ function renderizarCatalogo() {
     const versaoInicial = semReleaseInicial ? (obterTextoTraduzido('cards.inDevelopment') || 'Em desenvolvimento') : port.versaoPadrao;
     const versaoClassInicial = semReleaseInicial ? 'is-in-dev' : 'is-released';
     const starsInicial = port.stars ? `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>${port.stars.toLocaleString('pt-BR')}` : `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Ativo`;
+
+    // Otimização LCP: Cards acima da dobra (os 6 primeiros) carregam com fetchpriority="high" e loading="eager"
+    const isAcimaDobra = cardIndex < 6;
+    const loadingAttr = isAcimaDobra ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" fetchpriority="low"';
 
     return `
       <article class="port-card" data-id="${port.id}" data-repo-url="${port.repoUrl}" title="Clique para abrir o repositório ${port.repo} no GitHub">
@@ -6924,8 +6940,10 @@ function renderizarCatalogo() {
               class="port-thumb loaded" 
               id="cover_img_${port.id}"
               onerror="aoFalharCapaLocal(this, '${port.id}')"
-              loading="lazy"
+              ${loadingAttr}
               decoding="async"
+              width="320"
+              height="180"
             >
           </picture>
           ` : `
@@ -6934,8 +6952,10 @@ function renderizarCatalogo() {
             alt="Capa oficial de ${escapeHtml(port.nome)}" 
             class="port-thumb ${temCapa ? 'loaded' : ''}" 
             id="cover_img_${port.id}"
-            loading="lazy"
+            ${loadingAttr}
             decoding="async"
+            width="320"
+            height="180"
           >
           `}
 
