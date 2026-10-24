@@ -1143,6 +1143,8 @@ body {
   transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
   position: relative;
   cursor: pointer;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 420px;
 }
 
 .port-card:hover {

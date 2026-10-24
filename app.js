@@ -6995,7 +6995,7 @@ async function sincronizarStatusAnyPS5() {
 
   // 1. Sincronizar Bibliotecas
   try {
-    const resLib = await fetch('https://boykopovar.github.io/AnyPS5/badge-libraries.svg', { cache: 'no-cache' });
+    const resLib = await fetch('./assets/badge-libraries.svg');
     if (resLib.ok) {
       const svgText = await resLib.text();
       const val = extrairValorSvg(svgText);
@@ -7009,7 +7009,7 @@ async function sincronizarStatusAnyPS5() {
 
   // 2. Sincronizar Shaders
   try {
-    const resShader = await fetch('https://boykopovar.github.io/AnyPS5/badge-shaders.svg', { cache: 'no-cache' });
+    const resShader = await fetch('./assets/badge-shaders.svg');
     if (resShader.ok) {
       const svgText = await resShader.text();
       const val = extrairValorSvg(svgText);
