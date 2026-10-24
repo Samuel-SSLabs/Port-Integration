@@ -340,6 +340,121 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "crashott-pc-pc",
+    "nome": "Crashott",
+    "console": "XBOX360",
+    "consoleNome": "Xbox 360",
+    "codigoJogo": "XBOX360-CRASHOTTPC",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "VitoMiguelF/crashott-pc",
+    "repoUrl": "https://github.com/VitoMiguelF/crashott-pc",
+    "descricao": "Crash of the Titans (Xbox 360) statically recompiled for Windows: DLSS/FSR, PC controls, PT-BR, subtitles, mods. Bring your own copy of the game.",
+    "termoBuscaCapa": "Crashott",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-24T07:07:42Z",
+    "stars": 40,
+    "versaoPadrao": "v1.04",
+    "tags": [
+      "XBOX360",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "oogiesrevengerecompiled-pc",
+    "nome": "OogiesRevengeRecompiled",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "42560004",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "josiahg2502-glitch/OogiesRevengeRecompiled",
+    "repoUrl": "https://github.com/josiahg2502-glitch/OogiesRevengeRecompiled",
+    "descricao": "Statically recompiled PC port of The Nightmare Before Christmas: Oogie's Revenge (Xbox): up to 4K, ultrawide, 120 fps, ray-traced ambient occlusion, gamepads, the game's own menu. Bring your own disc.",
+    "termoBuscaCapa": "OogiesRevengeRecompiled",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-23T14:14:12Z",
+    "stars": 34,
+    "versaoPadrao": "v1.0.1",
+    "tags": [
+      "XBOX",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "ufc4-pc-port-pc",
+    "nome": "UFC4",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA14209",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "schans-arg/UFC4-PC-Port",
+    "repoUrl": "https://github.com/schans-arg/UFC4-PC-Port",
+    "descricao": "Experimental PS4-to-PC port of EA SPORTS UFC 4. Community source project; game files are not included.",
+    "termoBuscaCapa": "UFC4",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-17T21:39:58Z",
+    "stars": 11,
+    "versaoPadrao": "ufc4-v0.0.11-preview.1",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "dead-or-alive-xtreme-2-recompilation-pc",
+    "nome": "Dead Or Alive Xtreme 2 Recompilation",
+    "console": "XBOX360",
+    "consoleNome": "Xbox 360",
+    "codigoJogo": "XBOX360-DEADORALIV",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "hibikifukui22/Dead-or-Alive-Xtreme-2-Recompilation",
+    "repoUrl": "https://github.com/hibikifukui22/Dead-or-Alive-Xtreme-2-Recompilation",
+    "descricao": "DOAX 2 Recompilation with RexGlue",
+    "termoBuscaCapa": "Dead Or Alive Xtreme 2 Recompilation",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-24T01:08:20Z",
+    "stars": 40,
+    "versaoPadrao": "v1.1.4",
+    "tags": [
+      "XBOX360",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "basara4-native-pc-pc",
+    "nome": "Basara4 Native",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA01159",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "razzconnect/basara4-native-pc",
+    "repoUrl": "https://github.com/razzconnect/basara4-native-pc",
+    "descricao": "Sengoku Basara 4 Sumeragi Native PC Port & Launcher. Direct x86-64 CPU Execution, Re-implemented PS4 System Contracts & Vulkan Translation by Razz",
+    "termoBuscaCapa": "Basara4 Native",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-23T19:54:49Z",
+    "stars": 15,
+    "versaoPadrao": "v1.0.1",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "newsuperpaperbros-pc",
     "nome": "Super Paper Mario",
     "console": "GC",
