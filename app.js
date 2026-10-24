@@ -7134,8 +7134,7 @@ function gerarHtmlCard(port, cardIndex) {
             onerror="aoFalharCapaLocal(this, '${port.id}')"
             ${loadingAttr}
             decoding="async"
-            width="320"
-            height="180"
+            width="1280" height="720"
           >
         </picture>
         ` : `
@@ -7146,8 +7145,7 @@ function gerarHtmlCard(port, cardIndex) {
           id="cover_img_${port.id}"
           ${loadingAttr}
           decoding="async"
-          width="320"
-          height="180"
+          width="1280" height="720"
         >
         `}
 
@@ -7386,7 +7384,7 @@ async function carregarCapaInteligente(port) {
     try {
       // 1. Busca inteligente via Wikipedia Search API (retorna 200 mesmo sem match, evitando poluir o console com 404 de rede)
       const termoLimpo = (port.nome || '').replace(/\(.*?\)/g, '').replace(/\[.*?\]/g, '').replace(/recomp|native|port|pc/gi, '').trim();
-      const resSearch = await fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(termoLimpo + ' video game')}&gsrlimit=1&prop=pageimages&pithumbsize=600&piprop=thumbnail&format=json&origin=*`);
+      const resSearch = await fetch(`https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(termoLimpo + ' video game')}&gsrlimit=1&prop=pageimages&pithumbsize=1280&piprop=thumbnail&format=json&origin=*`);
       if (resSearch.ok) {
         const dataSearch = await resSearch.json();
         if (dataSearch.query && dataSearch.query.pages) {

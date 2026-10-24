@@ -113,7 +113,7 @@ async function buscarUrlCapaWikipedia(port) {
 
   // 2. Tentar busca da Wikipedia
   try {
-    const urlSearch = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(port.nome + ' video game')}&gsrlimit=1&prop=pageimages&pithumbsize=800&piprop=thumbnail|original&format=json&origin=*`;
+    const urlSearch = `https://en.wikipedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(port.nome + ' video game')}&gsrlimit=1&prop=pageimages&pithumbsize=1280&piprop=thumbnail|original&format=json&origin=*`;
     const dataSearch = await fetchJson(urlSearch);
     if (dataSearch.query && dataSearch.query.pages) {
       const pages = Object.values(dataSearch.query.pages);
@@ -139,9 +139,9 @@ function converterParaFormatos(inputBuffer, webpPath, avifPath) {
 
   try {
     // 1. WebP (qualidade 82%, largura max 600px, sem metadados)
-    execSync(`magick "${tempInput}" -resize "600x>" -quality 82 -strip "${webpPath}"`, { stdio: 'ignore' });
+    execSync(`magick "${tempInput}" -filter Lanczos -resize "720x720^" -unsharp 0x0.75+0.75+0.008 -quality 86 "${webpPath}"`, { stdio: 'ignore' });
     // 2. AVIF (qualidade 65%, largura max 600px, sem metadados)
-    execSync(`magick "${tempInput}" -resize "600x>" -quality 65 -strip "${avifPath}"`, { stdio: 'ignore' });
+    execSync(`magick "${webpPath}" -quality 70 -strip "${avifPath}"`, { stdio: 'ignore' });
   } finally {
     if (fs.existsSync(tempInput)) {
       try { fs.unlinkSync(tempInput); } catch (e) {}

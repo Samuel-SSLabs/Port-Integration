@@ -161,7 +161,7 @@ suggestModal: {
       repoLink: "Repositório do Projeto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Escuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.073"
+      rights: "© 2026 SSLabs EcoSystem • 1.074"
     }
   },
 
@@ -314,7 +314,7 @@ suggestModal: {
       repoLink: "Project Repository",
       themeLabelLight: "Light Mode",
       themeLabelDark: "Dark Mode",
-      rights: "© 2026 SSLabs EcoSystem • 1.073"
+      rights: "© 2026 SSLabs EcoSystem • 1.074"
     },
     portDescriptions: {
   "driv3r-decompilation-pc": "Re-implementation of the game Driv3r (Driver 3) using modern C++",
@@ -698,7 +698,7 @@ suggestModal: {
       repoLink: "Repositorio del Proyecto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Oscuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.073"
+      rights: "© 2026 SSLabs EcoSystem • 1.074"
     },
     portDescriptions: {
   "driv3r-decompilation-pc": "Re-implementation of the game Driv3r (Driver 3) using modern C++",
