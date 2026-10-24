@@ -174,6 +174,7 @@ const LOCAL_COVERS_MANIFEST = [
   "frankhun88453-cod3recomp",
   "gears-judgment-recomp",
   "genrythefox0-project-2099",
+  "gnsb-ufc-3-ps4-port-pc",
   "god-of-war-3-remastered-pc-port-ps4-arabic-translation-pc",
   "god-of-war-ascension-pc",
   "god-of-war-ps2-recomp",
@@ -204,8 +205,10 @@ const LOCAL_COVERS_MANIFEST = [
   "killzonerecomp-pc",
   "klorfmorf-goemon64recomp",
   "laytonmotdmpcport-pc",
+  "lesca-killzone-shadowfall-pc",
   "letsgo-recomp-pc",
   "lfarroco-ogre-battle-64-recomp",
+  "linkssy2-darkwatchdarkeredition-pc",
   "linkssy2-roadrash64recompiled",
   "littlebigplanet-3---pc",
   "littlebitua-dprecomp",
@@ -6423,6 +6426,79 @@ const PORTS_DATABASE = [
       "Racing",
       "McLaren F1",
       "Retro"
+    ]
+  },
+  {
+    "id": "gnsb-ufc-3-ps4-port-pc",
+    "nome": "EA Sports UFC 3",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA06534",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "GNSB/UFC-3-PS4-PORT-LINUX-WINDOWS",
+    "repoUrl": "https://github.com/GNSB/UFC-3-PS4-PORT-LINUX-WINDOWS",
+    "descricao": "Port nativo para PC (Linux e Windows) de EA Sports UFC 3. Execução direta x86-64 sem emulação de CPU, traduzindo o trabalho de GPU do PS4 para Vulkan (baseado no shadPS4/bbport).",
+    "termoBuscaCapa": "EA_Sports_UFC_3",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-21T18:00:00Z",
+    "stars": 110,
+    "versaoPadrao": "v0.1.9",
+    "tags": [
+      "PS4",
+      "Vulkan",
+      "EA Sports",
+      "Luta",
+      "C"
+    ]
+  },
+  {
+    "id": "lesca-killzone-shadowfall-pc",
+    "nome": "Killzone Shadow Fall",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA00190",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "lesca-191204/killzone-shadowfall-pc",
+    "repoUrl": "https://github.com/lesca-191204/killzone-shadowfall-pc",
+    "descricao": "Port nativo de Killzone Shadow Fall para Windows. O código do jogo roda diretamente no processador e a parte gráfica é traduzida para Vulkan, contando inclusive com um modo de câmera em terceira pessoa.",
+    "termoBuscaCapa": "Killzone_Shadow_Fall",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-23T18:00:00Z",
+    "stars": 247,
+    "versaoPadrao": "v0.3.0",
+    "tags": [
+      "PS4",
+      "Vulkan",
+      "Guerrilla Games",
+      "FPS",
+      "C++"
+    ]
+  },
+  {
+    "id": "linkssy2-darkwatchdarkeredition-pc",
+    "nome": "Darkwatch: Darker Edition",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "43430016",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "linkssy2/DarkwatchDarkerEdition",
+    "repoUrl": "https://github.com/linkssy2/DarkwatchDarkerEdition",
+    "descricao": "Port nativo (Darker Edition) impulsionado pelo projeto de recompilação XboxXBERecomp. Traz o aclamado faroeste vampírico para o Windows em altas resoluções.",
+    "termoBuscaCapa": "Darkwatch",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-20T18:00:00Z",
+    "stars": 120,
+    "versaoPadrao": "v1.0.0",
+    "tags": [
+      "XBOX",
+      "Recomp",
+      "High Moon Studios",
+      "Capcom",
+      "FPS",
+      "C++"
     ]
   }
 ];

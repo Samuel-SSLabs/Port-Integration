@@ -1,6 +1,6 @@
 {
   "name": "port-integration",
-  "version": "1.065.0",
+  "version": "1.066.0",
   "description": "SSLabs Ecosystem • Port Integration Hub",
   "scripts": {
     "gerenciador": "node scripts/gerenciador-server.js",
