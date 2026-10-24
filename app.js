@@ -8462,31 +8462,48 @@ if (reportOverlayEl) {
   });
 }
 
-// ── MONITOR DE PRESENÇA EM TEMPO REAL OTIMIZADO (CLOUDFLARE) ──
-const INTERVALO_PING = 180000; // 3 minutos (reduz o tráfego em ~78% comparado a 40s)
-let timerLoop = null;
-let valorOnlineBase = 12;
+// ── MONITOR DE PRESENÇA EM TEMPO REAL ULTRA-OTIMIZADO (CLOUDFLARE EDGE) ──
+const INTERVALO_PING_PRESENCA = 300000; // 5 minutos (máximo de 12 pings/hora por aba ativa)
+const THROTTLE_MINIMO_PING = 180000;    // 3 minutos mínimos obrigatórios entre requisições reais
+let timerLoopPresenca = null;
+let valorOnlineBase = 14;
+let ultimoPingTimestamp = 0;
 
-function obterUrlApiOnline() {
-  if (typeof CLOUDFLARE_WORKER_PROXY !== 'undefined' && CLOUDFLARE_WORKER_PROXY) {
-    return CLOUDFLARE_WORKER_PROXY.replace(/\/$/, '') + '/api/online';
-  }
-  return '/api/online';
+function obterUrlApiPresenca() {
+  const base = (typeof CLOUDFLARE_WORKER_PROXY !== 'undefined' && CLOUDFLARE_WORKER_PROXY)
+    ? CLOUDFLARE_WORKER_PROXY.replace(/\/$/, '')
+    : 'https://sslabs-port-proxy.sstudioslabs.workers.dev';
+  return `${base}/api/online`;
 }
 
-// 1. Função de sincronização com o Worker
-async function sincronizarPresenca() {
-  if (typeof document !== 'undefined' && document.hidden) return; // Não envia nada se a aba estiver em segundo plano
+// 1. Sincronização inteligente com Edge Cache e SessionStorage
+async function sincronizarPresenca(forcar = false) {
+  if (typeof document !== 'undefined' && document.hidden) return; // Zero consumo em abas em background
+
+  const agora = Date.now();
+  // Trava de throttle rigorosa: nunca dispara se o último ping foi há menos de 3 minutos
+  if (!forcar && (agora - ultimoPingTimestamp < THROTTLE_MINIMO_PING)) {
+    return;
+  }
 
   try {
-    const url = obterUrlApiOnline();
-    const res = await fetch(url, { method: 'POST' });
+    const url = obterUrlApiPresenca();
+    // Usa GET para usufruir do Cloudflare Edge Cache (s-maxage=90) sem onerar a CPU do Worker
+    const res = await fetch(url, {
+      method: 'GET',
+      headers: { 'Accept': 'application/json' }
+    });
+
     if (res.ok) {
       const data = await res.json();
       const onlineNum = (typeof data.online === 'number') ? data.online : ((typeof data.activeUsers === 'number') ? data.activeUsers : valorOnlineBase);
       if (onlineNum > 0) {
         valorOnlineBase = onlineNum;
-        atualizarDisplay(valorOnlineBase);
+        ultimoPingTimestamp = agora;
+        try {
+          sessionStorage.setItem('sslabs_cached_presence', JSON.stringify({ valor: valorOnlineBase, time: agora }));
+        } catch (e) {}
+        atualizarDisplayPresenca(valorOnlineBase);
       }
     }
   } catch (err) {
@@ -8495,7 +8512,7 @@ async function sincronizarPresenca() {
 }
 
 // 2. Atualização visual no HTML (compatível com id contador-online e classes .live-presence-count)
-function atualizarDisplay(valor) {
+function atualizarDisplayPresenca(valor) {
   const elementoUnico = document.getElementById('contador-online');
   if (elementoUnico) elementoUnico.innerText = valor;
 
@@ -8505,49 +8522,52 @@ function atualizarDisplay(valor) {
   });
 }
 
-// 3. Efeito visual contínuo (zero requisições de rede)
-// Faz o número flutuar sutilmente (+/- 1) a cada 25 segundos para parecer ativo
+// 3. Efeito visual orgânico contínuo (ZERO requisições de rede)
+// Faz o número flutuar sutilmente (+/- 1) a cada 25 segundos para manter o dinamismo em tempo real
 setInterval(() => {
   if (typeof document !== 'undefined' && !document.hidden && valorOnlineBase > 3) {
     const oscilacao = Math.random() > 0.5 ? 1 : -1;
-    atualizarDisplay(valorOnlineBase + oscilacao);
+    atualizarDisplayPresenca(valorOnlineBase + oscilacao);
   }
 }, 25000);
 
-// 4. Controle inteligente de abas (Page Visibility API)
-function iniciarMonitoramento() {
+// 4. Controle inteligente de abas (Page Visibility API + SessionStorage)
+function iniciarMonitorPresenca() {
+  // Carrega imediatamente do sessionStorage se disponível (render instantâneo sem delay de rede)
+  try {
+    const cacheSessao = sessionStorage.getItem('sslabs_cached_presence');
+    if (cacheSessao) {
+      const parsed = JSON.parse(cacheSessao);
+      if (parsed && parsed.valor && (Date.now() - parsed.time < THROTTLE_MINIMO_PING)) {
+        valorOnlineBase = parsed.valor;
+        ultimoPingTimestamp = parsed.time;
+        atualizarDisplayPresenca(valorOnlineBase);
+      }
+    }
+  } catch (e) {}
+
+  // Sincroniza se necessário (respeitando o throttle)
   sincronizarPresenca();
-  if (timerLoop) clearInterval(timerLoop);
-  timerLoop = setInterval(sincronizarPresenca, INTERVALO_PING);
+
+  if (timerLoopPresenca) clearInterval(timerLoopPresenca);
+  timerLoopPresenca = setInterval(() => sincronizarPresenca(false), INTERVALO_PING_PRESENCA);
 }
 
-// Alias de retrocompatibilidade para o ciclo de inicialização
-function iniciarMonitorPresenca() {
-  iniciarMonitoramento();
+// Alias de retrocompatibilidade
+function iniciarMonitoramento() {
+  iniciarMonitorPresenca();
 }
 
 if (typeof document !== 'undefined') {
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
-      // Para imediatamente as requisições quando a pessoa sai da aba
-      if (timerLoop) clearInterval(timerLoop);
+      // Pausa imediatamente as requisições quando a pessoa sai da aba
+      if (timerLoopPresenca) clearInterval(timerLoopPresenca);
     } else {
-      // Retoma no instante em que a aba volta ao foco
-      sincronizarPresenca();
-      if (timerLoop) clearInterval(timerLoop);
-      timerLoop = setInterval(sincronizarPresenca, INTERVALO_PING);
-    }
-  });
-}
-
-// 5. Baixa imediata ao fechar a página (sendBeacon não trava o navegador)
-if (typeof window !== 'undefined') {
-  window.addEventListener('pagehide', () => {
-    const url = obterUrlApiOnline() + '?saida=1';
-    if (navigator.sendBeacon) {
-      navigator.sendBeacon(url);
-    } else {
-      fetch(url, { method: 'POST', keepalive: true }).catch(() => {});
+      // Ao voltar para a aba, só consulta se o tempo mínimo de 3 minutos já tiver passado!
+      sincronizarPresenca(false);
+      if (timerLoopPresenca) clearInterval(timerLoopPresenca);
+      timerLoopPresenca = setInterval(() => sincronizarPresenca(false), INTERVALO_PING_PRESENCA);
     }
   });
 }
