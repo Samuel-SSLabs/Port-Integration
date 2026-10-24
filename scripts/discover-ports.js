@@ -245,6 +245,105 @@ function adivinharConsole(repoData) {
 }
 
 const MAP_OVERRIDE_JOGOS = {
+  'VitoMiguelF/crashott-pc': {
+    codigoJogo: '4541081B',
+    nome: 'Crash of the Titans',
+    console: 'XBOX360',
+    consoleNome: 'Xbox 360',
+    termoBuscaCapa: 'Crash_of_the_Titans',
+    descricao: 'Crash of the Titans (Xbox 360) recompilado estaticamente para PC com DLSS/FSR, controles de PC, legendas e PT-BR.',
+    tags: ['XBOX360', 'AutoDiscover', 'Binário Disponível', 'C++']
+  },
+  'josiahg2502-glitch/OogiesRevengeRecompiled': {
+    codigoJogo: '42560004',
+    nome: "The Nightmare Before Christmas: Oogie's Revenge",
+    console: 'XBOX',
+    consoleNome: 'Xbox Clássico',
+    termoBuscaCapa: "The_Nightmare_Before_Christmas:_Oogie's_Revenge",
+    descricao: "Port nativo de The Nightmare Before Christmas: Oogie's Revenge (Xbox) via recompilação estática com suporte a 4K, 120 FPS e ultrawide.",
+    tags: ['XBOX', 'AutoDiscover', 'Binário Disponível', 'C++']
+  },
+  'schans-arg/UFC4-PC-Port': {
+    codigoJogo: 'CUSA14209',
+    nome: 'EA Sports UFC 4',
+    console: 'PS4',
+    consoleNome: 'PlayStation 4',
+    termoBuscaCapa: 'EA_Sports_UFC_4',
+    descricao: 'Port nativo experimental de EA Sports UFC 4 (PS4) para PC desenvolvido pela comunidade.',
+    tags: ['PS4', 'AutoDiscover', 'Binário Disponível', 'C++']
+  },
+  'hibikifukui22/Dead-or-Alive-Xtreme-2-Recompilation': {
+    codigoJogo: '544307D3',
+    nome: 'Dead or Alive Xtreme 2',
+    console: 'XBOX360',
+    consoleNome: 'Xbox 360',
+    termoBuscaCapa: 'Dead_or_Alive_Xtreme_2',
+    descricao: 'Port nativo de Dead or Alive Xtreme 2 (Xbox 360) para PC via recompilação estática com RexGlue.',
+    tags: ['XBOX360', 'AutoDiscover', 'Binário Disponível', 'C++']
+  },
+  'razzconnect/basara4-native-pc': {
+    codigoJogo: 'CUSA01159',
+    nome: 'Sengoku Basara 4: Sumeragi',
+    console: 'PS4',
+    consoleNome: 'PlayStation 4',
+    termoBuscaCapa: 'Sengoku_Basara_4',
+    descricao: 'Port nativo e lançador de Sengoku Basara 4 Sumeragi (PS4) para PC com execução direta x86-64 e renderização Vulkan.',
+    tags: ['PS4', 'AutoDiscover', 'Binário Disponível', 'C++']
+  },
+  'josiahg2502-glitch/NewSuperPaperBros': {
+    codigoJogo: 'R8PE01',
+    nome: 'Super Paper Mario',
+    console: 'WII',
+    consoleNome: 'Nintendo Wii',
+    termoBuscaCapa: 'Super_Paper_Mario',
+    descricao: 'Port nativo para PC de Super Paper Mario (Wii) via recompilação estática com resolução 4K, 120 FPS, texturas em HD e suporte a controles.',
+    tags: ['WII', 'AutoDiscover', 'Binário Disponível', 'C++', 'Nintendo']
+  },
+  'RecompPort/pandora-tower-pc': {
+    codigoJogo: 'SX4E01',
+    nome: "Pandora's Tower",
+    console: 'WII',
+    consoleNome: 'Nintendo Wii',
+    termoBuscaCapa: "Pandora's_Tower",
+    descricao: "Port nativo para PC de Pandora's Tower (Wii) criado via recompilação estática com wiikit.",
+    tags: ['WII', 'AutoDiscover', 'Binário Disponível', 'C++', 'Nintendo']
+  },
+  'drakolordx7/KillzoneRecomp': {
+    codigoJogo: 'SCUS-97402',
+    nome: 'Killzone',
+    console: 'PS2',
+    consoleNome: 'PlayStation 2',
+    termoBuscaCapa: 'Killzone_(video_game)',
+    descricao: 'Port nativo de Killzone (PS2) para PC via recompilação estática com suporte a mouse/teclado, 120+ FPS e renderização em alta resolução.',
+    tags: ['PS2', 'AutoDiscover', 'Binário Disponível', 'C++']
+  },
+  'Wndwsqrrl/3on3NHL-recomp': {
+    codigoJogo: '58410975',
+    nome: '3 on 3 NHL Arcade',
+    console: 'XBOX360',
+    consoleNome: 'Xbox 360',
+    termoBuscaCapa: '3_on_3_NHL_Arcade',
+    descricao: 'Port nativo de 3 on 3 NHL Arcade (Xbox 360 / XBLA) para PC via recompilação estática.',
+    tags: ['XBOX360', 'AutoDiscover', 'Binário Disponível', 'C#']
+  },
+  'AbdelmoumenDeghbouche/wipeout_pc': {
+    codigoJogo: 'CUSA07671',
+    nome: 'WipEout Omega Collection',
+    console: 'PS4',
+    consoleNome: 'PlayStation 4',
+    termoBuscaCapa: 'Wipeout_Omega_Collection',
+    descricao: 'Port nativo de WipEout Omega Collection (PS4) para PC com execução direta x86-64 na CPU e renderização Vulkan via shadPS4.',
+    tags: ['PS4', 'AutoDiscover', 'Binário Disponível', 'C++']
+  },
+  'qnfn/Driveclub-Port': {
+    codigoJogo: 'CUSA00093',
+    nome: 'Driveclub',
+    console: 'PS4',
+    consoleNome: 'PlayStation 4',
+    termoBuscaCapa: 'Driveclub',
+    descricao: 'Port nativo de Driveclub (PS4) para PC com renderização acelerada e execução x86-64.',
+    tags: ['PS4', 'AutoDiscover', 'Binário Disponível', 'C++']
+  },
   'Matteo842/CrashBandicoot-Launcher': {
     codigoJogo: 'SCUS-94900',
     nome: 'Crash Bandicoot',
