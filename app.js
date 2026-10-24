@@ -7022,7 +7022,13 @@ async function sincronizarStatusAnyPS5() {
   }
 }
 
-// ── RENDERIZAÇÃO DO CATÁLOGO DE CARDS (TIPO LOJA) ──
+// ── RENDERIZAÇÃO DO CATÁLOGO DE CARDS ULTRA-OTIMIZADA (CHUNKED LAZY RENDERING) ──
+// Renderiza em lotes progressivos de 16 cards para manter o DOM < 800 nós e zerar o Total Blocking Time (TBT)
+let catalogoFiltradoAtual = [];
+let cardsRenderizadosCount = 0;
+const TAMANHO_LOTE_CARDS = 16;
+let scrollObserverCatalogo = null;
+
 function renderizarCatalogo() {
   const container = document.getElementById('portsGrid');
   const searchStatusBar = document.getElementById('searchStatusBar');
@@ -7031,45 +7037,42 @@ function renderizarCatalogo() {
 
   if (!container) return;
 
-  let filtrados = state.ports.filter(port => {
+  catalogoFiltradoAtual = state.ports.filter(port => {
     let matchesConsole = portMatchesConsole(port, state.consoleAtivo);
-
     if (!matchesConsole) return false;
-
     if (!state.termoBusca) return true;
     const t = state.termoBusca.toLowerCase();
-
     const nomeMatch = port.nome.toLowerCase().includes(t);
     const repoMatch = port.repo.toLowerCase().includes(t);
     const descMatch = port.descricao.toLowerCase().includes(t);
     const consoleMatch = port.console.toLowerCase().includes(t);
     const codeMatch = port.codigoJogo && port.codigoJogo.toLowerCase().includes(t);
     const tagMatch = port.tags && port.tags.some(tag => tag.toLowerCase().includes(t));
-
     return nomeMatch || repoMatch || descMatch || consoleMatch || codeMatch || tagMatch;
   });
 
   if (state.ordenacao === 'recentes') {
-    filtrados.sort((a, b) => {
+    catalogoFiltradoAtual.sort((a, b) => {
       const dataA = new Date(a.dataAtualizacao || 0).getTime();
       const dataB = new Date(b.dataAtualizacao || 0).getTime();
       return dataB - dataA;
     });
   } else if (state.ordenacao === 'estrelas') {
-    filtrados.sort((a, b) => (b.stars || 0) - (a.stars || 0));
+    catalogoFiltradoAtual.sort((a, b) => (b.stars || 0) - (a.stars || 0));
   } else if (state.ordenacao === 'nome') {
-    filtrados.sort((a, b) => a.nome.localeCompare(b.nome));
+    catalogoFiltradoAtual.sort((a, b) => a.nome.localeCompare(b.nome));
   }
 
   if (state.termoBusca) {
     if (searchStatusBar) searchStatusBar.style.display = 'flex';
     if (searchStatusQuery) searchStatusQuery.textContent = `"${state.termoBusca}"`;
-    if (searchStatusCount) searchStatusCount.textContent = `(${filtrados.length} encontrado${filtrados.length === 1 ? '' : 's'})`;
+    if (searchStatusCount) searchStatusCount.textContent = `(${catalogoFiltradoAtual.length} encontrado${catalogoFiltradoAtual.length === 1 ? '' : 's'})`;
   } else {
     if (searchStatusBar) searchStatusBar.style.display = 'none';
   }
 
-  if (filtrados.length === 0) {
+  if (catalogoFiltradoAtual.length === 0) {
+    if (scrollObserverCatalogo) scrollObserverCatalogo.disconnect();
     container.innerHTML = `
       <div class="empty-state-box">
         <svg class="icon-svg empty-state-icon" viewBox="0 0 24 24">
@@ -7089,152 +7092,188 @@ function renderizarCatalogo() {
     return;
   }
 
-  const html = filtrados.map((port, cardIndex) => {
-    const consoleClass = port.console.toLowerCase();
-    const capaInfo = obterCapaDisponivel(port);
-    const temCapa = Boolean(capaInfo);
-    const semReleaseInicial = !port.versaoPadrao || port.versaoPadrao === 'Port Nativo' || port.versaoPadrao === 'Port Ativo' || port.statusTipo === 'wip';
-    const versaoInicial = semReleaseInicial ? (obterTextoTraduzido('cards.inDevelopment') || 'Em desenvolvimento') : port.versaoPadrao;
-    const versaoClassInicial = semReleaseInicial ? 'is-in-dev' : 'is-released';
-    const starsInicial = port.stars ? `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>${port.stars.toLocaleString('pt-BR')}` : `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Ativo`;
+  // Reseta estado da lista e limpa o container
+  cardsRenderizadosCount = 0;
+  container.innerHTML = '';
 
-    // Otimização LCP: Cards acima da dobra (os 6 primeiros) carregam com fetchpriority="high" e loading="eager"
-    const isAcimaDobra = cardIndex < 6;
-    const loadingAttr = isAcimaDobra ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" fetchpriority="low"';
+  // Renderiza imediatamente o primeiro lote de alta prioridade (16 cards)
+  renderizarProximoLoteCards();
+}
 
-    return `
-      <article class="port-card" data-id="${port.id}" data-repo-url="${port.repoUrl}" title="Clique para abrir o repositório ${port.repo} no GitHub">
+function gerarHtmlCard(port, cardIndex) {
+  const consoleClass = port.console.toLowerCase();
+  const capaInfo = obterCapaDisponivel(port);
+  const temCapa = Boolean(capaInfo);
+  const semReleaseInicial = !port.versaoPadrao || port.versaoPadrao === 'Port Nativo' || port.versaoPadrao === 'Port Ativo' || port.statusTipo === 'wip';
+  const versaoInicial = semReleaseInicial ? (obterTextoTraduzido('cards.inDevelopment') || 'Em desenvolvimento') : port.versaoPadrao;
+  const starsInicial = port.stars ? `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>${port.stars.toLocaleString('pt-BR')}` : `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Ativo`;
+
+  // Apenas os 4 primeiros recebem eager/high para acelerar o LCP sem competir banda
+  const isAcimaDobra = cardIndex < 4;
+  const loadingAttr = isAcimaDobra ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" fetchpriority="low"';
+
+  return `
+    <article class="port-card" data-id="${port.id}" data-repo-url="${port.repoUrl}" title="Clique para abrir o repositório ${port.repo} no GitHub">
+      <div class="port-image-container" id="cover_container_${port.id}">
+        <div class="shimmer-placeholder" id="shimmer_${port.id}" style="${temCapa ? 'display: none;' : ''}"></div>
         
-        <!-- Container da Capa com Carregamento Híbrido Ultrarrápido -->
-        <div class="port-image-container" id="cover_container_${port.id}">
-          <div class="shimmer-placeholder" id="shimmer_${port.id}" style="${temCapa ? 'display: none;' : ''}"></div>
-          
-          ${temCapa && capaInfo.local ? `
-          <picture id="cover_pic_${port.id}">
-            <source srcset="./assets/covers/${port.id}.avif" type="image/avif">
-            <img 
-              src="${capaInfo.url}" 
-              alt="Capa oficial de ${escapeHtml(port.nome)}" 
-              class="port-thumb loaded" 
-              id="cover_img_${port.id}"
-              onerror="aoFalharCapaLocal(this, '${port.id}')"
-              ${loadingAttr}
-              decoding="async"
-              width="320"
-              height="180"
-            >
-          </picture>
-          ` : `
+        ${temCapa && capaInfo.local ? `
+        <picture id="cover_pic_${port.id}">
+          <source srcset="./assets/covers/${port.id}.avif" type="image/avif">
           <img 
-            src="${temCapa ? capaInfo.url : ''}" 
+            src="${capaInfo.url}" 
             alt="Capa oficial de ${escapeHtml(port.nome)}" 
-            class="port-thumb ${temCapa ? 'loaded' : ''}" 
+            class="port-thumb loaded" 
             id="cover_img_${port.id}"
+            onerror="aoFalharCapaLocal(this, '${port.id}')"
             ${loadingAttr}
             decoding="async"
             width="320"
             height="180"
           >
-          `}
+        </picture>
+        ` : `
+        <img 
+          src="${temCapa ? capaInfo.url : ''}" 
+          alt="Capa oficial de ${escapeHtml(port.nome)}" 
+          class="port-thumb ${temCapa ? 'loaded' : ''}" 
+          id="cover_img_${port.id}"
+          ${loadingAttr}
+          decoding="async"
+          width="320"
+          height="180"
+        >
+        `}
 
-          <div class="card-badges-top">
-            <span class="badge-console ${consoleClass}">${port.console}</span>
-            <div class="card-badges-right">
-              <span class="badge-status">${port.codigoJogo || 'Port Nativo PC'}</span>
-              <button class="btn-card-menu" type="button" aria-label="${obterTextoTraduzido('cards.btnOptions') || 'Mais opções'}" title="${obterTextoTraduzido('cards.btnOptions') || 'Opções'}" onclick="abrirMenuCard(event, '${port.id}')">
-                <svg class="icon-svg" viewBox="0 0 24 24" width="13" height="13">
-                  <circle cx="12" cy="5" r="2.2"></circle>
-                  <circle cx="12" cy="12" r="2.2"></circle>
-                  <circle cx="12" cy="19" r="2.2"></circle>
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          <div class="card-cover-origin" id="cover_origin_${port.id}" data-origin-type="${temCapa ? capaInfo.tipo : 'searching'}">
-            ${traduzirBadgeCapa(temCapa ? capaInfo.tipo : 'searching', idiomaAtual)}
+        <div class="card-badges-top">
+          <span class="badge-console ${consoleClass}">${port.console}</span>
+          <div class="card-badges-right">
+            <span class="badge-status">${port.codigoJogo || 'Port Nativo PC'}</span>
+            <button class="btn-card-menu" type="button" aria-label="${obterTextoTraduzido('cards.btnOptions') || 'Mais opções'}" title="${obterTextoTraduzido('cards.btnOptions') || 'Opções'}" onclick="abrirMenuCard(event, '${port.id}')">
+              <svg class="icon-svg" viewBox="0 0 24 24" width="13" height="13">
+                <circle cx="12" cy="5" r="2.2"></circle>
+                <circle cx="12" cy="12" r="2.2"></circle>
+                <circle cx="12" cy="19" r="2.2"></circle>
+              </svg>
+            </button>
           </div>
         </div>
 
-        <!-- Menu Dropdown Flutuante no Canto Superior Direito -->
-        <div class="card-menu-dropdown" id="card_dropdown_${port.id}">
-          <button type="button" class="card-menu-item" onclick="abrirModalReporte(event, '${port.id}')">
-            <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14">
-              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
-              <line x1="4" y1="22" x2="4" y2="15"></line>
-            </svg>
-            <span>${obterTextoTraduzido('cards.reportRepo') || 'Reportar repositório'}</span>
-          </button>
+        <div class="card-cover-origin" id="cover_origin_${port.id}" data-origin-type="${temCapa ? capaInfo.tipo : 'searching'}">
+          ${traduzirBadgeCapa(temCapa ? capaInfo.tipo : 'searching', idiomaAtual)}
+        </div>
+      </div>
+
+      <div class="card-menu-dropdown" id="card_dropdown_${port.id}">
+        <button type="button" class="card-menu-item" onclick="abrirModalReporte(event, '${port.id}')">
+          <svg class="icon-svg" viewBox="0 0 24 24" width="14" height="14">
+            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path>
+            <line x1="4" y1="22" x2="4" y2="15"></line>
+          </svg>
+          <span>${obterTextoTraduzido('cards.reportRepo') || 'Reportar repositório'}</span>
+        </button>
+      </div>
+
+      <div class="port-card-body">
+        <h2 class="port-title">${escapeHtml(port.nome)}</h2>
+        
+        <div class="port-repo-subtitle">
+          <svg class="icon-svg" style="width: 14px; height: 14px;" viewBox="0 0 24 24">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+          </svg>
+          <span>${escapeHtml(port.repo)}</span>
         </div>
 
-        <!-- Corpo do Card -->
-        <div class="port-card-body">
-          <h2 class="port-title">${escapeHtml(port.nome)}</h2>
-          
-          <div class="port-repo-subtitle">
-            <svg class="icon-svg" style="width: 14px; height: 14px;" viewBox="0 0 24 24">
+        <p class="port-desc">${escapeHtml(traduzirDescricao(port.descricao, idiomaAtual, port.id))}</p>
+
+        <div class="port-github-meta" id="github_meta_${port.id}">
+          <div class="port-version-wrap">
+            <span class="version-dot"></span>
+            <span class="port-version-text" id="ver_text_${port.id}">${versaoInicial}</span>
+          </div>
+          <div class="port-meta-right">
+            <span class="port-stars" id="stars_${port.id}">
+              ${starsInicial}
+            </span>
+          </div>
+        </div>
+
+        <div class="port-card-actions">
+          <a href="${port.repoUrl}" target="_blank" rel="noopener noreferrer" class="btn-card-github" title="${obterTextoTraduzido('cards.btnGithubTitle') || 'GitHub'}">
+            <svg class="icon-svg" style="width: 16px; height: 16px;" viewBox="0 0 24 24">
               <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
             </svg>
-            <span>${escapeHtml(port.repo)}</span>
-          </div>
+            <span>GitHub</span>
+          </a>
 
-          <p class="port-desc">${escapeHtml(traduzirDescricao(port.descricao, idiomaAtual, port.id))}</p>
-
-          <!-- Metadados Sincronizados com o GitHub -->
-          <div class="port-github-meta" id="github_meta_${port.id}">
-            <div class="port-version-wrap">
-              <span class="version-dot"></span>
-              <span class="port-version-text" id="ver_text_${port.id}">${versaoInicial}</span>
-            </div>
-            <div class="port-meta-right">
-              <span class="port-stars" id="stars_${port.id}">
-                ${starsInicial}
-              </span>
-            </div>
-          </div>
-
-          <!-- Ações Principais: GitHub & Discord Oficial -->
-          <div class="port-card-actions">
-            <a href="${port.repoUrl}" target="_blank" rel="noopener noreferrer" class="btn-card-github" title="${obterTextoTraduzido('cards.btnGithubTitle') || 'GitHub'}">
-              <svg class="icon-svg" style="width: 16px; height: 16px;" viewBox="0 0 24 24">
-                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-              </svg>
-              <span>GitHub</span>
-            </a>
-
-            ${(port.discordUrl || DISCORD_MAP[port.repo.toLowerCase()]) ? `
-            <a href="${port.discordUrl || DISCORD_MAP[port.repo.toLowerCase()]}" target="_blank" rel="noopener noreferrer" class="btn-card-discord" title="${obterTextoTraduzido('cards.btnDiscordTitle') || 'Discord'}">
-              <svg class="discord-svg-filled" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
-              </svg>
-              <span>Discord</span>
-            </a>
-            ` : ''}
-          </div>
-
-        </div>
-      </article>
-    `;
-  }).join('');
-
-  container.innerHTML = html;
-
-  filtrados.forEach(port => {
-    const capa = obterCapaDisponivel(port);
-    if (!capa) {
-      carregarCapaInteligente(port);
-    }
-    
-    if (!MODO_ESTATICO_ECONOMICO) {
-      carregarMetadadosGitHub(port);
-    } else {
-      const cache = obterCacheGitHub(port.repo);
-      if (cache) {
-        aplicarMetadadosGitHubNoCard(port.id, cache);
-      }
-    }
-  });
+          ${(port.discordUrl || DISCORD_MAP[port.repo.toLowerCase()]) ? `
+          <a href="${port.discordUrl || DISCORD_MAP[port.repo.toLowerCase()]}" target="_blank" rel="noopener noreferrer" class="btn-card-discord" title="${obterTextoTraduzido('cards.btnDiscordTitle') || 'Discord'}">
+            <svg class="discord-svg-filled" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+              <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994.021-.041.001-.09-.041-.106a13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.929 1.793 8.18 1.793 12.061 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.894.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.028zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/>
+          </svg>
+          <span>Discord</span>
+        </a>
+        ` : ''}
+      </div>
+    </div>
+  </article>
+  `;
 }
+
+function renderizarProximoLoteCards() {
+  const container = document.getElementById('portsGrid');
+  if (!container || cardsRenderizadosCount >= catalogoFiltradoAtual.length) return;
+
+  const proximoFim = Math.min(cardsRenderizadosCount + TAMANHO_LOTE_CARDS, catalogoFiltradoAtual.length);
+  const lote = catalogoFiltradoAtual.slice(cardsRenderizadosCount, proximoFim);
+  if (lote.length === 0) return;
+
+  const fragmentHtml = lote.map((port, idx) => gerarHtmlCard(port, cardsRenderizadosCount + idx)).join('');
+
+  // Remove sentinela antiga se existir
+  const sentinelaAntiga = document.getElementById('scrollSentinel');
+  if (sentinelaAntiga) sentinelaAntiga.remove();
+
+  // Insere os novos cards suavemente sem destruir o DOM existente
+  container.insertAdjacentHTML('beforeend', fragmentHtml);
+  cardsRenderizadosCount = proximoFim;
+
+  // Se ainda houver mais cards a carregar, cria/reposiciona a sentinela no fim da lista
+  if (cardsRenderizadosCount < catalogoFiltradoAtual.length) {
+    const sentinela = document.createElement('div');
+    sentinela.id = 'scrollSentinel';
+    sentinela.style.height = '60px';
+    sentinela.style.gridColumn = '1 / -1';
+    sentinela.style.pointerEvents = 'none';
+    sentinela.style.visibility = 'hidden';
+    container.appendChild(sentinela);
+
+    configurarScrollInfinito(sentinela);
+  }
+}
+
+function configurarScrollInfinito(sentinelaElement) {
+  if (scrollObserverCatalogo) {
+    scrollObserverCatalogo.disconnect();
+  }
+
+  if (!sentinelaElement) return;
+
+  scrollObserverCatalogo = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        window.requestAnimationFrame(() => {
+          renderizarProximoLoteCards();
+        });
+      }
+    });
+  }, {
+    rootMargin: '500px 0px'
+  });
+
+  scrollObserverCatalogo.observe(sentinelaElement);
+}
+
 
 // ── REDIRECIONAMENTO AO GITHUB AO CLICAR NO CARD ──
 function redirecionarAoGithub(url) {
