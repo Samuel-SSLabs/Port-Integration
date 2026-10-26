@@ -1,3 +1,7 @@
+# ==============================================================================
+# SSLabs EcoSystem — PortIntegration (.gitignore)
+# ==============================================================================
+
 # Backups locais de desenvolvimento obrigatórios
 backups/
 

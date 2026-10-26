@@ -105,6 +105,7 @@ const LOCAL_COVERS_MANIFEST = [
   "basara4-native-pc-pc",
   "battletanx-global-assault-pc-port-pc",
   "beatrixzy-pgr4-recomp",
+  "belmantegu-supermariowonderrecomp-pc",
   "birabittoh-eternalsonatareprise",
   "birabittoh-kameorepowered",
   "birabittoh-nocturnerecomp",
@@ -142,12 +143,15 @@ const LOCAL_COVERS_MANIFEST = [
   "danielgomesvieira2000-wave-race-64-recomp",
   "danisandoval-fukami",
   "dantes-inferno-recomp",
+  "daviddaco1-nconr3-wii-pc",
   "dead-or-alive-xtreme-2-recompilation-pc",
+  "def-jam-ffny-recomp",
   "defjamffny-pc",
   "demons-souls-ps5-pc",
   "devilutionx-diablo",
   "diddy-kong-racing-recomp",
   "dinosaurplanetrecomp-dino-recomp",
+  "doa2u-re-pc",
   "doa3-re-pc",
   "donkey-kong-64-recomp",
   "dorpxp-driftdroid",
@@ -165,6 +169,7 @@ const LOCAL_COVERS_MANIFEST = [
   "fabioap-cpu-tekken3recomp",
   "fable-2-recomp",
   "faligame-lost-odyssey-hd-remaster",
+  "fear360-recomp-pc",
   "felipeprado0-gow3-pc",
   "fifa-street-pc-port-pc",
   "fighting-force-pc",
@@ -181,6 +186,8 @@ const LOCAL_COVERS_MANIFEST = [
   "god-of-war-ps2-recomp",
   "goldeneye-007-metal",
   "goldeneye-007-xbla-pc-recomp-pc",
+  "gow-ascension-pc",
+  "gow-psp-recomp-pc",
   "gr2_pc-pc",
   "gran-turismo-sport-rygt-pc",
   "gta-lcs-recomp",
@@ -191,6 +198,7 @@ const LOCAL_COVERS_MANIFEST = [
   "hybrid-heaven-recomp-pc",
   "ico-ps2-pc",
   "iexplosiverage-dbz-burst-limit-recompiled",
+  "infamous-first-light-pc-pc",
   "infamous-second-son-pc",
   "infamous-second-son-pc-port-pc",
   "jackandbeans-snap64recomp",
@@ -204,7 +212,9 @@ const LOCAL_COVERS_MANIFEST = [
   "kawaiibunga-mkvdcu-recomp",
   "keepvaibin-nebula",
   "killzonerecomp-pc",
+  "klexster-god-of-war-recomp",
   "klorfmorf-goemon64recomp",
+  "knack-ii-pc-port-pc",
   "laytonmotdmpcport-pc",
   "lesca-killzone-shadowfall-pc",
   "letsgo-recomp-pc",
@@ -217,6 +227,7 @@ const LOCAL_COVERS_MANIFEST = [
   "luigis-mansion-recompiled-pc",
   "m1ndcrap-sega-superstars-tennis-rematch",
   "madelrandel-blip-nfsmw-recompiled",
+  "mario-3d-all-stars-pc",
   "mario-kart-64-spaghettikart",
   "marvel-nemesis-recomp-pc",
   "masterspike52-redahm",
@@ -224,6 +235,7 @@ const LOCAL_COVERS_MANIFEST = [
   "medal-of-honor-psx-recomp-pc",
   "medievil_2019_pc_port-pc",
   "megaman64recomp-megaman64recompiled",
+  "mhgurecomp-pc",
   "midnight-club-la-recomp",
   "mstan-megamanx4recomp",
   "mstan-megamanxsnesrecomp",
@@ -256,6 +268,7 @@ const LOCAL_COVERS_MANIFEST = [
   "peiikai-lasrecomp",
   "perfect-dark-pc",
   "pilotwings-64-recomp-pc",
+  "piratesatworldsendrecomp-pc",
   "portingpete-black-2006-recomp",
   "project-midas-pc",
   "prototype-pc-slop-pc",
@@ -264,7 +277,9 @@ const LOCAL_COVERS_MANIFEST = [
   "rage-wars-recompiled-pc",
   "red-tv141-dc2-ps2recomp",
   "resident-evil-3-recomp",
+  "revivedx-savagewindrecomp-botw-pc",
   "revosucks-bm64recomp",
+  "roll-away-psx-pc-recomp-pc",
   "sacredstonesrecomp-pc",
   "sal063-ac6-recomp",
   "sal063-ace-combat-x-recompilation",
@@ -311,6 +326,7 @@ const LOCAL_COVERS_MANIFEST = [
   "tekrantgaming-earthworm-jim-hd-recompiled",
   "tekrantgaming-king-kong-recompiled",
   "terrariaogc-pc",
+  "tgp482-black-xberecomp-pc",
   "tgp482-scda-xberecomp",
   "thatguymcd-glover-r",
   "thatguymcd-rocket-r",
@@ -325,6 +341,7 @@ const LOCAL_COVERS_MANIFEST = [
   "tony-hawks-project-8-recomp",
   "twisted-metal-2012-recomp-pc",
   "ufc4-pc-port-pc",
+  "ultratears-pc",
   "uncharted-nathan-drake-collection-pc",
   "uncharted-the-nathan-drake-collection-pc-port-pc",
   "unchiga-yugiohforbiddenmemoriesrecomp",
@@ -332,6 +349,7 @@ const LOCAL_COVERS_MANIFEST = [
   "unicorn_overlord_pc-pc",
   "urban-reign-pc",
   "vandal-hearts-pc",
+  "wario-land-shake-it-native-pc-pc",
   "whompay-fncreborn",
   "wipeout-rewrite-pc",
   "wipeout_pc-pc",
@@ -355,30 +373,30 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 const PORTS_DATABASE = [
   {
     "id": "mhgurecomp-pc",
-    "nome": "MHGURecomp",
-    "console": "PC",
-    "consoleNome": "PC Nativo",
-    "codigoJogo": "PC-MHGURECOMP",
+    "nome": "Monster Hunter Generations Ultimate (MHGU Recomp)",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "0100770008DD8000",
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
     "repo": "morerokk/MHGURecomp",
     "repoUrl": "https://github.com/morerokk/MHGURecomp",
-    "descricao": "A native PC port of Monster Hunter Generations Ultimate. Requires the game's files to play or build.",
-    "termoBuscaCapa": "MHGURecomp",
+    "descricao": "Port nativo de Monster Hunter Generations Ultimate para PC via recompilação estática com suporte a 60+ FPS e resoluções modernas. Requer os arquivos do jogo original para execução.",
+    "termoBuscaCapa": "Monster_Hunter_Generations",
     "capaManual": null,
     "dataAtualizacao": "2026-10-25T23:26:09Z",
     "stars": 155,
     "versaoPadrao": "0.9.11",
     "tags": [
-      "PC",
-      "AutoDiscover",
+      "Switch",
+      "Recompilação",
       "Binário Disponível",
       "C"
     ]
   },
   {
     "id": "gow-psp-recomp-pc",
-    "nome": "Gow Psp",
+    "nome": "God of War: Chains of Olympus & Ghost of Sparta",
     "console": "PSP",
     "consoleNome": "PlayStation Portable",
     "codigoJogo": "UCUS-98653",
@@ -386,45 +404,45 @@ const PORTS_DATABASE = [
     "statusTipo": "jogavel",
     "repo": "DrummingBird1/gow-psp-recomp",
     "repoUrl": "https://github.com/DrummingBird1/gow-psp-recomp",
-    "descricao": "Unofficial native PC ports of God of War: Chains of Olympus and Ghost of Sparta (PSP) by static recompilation. Bring your own disc.",
-    "termoBuscaCapa": "Gow Psp",
+    "descricao": "Ports nativos para PC de God of War: Chains of Olympus e Ghost of Sparta via recompilação estática dos títulos originais de PSP. Requer os arquivos do disco do jogo.",
+    "termoBuscaCapa": "God_of_War:_Chains_of_Olympus",
     "capaManual": null,
     "dataAtualizacao": "2026-10-26T05:35:06Z",
     "stars": 119,
     "versaoPadrao": "v1.3.1",
     "tags": [
       "PSP",
-      "AutoDiscover",
+      "Recompilação",
       "Binário Disponível",
       "C"
     ]
   },
   {
     "id": "ultratears-pc",
-    "nome": "Ultratears",
-    "console": "PC",
-    "consoleNome": "PC Nativo",
-    "codigoJogo": "PC-ULTRATEARS",
+    "nome": "The Legend of Zelda: Tears of the Kingdom (Ultratears)",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "0100F2C0115B6000",
     "status": "Em Desenvolvimento Ativo",
     "statusTipo": "wip",
     "repo": "kuraeow/ultratears",
     "repoUrl": "https://github.com/kuraeow/ultratears",
-    "descricao": "Unofficial native Windows port of Tears of the Kingdom 1.4.3 using static recompilation. Builds locally from the player's own extracted game dump; no game files included.",
-    "termoBuscaCapa": "Ultratears",
+    "descricao": "Port nativo não-oficial para Windows de The Legend of Zelda: Tears of the Kingdom (v1.4.3) via recompilação estática. Compilado localmente a partir do dump do usuário.",
+    "termoBuscaCapa": "The_Legend_of_Zelda:_Tears_of_the_Kingdom",
     "capaManual": null,
     "dataAtualizacao": "2026-10-25T11:53:33Z",
     "stars": 157,
     "versaoPadrao": "v0.1.0-beta",
     "tags": [
-      "PC",
-      "AutoDiscover",
+      "Switch",
+      "Recompilação",
       "Binário Disponível",
       "C"
     ]
   },
   {
     "id": "roll-away-psx-pc-recomp-pc",
-    "nome": "Roll Away Psx",
+    "nome": "Roll Away (Kula World)",
     "console": "PS1",
     "consoleNome": "PlayStation 1",
     "codigoJogo": "SLUS-00724",
@@ -432,107 +450,107 @@ const PORTS_DATABASE = [
     "statusTipo": "jogavel",
     "repo": "Bitsandbreakpoints/roll-away-psx-pc-recomp",
     "repoUrl": "https://github.com/Bitsandbreakpoints/roll-away-psx-pc-recomp",
-    "descricao": "Native Windows port of the PlayStation game Roll Away - bring your own disc. No game files included.",
-    "termoBuscaCapa": "Roll Away Psx",
+    "descricao": "Port nativo para Windows do clássico jogo de quebra-cabeça e plataforma Roll Away (conhecido na Europa como Kula World) do PlayStation 1. Requer disco do jogo original.",
+    "termoBuscaCapa": "Kula_World",
     "capaManual": null,
     "dataAtualizacao": "2026-10-24T13:37:11Z",
     "stars": 10,
     "versaoPadrao": "v2.3.0",
     "tags": [
       "PS1",
-      "AutoDiscover",
+      "Recompilação",
       "Binário Disponível",
       "C"
     ]
   },
   {
     "id": "doa2u-re-pc",
-    "nome": "Dead Or Alive 2 Ultimate",
+    "nome": "Dead or Alive 2 Ultimate",
     "console": "XBOX",
     "consoleNome": "Xbox Clássico",
-    "codigoJogo": "XBOX-DOA2URE",
+    "codigoJogo": "54430005",
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
     "repo": "NoRain211/doa2u-re",
     "repoUrl": "https://github.com/NoRain211/doa2u-re",
-    "descricao": "Native Windows port of Dead or Alive 2 Ultimate (Xbox), built by static recompilation with a hand-written runtime. Requires your own copy of the game.",
-    "termoBuscaCapa": "Dead Or Alive 2 Ultimate",
+    "descricao": "Port nativo para Windows de Dead or Alive 2 Ultimate do Xbox clássico, desenvolvido via recompilação estática com runtime manual. Requer cópia original do jogo.",
+    "termoBuscaCapa": "Dead_or_Alive_2",
     "capaManual": null,
     "dataAtualizacao": "2026-10-24T12:44:57Z",
     "stars": 10,
     "versaoPadrao": "v0.1.6",
     "tags": [
       "XBOX",
-      "AutoDiscover",
+      "Recompilação",
       "Binário Disponível",
       "C"
     ]
   },
   {
     "id": "piratesatworldsendrecomp-pc",
-    "nome": "PiratesAtWorldsEndRecomp",
+    "nome": "Pirates of the Caribbean: At World's End",
     "console": "XBOX360",
     "consoleNome": "Xbox 360",
-    "codigoJogo": "XBOX360-PIRATESATW",
+    "codigoJogo": "425607D6",
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
     "repo": "ElGuslml/PiratesAtWorldsEndRecomp",
     "repoUrl": "https://github.com/ElGuslml/PiratesAtWorldsEndRecomp",
-    "descricao": "Pirates of the Caribbean: At World's End (Xbox 360) recompiled to run natively on PC. 60 FPS, widescreen, DLAA, achievements, and a launcher that installs the game from your own ISO.",
-    "termoBuscaCapa": "PiratesAtWorldsEndRecomp",
+    "descricao": "Port nativo para PC de Piratas do Caribe: No Fim do Mundo (Xbox 360) via recompilação estática. Suporte a 60 FPS, widescreen, DLAA, conquistas e instalador integrado a partir da ISO original.",
+    "termoBuscaCapa": "Pirates_of_the_Caribbean:_At_World's_End_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-23T05:09:24Z",
     "stars": 14,
     "versaoPadrao": "v0.2.0",
     "tags": [
       "XBOX360",
-      "AutoDiscover",
+      "Recompilação",
       "Binário Disponível",
       "C++"
     ]
   },
   {
     "id": "wario-land-shake-it-native-pc-pc",
-    "nome": "Wario Land Shake It Native",
-    "console": "GC",
-    "consoleNome": "GameCube",
+    "nome": "Wario Land: Shake It!",
+    "console": "WII",
+    "consoleNome": "Nintendo Wii",
     "codigoJogo": "RWLE01",
     "status": "Em Desenvolvimento Ativo",
     "statusTipo": "wip",
     "repo": "santiagovalencia109/Wario-Land-Shake-It-Native-PC",
     "repoUrl": "https://github.com/santiagovalencia109/Wario-Land-Shake-It-Native-PC",
-    "descricao": "Unofficial native PC port of Wario Land: Shake It! (Wii), statically recompiled with WiiCompiled. Testing build.",
-    "termoBuscaCapa": "Wario Land Shake It Native",
+    "descricao": "Port nativo para PC de Wario Land: Shake It! (Nintendo Wii), recompilado estaticamente utilizando a infraestrutura WiiCompiled. Requer dump do jogo original.",
+    "termoBuscaCapa": "Wario_Land:_Shake_It!",
     "capaManual": null,
     "dataAtualizacao": "2026-10-23T06:50:39Z",
     "stars": 57,
     "versaoPadrao": "v0.1.0",
     "tags": [
-      "GC",
-      "AutoDiscover",
+      "WII",
+      "Recompilação",
       "Binário Disponível",
       "C++"
     ]
   },
   {
     "id": "fear360-recomp-pc",
-    "nome": "Fear360",
+    "nome": "F.E.A.R. / F.E.A.R. Files",
     "console": "XBOX360",
     "consoleNome": "Xbox 360",
-    "codigoJogo": "XBOX360-FEAR360REC",
+    "codigoJogo": "565507D4",
     "status": "Jogável (Source Port)",
     "statusTipo": "jogavel",
     "repo": "Juansolo457/fear360-recomp",
     "repoUrl": "https://github.com/Juansolo457/fear360-recomp",
-    "descricao": "F.E.A.R. and F.E.A.R. Files (Xbox 360) statically recompiled to run natively on PC: 4K, 120 fps, controller-first. No game data included; bring your own discs.",
-    "termoBuscaCapa": "Fear360",
+    "descricao": "Port nativo para PC de F.E.A.R. e da expansão F.E.A.R. Files baseado na versão de Xbox 360 via recompilação estática com suporte a 4K, 120 FPS e suporte pleno a controles. Requer arquivos de disco do jogo.",
+    "termoBuscaCapa": "F.E.A.R._(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-26T03:26:54Z",
     "stars": 29,
     "versaoPadrao": "v0.1.5",
     "tags": [
       "XBOX360",
-      "AutoDiscover",
+      "Recompilação",
       "C++"
     ]
   },
@@ -546,22 +564,22 @@ const PORTS_DATABASE = [
     "statusTipo": "jogavel",
     "repo": "Hyant4/Knack-II-pc-port",
     "repoUrl": "https://github.com/Hyant4/Knack-II-pc-port",
-    "descricao": "Unofficial Knack II (Knack 2) PC port for Windows. Experimental Vulkan alpha, launcher and local co-op; requires your own PS4 game dump.",
-    "termoBuscaCapa": "Knack II",
+    "descricao": "Port nativo experimental para Windows de Knack II (PS4) utilizando renderização Vulkan, inicializador gráfico integrado e suporte a cooperativo local. Requer dump original do PS4.",
+    "termoBuscaCapa": "Knack_II",
     "capaManual": null,
     "dataAtualizacao": "2026-10-25T23:54:55Z",
     "stars": 42,
     "versaoPadrao": "knack2-Version-0.17.5",
     "tags": [
       "PS4",
-      "AutoDiscover",
+      "Recompilação",
       "Binário Disponível",
       "C++"
     ]
   },
   {
     "id": "infamous-first-light-pc-pc",
-    "nome": "InFAMOUS First Light",
+    "nome": "inFAMOUS First Light",
     "console": "PS4",
     "consoleNome": "PlayStation 4",
     "codigoJogo": "CUSA00897",
@@ -569,15 +587,15 @@ const PORTS_DATABASE = [
     "statusTipo": "jogavel",
     "repo": "VantageEX/infamous-first-light-pc",
     "repoUrl": "https://github.com/VantageEX/infamous-first-light-pc",
-    "descricao": "Unofficial native PC port of inFAMOUS First Light (PS4). Bring your own game dump - no game files included.",
-    "termoBuscaCapa": "InFAMOUS First Light",
+    "descricao": "Port nativo não-oficial para PC de inFAMOUS First Light (PS4) com renderização direta no Windows. Requer dump original do jogo do usuário para execução.",
+    "termoBuscaCapa": "Infamous_First_Light",
     "capaManual": null,
     "dataAtualizacao": "2026-10-25T20:35:46Z",
     "stars": 74,
     "versaoPadrao": "v0.3.8",
     "tags": [
       "PS4",
-      "AutoDiscover",
+      "Recompilação",
       "Binário Disponível",
       "C++"
     ]
@@ -6831,6 +6849,97 @@ const PORTS_DATABASE = [
       "Recomp",
       "C"
     ]
+  },
+  {
+    "id": "belmantegu-supermariowonderrecomp-pc",
+    "nome": "Super Mario Bros. Wonder",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "010015100B5B4000",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "belmantegu/SuperMarioWonderRecomp",
+    "repoUrl": "https://github.com/belmantegu/SuperMarioWonderRecomp",
+    "descricao": "Port nativo de Super Mario Bros. Wonder para PC via recompilação estática. Requer dump do jogo original para compilação e execução.",
+    "termoBuscaCapa": "Super_Mario_Bros._Wonder",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-24T18:00:00Z",
+    "stars": 88,
+    "versaoPadrao": "v0.1.0",
+    "tags": [
+      "Switch",
+      "Recompilação",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "daviddaco1-nconr3-wii-pc",
+    "nome": "Naruto Shippuden: Clash of Ninja Revolution 3 (Decomp)",
+    "console": "WII",
+    "consoleNome": "Nintendo Wii",
+    "codigoJogo": "RNEPDA",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "daviddaco1/NCONR3decomp",
+    "repoUrl": "https://github.com/daviddaco1/NCONR3decomp",
+    "descricao": "Descompilação por correspondência exata de Naruto Shippuden: Clash of Ninja Revolution 3 (Nintendo Wii) visando a criação de um port nativo para PC. Requer os arquivos do jogo original.",
+    "termoBuscaCapa": "Naruto_Shippuden:_Clash_of_Ninja_Revolution_3",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-25T01:23:51Z",
+    "stars": 1,
+    "versaoPadrao": "Port Nativo",
+    "tags": [
+      "WII",
+      "Descompilação",
+      "C"
+    ]
+  },
+  {
+    "id": "tgp482-black-xberecomp-pc",
+    "nome": "BLACK (Xbox XBE Recomp)",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "4541006A",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "TGP482/BLACK-XBERecomp",
+    "repoUrl": "https://github.com/TGP482/BLACK-XBERecomp",
+    "descricao": "Port nativo para PC de BLACK (Xbox Clássico) desenvolvido via recompilação estática do binário XBE com opções gráficas estendidas, mira fluida de mouse e teclado e inicializador integrado. Requer arquivos do disco original.",
+    "termoBuscaCapa": "Black_(video_game)",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-25T17:58:10Z",
+    "stars": 767,
+    "versaoPadrao": "V2",
+    "tags": [
+      "XBOX",
+      "Recompilação",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "revivedx-savagewindrecomp-botw-pc",
+    "nome": "The Legend of Zelda: Breath of the Wild (Savage Wind Recomp)",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "01007EF00011E000",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "Revivedx/SavageWindRecomp",
+    "repoUrl": "https://github.com/Revivedx/SavageWindRecomp",
+    "descricao": "Recompilação estática de The Legend of Zelda: Breath of the Wild (Switch, v1.9.0) para Windows e Linux baseada na arquitetura LAS Recomp. Requer dump do jogo do próprio usuário sem arquivos protegidos incluídos.",
+    "termoBuscaCapa": "The_Legend_of_Zelda:_Breath_of_the_Wild",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-26T03:47:02Z",
+    "stars": 1820,
+    "versaoPadrao": "v0.3.1-alpha.3",
+    "tags": [
+      "Switch",
+      "Recompilação",
+      "Binário Disponível",
+      "C"
+    ]
   }
 ];
 
@@ -7315,13 +7424,12 @@ function renderizarCatalogo() {
           <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
           <line x1="8" y1="11" x2="14" y2="11"></line>
         </svg>
-        <h3 class="empty-state-title">Nenhum port encontrado</h3>
+        <h3 class="empty-state-title">${escapeHtml(obterTextoTraduzido('cards.emptyTitle') || 'Nenhum port encontrado')}</h3>
         <p class="empty-state-desc">
-          Não localizamos nenhum port ou repositório correspondente aos filtros atuais.
+          ${escapeHtml(obterTextoTraduzido('cards.emptyDesc') || 'Não localizamos nenhum port ou repositório correspondente aos filtros atuais.')}
         </p>
         <button type="button" class="btn-empty-reset" onclick="appResetBusca()">
-          Limpar filtros e ver todos os ports
-        </button>
+          ${escapeHtml(obterTextoTraduzido('cards.btnClearFilters') || 'Limpar filtros e ver todos os ports')}</button>
       </div>
     `;
     return;
@@ -7341,14 +7449,16 @@ function gerarHtmlCard(port, cardIndex) {
   const temCapa = Boolean(capaInfo);
   const semReleaseInicial = !port.versaoPadrao || port.versaoPadrao === 'Port Nativo' || port.versaoPadrao === 'Port Ativo' || port.statusTipo === 'wip';
   const versaoInicial = semReleaseInicial ? (obterTextoTraduzido('cards.inDevelopment') || 'Em desenvolvimento') : port.versaoPadrao;
-  const starsInicial = port.stars ? `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>${port.stars.toLocaleString('pt-BR')}` : `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Ativo`;
+  const starsLocale = idiomaAtual === 'en' ? 'en-US' : (idiomaAtual === 'es' ? 'es-ES' : 'pt-BR');
+  const txtAtivo = obterTextoTraduzido('cards.statusActive') || 'Ativo';
+  const starsInicial = port.stars ? `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>${port.stars.toLocaleString(starsLocale)}` : `<svg class="icon-svg star-icon-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>${txtAtivo}`;
 
   // Apenas os 4 primeiros recebem eager/high para acelerar o LCP sem competir banda
   const isAcimaDobra = cardIndex < 4;
   const loadingAttr = isAcimaDobra ? 'loading="eager" fetchpriority="high"' : 'loading="lazy" fetchpriority="low"';
 
   return `
-    <article class="port-card" data-id="${port.id}" data-repo-url="${port.repoUrl}" title="Clique para abrir o repositório ${port.repo} no GitHub">
+    <article class="port-card" data-id="${port.id}" data-repo-url="${port.repoUrl}" title="${escapeHtml(obterTextoTraduzido('cards.clickToOpenRepo') || 'Clique para abrir o repositório no GitHub')}: ${port.repo}">
       <div class="port-image-container" id="cover_container_${port.id}">
         <div class="shimmer-placeholder" id="shimmer_${port.id}" style="${temCapa ? 'display: none;' : ''}"></div>
         
@@ -7357,7 +7467,7 @@ function gerarHtmlCard(port, cardIndex) {
           <source srcset="./assets/covers/${port.id}.avif" type="image/avif">
           <img 
             src="${capaInfo.url}" 
-            alt="Capa oficial de ${escapeHtml(port.nome)}" 
+            alt="${escapeHtml(obterTextoTraduzido('cards.coverOfficial') || 'Capa oficial de')} ${escapeHtml(port.nome)}" 
             class="port-thumb loaded" 
             id="cover_img_${port.id}"
             onerror="aoFalharCapaLocal(this, '${port.id}')"
@@ -7369,7 +7479,7 @@ function gerarHtmlCard(port, cardIndex) {
         ` : `
         <img 
           src="${temCapa ? capaInfo.url : ''}" 
-          alt="Capa oficial de ${escapeHtml(port.nome)}" 
+          alt="${escapeHtml(obterTextoTraduzido('cards.coverOfficial') || 'Capa oficial de')} ${escapeHtml(port.nome)}" 
           class="port-thumb ${temCapa ? 'loaded' : ''}" 
           id="cover_img_${port.id}"
           ${loadingAttr}
@@ -7381,7 +7491,7 @@ function gerarHtmlCard(port, cardIndex) {
         <div class="card-badges-top">
           <span class="badge-console ${consoleClass}">${port.console}</span>
           <div class="card-badges-right">
-            <span class="badge-status">${port.codigoJogo || 'Port Nativo PC'}</span>
+            <span class="badge-status">${port.codigoJogo || (obterTextoTraduzido('cards.nativePcPort') || 'Port Nativo PC')}</span>
             <button class="btn-card-menu" type="button" aria-label="${obterTextoTraduzido('cards.btnOptions') || 'Mais opções'}" title="${obterTextoTraduzido('cards.btnOptions') || 'Opções'}" onclick="abrirMenuCard(event, '${port.id}')">
               <svg class="icon-svg" viewBox="0 0 24 24" width="13" height="13">
                 <circle cx="12" cy="5" r="2.2"></circle>

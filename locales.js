@@ -71,6 +71,9 @@ const LOCALES = {
       inDevelopment: "Em desenvolvimento",
       btnOptions: "Mais opções",
       reportRepo: "Reportar repositório",
+      clickToOpenRepo: "Clique para abrir o repositório no GitHub",
+      statusActive: "Ativo",
+      nativePcPort: "Port Nativo PC",
       coverOfficial: "Capa Oficial",
       coverOfficialWikipedia: "Capa Oficial Wikipedia",
       coverRemake: "Capa Oficial Remake",
@@ -161,7 +164,7 @@ suggestModal: {
       repoLink: "Repositório do Projeto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Escuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.074"
+      rights: "© 2026 SSLabs EcoSystem • 1.076"
     }
   },
 
@@ -224,6 +227,12 @@ suggestModal: {
       btnDiscord: "Discord",
       btnDiscordTitle: "Join official Discord server",
       btnDownload: "Download / Releases",
+      inDevelopment: "In development",
+      btnOptions: "More options",
+      reportRepo: "Report repository",
+      clickToOpenRepo: "Click to open repository on GitHub",
+      statusActive: "Active",
+      nativePcPort: "Native PC Port",
       coverOfficial: "Official Cover",
       coverOfficialWikipedia: "Official Cover Wikipedia",
       coverRemake: "Official Remake Cover",
@@ -314,7 +323,7 @@ suggestModal: {
       repoLink: "Project Repository",
       themeLabelLight: "Light Mode",
       themeLabelDark: "Dark Mode",
-      rights: "© 2026 SSLabs EcoSystem • 1.074"
+      rights: "© 2026 SSLabs EcoSystem • 1.076"
     },
     portDescriptions: {
   "driv3r-decompilation-pc": "Re-implementation of the game Driv3r (Driver 3) using modern C++",
@@ -608,6 +617,9 @@ suggestModal: {
       inDevelopment: "En desarrollo",
       btnOptions: "Más opciones",
       reportRepo: "Reportar repositorio",
+      clickToOpenRepo: "Haz clic para abrir el repositorio en GitHub",
+      statusActive: "Activo",
+      nativePcPort: "Port Nativo PC",
       coverOfficial: "Portada Oficial",
       coverOfficialWikipedia: "Portada Oficial Wikipedia",
       coverRemake: "Portada Oficial Remake",
@@ -698,9 +710,23 @@ suggestModal: {
       repoLink: "Repositorio del Proyecto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Oscuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.074"
+      rights: "© 2026 SSLabs EcoSystem • 1.076"
     },
-    portDescriptions: {
+    portDescriptions: {      "daviddaco1-nconr3-wii-pc": "Descompilación por coincidencia de Naruto Shippuden: Clash of Ninja Revolution 3 (Nintendo Wii) con el objetivo de portearlo a PC. Requiere los archivos del juego original.",
+      "tgp482-black-xberecomp-pc": "Port nativo para PC de BLACK (Xbox original) mediante recompilación estática del binario XBE con opciones gráficas avanzadas, soporte de teclado y ratón y lanzador integrado.",
+      "revivedx-savagewindrecomp-botw-pc": "Recompilación estática de The Legend of Zelda: Breath of the Wild (Switch, v1.9.0) para Windows y Linux basada en la arquitectura LAS Recomp. Requiere dump propio del juego.",
+      "mhgurecomp-pc": "Port nativo de Monster Hunter Generations Ultimate para PC mediante recompilación estática con soporte para 60+ FPS y altas resoluciones. Requiere los archivos del juego original.",
+      "gow-psp-recomp-pc": "Ports nativos para PC de God of War: Chains of Olympus y Ghost of Sparta mediante recompilación estática desde PSP. Requiere los archivos del disco original.",
+      "ultratears-pc": "Port nativo no oficial para Windows de The Legend of Zelda: Tears of the Kingdom (v1.4.3) mediante recompilación estática. Compilado localmente desde el dump del usuario.",
+      "roll-away-psx-pc-recomp-pc": "Port nativo para Windows del clásico juego de puzles y plataformas Roll Away (Kula World) de PlayStation 1. Requiere el disco del juego original.",
+      "doa2u-re-pc": "Port nativo para Windows de Dead or Alive 2 Ultimate de la Xbox original mediante recompilación estática con runtime manual. Requiere copia del juego original.",
+      "piratesatworldsendrecomp-pc": "Port nativo para PC de Piratas del Caribe: En el fin del mundo (Xbox 360) mediante recompilación estática. 60 FPS, panorámico, DLAA, logros e instalador integrado.",
+      "wario-land-shake-it-native-pc-pc": "Port nativo para PC de Wario Land: Shake It! (Nintendo Wii), recompilado estáticamente con WiiCompiled. Requiere dump del juego original.",
+      "fear360-recomp-pc": "Port nativo para PC de F.E.A.R. y la expansión F.E.A.R. Files basado en Xbox 360 mediante recompilación estática: 4K, 120 FPS y soporte completo de mandos. Requiere discos originales.",
+      "knack-ii-pc-port-pc": "Port nativo experimental para Windows de Knack II (PS4) con renderizado Vulkan, lanzador integrado y soporte cooperativo local. Requiere dump original de PS4.",
+      "infamous-first-light-pc-pc": "Port nativo no oficial para PC de inFAMOUS First Light (PS4). Requiere dump original del juego para su ejecución.",
+      "belmantegu-supermariowonderrecomp-pc": "Port nativo de Super Mario Bros. Wonder para PC mediante recompilación estática. Requiere dump del juego original para compilar y ejecutar.",
+
   "driv3r-decompilation-pc": "Re-implementation of the game Driv3r (Driver 3) using modern C++",
   "shadps4-pc": "inFAMOUS Second Son on PC: a shadPS4 build tuned for one game - high FPS, DLSS, mouse aiming. Bring your own game.",
   "fighting-force-pc": "Fighting Force static recompilation setup project",
