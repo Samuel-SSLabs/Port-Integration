@@ -372,6 +372,74 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "voldorium-pc",
+    "nome": "SoulCalibur",
+    "console": "DC",
+    "consoleNome": "Dreamcast",
+    "codigoJogo": "DC-VOLDORIUM",
+    "status": "Jogável (Source Port)",
+    "statusTipo": "jogavel",
+    "repo": "enrique363/voldorium",
+    "repoUrl": "https://github.com/enrique363/voldorium",
+    "descricao": "Native Windows port of SoulCalibur (Dreamcast) by static recompilation: 16:9, online versus with rollback netcode. Requires your own legal disc dump; no game files included.",
+    "termoBuscaCapa": "SoulCalibur",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-24T21:38:01Z",
+    "stars": 26,
+    "versaoPadrao": "v1.0.10",
+    "tags": [
+      "DC",
+      "AutoDiscover",
+      "C"
+    ]
+  },
+  {
+    "id": "starwars-renegadesquadron-pc-pc",
+    "nome": "StarWars RenegadeSquadron",
+    "console": "PSP",
+    "consoleNome": "PlayStation Portable",
+    "codigoJogo": "ULUS-10292",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "GTTeancum/StarWars-RenegadeSquadron-PC",
+    "repoUrl": "https://github.com/GTTeancum/StarWars-RenegadeSquadron-PC",
+    "descricao": "Native Windows port of Star Wars Battlefront: Renegade Squadron (PSP) via static recompilation",
+    "termoBuscaCapa": "StarWars RenegadeSquadron",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-18T23:11:55Z",
+    "stars": 16,
+    "versaoPadrao": "v0.9b",
+    "tags": [
+      "PSP",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "cosmic-recompi-pc",
+    "nome": "Ben 10 Cosmic Destruction",
+    "console": "XBOX360",
+    "consoleNome": "Xbox 360",
+    "codigoJogo": "XBOX360-COSMICRECO",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "ExtremestoneGG/Cosmic-Recompi",
+    "repoUrl": "https://github.com/ExtremestoneGG/Cosmic-Recompi",
+    "descricao": "Cosmic Recomp: experimental native Windows port of Ben 10 Cosmic Destruction using ReXGlue. Bring your own supported Xbox 360 copy.",
+    "termoBuscaCapa": "Ben 10 Cosmic Destruction",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-26T20:43:05Z",
+    "stars": 11,
+    "versaoPadrao": "v0.4.0-alpha.3",
+    "tags": [
+      "XBOX360",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "mhgurecomp-pc",
     "nome": "Monster Hunter Generations Ultimate (MHGU Recomp)",
     "console": "Switch",
