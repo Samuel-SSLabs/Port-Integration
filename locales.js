@@ -328,6 +328,9 @@ suggestModal: {
       rights: "© 2026 SSLabs EcoSystem • 1.077"
     },
     portDescriptions: {
+      "voldorium-pc": "Native Windows port of SoulCalibur (Dreamcast) via static recompilation: 16:9 widescreen and online versus with rollback netcode. Requires your own legal game dump.",
+      "starwars-renegadesquadron-pc-pc": "Native Windows port of Star Wars Battlefront: Renegade Squadron (PSP) via static recompilation with modern controller support and 60 FPS.",
+      "cosmic-recompi-pc": "Experimental native Windows port of Ben 10 Ultimate Alien: Cosmic Destruction (Xbox 360) using ReXGlue. Requires original Xbox 360 game copy.",
   "driv3r-decompilation-pc": "Re-implementation of the game Driv3r (Driver 3) using modern C++",
   "shadps4-pc": "inFAMOUS Second Son on PC: a shadPS4 build tuned for one game - high FPS, DLSS, mouse aiming. Bring your own game.",
   "fighting-force-pc": "Fighting Force static recompilation setup project",
@@ -715,7 +718,11 @@ suggestModal: {
       themeLabelDark: "Modo Oscuro",
       rights: "© 2026 SSLabs EcoSystem • 1.077"
     },
-    portDescriptions: {      "daviddaco1-nconr3-wii-pc": "Descompilación por coincidencia de Naruto Shippuden: Clash of Ninja Revolution 3 (Nintendo Wii) con el objetivo de portearlo a PC. Requiere los archivos del juego original.",
+    portDescriptions: {
+      "voldorium-pc": "Port nativo de SoulCalibur (Dreamcast) para Windows mediante recompilación estática: soporte 16:9 y versus online con rollback netcode. Requiere dump legal del juego original.",
+      "starwars-renegadesquadron-pc-pc": "Port nativo para Windows de Star Wars Battlefront: Renegade Squadron (PSP) mediante recompilación estática con soporte para mandos modernos y 60 FPS.",
+      "cosmic-recompi-pc": "Port nativo experimental para Windows de Ben 10 Ultimate Alien: Cosmic Destruction (Xbox 360) usando ReXGlue. Requiere copia original del juego.",
+      "daviddaco1-nconr3-wii-pc": "Descompilación por coincidencia de Naruto Shippuden: Clash of Ninja Revolution 3 (Nintendo Wii) con el objetivo de portearlo a PC. Requiere los archivos del juego original.",
       "tgp482-black-xberecomp-pc": "Port nativo para PC de BLACK (Xbox original) mediante recompilación estática del binario XBE con opciones gráficas avanzadas, soporte de teclado y ratón y lanzador integrado.",
       "revivedx-savagewindrecomp-botw-pc": "Recompilación estática de The Legend of Zelda: Breath of the Wild (Switch, v1.9.0) para Windows y Linux basada en la arquitectura LAS Recomp. Requiere dump propio del juego.",
       "mhgurecomp-pc": "Port nativo de Monster Hunter Generations Ultimate para PC mediante recompilación estática con soporte para 60+ FPS y altas resoluciones. Requiere los archivos del juego original.",
