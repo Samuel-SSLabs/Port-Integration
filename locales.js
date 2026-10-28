@@ -165,7 +165,7 @@ suggestModal: {
       repoLink: "Repositório do Projeto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Escuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.077"
+      rights: "© 2026 SSLabs EcoSystem • 1.078"
     }
   },
 
@@ -325,7 +325,7 @@ suggestModal: {
       repoLink: "Project Repository",
       themeLabelLight: "Light Mode",
       themeLabelDark: "Dark Mode",
-      rights: "© 2026 SSLabs EcoSystem • 1.077"
+      rights: "© 2026 SSLabs EcoSystem • 1.078"
     },
     portDescriptions: {
       "voldorium-pc": "Native Windows port of SoulCalibur (Dreamcast) via static recompilation: 16:9 widescreen and online versus with rollback netcode. Requires your own legal game dump.",
@@ -716,7 +716,7 @@ suggestModal: {
       repoLink: "Repositorio del Proyecto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Oscuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.077"
+      rights: "© 2026 SSLabs EcoSystem • 1.078"
     },
     portDescriptions: {
       "voldorium-pc": "Port nativo de SoulCalibur (Dreamcast) para Windows mediante recompilación estática: soporte 16:9 y versus online con rollback netcode. Requiere dump legal del juego original.",

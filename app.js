@@ -8288,7 +8288,8 @@ function configurarEventosApoio() {
   const pixQrContainer = document.getElementById('pixQrContainer');
   const qrToggleText = document.getElementById('qrToggleText');
   const pixFeedback = document.getElementById('pixFeedback');
-  const chavePix = 'ace85127-b293-4bb2-bd30-b1c10b47e07c';
+  const chavePixCopiaECola = '00020101021126790014BR.GOV.BCB.PIX2557pix-qr.mercadopago.com/instore/ol/v2/rYknzyEc3udxBQXMosex5204000053039865802BR5906Samuel6009SAO PAULO62080504mpis6304E96F';
+  const chavePixAleatoria = 'ace85127-b293-4bb2-bd30-b1c10b47e07c';
 
   function abrirModalApoio() {
     if (!supportModalOverlay) return;
@@ -8339,7 +8340,7 @@ function configurarEventosApoio() {
     btnCopyPix.addEventListener('click', async () => {
       try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(chavePix);
+          await navigator.clipboard.writeText(chavePixCopiaECola);
         } else {
           const codeElem = document.getElementById('pixKeyCode');
           if (codeElem) {
@@ -8357,7 +8358,7 @@ function configurarEventosApoio() {
         btnCopyPix.classList.add('copied');
 
         if (pixFeedback) {
-          pixFeedback.textContent = 'Chave PIX copiada com sucesso!';
+          pixFeedback.textContent = 'Código PIX Copia e Cola copiado!';
           pixFeedback.style.opacity = '1';
         }
 
@@ -8388,6 +8389,23 @@ function configurarEventosApoio() {
   // Cópia do UID / Pay ID da Binance
   const btnCopyBinance = document.getElementById('btnCopyBinanceUid');
   const binanceUid = '1058817517';
+
+  const btnToggleBinanceQr = document.getElementById('btnToggleBinanceQr');
+  const binanceQrContainer = document.getElementById('binanceQrContainer');
+  const binanceQrToggleText = document.getElementById('binanceQrToggleText');
+
+  if (btnToggleBinanceQr && binanceQrContainer) {
+    btnToggleBinanceQr.addEventListener('click', () => {
+      const estaAberto = binanceQrContainer.style.display !== 'none';
+      if (estaAberto) {
+        binanceQrContainer.style.display = 'none';
+        if (binanceQrToggleText) binanceQrToggleText.textContent = 'Mostrar QR Code Binance Pay';
+      } else {
+        binanceQrContainer.style.display = 'flex';
+        if (binanceQrToggleText) binanceQrToggleText.textContent = 'Ocultar QR Code Binance Pay';
+      }
+    });
+  }
 
   if (btnCopyBinance) {
     btnCopyBinance.addEventListener('click', async () => {
