@@ -93,7 +93,8 @@ const LOCALES = {
     },
     floating: {
       backToTop: "Voltar ao topo da página",
-      suggestPort: "Sugerir Port"
+      suggestPort: "Sugerir Port",
+      supportBtn: "Apoie o Projeto"
     },
         reportModal: {
       title: "Reportar Repositório",
@@ -164,7 +165,7 @@ suggestModal: {
       repoLink: "Repositório do Projeto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Escuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.076"
+      rights: "© 2026 SSLabs EcoSystem • 1.077"
     }
   },
 
@@ -252,7 +253,8 @@ suggestModal: {
     },
     floating: {
       backToTop: "Scroll to top",
-      suggestPort: "Suggest Port"
+      suggestPort: "Suggest Port",
+      supportBtn: "Support Project"
     },
         reportModal: {
       title: "Report Repository",
@@ -323,7 +325,7 @@ suggestModal: {
       repoLink: "Project Repository",
       themeLabelLight: "Light Mode",
       themeLabelDark: "Dark Mode",
-      rights: "© 2026 SSLabs EcoSystem • 1.076"
+      rights: "© 2026 SSLabs EcoSystem • 1.077"
     },
     portDescriptions: {
   "driv3r-decompilation-pc": "Re-implementation of the game Driv3r (Driver 3) using modern C++",
@@ -639,7 +641,8 @@ suggestModal: {
     },
     floating: {
       backToTop: "Volver arriba",
-      suggestPort: "Sugerir Port"
+      suggestPort: "Sugerir Port",
+      supportBtn: "Apoya el Proyecto"
     },
         reportModal: {
       title: "Reportar Repositorio",
@@ -710,7 +713,7 @@ suggestModal: {
       repoLink: "Repositorio del Proyecto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Oscuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.076"
+      rights: "© 2026 SSLabs EcoSystem • 1.077"
     },
     portDescriptions: {      "daviddaco1-nconr3-wii-pc": "Descompilación por coincidencia de Naruto Shippuden: Clash of Ninja Revolution 3 (Nintendo Wii) con el objetivo de portearlo a PC. Requiere los archivos del juego original.",
       "tgp482-black-xberecomp-pc": "Port nativo para PC de BLACK (Xbox original) mediante recompilación estática del binario XBE con opciones gráficas avanzadas, soporte de teclado y ratón y lanzador integrado.",

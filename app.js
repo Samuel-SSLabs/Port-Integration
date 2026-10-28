@@ -7546,10 +7546,11 @@ function gerarHtmlCard(port, cardIndex) {
         </picture>
         ` : `
         <img 
-          src="${temCapa ? capaInfo.url : ''}" 
+          src="${temCapa ? capaInfo.url : (port.repo ? `https://opengraph.githubassets.com/1/${port.repo}` : './assets/favicon.png')}" 
           alt="${escapeHtml(obterTextoTraduzido('cards.coverOfficial') || 'Capa oficial de')} ${escapeHtml(port.nome)}" 
-          class="port-thumb ${temCapa ? 'loaded' : ''}" 
+          class="port-thumb loaded" 
           id="cover_img_${port.id}"
+          onerror="aoFalharCapaRemota(this, '${port.id}')"
           ${loadingAttr}
           decoding="async"
           width="1280" height="720"
@@ -7703,40 +7704,76 @@ function obterCapaDisponivel(port) {
   if (cacheada) {
     return { url: cacheada, tipo: 'wikipedia', local: false };
   }
+  // Fallback imediato para capa oficial do repositório GitHub
+  if (port.repo) {
+    return { url: `https://opengraph.githubassets.com/1/${port.repo}`, tipo: 'github_preview', local: false };
+  }
   return null;
 }
 
 // Fallback resiliente caso a capa local (.avif/.webp) falhe no carregamento
 function aoFalharCapaLocal(imgElem, portId) {
-  if (typeof LOCAL_COVERS_SET !== 'undefined') {
-    LOCAL_COVERS_SET.delete(portId);
-  }
   const port = PORTS_DATABASE.find(p => p.id === portId);
   if (!port) return;
 
+  if (typeof LOCAL_COVERS_SET !== 'undefined') {
+    LOCAL_COVERS_SET.delete(portId);
+  }
+
+  const repoFallback = port.repo ? `https://opengraph.githubassets.com/1/${port.repo}` : './assets/favicon.png';
   const picElem = document.getElementById(`cover_pic_${portId}`);
   let targetImg = imgElem;
+
   if (picElem) {
     const cleanImg = document.createElement('img');
     cleanImg.id = `cover_img_${portId}`;
-    cleanImg.className = 'port-thumb';
+    cleanImg.className = 'port-thumb loaded';
     cleanImg.loading = 'lazy';
     cleanImg.decoding = 'async';
-    cleanImg.alt = `Capa oficial de ${port.nome}`;
+    cleanImg.alt = `Capa de ${port.nome}`;
+    cleanImg.src = repoFallback;
+    cleanImg.onerror = () => {
+      cleanImg.onerror = null;
+      cleanImg.src = './assets/favicon.png';
+    };
     picElem.replaceWith(cleanImg);
     targetImg = cleanImg;
+  } else if (imgElem) {
+    imgElem.onerror = () => {
+      imgElem.onerror = null;
+      imgElem.src = './assets/favicon.png';
+    };
+    imgElem.src = repoFallback;
+    imgElem.classList.add('loaded');
   }
 
   const shimmerElem = document.getElementById(`shimmer_${portId}`);
   const originElem = document.getElementById(`cover_origin_${portId}`);
-  if (shimmerElem) shimmerElem.style.display = 'block';
+  if (shimmerElem) shimmerElem.style.display = 'none';
   if (originElem) {
-    originElem.dataset.originType = 'searching';
-    originElem.textContent = traduzirBadgeCapa('searching', idiomaAtual);
+    originElem.dataset.originType = 'github_preview';
+    originElem.textContent = traduzirBadgeCapa('github_preview', idiomaAtual);
   }
-  targetImg.removeAttribute('onerror');
-  targetImg.classList.remove('loaded');
-  carregarCapaInteligente(port);
+}
+
+function aoFalharCapaRemota(imgElem, portId) {
+  if (!imgElem) return;
+  imgElem.onerror = null;
+  const port = PORTS_DATABASE.find(p => p.id === portId);
+  const repoFallback = port?.repo ? `https://opengraph.githubassets.com/1/${port.repo}` : './assets/favicon.png';
+  if (imgElem.src !== repoFallback) {
+    imgElem.src = repoFallback;
+  } else {
+    imgElem.src = './assets/favicon.png';
+  }
+  imgElem.classList.add('loaded');
+  const shimmerElem = document.getElementById(`shimmer_${portId}`);
+  if (shimmerElem) shimmerElem.style.display = 'none';
+  const originElem = document.getElementById(`cover_origin_${portId}`);
+  if (originElem) {
+    originElem.dataset.originType = 'github_preview';
+    originElem.textContent = traduzirBadgeCapa('github_preview', idiomaAtual);
+  }
 }
 
 // ── MÓDULO DE BUSCA INTELIGENTE DE CAPAS OFICIAIS ──
@@ -8267,12 +8304,18 @@ function configurarEventosApoio() {
     document.body.style.overflow = '';
   }
 
-  if (btnOpenSupport) {
-    btnOpenSupport.addEventListener('click', (e) => {
-      e.preventDefault();
-      abrirModalApoio();
-    });
-  }
+  const botoesApoio = [
+    document.getElementById('openSupportModalBtn'),
+    document.getElementById('openSupportFloatingBtn')
+  ];
+  botoesApoio.forEach(btn => {
+    if (btn) {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        abrirModalApoio();
+      });
+    }
+  });
 
   if (btnCloseSupport) {
     btnCloseSupport.addEventListener('click', fecharModalApoio);
@@ -8817,13 +8860,15 @@ function definirIdioma(lang, atualizarUrl = true, manual = false) {
 
   // Atualizar rodapé
   if (loc.footer) {
-    const btnSupport = document.querySelector('#openSupportModalBtn span');
-    if (btnSupport && loc.footer.supportBtn) btnSupport.textContent = loc.footer.supportBtn;
-    const btnSupportParent = document.getElementById('openSupportModalBtn');
-    if (btnSupportParent && loc.footer.supportBtnAria) {
-      btnSupportParent.title = loc.footer.supportBtnAria;
-      btnSupportParent.setAttribute('aria-label', loc.footer.supportBtnAria);
-    }
+    document.querySelectorAll('#openSupportModalBtn span, #openSupportFloatingBtn span').forEach(el => {
+      if (loc.footer?.supportBtn) el.textContent = loc.footer.supportBtn;
+    });
+    document.querySelectorAll('#openSupportModalBtn, #openSupportFloatingBtn').forEach(btn => {
+      if (loc.footer?.supportBtnAria) {
+        btn.title = loc.footer.supportBtnAria;
+        btn.setAttribute('aria-label', loc.footer.supportBtnAria);
+      }
+    });
     const disclaimer = document.querySelector('.footer-disclaimer');
     if (disclaimer && loc.footer.disclaimer) disclaimer.innerHTML = loc.footer.disclaimer;
     const brandDesc = document.querySelector('.footer-text');

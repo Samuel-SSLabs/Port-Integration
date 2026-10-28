@@ -2520,6 +2520,59 @@ body {
 .floating-suggest-btn:active {
   transform: translateY(0);
 }
+/* Botão Flutuante de Apoio ao Projeto */
+.floating-donate-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.15rem;
+  background: rgba(244, 63, 94, 0.1);
+  color: #fb7185;
+  border: 1px solid rgba(244, 63, 94, 0.32);
+  border-radius: 9999px;
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(244, 63, 94, 0.18);
+  backdrop-filter: blur(8px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+}
+
+.floating-donate-btn .donate-heart-icon {
+  color: #f43f5e;
+  transition: transform 0.2s ease;
+}
+
+.floating-donate-btn:hover {
+  transform: translateY(-2px);
+  background: rgba(244, 63, 94, 0.18);
+  border-color: rgba(244, 63, 94, 0.5);
+  color: #fda4af;
+  box-shadow: 0 6px 20px rgba(244, 63, 94, 0.28);
+}
+
+.floating-donate-btn:hover .donate-heart-icon {
+  transform: scale(1.22);
+}
+
+.floating-donate-btn:active {
+  transform: translateY(0);
+}
+
+[data-theme="light"] .floating-donate-btn {
+  background: #fff1f2;
+  border-color: #fecdd3;
+  color: #e11d48;
+  box-shadow: 0 4px 14px rgba(225, 29, 72, 0.12);
+}
+
+[data-theme="light"] .floating-donate-btn:hover {
+  background: #ffe4e6;
+  border-color: #fda4af;
+  box-shadow: 0 6px 18px rgba(225, 29, 72, 0.2);
+}
 
 /* ── MODAL INTERATIVO DE SUGESTÕES ── */
 .suggest-modal-overlay {
@@ -2727,11 +2780,15 @@ body {
 }
 
 @media (max-width: 640px) {
-  .floating-suggest-btn {
+  .floating-actions-wrap {
     bottom: 1.25rem;
     right: 1.25rem;
-    padding: 0.65rem 1rem;
-    font-size: 0.82rem;
+    gap: 0.5rem;
+  }
+  .floating-suggest-btn,
+  .floating-donate-btn {
+    padding: 0.55rem 0.95rem;
+    font-size: 0.8rem;
   }
   .form-row {
     flex-direction: column;
