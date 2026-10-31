@@ -372,6 +372,98 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "gow-native-pc-pc",
+    "nome": "Gow Native",
+    "console": "PS2",
+    "consoleNome": "PlayStation 2",
+    "codigoJogo": "SCUS-97399",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Vnnc1/gow-native-pc",
+    "repoUrl": "https://github.com/Vnnc1/gow-native-pc",
+    "descricao": "Native Windows PC port of God of War (PS2), built by statically recompiling MIPS R5900 code to C++ with PS2Recomp. Includes an installer launcher, one-click build, fan-translation support and a 60 fps target. No game files included: you need your own copy.",
+    "termoBuscaCapa": "Gow Native",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-31T08:28:25Z",
+    "stars": 105,
+    "versaoPadrao": "v3.0.1",
+    "tags": [
+      "PS2",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "nativ-pc",
+    "nome": "Nativ",
+    "console": "PC",
+    "consoleNome": "PC Nativo",
+    "codigoJogo": "PC-NATIV",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "TheLostPantheon/nativ",
+    "repoUrl": "https://github.com/TheLostPantheon/nativ",
+    "descricao": "PS Vita games recompiled into native PC programs: you bring your own games and firmware",
+    "termoBuscaCapa": "Nativ",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-30T19:29:03Z",
+    "stars": 41,
+    "versaoPadrao": "v0.1.4",
+    "tags": [
+      "PC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
+    "id": "splatpc-splatoon-native-pc-port-pc",
+    "nome": "SplatPC Splatoon Native",
+    "console": "PC",
+    "consoleNome": "PC Nativo",
+    "codigoJogo": "PC-SPLATPCSPL",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "PC-PORTERS/SplatPC-Splatoon-Native-PC-Port",
+    "repoUrl": "https://github.com/PC-PORTERS/SplatPC-Splatoon-Native-PC-Port",
+    "descricao": "SplatPC SPLATOON 1 PORT (VERY EARLY BUILD)",
+    "termoBuscaCapa": "SplatPC Splatoon Native",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-30T18:25:40Z",
+    "stars": 43,
+    "versaoPadrao": "MAC",
+    "tags": [
+      "PC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "haze-recomp-pc",
+    "nome": "Haze",
+    "console": "PS3",
+    "consoleNome": "PlayStation 3",
+    "codigoJogo": "BLUS-30094",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "zdiemer/haze-recomp",
+    "repoUrl": "https://github.com/zdiemer/haze-recomp",
+    "descricao": "Experimental native Windows Haze port using ps3recomp; game assets not included",
+    "termoBuscaCapa": "Haze",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-25T01:35:49Z",
+    "stars": 19,
+    "versaoPadrao": "v0.1.13",
+    "tags": [
+      "PS3",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "brawlrecompiled-pc",
     "nome": "BrawlRecompiled",
     "console": "GC",
