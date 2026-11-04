@@ -165,7 +165,7 @@ suggestModal: {
       repoLink: "Repositório do Projeto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Escuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.080"
+      rights: "© 2026 SSLabs EcoSystem • 1.081"
     }
   },
 
@@ -325,9 +325,15 @@ suggestModal: {
       repoLink: "Project Repository",
       themeLabelLight: "Light Mode",
       themeLabelDark: "Dark Mode",
-      rights: "© 2026 SSLabs EcoSystem • 1.080"
+      rights: "© 2026 SSLabs EcoSystem • 1.081"
     },
     portDescriptions: {
+      "mh4-ultimate-dc-pc": "Native PC decompilation and recompilation project of Monster Hunter 4 Ultimate (Nintendo 3DS) featuring high resolution support, customizable controls and unlocked framerates.",
+      "fci-recomp-pc": "Native PC port of original Xbox Far Cry Instincts via static recompilation with 60 FPS support, native widescreen and keyboard/mouse aiming.",
+      "prj-gd-engine-pc": "Open-source engine and launcher recreating and running Guitar Hero and Rock Band classic titles natively on Windows with low latency and USB guitar support.",
+      "007eon-recomp-pc": "Native PC port of original Xbox James Bond 007: Everything or Nothing via static recompilation featuring high resolution support, modern controllers and 60 FPS.",
+      "rush2049-recomp-pc": "Native version of San Francisco Rush 2049 (Sega Dreamcast) for Windows PC and Android via static recompilation from SH-4 to C++, featuring 16:9 widescreen and modern controllers.",
+      "battle-for-naboo-pc": "Modernized PC port of Star Wars Episode I: Battle for Naboo for Windows 10 and 11 featuring 16:9 widescreen, high framerates and full Xbox controller support.",
       "p3fes-decompilation-pc": "Native Windows port of Persona 3 FES rewritten from source code with high framerates and modern resolution support. Requires original game dump.",
       "tlou-remastered-pc-pc": "Native Windows PC port of The Last of Us Remastered (PS4, CUSA00552) running x86-64 code with reimplemented system libraries and Vulkan renderer based on shadPS4.",
       "gow-native-pc-pc": "Native Windows PC port of God of War (PS2) via static recompilation from MIPS R5900 to C++ with PS2Recomp, built-in launcher, mod support and 60 FPS target.",
@@ -742,9 +748,15 @@ suggestModal: {
       repoLink: "Repositorio del Proyecto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Oscuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.080"
+      rights: "© 2026 SSLabs EcoSystem • 1.081"
     },
     portDescriptions: {
+      "mh4-ultimate-dc-pc": "Descompilación y recompilación nativa para PC de Monster Hunter 4 Ultimate (Nintendo 3DS) con soporte para altas resoluciones, mandos configurables y tasa de cuadros desbloqueada.",
+      "fci-recomp-pc": "Port nativo para PC de Far Cry Instincts de la Xbox original mediante recompilación estática con soporte para 60 FPS, pantalla ancha y apuntado con ratón y teclado.",
+      "prj-gd-engine-pc": "Motor y lanzador de código abierto que recrea y ejecuta nativamente en Windows títulos clásicos de Guitar Hero y Rock Band con soporte para guitarras USB y baja latencia.",
+      "007eon-recomp-pc": "Port nativo para PC de James Bond 007: Everything or Nothing (Xbox original) mediante recompilación estática con altas resoluciones, mandos modernos y 60 FPS.",
+      "rush2049-recomp-pc": "Versión nativa de San Francisco Rush 2049 (Sega Dreamcast) para PC Windows y Android por recompilación estática de SH-4 a C++, con soporte 16:9 panorámico y mandos modernos.",
+      "battle-for-naboo-pc": "Port modernizado de Star Wars Episode I: Battle for Naboo para Windows 10 y 11 con soporte para pantalla ancha 16:9, altos FPS y compatibilidad con mandos Xbox.",
       "p3fes-decompilation-pc": "Port nativo de Persona 3 FES para Windows reescrito desde el código fuente con alta tasa de cuadros y soporte para resoluciones modernas. Requiere dump del juego original.",
       "tlou-remastered-pc-pc": "Port nativo para PC de The Last of Us Remastered (PS4, CUSA00552) ejecutando código x86-64 con librerías del sistema reimplementadas y renderizador Vulkan basado en shadPS4.",
       "gow-native-pc-pc": "Port nativo para PC de God of War (PS2) mediante recompilación estática de MIPS R5900 a C++ con PS2Recomp, launcher integrado, soporte para mods y 60 FPS estables.",
