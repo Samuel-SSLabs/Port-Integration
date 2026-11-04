@@ -165,7 +165,7 @@ suggestModal: {
       repoLink: "Repositório do Projeto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Escuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.079"
+      rights: "© 2026 SSLabs EcoSystem • 1.080"
     }
   },
 
@@ -325,7 +325,7 @@ suggestModal: {
       repoLink: "Project Repository",
       themeLabelLight: "Light Mode",
       themeLabelDark: "Dark Mode",
-      rights: "© 2026 SSLabs EcoSystem • 1.079"
+      rights: "© 2026 SSLabs EcoSystem • 1.080"
     },
     portDescriptions: {
       "p3fes-decompilation-pc": "Native Windows port of Persona 3 FES rewritten from source code with high framerates and modern resolution support. Requires original game dump.",
@@ -742,7 +742,7 @@ suggestModal: {
       repoLink: "Repositorio del Proyecto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Oscuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.079"
+      rights: "© 2026 SSLabs EcoSystem • 1.080"
     },
     portDescriptions: {
       "p3fes-decompilation-pc": "Port nativo de Persona 3 FES para Windows reescrito desde el código fuente con alta tasa de cuadros y soporte para resoluciones modernas. Requiere dump del juego original.",
