@@ -372,6 +372,52 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "astralchain-pc-pc",
+    "nome": "Astral Chain",
+    "console": "PC",
+    "consoleNome": "PC Nativo",
+    "codigoJogo": "PC-ASTRALCHAI",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Puddz/AstralChain-PC",
+    "repoUrl": "https://github.com/Puddz/AstralChain-PC",
+    "descricao": "Unofficial native Windows port of Astral Chain by static recompilation. Bring your own dump and keys.",
+    "termoBuscaCapa": "Astral Chain",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-04T09:20:07Z",
+    "stars": 86,
+    "versaoPadrao": "2026-11-04.1",
+    "tags": [
+      "PC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
+    "id": "stuntman-pc-pc",
+    "nome": "Stuntman",
+    "console": "PS2",
+    "consoleNome": "PlayStation 2",
+    "codigoJogo": "SLES-50288",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "LAB0ULANGE/stuntman-pc",
+    "repoUrl": "https://github.com/LAB0ULANGE/stuntman-pc",
+    "descricao": "Unofficial native Windows port of Stuntman (PS2, 2002) - bring your own disc",
+    "termoBuscaCapa": "Stuntman",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-31T18:46:59Z",
+    "stars": 22,
+    "versaoPadrao": "v0.1.1-alpha",
+    "tags": [
+      "PS2",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "p3fes-decompilation-pc",
     "nome": "P3FES Decompilation",
     "console": "PC",
