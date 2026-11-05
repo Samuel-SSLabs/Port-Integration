@@ -403,6 +403,98 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "swsh-recomp-pc",
+    "nome": "PokéMon Sword / Shield",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "Switch-SWSHRECOMP",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "raulzrrs/swsh-recomp",
+    "repoUrl": "https://github.com/raulzrrs/swsh-recomp",
+    "descricao": "Native Windows port of Pokémon Sword / Shield (Switch, 1.3.2) by static recompilation, built on Let's Go Recomp and LAS Recomp. No game files included.",
+    "termoBuscaCapa": "PokéMon Sword / Shield",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-22T20:50:35Z",
+    "stars": 23,
+    "versaoPadrao": "v0.1.0",
+    "tags": [
+      "Switch",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
+    "id": "switch2-recomp-pc",
+    "nome": "Switch2",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "Switch-SWITCH2REC",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "drakolordx7/switch2-recomp",
+    "repoUrl": "https://github.com/drakolordx7/switch2-recomp",
+    "descricao": "Nintendo Switch 2 games recompiled to run natively on PC. Pokémon Pokopia is playable now.",
+    "termoBuscaCapa": "Switch2",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-04T20:05:33Z",
+    "stars": 414,
+    "versaoPadrao": "v0.2.0",
+    "tags": [
+      "Switch",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "tsukire-pc-port-pc",
+    "nome": "Tsukire",
+    "console": "PC",
+    "consoleNome": "PC Nativo",
+    "codigoJogo": "PC-TSUKIREPCP",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Broomstick-Girl-Magical-Amber/tsukire-pc-port",
+    "repoUrl": "https://github.com/Broomstick-Girl-Magical-Amber/tsukire-pc-port",
+    "descricao": "Port nativo para PC com compilações oficiais disponíveis no GitHub.",
+    "termoBuscaCapa": "Tsukire",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-03T02:30:07Z",
+    "stars": 31,
+    "versaoPadrao": "prebuilt-2026.11.03",
+    "tags": [
+      "PC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "rampage-pc",
+    "nome": "Rampage",
+    "console": "N64",
+    "consoleNome": "Nintendo 64",
+    "codigoJogo": "N64-RAMPAGE",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "sp00nznet/Rampage",
+    "repoUrl": "https://github.com/sp00nznet/Rampage",
+    "descricao": "Native Windows ports of Rampage: World Tour and Rampage 2: Universal Tour (N64), statically recompiled with N64Recomp. Bring your own ROM.",
+    "termoBuscaCapa": "Rampage",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-26T10:35:56Z",
+    "stars": 10,
+    "versaoPadrao": "v0.3.0",
+    "tags": [
+      "N64",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "astralchain-pc-pc",
     "nome": "Astral Chain",
     "console": "PC",
