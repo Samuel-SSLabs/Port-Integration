@@ -328,6 +328,8 @@ suggestModal: {
       rights: "© 2026 SSLabs EcoSystem • 1.081"
     },
     portDescriptions: {
+  "lichii-pc": "VERY experimental Nintendo Switch 2 emulator",
+  "lichii-sharkiix-version-pc": "VERY EXPERIMENTAL - Lichii (sharkiix's version): mainly for AMD GPUs, optimised for Zelda Ocarina of Time (Switch 2). Fork of zortos293/Lichii.",
   "lichii-trz-pc": "VERY experimental Nintendo Switch 2 emulator",
       "mh4-ultimate-dc-pc": "Native PC decompilation and recompilation project of Monster Hunter 4 Ultimate (Nintendo 3DS) featuring high resolution support, customizable controls and unlocked framerates.",
       "fci-recomp-pc": "Native PC port of original Xbox Far Cry Instincts via static recompilation with 60 FPS support, native widescreen and keyboard/mouse aiming.",
@@ -752,6 +754,8 @@ suggestModal: {
       rights: "© 2026 SSLabs EcoSystem • 1.081"
     },
     portDescriptions: {
+  "lichii-pc": "VERY experimental Nintendo Switch 2 emulator",
+  "lichii-sharkiix-version-pc": "VERY EXPERIMENTAL - Lichii (sharkiix's version): mainly for AMD GPUs, optimised for Zelda Ocarina of Time (Switch 2). Fork of zortos293/Lichii.",
   "lichii-trz-pc": "VERY experimental Nintendo Switch 2 emulator",
       "mh4-ultimate-dc-pc": "Descompilación y recompilación nativa para PC de Monster Hunter 4 Ultimate (Nintendo 3DS) con soporte para altas resoluciones, mandos configurables y tasa de cuadros desbloqueada.",
       "fci-recomp-pc": "Port nativo para PC de Far Cry Instincts de la Xbox original mediante recompilación estática con soporte para 60 FPS, pantalla ancha y apuntado con ratón y teclado.",

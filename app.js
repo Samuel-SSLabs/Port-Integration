@@ -228,6 +228,8 @@ const LOCAL_COVERS_MANIFEST = [
   "letsgo-recomp-pc",
   "lfarroco-ogre-battle-64-recomp",
   "liberty-pro-max-pc",
+  "lichii-pc",
+  "lichii-sharkiix-version-pc",
   "linkssy2-darkwatchdarkeredition-pc",
   "linkssy2-roadrash64recompiled",
   "littlebigplanet-3---pc",
@@ -402,6 +404,52 @@ const LOCAL_COVERS_MANIFEST = [
 const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
+  {
+    "id": "lichii-pc",
+    "nome": "Lichii",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "Switch-PORT",
+    "status": "Port Nativo PC",
+    "statusTipo": "playable",
+    "repo": "zortos293/Lichii",
+    "repoUrl": "https://github.com/zortos293/Lichii",
+    "descricao": "VERY experimental Nintendo Switch 2 emulator",
+    "termoBuscaCapa": "Lichii",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-06T01:58:37Z",
+    "stars": 2365,
+    "versaoPadrao": "build-83",
+    "tags": [
+      "Switch",
+      "AutoDiscover",
+      "C++",
+      "Port Nativo"
+    ]
+  },
+  {
+    "id": "lichii-sharkiix-version-pc",
+    "nome": "Lichii Sharkiix Version",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "Switch-PORT",
+    "status": "Port Nativo PC",
+    "statusTipo": "playable",
+    "repo": "Shakoquo/Lichii-sharkiix-version",
+    "repoUrl": "https://github.com/Shakoquo/Lichii-sharkiix-version",
+    "descricao": "VERY EXPERIMENTAL - Lichii (sharkiix's version): mainly for AMD GPUs, optimised for Zelda Ocarina of Time (Switch 2). Fork of zortos293/Lichii.",
+    "termoBuscaCapa": "Lichii_Sharkiix_Version",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-06T01:18:04Z",
+    "stars": 13,
+    "versaoPadrao": "sharkiix-v2",
+    "tags": [
+      "Switch",
+      "AutoDiscover",
+      "C++",
+      "Port Nativo"
+    ]
+  },
   {
     "id": "lichii-trz-pc",
     "nome": "Lichii TRZ",
