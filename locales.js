@@ -328,6 +328,7 @@ suggestModal: {
       rights: "© 2026 SSLabs EcoSystem • 1.081"
     },
     portDescriptions: {
+  "lichii-trz-pc": "VERY experimental Nintendo Switch 2 emulator",
       "mh4-ultimate-dc-pc": "Native PC decompilation and recompilation project of Monster Hunter 4 Ultimate (Nintendo 3DS) featuring high resolution support, customizable controls and unlocked framerates.",
       "fci-recomp-pc": "Native PC port of original Xbox Far Cry Instincts via static recompilation with 60 FPS support, native widescreen and keyboard/mouse aiming.",
       "prj-gd-engine-pc": "Open-source engine and launcher recreating and running Guitar Hero and Rock Band classic titles natively on Windows with low latency and USB guitar support.",
@@ -751,6 +752,7 @@ suggestModal: {
       rights: "© 2026 SSLabs EcoSystem • 1.081"
     },
     portDescriptions: {
+  "lichii-trz-pc": "VERY experimental Nintendo Switch 2 emulator",
       "mh4-ultimate-dc-pc": "Descompilación y recompilación nativa para PC de Monster Hunter 4 Ultimate (Nintendo 3DS) con soporte para altas resoluciones, mandos configurables y tasa de cuadros desbloqueada.",
       "fci-recomp-pc": "Port nativo para PC de Far Cry Instincts de la Xbox original mediante recompilación estática con soporte para 60 FPS, pantalla ancha y apuntado con ratón y teclado.",
       "prj-gd-engine-pc": "Motor y lanzador de código abierto que recrea y ejecuta nativamente en Windows títulos clásicos de Guitar Hero y Rock Band con soporte para guitarras USB y baja latencia.",

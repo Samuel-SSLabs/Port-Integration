@@ -403,6 +403,29 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "lichii-trz-pc",
+    "nome": "Lichii TRZ",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "Switch-PORT",
+    "status": "Port Nativo PC",
+    "statusTipo": "playable",
+    "repo": "HugoTRZ/Lichii-TRZ",
+    "repoUrl": "https://github.com/HugoTRZ/Lichii-TRZ",
+    "descricao": "VERY experimental Nintendo Switch 2 emulator",
+    "termoBuscaCapa": "Lichii_TRZ",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-06T00:08:35Z",
+    "stars": 0,
+    "versaoPadrao": "trz-oot-build7",
+    "tags": [
+      "Switch",
+      "AutoDiscover",
+      "C++",
+      "Port Nativo"
+    ]
+  },
+  {
     "id": "swsh-recomp-pc",
     "nome": "PokéMon Sword / Shield",
     "console": "Switch",
