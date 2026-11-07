@@ -405,6 +405,75 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "pokopia-native-pc",
+    "nome": "Pokopia Native",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "Switch-POKOPIANAT",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "xFractals/pokopia-native",
+    "repoUrl": "https://github.com/xFractals/pokopia-native",
+    "descricao": "Build Pokémon Pokopia (Switch 2) into a native Windows app, Mac app, and iPhone app from your own dump. Tools only; With multiplayer and cross-device saves!",
+    "termoBuscaCapa": "Pokopia Native",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-07T11:52:07Z",
+    "stars": 399,
+    "versaoPadrao": "v1.3.3",
+    "tags": [
+      "Switch",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
+    "id": "adam-pc",
+    "nome": "Neon Genesis Evangelion",
+    "console": "N64",
+    "consoleNome": "Nintendo 64",
+    "codigoJogo": "N64-ADAM",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "evaa-01/adam",
+    "repoUrl": "https://github.com/evaa-01/adam",
+    "descricao": "A static recompilation of Neon Genesis Evangelion (新世紀エヴァンゲリオン) into a native Windows program, built with N64Recomp.",
+    "termoBuscaCapa": "Neon Genesis Evangelion",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-13T16:30:30Z",
+    "stars": 10,
+    "versaoPadrao": "0.1.1",
+    "tags": [
+      "N64",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "sonic06-recomp-pc",
+    "nome": "Sonic The Hedgehog",
+    "console": "PS3",
+    "consoleNome": "PlayStation 3",
+    "codigoJogo": "BLES-00028",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "DrummingBird1/sonic06-recomp",
+    "repoUrl": "https://github.com/DrummingBird1/sonic06-recomp",
+    "descricao": "Soleanna (sonic06-recomp): an unofficial PC port of Sonic the Hedgehog (2006), PS3 version, by static recompilation. No game files included: the launcher builds it from your own disc.",
+    "termoBuscaCapa": "Sonic The Hedgehog",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-04T06:49:38Z",
+    "stars": 19,
+    "versaoPadrao": "v0.1.0",
+    "tags": [
+      "PS3",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C#"
+    ]
+  },
+  {
     "id": "lichii-pc",
     "nome": "Lichii",
     "console": "Switch",
