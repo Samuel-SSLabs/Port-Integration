@@ -1,6 +1,6 @@
 'use strict';
 
-const WORKER_PADRAO_URL = 'https://sslabs-port-proxy.sstudioslabs.workers.dev';
+const WORKER_PADRAO_URL = 'https://sslabs-port-proxy.ssbs.workers.dev';
 let CLOUDFLARE_WORKER_PROXY = (typeof window !== 'undefined' && localStorage.getItem('sslabs_worker_override')) || WORKER_PADRAO_URL;
 if (typeof window !== 'undefined') {
   try {
@@ -8564,70 +8564,120 @@ function atualizarEstatisticasHero() {
   if (legacyCountTodos) legacyCountTodos.textContent = state.ports.length;
 }
 
-// ── SINCRONIZAÇÃO EM TEMPO REAL DO ANYPS5 (LIBRARIES & SHADERS) ──
+// ── SINCRONIZAÇÃO EM TEMPO REAL DO ANYPS5 COM CLOUDFLARE EDGE CACHE E LOCALSTORAGE ──
 async function sincronizarStatusAnyPS5() {
   const libEl = document.getElementById('anyps5PopoverLibrariesVal');
   const shaderEl = document.getElementById('anyps5PopoverShadersVal');
-  if (!libEl && !shaderEl) return;
+  const badgeLibImg = document.getElementById('anyps5BadgeLibrariesImg');
+  const badgeShaderImg = document.getElementById('anyps5BadgeShadersImg');
+  if (!libEl && !shaderEl && !badgeLibImg && !badgeShaderImg) return;
 
-  function extrairValorSvg(svgText) {
-    if (!svgText) return null;
-    try {
-      if (typeof DOMParser !== 'undefined') {
-        const parser = new DOMParser();
-        const doc = parser.parseFromString(svgText, 'image/svg+xml');
-        const texts = doc.querySelectorAll('text');
-        if (texts && texts.length >= 2) {
-          const val = texts[texts.length - 1].textContent.trim();
-          if (val) return val;
-        }
-        const svgTag = doc.querySelector('svg');
-        if (svgTag && svgTag.hasAttribute('aria-label')) {
-          const aria = svgTag.getAttribute('aria-label');
-          const match = aria.match(/:\s*([0-9.]+%?)/);
-          if (match && match[1]) return match[1].trim();
-        }
-      }
-    } catch (e) {}
-
-    // Fallback por regex se o parser XML falhar
-    const regexMatch = svgText.match(/<text[^>]*>([0-9.]+%?)<\/text>/gi);
-    if (regexMatch && regexMatch.length >= 2) {
-      const last = regexMatch[regexMatch.length - 1].replace(/<[^>]+>/g, '').trim();
-      if (last) return last;
-    }
-    const ariaMatch = svgText.match(/aria-label="[^"]*?:\s*([0-9.]+%?)"/i);
-    if (ariaMatch && ariaMatch[1]) return ariaMatch[1].trim();
-    return null;
+  function gerarBadgeSvgShaders(valor) {
+    const v = String(valor || '100.0%').trim();
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="111" height="20" role="img" aria-label="shaders: ' + v + '"><rect width="59" height="20" fill="#555"/><rect x="59" width="52" height="20" fill="#4c1"/><g fill="#fff" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11" text-anchor="middle"><text x="29.5" y="14">shaders</text><text x="85.0" y="14">' + v + '</text></g></svg>';
+    return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
   }
 
-  // 1. Sincronizar Bibliotecas
+  function gerarBadgeSvgLibraries(valor) {
+    const v = String(valor || '32.78%').trim();
+    const svg = '<svg xmlns="http://www.w3.org/2000/svg" width="132" height="20" role="img" aria-label="libraries*: ' + v + '"><rect width="80" height="20" fill="#555"/><rect x="80" width="52" height="20" fill="#dfb317"/><g fill="#fff" font-family="Verdana,DejaVu Sans,sans-serif" font-size="11" text-anchor="middle"><text x="40.0" y="14">libraries*</text><text x="106.0" y="14">' + v + '</text></g></svg>';
+    return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+  }
+
+  function aplicarValores(libVal, shaderVal) {
+    if (libVal) {
+      if (libEl) libEl.textContent = libVal;
+      if (badgeLibImg) badgeLibImg.src = gerarBadgeSvgLibraries(libVal);
+    }
+    if (shaderVal) {
+      if (shaderEl) shaderEl.textContent = shaderVal;
+      if (badgeShaderImg) badgeShaderImg.src = gerarBadgeSvgShaders(shaderVal);
+    }
+  }
+
+  // 1. Persistência local imediata (Instant Paint sem requests nem delay visual)
+  const CACHE_KEY = 'sslabs_anyps5_status';
+  const TTL_CACHE_MS = 30 * 60 * 1000; // 30 minutos de persistência no navegador
+  let cacheValido = false;
+
   try {
-    const resLib = await fetch('./assets/badge-libraries.svg');
-    if (resLib.ok) {
+    const item = localStorage.getItem(CACHE_KEY);
+    if (item) {
+      const parsed = JSON.parse(item);
+      if (parsed && parsed.libraries && parsed.shaders) {
+        aplicarValores(parsed.libraries, parsed.shaders);
+        if (parsed.timestamp && (Date.now() - parsed.timestamp < TTL_CACHE_MS)) {
+          cacheValido = true;
+        }
+      }
+    }
+  } catch (e) {}
+
+  if (cacheValido) return;
+
+  // 2. Consulta pelo Cloudflare Worker com Edge Cache (1h de retenção mundial na borda)
+  const workerBase = (typeof CLOUDFLARE_WORKER_PROXY !== 'undefined' && CLOUDFLARE_WORKER_PROXY)
+    ? CLOUDFLARE_WORKER_PROXY.replace(/\/$/, '')
+    : 'https://sslabs-port-proxy.ssbs.workers.dev';
+
+  try {
+    let res = await fetch(workerBase + '/api/anyps5-status', {
+      method: 'GET',
+      headers: { 'Accept': 'application/json' }
+    }).catch(() => null);
+
+    if (!res || !res.ok) {
+      res = await fetch('https://sslabs-port-proxy.sstudioslabs.workers.dev/api/anyps5-status', {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' }
+      }).catch(() => null);
+    }
+
+    if (res && res.ok) {
+      const data = await res.json();
+      if (data && data.success && data.libraries && data.shaders) {
+        aplicarValores(data.libraries, data.shaders);
+        try {
+          localStorage.setItem(CACHE_KEY, JSON.stringify({
+            libraries: data.libraries,
+            shaders: data.shaders,
+            shadersRaw: data.shadersRaw,
+            timestamp: Date.now()
+          }));
+        } catch (e) {}
+        return;
+      }
+    }
+  } catch (err) {}
+
+  // 3. Fallback resiliente direto caso a borda esteja inalcançável
+  try {
+    let resLib = await fetch('https://boykopovar.github.io/AnyPS5/badge-libraries.svg', { cache: 'no-cache' }).catch(() => null);
+    if (!resLib || !resLib.ok) resLib = await fetch('./assets/badge-libraries.svg').catch(() => null);
+    if (resLib && resLib.ok) {
       const svgText = await resLib.text();
-      const val = extrairValorSvg(svgText);
-      if (val && libEl) {
-        libEl.textContent = val.includes('%') ? val : `${val}%`;
+      const match = svgText.match(/<text[^>]*>([0-9./%]+)<\/text>/gi);
+      if (match && match.length >= 2) {
+        const v = match[match.length - 1].replace(/<[^>]+>/g, '').trim();
+        const f = v.includes('%') ? v : (v + '%');
+        aplicarValores(f, null);
       }
     }
-  } catch (err) {
-    // Offline ou bloqueio de rede: mantém valor estático sincronizado (90.32%)
-  }
 
-  // 2. Sincronizar Shaders
-  try {
-    const resShader = await fetch('./assets/badge-shaders.svg');
-    if (resShader.ok) {
+    let resShader = await fetch('https://boykopovar.github.io/AnyPS5/badge-shaders.svg', { cache: 'no-cache' }).catch(() => null);
+    if (!resShader || !resShader.ok) resShader = await fetch('./assets/badge-shaders.svg').catch(() => null);
+    if (resShader && resShader.ok) {
       const svgText = await resShader.text();
-      const val = extrairValorSvg(svgText);
-      if (val && shaderEl) {
-        shaderEl.textContent = val.includes('%') ? val : `${val}%`;
+      const match = svgText.match(/([0-9]+\/[0-9]+)/);
+      if (match) {
+        const parts = match[1].split('/');
+        const n = parseFloat(parts[0]);
+        const d = parseFloat(parts[1]);
+        const pct = (n === d) ? '100.0%' : ((n / d) * 100).toFixed(1) + '%';
+        aplicarValores(null, pct);
       }
     }
-  } catch (err) {
-    // Offline ou bloqueio de rede: mantém valor estático sincronizado (100.0%)
-  }
+  } catch (e) {}
 }
 
 // ── RENDERIZAÇÃO DO CATÁLOGO DE CARDS ULTRA-OTIMIZADA (CHUNKED LAZY RENDERING) ──

@@ -675,8 +675,11 @@ body {
 
 .anyps5-badge-img {
   height: 18px;
+  max-width: 140px;
   display: block;
   border-radius: 3px;
+  object-fit: contain;
+  flex-shrink: 0;
 }
 
 .anyps5-arrow-wrap {
