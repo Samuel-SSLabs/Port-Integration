@@ -88,16 +88,19 @@ const DISCORD_MAP = {
 
 const LOCAL_COVERS_MANIFEST = [
   "007eon-recomp-pc",
+  "007frwl-xberecomp-pc",
   "2-ship-2-harkinian",
   "3on3nhl-recomp-pc",
   "999sian-melee-pc",
   "ac4-port-pc",
   "acfa-port-pc",
   "acgc-pc-port-pc",
+  "adam-pc",
   "aikatore-recvx-enhanced-recomp",
   "alexbeavs-ps1-ports-parasite-eve-recomp",
   "alexbeavs-ps1-ports-syphon-filter-2-recomp",
   "ape-escape-recomp",
+  "astralchain-pc-pc",
   "astros-playroom-ps5-pc",
   "asuras-wrath-recomp-pc",
   "athelas-pc",
@@ -230,6 +233,7 @@ const LOCAL_COVERS_MANIFEST = [
   "liberty-pro-max-pc",
   "lichii-pc",
   "lichii-sharkiix-version-pc",
+  "lichii-trz-pc",
   "linkssy2-darkwatchdarkeredition-pc",
   "linkssy2-roadrash64recompiled",
   "littlebigplanet-3---pc",
@@ -289,6 +293,7 @@ const LOCAL_COVERS_MANIFEST = [
   "pgr4-regpu-pc",
   "pilotwings-64-recomp-pc",
   "piratesatworldsendrecomp-pc",
+  "pokopia-native-pc",
   "pommy-recomp-pc",
   "portingpete-black-2006-recomp",
   "prj-gd-engine-pc",
@@ -298,11 +303,13 @@ const LOCAL_COVERS_MANIFEST = [
   "pt-pc-native",
   "rage-racer-pc-pc",
   "rage-wars-recompiled-pc",
+  "rampage-pc",
   "red-tv141-dc2-ps2recomp",
   "regh2-pc",
   "resident-evil-3-recomp",
   "revivedx-savagewindrecomp-botw-pc",
   "revosucks-bm64recomp",
+  "rock-and-roll-racing-pc",
   "rogue-galaxy-recomp-pc",
   "roll-away-psx-pc-recomp-pc",
   "rush2049-recomp-pc",
@@ -336,17 +343,23 @@ const LOCAL_COVERS_MANIFEST = [
   "sonic-mania-decomp",
   "sonic-mania-decomp-pc",
   "sonic-unleashed-recomp",
+  "sonic06-recomp-pc",
   "sonicdcer-dnzhrecomp",
+  "spiderman-2002-pc-pc",
   "splatpc-splatoon-native-pc-port-pc",
+  "srw64-recomp-pc",
   "ssbu-recomp-pc",
   "star-fox-64-starship",
   "starwars-renegadesquadron-pc-pc",
+  "stuntman-pc-pc",
   "super-mario-64-pc",
   "super-mario-odyssey-decomp",
   "super-mario-sunshine-pc",
   "supermedo-wet-recomp",
   "swaymun-ac-recomp-pc",
+  "switch2-recomp-pc",
   "swrots-pc-pc",
+  "swsh-recomp-pc",
   "technicallycomputers-klonoa-door-to-phantomile",
   "technicallycomputers-marvel-vs-capcom-clash-of-super-heroes-recomp",
   "technicallycomputers-metal-slug-x-recomp",
@@ -368,9 +381,11 @@ const LOCAL_COVERS_MANIFEST = [
   "tka-pc-port-pc",
   "tlou-remastered-pc-pc",
   "tmb_recomp-pc",
+  "tmnt-turtles-in-time-reshelled-recompiled-pc",
   "tokyo-jungle-recomp-pc",
   "tony-hawks-project-8-recomp",
   "tsukihime-native-pc-port-pc",
+  "tsukire-pc-port-pc",
   "twisted-metal-2012-recomp-pc",
   "ufc4-pc-port-pc",
   "ultratears-pc",
@@ -388,6 +403,7 @@ const LOCAL_COVERS_MANIFEST = [
   "wipeout_pc-pc",
   "wivi514-dead-rising-2-case-west-xenon-recomp",
   "wivi514-dead-rising-2-case-zero-xenon-recomp",
+  "worlddriverchampionship-recomp-pc",
   "wwe-allstars-recomp-pc",
   "xmd-recompiled-pc",
   "yakuza-dead-souls-recomp-pc",
@@ -405,17 +421,63 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
-    "id": "spiderman-2002-pc-pc",
-    "nome": "Spider-Man",
-    "console": "XBOX",
-    "consoleNome": "Xbox Clássico",
-    "codigoJogo": "XBOX-SPIDERMAN2",
+    "id": "rock-and-roll-racing-pc",
+    "nome": "Rock n' Roll Racing",
+    "console": "Retro",
+    "consoleNome": "Super Nintendo / Retro",
+    "codigoJogo": "SNS-RR-USA",
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
+    "repo": "Cris9870/rock-and-roll-racing-pc",
+    "repoUrl": "https://github.com/Cris9870/rock-and-roll-racing-pc",
+    "descricao": "Port nativo de Rock n' Roll Racing (SNES) para Windows com suporte a telas panorâmicas 16:9 e 21:9 ultrawide, resolução 4K, 144 Hz, shaders, save states e controles de Xbox.",
+    "termoBuscaCapa": "Rock n' Roll Racing",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-07T10:28:36Z",
+    "stars": 2,
+    "versaoPadrao": "v1.0.4",
+    "tags": [
+      "Retro",
+      "SNES",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "007frwl-xberecomp-pc",
+    "nome": "007: From Russia With Love (FRWL Recomp)",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "4541007E",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "TGP482/007FRWL-XBERecomp",
+    "repoUrl": "https://github.com/TGP482/007FRWL-XBERecomp",
+    "descricao": "Port nativo não oficial para PC de James Bond 007: From Russia With Love do Xbox original via recompilação estática do executável XBE com alta taxa de quadros e controles modernos.",
+    "termoBuscaCapa": "From_Russia_with_Love_(video_game)",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-08T03:47:40Z",
+    "stars": 163,
+    "versaoPadrao": "V2",
+    "tags": [
+      "XBOX",
+      "Recompilação",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "spiderman-2002-pc-pc",
+    "nome": "Spider-Man (2002 Recomp)",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "41560002",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "xdivorex-gif/spiderman-2002-pc",
     "repoUrl": "https://github.com/xdivorex-gif/spiderman-2002-pc",
-    "descricao": "Unofficial native Windows port of Spider-Man (2002, Xbox) by static recompilation. Bring your own copy of the game; no game content included.",
-    "termoBuscaCapa": "Spider-Man",
+    "descricao": "Port nativo para PC do clássico Spider-Man (2002) do Xbox original via recompilação estática com suporte a altas taxas de quadros e controles modernos.",
+    "termoBuscaCapa": "Spider-Man_(2002_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-05T01:16:10Z",
     "stars": 25,
@@ -429,16 +491,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "pokopia-native-pc",
-    "nome": "Pokopia Native",
+    "nome": "Pokémon Pokopia (Native PC)",
     "console": "Switch",
     "consoleNome": "Nintendo Switch",
-    "codigoJogo": "Switch-POKOPIANAT",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
+    "codigoJogo": "SWITCH-POKOPIA",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "xFractals/pokopia-native",
     "repoUrl": "https://github.com/xFractals/pokopia-native",
-    "descricao": "Build Pokémon Pokopia (Switch 2) into a native Windows app, Mac app, and iPhone app from your own dump. Tools only; With multiplayer and cross-device saves!",
-    "termoBuscaCapa": "Pokopia Native",
+    "descricao": "Construção de Pokémon Pokopia para execução nativa no Windows, Mac e iOS a partir de dump próprio, com suporte a multijogador e saves cruzados.",
+    "termoBuscaCapa": "Pokémon",
     "capaManual": null,
     "dataAtualizacao": "2026-11-08T11:35:11Z",
     "stars": 422,
@@ -452,16 +514,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "srw64-recomp-pc",
-    "nome": "Super Robot Wars 64",
+    "nome": "Super Robot Wars 64 (SRW64 Recomp)",
     "console": "N64",
     "consoleNome": "Nintendo 64",
-    "codigoJogo": "N64-SRW64RECOM",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
+    "codigoJogo": "NUS-NS6J",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "dyzz/srw64-recomp",
     "repoUrl": "https://github.com/dyzz/srw64-recomp",
-    "descricao": "Unofficial native recompilation of Super Robot Wars 64 for Windows, macOS, Linux/Steam Deck, Android and Switch: Japanese, English, Simplified and Traditional Chinese, Korean, widescreen, optional HD art, mods and bug fixes. Requires your own ROM.",
-    "termoBuscaCapa": "Super Robot Wars 64",
+    "descricao": "Port nativo para PC de Super Robot Wars 64 desenvolvido através da infraestrutura de recompilação estática N64Recomp.",
+    "termoBuscaCapa": "Super_Robot_Wars_64",
     "capaManual": null,
     "dataAtualizacao": "2026-11-04T13:40:05Z",
     "stars": 45,
@@ -475,16 +537,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "tmnt-turtles-in-time-reshelled-recompiled-pc",
-    "nome": "Tmnt Turtles In Time Reshelled",
+    "nome": "TMNT: Turtles in Time Re-Shelled",
     "console": "XBOX360",
     "consoleNome": "Xbox 360",
-    "codigoJogo": "584109D2",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
+    "codigoJogo": "5841094D",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "saulob/tmnt-turtles-in-time-reshelled-recompiled",
     "repoUrl": "https://github.com/saulob/tmnt-turtles-in-time-reshelled-recompiled",
-    "descricao": "TMNT: Turtles in Time Re-Shelled native PC port via static recompilation, with 4K rendering, 4-player online co-op, Português Brasil, TRG launcher, and experimental Linux/Steam Deck support",
-    "termoBuscaCapa": "Tmnt Turtles In Time Reshelled",
+    "descricao": "Recompilação estática do remake TMNT: Turtles in Time Re-Shelled do Xbox 360 (XBLA) para execução nativa no PC com renderização moderna.",
+    "termoBuscaCapa": "Teenage_Mutant_Ninja_Turtles:_Turtles_in_Time_Re-Shelled",
     "capaManual": null,
     "dataAtualizacao": "2026-11-06T17:57:32Z",
     "stars": 42,
@@ -498,16 +560,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "worlddriverchampionship-recomp-pc",
-    "nome": "Worlddriverchampionship",
+    "nome": "World Driver Championship (WDC Recomp)",
     "console": "N64",
     "consoleNome": "Nintendo 64",
-    "codigoJogo": "N64-WORLDDRIVE",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
+    "codigoJogo": "NUS-NWDE",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "alondero/worlddriverchampionship-recomp",
     "repoUrl": "https://github.com/alondero/worlddriverchampionship-recomp",
-    "descricao": "First playable World Driver Championship N64 recompilation using N64Recomp, N64ModernRuntime, and RT64",
-    "termoBuscaCapa": "Worlddriverchampionship",
+    "descricao": "Port nativo de World Driver Championship para PC via N64Recomp com suporte a telas panorâmicas 16:9 e alta fidelidade gráfica.",
+    "termoBuscaCapa": "World_Driver_Championship",
     "capaManual": null,
     "dataAtualizacao": "2026-10-29T13:14:34Z",
     "stars": 10,
@@ -521,16 +583,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "adam-pc",
-    "nome": "Neon Genesis Evangelion",
+    "nome": "Neon Genesis Evangelion (Adam Recomp)",
     "console": "N64",
     "consoleNome": "Nintendo 64",
-    "codigoJogo": "N64-ADAM",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
+    "codigoJogo": "NUS-NEVJ",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "evaa-01/adam",
     "repoUrl": "https://github.com/evaa-01/adam",
-    "descricao": "A static recompilation of Neon Genesis Evangelion (新世紀エヴァンゲリオン) into a native Windows program, built with N64Recomp.",
-    "termoBuscaCapa": "Neon Genesis Evangelion",
+    "descricao": "Port nativo para PC do jogo de luta e aventura 3D Neon Genesis Evangelion do Nintendo 64 via recompilação estática com áudio e vídeo de alta fidelidade.",
+    "termoBuscaCapa": "Neon_Genesis_Evangelion_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-13T16:30:30Z",
     "stars": 10,
@@ -544,16 +606,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "sonic06-recomp-pc",
-    "nome": "Sonic The Hedgehog",
+    "nome": "Sonic the Hedgehog (2006 Recomp)",
     "console": "PS3",
     "consoleNome": "PlayStation 3",
-    "codigoJogo": "BLES-00028",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
+    "codigoJogo": "BLUS-30008",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "DrummingBird1/sonic06-recomp",
     "repoUrl": "https://github.com/DrummingBird1/sonic06-recomp",
-    "descricao": "Soleanna (sonic06-recomp): an unofficial PC port of Sonic the Hedgehog (2006), PS3 version, by static recompilation. No game files included: the launcher builds it from your own disc.",
-    "termoBuscaCapa": "Sonic The Hedgehog",
+    "descricao": "Projeto experimental de recompilação estática do controverso clássico Sonic the Hedgehog (2006) de PlayStation 3 para execução nativa no PC a 60 FPS.",
+    "termoBuscaCapa": "Sonic_the_Hedgehog_(2006_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-04T06:49:38Z",
     "stars": 20,
@@ -567,16 +629,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "lichii-pc",
-    "nome": "Lichii",
+    "nome": "Lichii (Switch 2 Runtime)",
     "console": "Switch",
     "consoleNome": "Nintendo Switch",
-    "codigoJogo": "Switch-PORT",
-    "status": "Port Nativo PC",
-    "statusTipo": "playable",
+    "codigoJogo": "SWITCH2-LICHII",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "zortos293/Lichii",
     "repoUrl": "https://github.com/zortos293/Lichii",
-    "descricao": "VERY experimental Nintendo Switch 2 emulator",
-    "termoBuscaCapa": "Lichii",
+    "descricao": "Camada de compatibilidade e ambiente de execução experimental de Switch 2 para sistemas x86-64 modernos.",
+    "termoBuscaCapa": "Nintendo_Switch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-06T01:58:37Z",
     "stars": 2365,
@@ -590,16 +652,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "lichii-sharkiix-version-pc",
-    "nome": "Lichii Sharkiix Version",
+    "nome": "Lichii (Sharkiix Version)",
     "console": "Switch",
     "consoleNome": "Nintendo Switch",
-    "codigoJogo": "Switch-PORT",
-    "status": "Port Nativo PC",
-    "statusTipo": "playable",
+    "codigoJogo": "SWITCH2-LICHII-SHAR",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "Shakoquo/Lichii-sharkiix-version",
     "repoUrl": "https://github.com/Shakoquo/Lichii-sharkiix-version",
-    "descricao": "VERY EXPERIMENTAL - Lichii (sharkiix's version): mainly for AMD GPUs, optimised for Zelda Ocarina of Time (Switch 2). Fork of zortos293/Lichii.",
-    "termoBuscaCapa": "Lichii_Sharkiix_Version",
+    "descricao": "Bifurcação do ambiente de execução experimental Lichii mantido por Sharkiix com melhorias no subsistema gráfico.",
+    "termoBuscaCapa": "Nintendo_Switch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-06T01:18:04Z",
     "stars": 13,
@@ -613,16 +675,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "lichii-trz-pc",
-    "nome": "Lichii TRZ",
+    "nome": "Lichii (TRZ Version)",
     "console": "Switch",
     "consoleNome": "Nintendo Switch",
-    "codigoJogo": "Switch-PORT",
-    "status": "Port Nativo PC",
-    "statusTipo": "playable",
+    "codigoJogo": "SWITCH2-LICHII-TRZ",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "HugoTRZ/Lichii-TRZ",
     "repoUrl": "https://github.com/HugoTRZ/Lichii-TRZ",
-    "descricao": "VERY experimental Nintendo Switch 2 emulator",
-    "termoBuscaCapa": "Lichii_TRZ",
+    "descricao": "Versão do ecossistema Lichii adaptada para otimizações de compilação cruzada e testes de renderizadores Vulkan.",
+    "termoBuscaCapa": "Nintendo_Switch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-06T00:08:35Z",
     "stars": 0,
@@ -636,16 +698,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "swsh-recomp-pc",
-    "nome": "PokéMon Sword / Shield",
+    "nome": "Pokémon Sword and Shield (SwSh Recomp)",
     "console": "Switch",
     "consoleNome": "Nintendo Switch",
-    "codigoJogo": "Switch-SWSHRECOMP",
+    "codigoJogo": "0100ABF008968000",
     "status": "Em Desenvolvimento Ativo",
     "statusTipo": "wip",
     "repo": "raulzrrs/swsh-recomp",
     "repoUrl": "https://github.com/raulzrrs/swsh-recomp",
-    "descricao": "Native Windows port of Pokémon Sword / Shield (Switch, 1.3.2) by static recompilation, built on Let's Go Recomp and LAS Recomp. No game files included.",
-    "termoBuscaCapa": "PokéMon Sword / Shield",
+    "descricao": "Recompilação estática de Pokémon Sword and Shield para PC com resolução 4K, suporte a 60 FPS e carregamento quase instantâneo.",
+    "termoBuscaCapa": "Pokémon Sword and Shield",
     "capaManual": null,
     "dataAtualizacao": "2026-10-22T20:50:35Z",
     "stars": 23,
@@ -659,16 +721,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "switch2-recomp-pc",
-    "nome": "Switch2",
+    "nome": "Switch 2 Recomp Framework",
     "console": "Switch",
     "consoleNome": "Nintendo Switch",
-    "codigoJogo": "Switch-SWITCH2REC",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
+    "codigoJogo": "SWITCH2-RECOMP",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "drakolordx7/switch2-recomp",
     "repoUrl": "https://github.com/drakolordx7/switch2-recomp",
-    "descricao": "Nintendo Switch 2 games recompiled to run natively on PC. Pokémon Pokopia is playable now.",
-    "termoBuscaCapa": "Switch2",
+    "descricao": "Framework de recompilação estática de código aberto construído para recompilar e executar títulos de Switch e Switch 2 nativamente no PC.",
+    "termoBuscaCapa": "Nintendo_Switch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-04T20:05:33Z",
     "stars": 414,
@@ -682,16 +744,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "tsukire-pc-port-pc",
-    "nome": "Tsukire",
-    "console": "PC",
-    "consoleNome": "PC Nativo",
-    "codigoJogo": "PC-TSUKIREPCP",
+    "nome": "Tsukihime -A piece of blue glass moon- (Tsukire)",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "010065001306C000",
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
     "repo": "Broomstick-Girl-Magical-Amber/tsukire-pc-port",
     "repoUrl": "https://github.com/Broomstick-Girl-Magical-Amber/tsukire-pc-port",
-    "descricao": "Port nativo para PC com compilações oficiais disponíveis no GitHub.",
-    "termoBuscaCapa": "Tsukire",
+    "descricao": "Port nativo para PC da versão remake de Tsukihime (-A piece of blue glass moon-) com alta taxa de atualização, suporte ultrawide e áudio remasterizado.",
+    "termoBuscaCapa": "Tsukihime",
     "capaManual": null,
     "dataAtualizacao": "2026-11-03T02:30:07Z",
     "stars": 31,
@@ -705,16 +767,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "rampage-pc",
-    "nome": "Rampage",
+    "nome": "Rampage Series (RampageRecomp)",
     "console": "N64",
     "consoleNome": "Nintendo 64",
-    "codigoJogo": "N64-RAMPAGE",
-    "status": "Em Desenvolvimento Ativo",
-    "statusTipo": "wip",
+    "codigoJogo": "NUS-NRPE",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
     "repo": "sp00nznet/Rampage",
     "repoUrl": "https://github.com/sp00nznet/Rampage",
-    "descricao": "Native Windows ports of Rampage: World Tour and Rampage 2: Universal Tour (N64), statically recompiled with N64Recomp. Bring your own ROM.",
-    "termoBuscaCapa": "Rampage",
+    "descricao": "Ports nativos para Windows de Rampage World Tour e Rampage 2: Universal Tour do Nintendo 64 via N64Recomp com controles modernos e tela widescreen.",
+    "termoBuscaCapa": "Rampage_World_Tour",
     "capaManual": null,
     "dataAtualizacao": "2026-10-26T10:35:56Z",
     "stars": 10,
@@ -728,16 +790,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "astralchain-pc-pc",
-    "nome": "Astral Chain",
-    "console": "PC",
-    "consoleNome": "PC Nativo",
-    "codigoJogo": "PC-ASTRALCHAI",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
+    "nome": "Astral Chain (PC Native Port)",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "01007300020FA000",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
     "repo": "Puddz/AstralChain-PC",
     "repoUrl": "https://github.com/Puddz/AstralChain-PC",
-    "descricao": "Unofficial native Windows port of Astral Chain by static recompilation. Bring your own dump and keys.",
-    "termoBuscaCapa": "Astral Chain",
+    "descricao": "Port nativo não oficial para PC do aclamado jogo de ação Astral Chain via recompilação estática com suporte a 60 FPS, resolução ultrawide e opções gráficas avançadas.",
+    "termoBuscaCapa": "Astral_Chain",
     "capaManual": null,
     "dataAtualizacao": "2026-11-04T09:20:07Z",
     "stars": 86,
@@ -751,16 +813,16 @@ const PORTS_DATABASE = [
   },
   {
     "id": "stuntman-pc-pc",
-    "nome": "Stuntman",
+    "nome": "Stuntman (PS2 Native PC Port)",
     "console": "PS2",
     "consoleNome": "PlayStation 2",
-    "codigoJogo": "SLES-50288",
+    "codigoJogo": "SLUS-20359",
     "status": "Em Desenvolvimento Ativo",
     "statusTipo": "wip",
     "repo": "LAB0ULANGE/stuntman-pc",
     "repoUrl": "https://github.com/LAB0ULANGE/stuntman-pc",
-    "descricao": "Unofficial native Windows port of Stuntman (PS2, 2002) - bring your own disc",
-    "termoBuscaCapa": "Stuntman",
+    "descricao": "Port nativo de Stuntman (PlayStation 2) para PC desenvolvido a partir do código descompilado MIPS com suporte a resoluções modernas e controles analógicos.",
+    "termoBuscaCapa": "Stuntman_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-31T18:46:59Z",
     "stars": 22,
@@ -8522,50 +8584,68 @@ async function sincronizarStatusAnyPS5() {
         const svgTag = doc.querySelector('svg');
         if (svgTag && svgTag.hasAttribute('aria-label')) {
           const aria = svgTag.getAttribute('aria-label');
-          const match = aria.match(/:\s*([0-9.]+%?)/);
+          const match = aria.match(/:\s*([0-9./%]+)/);
           if (match && match[1]) return match[1].trim();
         }
       }
     } catch (e) {}
 
-    // Fallback por regex se o parser XML falhar
-    const regexMatch = svgText.match(/<text[^>]*>([0-9.]+%?)<\/text>/gi);
+    const regexMatch = svgText.match(/<text[^>]*>([0-9./%]+)<\/text>/gi);
     if (regexMatch && regexMatch.length >= 2) {
       const last = regexMatch[regexMatch.length - 1].replace(/<[^>]+>/g, '').trim();
       if (last) return last;
     }
-    const ariaMatch = svgText.match(/aria-label="[^"]*?:\s*([0-9.]+%?)"/i);
+    const ariaMatch = svgText.match(/aria-label="[^"]*?:\s*([0-9./%]+)"/i);
     if (ariaMatch && ariaMatch[1]) return ariaMatch[1].trim();
     return null;
   }
 
-  // 1. Sincronizar Bibliotecas
-  try {
-    const resLib = await fetch('./assets/badge-libraries.svg');
-    if (resLib.ok) {
-      const svgText = await resLib.text();
-      const val = extrairValorSvg(svgText);
-      if (val && libEl) {
-        libEl.textContent = val.includes('%') ? val : `${val}%`;
+  function formatarPercentual(val) {
+    if (!val) return null;
+    if (val.includes('/')) {
+      const parts = val.split('/');
+      const n = parseFloat(parts[0]);
+      const d = parseFloat(parts[1]);
+      if (!isNaN(n) && !isNaN(d) && d > 0) {
+        return (n === d) ? '100.0%' : ((n / d) * 100).toFixed(1) + '%';
       }
     }
-  } catch (err) {
-    // Offline ou bloqueio de rede: mantém valor estático sincronizado (90.32%)
+    return val.includes('%') ? val : `${val}%`;
   }
 
-  // 2. Sincronizar Shaders
+  // 1. Sincronizar Bibliotecas diretamente do repositório AnyPS5 com fallback local
   try {
-    const resShader = await fetch('./assets/badge-shaders.svg');
-    if (resShader.ok) {
+    let resLib;
+    try {
+      resLib = await fetch('https://boykopovar.github.io/AnyPS5/badge-libraries.svg', { cache: 'no-cache' });
+    } catch (e) {}
+    if (!resLib || !resLib.ok) {
+      resLib = await fetch('./assets/badge-libraries.svg');
+    }
+    if (resLib && resLib.ok) {
+      const svgText = await resLib.text();
+      const val = extrairValorSvg(svgText);
+      const fmt = formatarPercentual(val);
+      if (fmt && libEl) libEl.textContent = fmt;
+    }
+  } catch (err) {}
+
+  // 2. Sincronizar Shaders diretamente do repositório AnyPS5 com fallback local
+  try {
+    let resShader;
+    try {
+      resShader = await fetch('https://boykopovar.github.io/AnyPS5/badge-shaders.svg', { cache: 'no-cache' });
+    } catch (e) {}
+    if (!resShader || !resShader.ok) {
+      resShader = await fetch('./assets/badge-shaders.svg');
+    }
+    if (resShader && resShader.ok) {
       const svgText = await resShader.text();
       const val = extrairValorSvg(svgText);
-      if (val && shaderEl) {
-        shaderEl.textContent = val.includes('%') ? val : `${val}%`;
-      }
+      const fmt = formatarPercentual(val);
+      if (fmt && shaderEl) shaderEl.textContent = fmt;
     }
-  } catch (err) {
-    // Offline ou bloqueio de rede: mantém valor estático sincronizado (100.0%)
-  }
+  } catch (err) {}
 }
 
 // ── RENDERIZAÇÃO DO CATÁLOGO DE CARDS ULTRA-OTIMIZADA (CHUNKED LAZY RENDERING) ──

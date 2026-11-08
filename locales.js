@@ -165,7 +165,7 @@ suggestModal: {
       repoLink: "Repositório do Projeto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Escuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.081"
+      rights: "© 2026 SSLabs EcoSystem • 1.082"
     }
   },
 
@@ -325,9 +325,27 @@ suggestModal: {
       repoLink: "Project Repository",
       themeLabelLight: "Light Mode",
       themeLabelDark: "Dark Mode",
-      rights: "© 2026 SSLabs EcoSystem • 1.081"
+      rights: "© 2026 SSLabs EcoSystem • 1.082"
     },
     portDescriptions: {
+      "rock-and-roll-racing-pc": "Native PC port of Rock n' Roll Racing (SNES) for Windows featuring 16:9 and 21:9 ultrawide, 4K resolution, 144 Hz, shaders, save states and Xbox controller support.",
+      "007frwl-xberecomp-pc": "Unofficial native PC port of original Xbox James Bond 007: From Russia With Love via static recompilation with high framerates and modern controls.",
+      "spiderman-2002-pc-pc": "Native PC port of original Xbox Spider-Man (2002) via static recompilation featuring high framerate and modern gamepads support.",
+      "pokopia-native-pc": "Build Pokémon Pokopia into a native Windows, Mac and iOS app from your own dump, with multiplayer and cross-device saves.",
+      "srw64-recomp-pc": "Native Windows PC port of Super Robot Wars 64 built using the N64Recomp static recompilation infrastructure.",
+      "tmnt-turtles-in-time-reshelled-recompiled-pc": "Static recompilation of TMNT: Turtles in Time Re-Shelled remake (Xbox 360 XBLA) running natively on PC with modern rendering.",
+      "worlddriverchampionship-recomp-pc": "Native PC port of World Driver Championship using N64Recomp with 16:9 widescreen and high fidelity graphics.",
+      "adam-pc": "Native PC port of the Nintendo 64 Neon Genesis Evangelion 3D action game using static recompilation with high fidelity audio and visuals.",
+      "sonic06-recomp-pc": "Experimental static recompilation project of PS3 Sonic the Hedgehog (2006) running natively on PC targeting 60 FPS.",
+      "lichii-pc": "Experimental Switch 2 runtime environment and compatibility layer for modern x86-64 operating systems.",
+      "lichii-sharkiix-version-pc": "Fork of the experimental Lichii runtime maintained by Sharkiix featuring graphics subsystem enhancements.",
+      "lichii-trz-pc": "Lichii ecosystem version focused on cross-compilation optimizations and Vulkan renderer experimentation.",
+      "swsh-recomp-pc": "Static recompilation of Pokémon Sword and Shield for PC with 4K resolution, 60 FPS and near-instant loading times.",
+      "switch2-recomp-pc": "Open-source static recompilation framework designed to recompile and execute Switch and Switch 2 titles natively on PC.",
+      "tsukire-pc-port-pc": "Native PC port of the Tsukihime remake (-A piece of blue glass moon-) with high refresh rate, ultrawide support and remastered audio.",
+      "rampage-pc": "Native Windows PC ports of Rampage World Tour and Rampage 2: Universal Tour (N64) via N64Recomp with modern gamepads and widescreen.",
+      "astralchain-pc-pc": "Unofficial native PC port of the action game Astral Chain via static recompilation with 60 FPS target, ultrawide and advanced graphics options.",
+      "stuntman-pc-pc": "Native PC port of PS2 Stuntman created from decompiled MIPS code with modern resolution support and precision analog gamepad controls.",
   "lichii-pc": "VERY experimental Nintendo Switch 2 emulator",
   "lichii-sharkiix-version-pc": "VERY EXPERIMENTAL - Lichii (sharkiix's version): mainly for AMD GPUs, optimised for Zelda Ocarina of Time (Switch 2). Fork of zortos293/Lichii.",
   "lichii-trz-pc": "VERY experimental Nintendo Switch 2 emulator",
@@ -751,9 +769,27 @@ suggestModal: {
       repoLink: "Repositorio del Proyecto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Oscuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.081"
+      rights: "© 2026 SSLabs EcoSystem • 1.082"
     },
     portDescriptions: {
+      "rock-and-roll-racing-pc": "Port nativo de Rock n' Roll Racing (SNES) para Windows con soporte 16:9 y 21:9 ultrawide, 4K, 144 Hz, shaders, save states y mandos de Xbox.",
+      "007frwl-xberecomp-pc": "Port nativo no oficial para PC de James Bond 007: From Russia With Love de Xbox original por recompilación estática con altos FPS y mandos modernos.",
+      "spiderman-2002-pc-pc": "Port nativo para PC de Spider-Man (2002) de Xbox original mediante recompilación estática con soporte para altas tasas de cuadros y mandos modernos.",
+      "pokopia-native-pc": "Ejecución nativa de Pokémon Pokopia en Windows, Mac e iOS a partir de volcado propio con multijugador y partidas cruzadas.",
+      "srw64-recomp-pc": "Port nativo para PC de Super Robot Wars 64 desarrollado mediante la infraestructura N64Recomp.",
+      "tmnt-turtles-in-time-reshelled-recompiled-pc": "Recompilación estática de TMNT: Turtles in Time Re-Shelled de Xbox 360 (XBLA) para PC con renderizado moderno.",
+      "worlddriverchampionship-recomp-pc": "Port nativo de World Driver Championship para PC mediante N64Recomp con pantalla panorámica 16:9 y gráficos en alta fidelidad.",
+      "adam-pc": "Port nativo para PC de Neon Genesis Evangelion de Nintendo 64 mediante recompilación estática con audio y gráficos de alta fidelidad.",
+      "sonic06-recomp-pc": "Recompilación estática experimental de Sonic the Hedgehog (2006) de PS3 ejecutándose de forma nativa en PC a 60 FPS.",
+      "lichii-pc": "Capa de compatibilidad y entorno de ejecución experimental de Switch 2 para sistemas x86-64 modernos.",
+      "lichii-sharkiix-version-pc": "Bifurcación del entorno experimental Lichii mantenida por Sharkiix con mejoras en el subsistema gráfico.",
+      "lichii-trz-pc": "Versión del ecosistema Lichii enfocada en optimizaciones de compilación cruzada y renderizadores Vulkan.",
+      "swsh-recomp-pc": "Recompilación estática de Pokémon Sword and Shield para PC con resolución 4K, 60 FPS y cargas casi instantáneas.",
+      "switch2-recomp-pc": "Framework de recompilación estática de código abierto diseñado para recompilar y ejecutar títulos de Switch y Switch 2 nativamente en PC.",
+      "tsukire-pc-port-pc": "Port nativo para PC del remake de Tsukihime (-A piece of blue glass moon-) con alta tasa de refresco, soporte ultrawide y audio remasterizado.",
+      "rampage-pc": "Ports nativos para Windows de Rampage World Tour y Rampage 2: Universal Tour (N64) mediante N64Recomp con mandos modernos y pantalla panorámica.",
+      "astralchain-pc-pc": "Port nativo no oficial para PC de Astral Chain mediante recompilación estática con 60 FPS, resolución ultrawide y opciones gráficas avanzadas.",
+      "stuntman-pc-pc": "Port nativo para PC de Stuntman de PlayStation 2 mediante código descompilado con soporte para resoluciones modernas y mandos analógicos.",
   "lichii-pc": "VERY experimental Nintendo Switch 2 emulator",
   "lichii-sharkiix-version-pc": "VERY EXPERIMENTAL - Lichii (sharkiix's version): mainly for AMD GPUs, optimised for Zelda Ocarina of Time (Switch 2). Fork of zortos293/Lichii.",
   "lichii-trz-pc": "VERY experimental Nintendo Switch 2 emulator",
