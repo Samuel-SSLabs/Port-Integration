@@ -641,7 +641,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Nintendo_Switch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-07T22:39:01Z",
-    "stars": 6368,
+    "stars": 6382,
     "versaoPadrao": "build-117",
     "tags": [
       "Switch",
@@ -1239,7 +1239,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Project_Gotham_Racing_4",
     "capaManual": null,
     "dataAtualizacao": "2026-11-08T00:47:22Z",
-    "stars": 75,
+    "stars": 74,
     "versaoPadrao": "v0.2.7",
     "tags": [
       "XBOX360",
@@ -2478,7 +2478,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "God_of_War:_Ascension",
     "capaManual": null,
     "dataAtualizacao": "2026-10-21T00:00:05Z",
-    "stars": 413,
+    "stars": 414,
     "versaoPadrao": "Port Nativo",
     "tags": [
       "PS3",
@@ -2922,7 +2922,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Crash_Bandicoot_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-30T21:10:48Z",
-    "stars": 325,
+    "stars": 332,
     "versaoPadrao": "2.4",
     "tags": [
       "PS1",
@@ -3118,7 +3118,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Silent_Hill_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-29T22:57:59Z",
-    "stars": 820,
+    "stars": 832,
     "versaoPadrao": "xbox360-alpha-1",
     "tags": [
       "PS1",
@@ -3884,7 +3884,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Astro's_Playroom",
     "capaManual": null,
     "dataAtualizacao": "2026-10-30T23:09:14Z",
-    "stars": 52195,
+    "stars": 52200,
     "versaoPadrao": "v0.1.4",
     "tags": [
       "PS5",
@@ -3981,7 +3981,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Last_Guardian",
     "capaManual": null,
     "dataAtualizacao": "2026-10-27T15:04:34Z",
-    "stars": 561,
+    "stars": 562,
     "versaoPadrao": "v2026.10.27-4825a99",
     "tags": [
       "PS4",
@@ -4250,7 +4250,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Diablo_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2025-10-30T17:00:17Z",
-    "stars": 9986,
+    "stars": 9992,
     "versaoPadrao": "1.5.5",
     "tags": [
       "PS1",
@@ -4900,7 +4900,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Twilight_Princess",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T22:00:00Z",
-    "stars": 6232,
+    "stars": 6281,
     "versaoPadrao": "v2.0.3",
     "tags": [
       "GameCube",
@@ -7364,9 +7364,9 @@ const PORTS_DATABASE = [
     "descricao": "Port nativo para PC por recompilação do The Wind Waker original do GameCube com carregamentos instantâneos.",
     "termoBuscaCapa": "The_Legend_of_Zelda:_The_Wind_Waker",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-01T01:19:50Z",
+    "dataAtualizacao": "2026-11-08T13:58:31Z",
     "stars": 577,
-    "versaoPadrao": "v0.10.0",
+    "versaoPadrao": "v0.11.0",
     "tags": [
       "GameCube",
       "Nintendo",
@@ -7459,7 +7459,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Mario_Kart_Wii",
     "capaManual": null,
     "dataAtualizacao": "2026-11-02T23:46:46Z",
-    "stars": 138,
+    "stars": 145,
     "versaoPadrao": "v1.4.0",
     "tags": [
       "Wii",
@@ -7600,7 +7600,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Breath_of_the_Wild",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T19:00:00Z",
-    "stars": 2450,
+    "stars": 2451,
     "versaoPadrao": "v1.5.0-decomp",
     "tags": [
       "Switch",
@@ -8196,7 +8196,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Breath_of_the_Wild",
     "capaManual": null,
     "dataAtualizacao": "2026-10-26T03:47:02Z",
-    "stars": 3523,
+    "stars": 3524,
     "versaoPadrao": "v0.4.1-alpha.4",
     "tags": [
       "Switch",
