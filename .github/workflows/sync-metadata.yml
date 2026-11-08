@@ -37,6 +37,7 @@ jobs:
           if [ -n "$(git status --porcelain app.js)" ]; then
             git add app.js
             git commit -m "chore(auto): sincronizacao de estrelas e novas releases de ports [skip ci]"
+            git pull --rebase origin main || true
             git push origin main
             echo "Alterações de metadados publicadas automaticamente com sucesso!"
           else

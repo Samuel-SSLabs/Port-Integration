@@ -165,7 +165,7 @@ suggestModal: {
       repoLink: "Repositório do Projeto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Escuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.082"
+      rights: "© 2026 SSLabs EcoSystem • 1.083"
     }
   },
 
@@ -325,7 +325,7 @@ suggestModal: {
       repoLink: "Project Repository",
       themeLabelLight: "Light Mode",
       themeLabelDark: "Dark Mode",
-      rights: "© 2026 SSLabs EcoSystem • 1.082"
+      rights: "© 2026 SSLabs EcoSystem • 1.083"
     },
     portDescriptions: {
       "rock-and-roll-racing-pc": "Native PC port of Rock n' Roll Racing (SNES) for Windows featuring 16:9 and 21:9 ultrawide, 4K resolution, 144 Hz, shaders, save states and Xbox controller support.",
@@ -769,7 +769,7 @@ suggestModal: {
       repoLink: "Repositorio del Proyecto",
       themeLabelLight: "Modo Claro",
       themeLabelDark: "Modo Oscuro",
-      rights: "© 2026 SSLabs EcoSystem • 1.082"
+      rights: "© 2026 SSLabs EcoSystem • 1.083"
     },
     portDescriptions: {
       "rock-and-roll-racing-pc": "Port nativo de Rock n' Roll Racing (SNES) para Windows con soporte 16:9 y 21:9 ultrawide, 4K, 144 Hz, shaders, save states y mandos de Xbox.",

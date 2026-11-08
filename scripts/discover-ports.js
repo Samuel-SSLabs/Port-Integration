@@ -217,6 +217,22 @@ function carregarReposCadastrados() {
   }
 }
 
+function salvarPortsDatabase(appCode, database) {
+  const eol = appCode.includes('\r\n') ? '\r\n' : '\n';
+  const novoDb = 'const PORTS_DATABASE = ' + JSON.stringify(database, null, 2).replace(/\n/g, eol) + ';';
+
+  const startMarker = 'const PORTS_DATABASE = [';
+  const startIdx = appCode.indexOf(startMarker);
+  const endMarker = eol + '];';
+  const endIdx = appCode.indexOf(endMarker, startIdx);
+
+  if (startIdx !== -1 && endIdx !== -1) {
+    return appCode.substring(0, startIdx) + novoDb + appCode.substring(endIdx + endMarker.length);
+  }
+
+  return appCode.replace(/const PORTS_DATABASE = \[[\s\S]*?\r?\n\];/, () => novoDb);
+}
+
 function adivinharConsole(repoData) {
   const text = `${repoData.name} ${repoData.description || ''} ${(repoData.topics || []).join(' ')}`.toLowerCase();
 
@@ -952,8 +968,8 @@ async function descobrirNovosPorts() {
       tags: tagsList
     };
 
-    const seloExecutavel = hasDownloadableBinaries ? '📦 [Binário .zip/.exe detectado]' : '📄 [Código-Fonte]';
-    console.log(`  ✅ [APROVADO] ${portAprovado.nome} (${portAprovado.console}) — ⭐ ${portAprovado.stars} | Release: ${versaoDetectada} ${seloExecutavel}`);
+    const seloExecutavel = hasDownloadableBinaries ? '[Binario .zip/.exe detectado]' : '[Codigo-Fonte]';
+    console.log(`  [APROVADO] ${portAprovado.nome} (${portAprovado.console}) — [STARS] ${portAprovado.stars} | Release: ${versaoDetectada} ${seloExecutavel}`);
     novosAprovados.push(portAprovado);
   }
 
@@ -973,8 +989,7 @@ async function descobrirNovosPorts() {
       if (match) {
         const atual = new Function(`return ${match[1]}`)();
         const combinado = [...novosAprovados, ...atual];
-        const novoDb = 'const PORTS_DATABASE = ' + JSON.stringify(combinado, null, 2) + ';';
-        appCode = appCode.replace(/const PORTS_DATABASE = \[[\s\S]*?\n\];/, novoDb);
+        appCode = salvarPortsDatabase(appCode, combinado);
         fs.writeFileSync(APP_JS_PATH, appCode, 'utf8');
         console.log(`app.js atualizado com sucesso! Total no banco agora: ${combinado.length}`);
       }
@@ -1027,10 +1042,9 @@ async function enriquecerCodigosExistentes() {
   }
 
   if (atualizados > 0) {
-    const novoDb = 'const PORTS_DATABASE = ' + JSON.stringify(database, null, 2) + ';';
-    appCode = appCode.replace(/const PORTS_DATABASE = \[[\s\S]*?\n\];/, novoDb);
+    appCode = salvarPortsDatabase(appCode, database);
     fs.writeFileSync(APP_JS_PATH, appCode, 'utf8');
-    console.log(`\n✅ ${atualizados} ports tiveram seus códigos atualizados em app.js!`);
+    console.log(`\n[OK] ${atualizados} ports tiveram seus códigos atualizados em app.js!`);
   } else {
     console.log('\nTodos os ports já possuem códigos válidos atribuídos.');
   }
@@ -1064,7 +1078,7 @@ async function sincronizarMetadadosExistentes() {
       const repoInfo = await fetchFromGithub(`/repos/${port.repo}`);
       if (repoInfo && typeof repoInfo.stargazers_count === 'number') {
         if (port.stars !== repoInfo.stargazers_count) {
-          console.log(`  ⭐ [${port.nome}] Estrelas: ${port.stars} -> ${repoInfo.stargazers_count}`);
+          console.log(`  [STARS] [${port.nome}] Estrelas: ${port.stars} -> ${repoInfo.stargazers_count}`);
           port.stars = repoInfo.stargazers_count;
           atualizados++;
         }
@@ -1079,7 +1093,7 @@ async function sincronizarMetadadosExistentes() {
         const latest = releases[0];
         const latestVersion = latest.tag_name || latest.name;
         if (latestVersion && port.versaoPadrao !== latestVersion) {
-          console.log(`  📦 [${port.nome}] Nova Release detectada: ${port.versaoPadrao || 'N/A'} -> ${latestVersion}`);
+          console.log(`  [RELEASE] [${port.nome}] Nova Release detectada: ${port.versaoPadrao || 'N/A'} -> ${latestVersion}`);
           port.versaoPadrao = latestVersion;
           if (latest.published_at) {
             port.dataAtualizacao = latest.published_at;
@@ -1091,15 +1105,14 @@ async function sincronizarMetadadosExistentes() {
       // Pausa leve para respeitar os limites
       await new Promise(r => setTimeout(r, 150));
     } catch (e) {
-      console.warn(`  ⚠️ Falha ao atualizar ${port.repo}: ${e.message}`);
+      console.warn(`  [AVISO] Falha ao atualizar ${port.repo}: ${e.message}`);
     }
   }
 
   if (atualizados > 0) {
-    const novoDb = 'const PORTS_DATABASE = ' + JSON.stringify(database, null, 2) + ';';
-    appCode = appCode.replace(/const PORTS_DATABASE = \[\s\S]*?\n\];/, novoDb);
+    appCode = salvarPortsDatabase(appCode, database);
     fs.writeFileSync(APP_JS_PATH, appCode, 'utf8');
-    console.log(`\n✅ Sucesso! ${atualizados} metadados atualizados com sucesso em app.js.`);
+    console.log(`\n[SUCESSO] ${atualizados} metadados atualizados com sucesso em app.js.`);
   } else {
     console.log('\nTodos os metadados já estavam 100% atualizados.');
   }
