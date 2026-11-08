@@ -8584,68 +8584,50 @@ async function sincronizarStatusAnyPS5() {
         const svgTag = doc.querySelector('svg');
         if (svgTag && svgTag.hasAttribute('aria-label')) {
           const aria = svgTag.getAttribute('aria-label');
-          const match = aria.match(/:\s*([0-9./%]+)/);
+          const match = aria.match(/:\s*([0-9.]+%?)/);
           if (match && match[1]) return match[1].trim();
         }
       }
     } catch (e) {}
 
-    const regexMatch = svgText.match(/<text[^>]*>([0-9./%]+)<\/text>/gi);
+    // Fallback por regex se o parser XML falhar
+    const regexMatch = svgText.match(/<text[^>]*>([0-9.]+%?)<\/text>/gi);
     if (regexMatch && regexMatch.length >= 2) {
       const last = regexMatch[regexMatch.length - 1].replace(/<[^>]+>/g, '').trim();
       if (last) return last;
     }
-    const ariaMatch = svgText.match(/aria-label="[^"]*?:\s*([0-9./%]+)"/i);
+    const ariaMatch = svgText.match(/aria-label="[^"]*?:\s*([0-9.]+%?)"/i);
     if (ariaMatch && ariaMatch[1]) return ariaMatch[1].trim();
     return null;
   }
 
-  function formatarPercentual(val) {
-    if (!val) return null;
-    if (val.includes('/')) {
-      const parts = val.split('/');
-      const n = parseFloat(parts[0]);
-      const d = parseFloat(parts[1]);
-      if (!isNaN(n) && !isNaN(d) && d > 0) {
-        return (n === d) ? '100.0%' : ((n / d) * 100).toFixed(1) + '%';
-      }
-    }
-    return val.includes('%') ? val : `${val}%`;
-  }
-
-  // 1. Sincronizar Bibliotecas diretamente do repositório AnyPS5 com fallback local
+  // 1. Sincronizar Bibliotecas
   try {
-    let resLib;
-    try {
-      resLib = await fetch('https://boykopovar.github.io/AnyPS5/badge-libraries.svg', { cache: 'no-cache' });
-    } catch (e) {}
-    if (!resLib || !resLib.ok) {
-      resLib = await fetch('./assets/badge-libraries.svg');
-    }
-    if (resLib && resLib.ok) {
+    const resLib = await fetch('./assets/badge-libraries.svg');
+    if (resLib.ok) {
       const svgText = await resLib.text();
       const val = extrairValorSvg(svgText);
-      const fmt = formatarPercentual(val);
-      if (fmt && libEl) libEl.textContent = fmt;
+      if (val && libEl) {
+        libEl.textContent = val.includes('%') ? val : `${val}%`;
+      }
     }
-  } catch (err) {}
+  } catch (err) {
+    // Offline ou bloqueio de rede: mantém valor estático sincronizado (90.32%)
+  }
 
-  // 2. Sincronizar Shaders diretamente do repositório AnyPS5 com fallback local
+  // 2. Sincronizar Shaders
   try {
-    let resShader;
-    try {
-      resShader = await fetch('https://boykopovar.github.io/AnyPS5/badge-shaders.svg', { cache: 'no-cache' });
-    } catch (e) {}
-    if (!resShader || !resShader.ok) {
-      resShader = await fetch('./assets/badge-shaders.svg');
-    }
-    if (resShader && resShader.ok) {
+    const resShader = await fetch('./assets/badge-shaders.svg');
+    if (resShader.ok) {
       const svgText = await resShader.text();
       const val = extrairValorSvg(svgText);
-      const fmt = formatarPercentual(val);
-      if (fmt && shaderEl) shaderEl.textContent = fmt;
+      if (val && shaderEl) {
+        shaderEl.textContent = val.includes('%') ? val : `${val}%`;
+      }
     }
-  } catch (err) {}
+  } catch (err) {
+    // Offline ou bloqueio de rede: mantém valor estático sincronizado (100.0%)
+  }
 }
 
 // ── RENDERIZAÇÃO DO CATÁLOGO DE CARDS ULTRA-OTIMIZADA (CHUNKED LAZY RENDERING) ──
