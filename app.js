@@ -421,6 +421,98 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "ascension-r-pc",
+    "nome": "Ascension R",
+    "console": "PS3",
+    "consoleNome": "PlayStation 3",
+    "codigoJogo": "PS3-ASCENSIONR",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "rigaz29/Ascension-R",
+    "repoUrl": "https://github.com/rigaz29/Ascension-R",
+    "descricao": "A native Windows port of God of War: Ascension (PS3) by static recompilation on ps3recomp. No game files included.",
+    "termoBuscaCapa": "Ascension R",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-10T08:05:19Z",
+    "stars": 56,
+    "versaoPadrao": "v0.1.0-alpha.3",
+    "tags": [
+      "PS3",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
+    "id": "karpur-pc",
+    "nome": "PokéMon Scarlet/Violet",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "Switch-KARPUR",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Grunttanamo/KarPur",
+    "repoUrl": "https://github.com/Grunttanamo/KarPur",
+    "descricao": "Native Windows port of Pokémon Scarlet/Violet (Switch), static recompilation, built on LAS Recomp and TotK Recomp. No game files included.",
+    "termoBuscaCapa": "PokéMon Scarlet/Violet",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-11T12:44:46Z",
+    "stars": 33,
+    "versaoPadrao": "v0.3.3",
+    "tags": [
+      "Switch",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
+    "id": "mariotennisrecomp-pc",
+    "nome": "Mario Tennis",
+    "console": "N64",
+    "consoleNome": "Nintendo 64",
+    "codigoJogo": "N64-MARIOTENNI",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Ieatzcrayonz/MarioTennisRecomp",
+    "repoUrl": "https://github.com/Ieatzcrayonz/MarioTennisRecomp",
+    "descricao": "Native PC port of Mario Tennis (N64) using N64Recomp and RT64. Bring your own ROM.",
+    "termoBuscaCapa": "Mario Tennis",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-08T21:16:11Z",
+    "stars": 11,
+    "versaoPadrao": "v0.2.0",
+    "tags": [
+      "N64",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "the-last-guardian-definitive-pc",
+    "nome": "The Last Guardian Definitive",
+    "console": "PS4",
+    "consoleNome": "PlayStation 4",
+    "codigoJogo": "CUSA03627",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "tabnul/the-last-guardian-definitive",
+    "repoUrl": "https://github.com/tabnul/the-last-guardian-definitive",
+    "descricao": "Native PC port (Windows/Linux) of The Last Guardian (PS4), unlocked unique features, tuned to look its best: DLSS and FSR Upscaling, DLAA, FSR AA, Framegen, any resolution and aspect ratio, AI-upscaled texture packs, extra graphics settings, mouse/keyboard, optional 60 or unlocked FPS. Runs your own game dump; no game or firmware files included.",
+    "termoBuscaCapa": "The Last Guardian Definitive",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-10T15:12:21Z",
+    "stars": 23,
+    "versaoPadrao": "v0.9.1",
+    "tags": [
+      "PS4",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "fefw-recomp-pc",
     "nome": "Fefw",
     "console": "PC",
