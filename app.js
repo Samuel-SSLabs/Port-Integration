@@ -893,7 +893,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Nintendo_Switch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-10T21:39:58Z",
-    "stars": 8379,
+    "stars": 8380,
     "versaoPadrao": "build-150",
     "tags": [
       "Switch",
