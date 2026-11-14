@@ -421,6 +421,29 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "downhill-revived-pc",
+    "nome": "Downhill Revived",
+    "console": "PS2",
+    "consoleNome": "PlayStation 2",
+    "codigoJogo": "SCUS-97177",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "skuza-oss/downhill-revived",
+    "repoUrl": "https://github.com/skuza-oss/downhill-revived",
+    "descricao": "A PC port of Downhill Domination (PS2), built on a matching decompilation. Bring your own disc.",
+    "termoBuscaCapa": "Downhill Revived",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-14T08:52:34Z",
+    "stars": 208,
+    "versaoPadrao": "v0.8.2",
+    "tags": [
+      "PS2",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
     "id": "shinobi-ps2-recomp-pc",
     "nome": "Shinobi",
     "console": "PS2",
