@@ -444,6 +444,120 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "edgeoftimerecomp-pc",
+    "nome": "EdgeOfTimeRecomp",
+    "console": "XBOX360",
+    "consoleNome": "Xbox 360",
+    "codigoJogo": "XBOX360-EDGEOFTIME",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "goliathret/EdgeOfTimeRecomp",
+    "repoUrl": "https://github.com/goliathret/EdgeOfTimeRecomp",
+    "descricao": "An unofficial PC port of the Xbox 360 version of Spider-Man: Edge of Time created through the process of static recompilation.",
+    "termoBuscaCapa": "EdgeOfTimeRecomp",
+    "capaManual": null,
+    "dataAtualizacao": "2026-10-30T19:18:20Z",
+    "stars": 521,
+    "versaoPadrao": "v1.1",
+    "tags": [
+      "XBOX360",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "n64recomp-x-pc",
+    "nome": "N64Recomp X",
+    "console": "N64",
+    "consoleNome": "Nintendo 64",
+    "codigoJogo": "N64-N64RECOMPX",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "TechProGabe/N64Recomp-X",
+    "repoUrl": "https://github.com/TechProGabe/N64Recomp-X",
+    "descricao": "N64Recomp-X",
+    "termoBuscaCapa": "N64Recomp X",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-08T14:54:21Z",
+    "stars": 14,
+    "versaoPadrao": "v1-experimental",
+    "tags": [
+      "N64",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
+    "id": "gracemeriarecomp-pc",
+    "nome": "GracemeriaRecomp",
+    "console": "XBOX360",
+    "consoleNome": "Xbox 360",
+    "codigoJogo": "4E4D07D1",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Dipshet/GracemeriaRecomp",
+    "repoUrl": "https://github.com/Dipshet/GracemeriaRecomp",
+    "descricao": "Native PC port of Ace Combat 6: Fires of Liberation using XenonRecomp",
+    "termoBuscaCapa": "GracemeriaRecomp",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-18T00:10:07Z",
+    "stars": 17,
+    "versaoPadrao": "v1.0.0",
+    "tags": [
+      "XBOX360",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "shadowofthecolossuspc-pc",
+    "nome": "ShadowOfTheColossusPC",
+    "console": "PS2",
+    "consoleNome": "PlayStation 2",
+    "codigoJogo": "SCUS-97472",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "GenissonEmilio/ShadowOfTheColossusPC",
+    "repoUrl": "https://github.com/GenissonEmilio/ShadowOfTheColossusPC",
+    "descricao": "Port nativo Linux e Windows de Shadow of the Colossus (PS2 USA), baseado em Celosia/PS2Recomp; ROM própria necessária.",
+    "termoBuscaCapa": "ShadowOfTheColossusPC",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-18T00:27:40Z",
+    "stars": 16,
+    "versaoPadrao": "v0.8.0",
+    "tags": [
+      "PS2",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "gt5-recomp-pc",
+    "nome": "Gt5",
+    "console": "PS3",
+    "consoleNome": "PlayStation 3",
+    "codigoJogo": "BCES-00569",
+    "status": "Jogável (Source Port)",
+    "statusTipo": "jogavel",
+    "repo": "MormonFTP-hub/gt5-recomp",
+    "repoUrl": "https://github.com/MormonFTP-hub/gt5-recomp",
+    "descricao": "Unofficial PC port of Gran Turismo 5 on ps3recomp. Needs your own GT5 disc, EBOOT v1.00, no update: Europe BCES00569 (tested) or US BCUS98114 (untested). Code and tools only: no game files, keys or firmware.",
+    "termoBuscaCapa": "Gt5",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-18T04:26:31Z",
+    "stars": 71,
+    "versaoPadrao": "v0.1.107",
+    "tags": [
+      "PS3",
+      "AutoDiscover",
+      "C"
+    ]
+  },
+  {
     "id": "issn_pc-pc",
     "nome": "inFAMOUS Second Son (Native PC Port)",
     "console": "PS4",
@@ -457,7 +571,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Infamous_Second_Son",
     "capaManual": null,
     "dataAtualizacao": "2026-11-12T15:12:11Z",
-    "stars": 205,
+    "stars": 207,
     "versaoPadrao": "windows-v0.3.7.4",
     "tags": [
       "PC",
@@ -480,7 +594,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Downhill_Domination",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T17:27:24Z",
-    "stars": 227,
+    "stars": 228,
     "versaoPadrao": "v0.8.10",
     "tags": [
       "PS2",
@@ -503,7 +617,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Sonic_the_Hedgehog_(2006_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T16:18:12Z",
-    "stars": 948,
+    "stars": 957,
     "versaoPadrao": "v1.0.0",
     "tags": [
       "XBOX360",
@@ -526,7 +640,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Pokemon_XD:_Gale_of_Darkness",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T21:46:00Z",
-    "stars": 41,
+    "stars": 44,
     "versaoPadrao": "v0.6.0",
     "tags": [
       "PC",
@@ -594,9 +708,9 @@ const PORTS_DATABASE = [
     "descricao": "Port nativo para Windows de Super Mario Odyssey via recompilação estática de instruções ARM64. Requer dump do jogo original.",
     "termoBuscaCapa": "Super_Mario_Odyssey",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-17T18:26:59Z",
-    "stars": 379,
-    "versaoPadrao": "v0.4.2",
+    "dataAtualizacao": "2026-11-18T10:11:20Z",
+    "stars": 388,
+    "versaoPadrao": "v0.4.5",
     "tags": [
       "PC",
       "AutoDiscover",
@@ -618,7 +732,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Star_Fox_64",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T00:05:09Z",
-    "stars": 216,
+    "stars": 225,
     "versaoPadrao": "v1.1.0",
     "tags": [
       "Switch",
@@ -641,7 +755,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Infamous_2",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T20:45:48Z",
-    "stars": 196,
+    "stars": 201,
     "versaoPadrao": "v0.6.2",
     "tags": [
       "PS3",
@@ -710,7 +824,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Diablo_III:_Reaper_of_Souls",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T03:09:34Z",
-    "stars": 67,
+    "stars": 69,
     "versaoPadrao": "v0.6.6",
     "tags": [
       "PS4",
@@ -733,7 +847,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Resistance:_Fall_of_Man",
     "capaManual": null,
     "dataAtualizacao": "2026-11-12T01:29:12Z",
-    "stars": 125,
+    "stars": 126,
     "versaoPadrao": "v0.2.3-beta",
     "tags": [
       "PS3",
@@ -779,7 +893,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "God_of_War:_Ascension",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T13:26:05Z",
-    "stars": 159,
+    "stars": 163,
     "versaoPadrao": "v0.1.0-alpha.15",
     "tags": [
       "PS3",
@@ -802,7 +916,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Pokemon_Scarlet_and_Violet",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T23:13:01Z",
-    "stars": 87,
+    "stars": 95,
     "versaoPadrao": "v0.4.0",
     "tags": [
       "Switch",
@@ -848,7 +962,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Last_Guardian",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T18:26:20Z",
-    "stars": 62,
+    "stars": 63,
     "versaoPadrao": "v0.10.1",
     "tags": [
       "PS4",
@@ -893,9 +1007,9 @@ const PORTS_DATABASE = [
     "descricao": "Ninja Gaiden II (Xbox 360) recompilado estaticamente para builds nativas de Linux e Windows, com renderizador Vulkan a 60 FPS cravados e escala até 8x.",
     "termoBuscaCapa": "Ninja_Gaiden_II",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-17T14:36:38Z",
-    "stars": 280,
-    "versaoPadrao": "v0.6.8",
+    "dataAtualizacao": "2026-11-18T02:38:30Z",
+    "stars": 286,
+    "versaoPadrao": "v0.6.9",
     "tags": [
       "XBOX360",
       "AutoDiscover",
@@ -916,9 +1030,9 @@ const PORTS_DATABASE = [
     "descricao": "Pokémon Pokopia recompilado para rodar nativamente no Windows com suporte a multiplayer, modding e aprimoramentos visuais.",
     "termoBuscaCapa": "Pokemon_XD:_Gale_of_Darkness",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-18T00:26:56Z",
-    "stars": 876,
-    "versaoPadrao": "coop-v2-alpha.4",
+    "dataAtualizacao": "2026-11-18T02:15:15Z",
+    "stars": 886,
+    "versaoPadrao": "v0.14.2",
     "tags": [
       "Switch",
       "AutoDiscover",
@@ -940,7 +1054,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Mario_Kart_8_Deluxe",
     "capaManual": null,
     "dataAtualizacao": "2026-11-16T21:56:00Z",
-    "stars": 103,
+    "stars": 104,
     "versaoPadrao": "BETA-0.2.5",
     "tags": [
       "PC",
@@ -1008,7 +1122,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Killzone_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T06:21:05Z",
-    "stars": 29,
+    "stars": 31,
     "versaoPadrao": "v0.5.1",
     "tags": [
       "PS3",
@@ -1054,7 +1168,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "From_Russia_with_Love_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-08T03:47:40Z",
-    "stars": 181,
+    "stars": 183,
     "versaoPadrao": "V2",
     "tags": [
       "XBOX",
@@ -1077,7 +1191,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Spider-Man_(2002_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-05T01:16:10Z",
-    "stars": 32,
+    "stars": 33,
     "versaoPadrao": "v0.1.2",
     "tags": [
       "XBOX",
@@ -1123,7 +1237,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Robot_Wars_64",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T12:06:25Z",
-    "stars": 50,
+    "stars": 51,
     "versaoPadrao": "mod-battle-voices-originals-ai-1.0.5",
     "tags": [
       "N64",
@@ -1169,7 +1283,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "World_Driver_Championship",
     "capaManual": null,
     "dataAtualizacao": "2026-10-29T13:14:34Z",
-    "stars": 11,
+    "stars": 12,
     "versaoPadrao": "v0.2.0",
     "tags": [
       "N64",
@@ -1192,7 +1306,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Neon_Genesis_Evangelion_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-13T16:30:30Z",
-    "stars": 13,
+    "stars": 14,
     "versaoPadrao": "0.1.1",
     "tags": [
       "N64",
@@ -1215,7 +1329,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Sonic_the_Hedgehog_(2006_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-13T18:23:28Z",
-    "stars": 27,
+    "stars": 28,
     "versaoPadrao": "v0.2.0",
     "tags": [
       "PS3",
@@ -1238,7 +1352,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Nintendo_Switch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T21:41:51Z",
-    "stars": 9641,
+    "stars": 9683,
     "versaoPadrao": "build-341",
     "tags": [
       "Switch",
@@ -1261,7 +1375,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Nintendo_Switch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-07T02:43:07Z",
-    "stars": 87,
+    "stars": 88,
     "versaoPadrao": "sharkiix-v3.1.1",
     "tags": [
       "Switch",
@@ -1306,9 +1420,9 @@ const PORTS_DATABASE = [
     "descricao": "Recompilação estática de Pokémon Sword and Shield para PC com resolução 4K, suporte a 60 FPS e carregamento quase instantâneo.",
     "termoBuscaCapa": "Pokémon Sword and Shield",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-15T02:44:56Z",
-    "stars": 56,
-    "versaoPadrao": "v0.3.0",
+    "dataAtualizacao": "2026-11-18T04:13:00Z",
+    "stars": 59,
+    "versaoPadrao": "v0.3.1",
     "tags": [
       "Switch",
       "AutoDiscover",
@@ -1330,7 +1444,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Nintendo_Switch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-04T20:05:33Z",
-    "stars": 524,
+    "stars": 525,
     "versaoPadrao": "v0.2.0",
     "tags": [
       "Switch",
@@ -1398,9 +1512,9 @@ const PORTS_DATABASE = [
     "descricao": "Port nativo não oficial para PC do aclamado jogo de ação Astral Chain via recompilação estática com suporte a 60 FPS, resolução ultrawide e opções gráficas avançadas.",
     "termoBuscaCapa": "Astral_Chain",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-17T17:05:55Z",
+    "dataAtualizacao": "2026-11-18T11:10:32Z",
     "stars": 121,
-    "versaoPadrao": "2026-11-17",
+    "versaoPadrao": "2026-11-18",
     "tags": [
       "PC",
       "AutoDiscover",
@@ -1491,7 +1605,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Guitar_Hero_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T02:03:05Z",
-    "stars": 91,
+    "stars": 92,
     "versaoPadrao": "gdul/v1.1.16",
     "tags": [
       "PS2",
@@ -1514,7 +1628,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "James_Bond_007:_Everything_or_Nothing",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T09:17:11Z",
-    "stars": 105,
+    "stars": 107,
     "versaoPadrao": "v1.3.2",
     "tags": [
       "XBOX",
@@ -1584,7 +1698,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Persona_3",
     "capaManual": null,
     "dataAtualizacao": "2026-10-30T13:03:21Z",
-    "stars": 29,
+    "stars": 31,
     "versaoPadrao": "recompiled",
     "tags": [
       "PS2",
@@ -1607,7 +1721,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Last_of_Us_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T23:51:04Z",
-    "stars": 358,
+    "stars": 362,
     "versaoPadrao": "v0.2.5",
     "tags": [
       "PS4",
@@ -1630,7 +1744,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "God_of_War_(2005_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T04:01:30Z",
-    "stars": 263,
+    "stars": 265,
     "versaoPadrao": "v0.6.1",
     "tags": [
       "PS2",
@@ -1653,7 +1767,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Conker:_Live_&_Reloaded",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T13:59:57Z",
-    "stars": 43,
+    "stars": 42,
     "versaoPadrao": "v4.0.0",
     "tags": [
       "XBOX",
@@ -1676,7 +1790,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "PlayStation_Vita",
     "capaManual": null,
     "dataAtualizacao": "2026-11-02T01:00:31Z",
-    "stars": 311,
+    "stars": 310,
     "versaoPadrao": "v0.1.5",
     "tags": [
       "Retro",
@@ -1699,7 +1813,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Grand_Theft_Auto_IV",
     "capaManual": null,
     "dataAtualizacao": "2026-11-13T12:48:33Z",
-    "stars": 182,
+    "stars": 185,
     "versaoPadrao": "v0.4.1-beta",
     "tags": [
       "PC",
@@ -1721,9 +1835,9 @@ const PORTS_DATABASE = [
     "descricao": "Port nativo de Parasite Eve II para PC escrito em Rust e C++ com carregamentos instantâneos, suporte a controles modernos e renderização em alta fidelidade.",
     "termoBuscaCapa": "Parasite_Eve_II",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-14T20:46:26Z",
-    "stars": 102,
-    "versaoPadrao": "v0.7.0",
+    "dataAtualizacao": "2026-11-18T05:25:09Z",
+    "stars": 104,
+    "versaoPadrao": "v0.8.0",
     "tags": [
       "PS1",
       "AutoDiscover",
@@ -1745,7 +1859,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Tsukihime",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T17:13:58Z",
-    "stars": 82,
+    "stars": 83,
     "versaoPadrao": "v0.1.9",
     "tags": [
       "PC",
@@ -1836,7 +1950,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Project_Gotham_Racing_4",
     "capaManual": null,
     "dataAtualizacao": "2026-11-08T00:47:22Z",
-    "stars": 108,
+    "stars": 109,
     "versaoPadrao": "v0.2.7",
     "tags": [
       "XBOX360",
@@ -1882,7 +1996,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Grand_Theft_Auto_V",
     "capaManual": null,
     "dataAtualizacao": "2026-11-02T16:40:53Z",
-    "stars": 257,
+    "stars": 261,
     "versaoPadrao": "v0.3.0",
     "tags": [
       "XBOX360",
@@ -1974,7 +2088,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Tom_Clancy's_Ghost_Recon_2",
     "capaManual": null,
     "dataAtualizacao": "2026-11-02T02:39:54Z",
-    "stars": 55,
+    "stars": 56,
     "versaoPadrao": "v1.3",
     "tags": [
       "XBOX",
@@ -1997,7 +2111,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Gears_of_War_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T01:52:39Z",
-    "stars": 490,
+    "stars": 495,
     "versaoPadrao": "0.6.4",
     "tags": [
       "XBOX360",
@@ -2019,9 +2133,9 @@ const PORTS_DATABASE = [
     "descricao": "Recompilação estática nativa para Windows do clássico remasterizado Perfect Dark do Xbox 360 / XBLA utilizando ReXGlue com suporte a 60 FPS e controles modernos.",
     "termoBuscaCapa": "Perfect_Dark",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-13T14:56:20Z",
-    "stars": 51,
-    "versaoPadrao": "v0.9.1b",
+    "dataAtualizacao": "2026-11-18T02:44:10Z",
+    "stars": 53,
+    "versaoPadrao": "v0.9.2",
     "tags": [
       "XBOX360",
       "AutoDiscover",
@@ -2065,7 +2179,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Serious_Sam:_Next_Encounter",
     "capaManual": null,
     "dataAtualizacao": "2026-10-05T12:37:04Z",
-    "stars": 31,
+    "stars": 32,
     "versaoPadrao": "update",
     "tags": [
       "GC_WII",
@@ -2132,7 +2246,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Odin_Sphere",
     "capaManual": null,
     "dataAtualizacao": "2026-11-04T15:52:54Z",
-    "stars": 203,
+    "stars": 206,
     "versaoPadrao": "v0.2.3",
     "tags": [
       "PS4",
@@ -2178,7 +2292,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Soulcalibur_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T15:19:05Z",
-    "stars": 93,
+    "stars": 95,
     "versaoPadrao": "v1.2.1",
     "tags": [
       "DC",
@@ -2245,9 +2359,9 @@ const PORTS_DATABASE = [
     "descricao": "Port nativo de Monster Hunter Generations Ultimate para PC via recompilação estática com suporte a 60+ FPS e resoluções modernas. Requer os arquivos do jogo original para execução.",
     "termoBuscaCapa": "Monster_Hunter_Generations",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-17T20:20:05Z",
-    "stars": 648,
-    "versaoPadrao": "0.17.7",
+    "dataAtualizacao": "2026-11-18T09:51:41Z",
+    "stars": 655,
+    "versaoPadrao": "0.17.8",
     "tags": [
       "Switch",
       "Recompilação",
@@ -2292,7 +2406,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Tears_of_the_Kingdom",
     "capaManual": null,
     "dataAtualizacao": "2026-11-11T22:52:05Z",
-    "stars": 931,
+    "stars": 936,
     "versaoPadrao": "v0.4.0",
     "tags": [
       "Switch",
@@ -2338,7 +2452,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Dead_or_Alive_2",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T17:35:39Z",
-    "stars": 124,
+    "stars": 125,
     "versaoPadrao": "v0.4.0",
     "tags": [
       "XBOX",
@@ -2384,7 +2498,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Wario_Land:_Shake_It!",
     "capaManual": null,
     "dataAtualizacao": "2026-11-03T04:54:02Z",
-    "stars": 102,
+    "stars": 103,
     "versaoPadrao": "v0.3.1",
     "tags": [
       "WII",
@@ -2452,7 +2566,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Infamous_First_Light",
     "capaManual": null,
     "dataAtualizacao": "2026-10-25T20:35:46Z",
-    "stars": 156,
+    "stars": 157,
     "versaoPadrao": "v0.3.8",
     "tags": [
       "PS4",
@@ -2590,7 +2704,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Paper_Mario",
     "capaManual": null,
     "dataAtualizacao": "2026-11-01T18:03:49Z",
-    "stars": 205,
+    "stars": 206,
     "versaoPadrao": "v1.0.8",
     "tags": [
       "WII",
@@ -2638,7 +2752,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Killzone_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-04T18:57:26Z",
-    "stars": 194,
+    "stars": 193,
     "versaoPadrao": "v0.1.7-alpha",
     "tags": [
       "PS2",
@@ -2753,7 +2867,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Infamous_Second_Son",
     "capaManual": null,
     "dataAtualizacao": "2026-10-22T21:47:23Z",
-    "stars": 268,
+    "stars": 269,
     "versaoPadrao": "second-son-v1.1.1",
     "tags": [
       "PS4",
@@ -2868,7 +2982,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Eternal_Darkness",
     "capaManual": null,
     "dataAtualizacao": "2026-10-24T20:35:29Z",
-    "stars": 214,
+    "stars": 215,
     "versaoPadrao": "v0.9.6",
     "tags": [
       "GC",
@@ -2891,7 +3005,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Luigi's_Mansion",
     "capaManual": null,
     "dataAtualizacao": "2026-11-03T06:58:33Z",
-    "stars": 357,
+    "stars": 358,
     "versaoPadrao": "v1.1.6",
     "tags": [
       "GC",
@@ -2959,7 +3073,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Prototype_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-12T02:48:28Z",
-    "stars": 44,
+    "stars": 45,
     "versaoPadrao": "v1.1.0",
     "tags": [
       "PS4",
@@ -3005,7 +3119,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Crash_Team_Racing_Nitro-Fueled",
     "capaManual": null,
     "dataAtualizacao": "2026-10-19T05:02:09Z",
-    "stars": 755,
+    "stars": 756,
     "versaoPadrao": "v0.4",
     "tags": [
       "PS4",
@@ -3051,7 +3165,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Lord_of_the_Rings:_The_Return_of_the_King_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T03:07:58Z",
-    "stars": 210,
+    "stars": 211,
     "versaoPadrao": "1.8.7",
     "tags": [
       "XBOX",
@@ -3075,7 +3189,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "God_of_War:_Ascension",
     "capaManual": null,
     "dataAtualizacao": "2026-10-21T00:00:05Z",
-    "stars": 448,
+    "stars": 449,
     "versaoPadrao": "Port Nativo",
     "tags": [
       "PS3",
@@ -3174,7 +3288,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Unicorn Overlord",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T20:52:45Z",
-    "stars": 259,
+    "stars": 260,
     "versaoPadrao": "v1.6.2",
     "tags": [
       "PS4",
@@ -3220,7 +3334,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Armored_Core_4",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T11:08:38Z",
-    "stars": 66,
+    "stars": 69,
     "versaoPadrao": "v0.7.0",
     "tags": [
       "PS3",
@@ -3335,7 +3449,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Drakengard 3",
     "capaManual": null,
     "dataAtualizacao": "2026-11-01T04:23:56Z",
-    "stars": 349,
+    "stars": 350,
     "versaoPadrao": "v0.5.0-alpha",
     "tags": [
       "PS3",
@@ -3404,7 +3518,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Armored Core For Answer",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T11:11:52Z",
-    "stars": 89,
+    "stars": 92,
     "versaoPadrao": "v0.7.6",
     "tags": [
       "PS3",
@@ -3427,7 +3541,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Bloodborne",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T12:07:08Z",
-    "stars": 315,
+    "stars": 316,
     "versaoPadrao": "mac-v0.5.17",
     "tags": [
       "PS4",
@@ -3450,7 +3564,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "GoldenEye_007_(1997_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-23T10:15:03Z",
-    "stars": 441,
+    "stars": 443,
     "versaoPadrao": "1.0.2b",
     "tags": [
       "N64",
@@ -3519,7 +3633,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Crash_Bandicoot_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T06:21:58Z",
-    "stars": 346,
+    "stars": 347,
     "versaoPadrao": "2.6",
     "tags": [
       "PS1",
@@ -3591,7 +3705,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Dragon's_Crown",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T03:54:04Z",
-    "stars": 487,
+    "stars": 498,
     "versaoPadrao": "v1.3.0",
     "tags": [
       "PS4",
@@ -3616,7 +3730,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Burnout_3:_Takedown",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T10:11:12Z",
-    "stars": 216,
+    "stars": 217,
     "versaoPadrao": "v0.9.0-alpha",
     "tags": [
       "PS2",
@@ -3664,9 +3778,9 @@ const PORTS_DATABASE = [
     "descricao": "Recompilação nativa para PC de Pokémon: Let's Go, Eevee! & Pikachu! do Nintendo Switch.",
     "termoBuscaCapa": "Pokémon:_Let's_Go,_Pikachu!_and_Let's_Go,_Eevee!",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-01T14:22:22Z",
-    "stars": 311,
-    "versaoPadrao": "v0.7.6",
+    "dataAtualizacao": "2026-11-18T05:38:56Z",
+    "stars": 314,
+    "versaoPadrao": "v0.7.7",
     "tags": [
       "Switch",
       "AutoDiscover",
@@ -3714,9 +3828,9 @@ const PORTS_DATABASE = [
     "descricao": "Descompilação completa e port nativo de Silent Hill (PS1) para PC com melhorias gráficas e suporte a controles modernos.",
     "termoBuscaCapa": "Silent_Hill_(video_game)",
     "capaManual": null,
-    "dataAtualizacao": "2026-10-29T22:57:59Z",
-    "stars": 874,
-    "versaoPadrao": "xbox360-alpha-1",
+    "dataAtualizacao": "2026-11-18T10:49:52Z",
+    "stars": 876,
+    "versaoPadrao": "uwp-alpha-1",
     "tags": [
       "PS1",
       "AutoDiscover",
@@ -3740,7 +3854,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Condemned_2:_Bloodshot",
     "capaManual": null,
     "dataAtualizacao": "2026-11-16T09:46:59Z",
-    "stars": 309,
+    "stars": 310,
     "versaoPadrao": "0.6.1",
     "tags": [
       "XBOX360",
@@ -3765,7 +3879,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Banjo-Tooie",
     "capaManual": null,
     "dataAtualizacao": "2026-10-27T15:34:53Z",
-    "stars": 112,
+    "stars": 113,
     "versaoPadrao": "v0.1.0-alpha.4.5",
     "tags": [
       "N64",
@@ -3790,7 +3904,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "SSX_Tricky",
     "capaManual": null,
     "dataAtualizacao": "2026-11-13T12:17:52Z",
-    "stars": 160,
+    "stars": 162,
     "versaoPadrao": "v0.1.6",
     "tags": [
       "PS2",
@@ -3839,7 +3953,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Colin_McRae_Rally_2.0",
     "capaManual": null,
     "dataAtualizacao": "2026-11-12T22:30:49Z",
-    "stars": 206,
+    "stars": 212,
     "versaoPadrao": "v1.9.0",
     "tags": [
       "PS1",
@@ -3862,9 +3976,9 @@ const PORTS_DATABASE = [
     "descricao": "Recompilação nativa para PC da remasterização cancelada de GoldenEye 007 para Xbox Live Arcade (XBLA).",
     "termoBuscaCapa": "GoldenEye_007_(1997_video_game)",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-13T15:06:03Z",
-    "stars": 94,
-    "versaoPadrao": "v0.9.7c",
+    "dataAtualizacao": "2026-11-18T02:22:19Z",
+    "stars": 96,
+    "versaoPadrao": "v0.9.7d",
     "tags": [
       "XBOX360",
       "AutoDiscover",
@@ -3887,7 +4001,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Fire_Emblem:_The_Sacred_Stones",
     "capaManual": null,
     "dataAtualizacao": "2026-10-17T22:04:00Z",
-    "stars": 31,
+    "stars": 32,
     "versaoPadrao": "v0.1.20",
     "tags": [
       "GBA",
@@ -4110,7 +4224,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "FIFA_Street_(2012_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T22:10:27Z",
-    "stars": 526,
+    "stars": 528,
     "versaoPadrao": "v2.1.5-online-beta",
     "tags": [
       "XBOX360",
@@ -4134,7 +4248,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Uncharted:_The_Nathan_Drake_Collection",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T16:53:57Z",
-    "stars": 839,
+    "stars": 840,
     "versaoPadrao": "v0.8.6",
     "tags": [
       "PS4",
@@ -4208,7 +4322,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "MediEvil_(2019_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-10T13:15:06Z",
-    "stars": 270,
+    "stars": 273,
     "versaoPadrao": "v1.4.0",
     "tags": [
       "PS4",
@@ -4332,7 +4446,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Order:_1886",
     "capaManual": null,
     "dataAtualizacao": "2026-11-01T07:14:31Z",
-    "stars": 232,
+    "stars": 233,
     "versaoPadrao": "v0.1.7",
     "tags": [
       "PS4",
@@ -4357,7 +4471,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Castlevania:_Legacy_of_Darkness",
     "capaManual": null,
     "dataAtualizacao": "2026-10-23T15:17:26Z",
-    "stars": 147,
+    "stars": 150,
     "versaoPadrao": "v0.2.29",
     "tags": [
       "N64",
@@ -4406,7 +4520,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Gravity_Rush_2",
     "capaManual": null,
     "dataAtualizacao": "2026-10-24T03:01:09Z",
-    "stars": 191,
+    "stars": 192,
     "versaoPadrao": "v2026.10.24-a2e69a1",
     "tags": [
       "PS4",
@@ -4431,7 +4545,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Demon's_Souls_(2020_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-17T11:40:00Z",
-    "stars": 441,
+    "stars": 443,
     "versaoPadrao": "v0.3.1-demons",
     "tags": [
       "PS5",
@@ -4456,7 +4570,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Astro's_Playroom",
     "capaManual": null,
     "dataAtualizacao": "2026-11-11T15:01:01Z",
-    "stars": 54925,
+    "stars": 55164,
     "versaoPadrao": "v0.1.5",
     "tags": [
       "PS5",
@@ -4480,7 +4594,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Infamous_Second_Son",
     "capaManual": null,
     "dataAtualizacao": "2026-11-12T14:03:15Z",
-    "stars": 1205,
+    "stars": 1208,
     "versaoPadrao": "sunny-beta-2026.11.12",
     "tags": [
       "PS4",
@@ -4505,7 +4619,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Shadow_of_the_Colossus_(2018_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T18:38:12Z",
-    "stars": 1969,
+    "stars": 1981,
     "versaoPadrao": "v0.76.2",
     "tags": [
       "PS4",
@@ -4529,7 +4643,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Bloodborne",
     "capaManual": null,
     "dataAtualizacao": "2026-11-13T01:38:33Z",
-    "stars": 5502,
+    "stars": 5513,
     "versaoPadrao": "windows-v1.9.8.6",
     "tags": [
       "PS4",
@@ -4553,7 +4667,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Last_Guardian",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T21:30:45Z",
-    "stars": 589,
+    "stars": 590,
     "versaoPadrao": "v2026.11.14-ee3327d",
     "tags": [
       "PS4",
@@ -4578,7 +4692,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "P.T._(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-22T23:04:05Z",
-    "stars": 2514,
+    "stars": 2516,
     "versaoPadrao": "v1.0.8",
     "tags": [
       "PS4",
@@ -4651,7 +4765,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Uncharted:_The_Nathan_Drake_Collection",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T18:45:35Z",
-    "stars": 2317,
+    "stars": 2324,
     "versaoPadrao": "v0.3.15",
     "tags": [
       "PS4",
@@ -4676,7 +4790,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Jak_and_Daxter:_The_Precursor_Legacy",
     "capaManual": null,
     "dataAtualizacao": "2026-10-15T23:15:46Z",
-    "stars": 3662,
+    "stars": 3661,
     "versaoPadrao": "v0.3.9",
     "tags": [
       "PS2",
@@ -4700,9 +4814,9 @@ const PORTS_DATABASE = [
     "descricao": "Port nativo de Ico (PS2) para PC com suporte a 60 FPS, câmera livre moderna, widescreen e resolução nativa em alta definição.",
     "termoBuscaCapa": "Ico_(video_game)",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-17T03:23:08Z",
+    "dataAtualizacao": "2026-11-18T10:32:44Z",
     "stars": 561,
-    "versaoPadrao": "v0.11.8",
+    "versaoPadrao": "v0.11.10",
     "tags": [
       "PS2",
       "Sony",
@@ -4773,7 +4887,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Castlevania:_Symphony_of_the_Night",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T20:02:34Z",
-    "stars": 1140,
+    "stars": 1144,
     "versaoPadrao": "v1.2.0p",
     "tags": [
       "PS1",
@@ -4822,7 +4936,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Diablo_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2025-10-30T17:00:17Z",
-    "stars": 10023,
+    "stars": 10024,
     "versaoPadrao": "1.5.5",
     "tags": [
       "PS1",
@@ -4846,7 +4960,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Tomb_Raider_(1996_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2019-01-11T07:42:30Z",
-    "stars": 5154,
+    "stars": 5155,
     "versaoPadrao": "latest",
     "tags": [
       "PS1",
@@ -4870,7 +4984,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Resident_Evil_3:_Nemesis",
     "capaManual": null,
     "dataAtualizacao": "2026-11-12T00:41:46Z",
-    "stars": 98,
+    "stars": 99,
     "versaoPadrao": "v2.3.1",
     "tags": [
       "PS1",
@@ -4942,7 +5056,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Vandal_Hearts",
     "capaManual": null,
     "dataAtualizacao": "2026-08-31T01:08:42Z",
-    "stars": 63,
+    "stars": 64,
     "versaoPadrao": "v2.1.0",
     "tags": [
       "PS1",
@@ -5016,7 +5130,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Sonic_Unleashed",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T15:00:00Z",
-    "stars": 5388,
+    "stars": 5393,
     "versaoPadrao": "v1.0.3",
     "tags": [
       "Xbox 360",
@@ -5041,7 +5155,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Skate_3",
     "capaManual": null,
     "dataAtualizacao": "2026-10-14T21:00:00Z",
-    "stars": 1839,
+    "stars": 1840,
     "versaoPadrao": "v2.0.2",
     "tags": [
       "Xbox 360",
@@ -5089,7 +5203,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Forza_Horizon",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T17:15:50Z",
-    "stars": 1066,
+    "stars": 1068,
     "versaoPadrao": "v0.9.1",
     "tags": [
       "Xbox 360",
@@ -5113,7 +5227,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Dante's_Inferno_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-08T00:00:17Z",
-    "stars": 921,
+    "stars": 924,
     "versaoPadrao": "v0.8.6-beta-hotfix",
     "tags": [
       "Xbox 360",
@@ -5137,7 +5251,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Fable_II",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T20:38:46Z",
-    "stars": 688,
+    "stars": 690,
     "versaoPadrao": "1.6.1",
     "tags": [
       "Xbox 360",
@@ -5212,7 +5326,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Blue_Dragon_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T16:47:19Z",
-    "stars": 925,
+    "stars": 927,
     "versaoPadrao": "nightly-v1.4.0-dd4359fe1-s115171b4",
     "tags": [
       "Xbox 360",
@@ -5236,7 +5350,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Burnout_Revenge",
     "capaManual": null,
     "dataAtualizacao": "2026-11-01T14:55:59Z",
-    "stars": 351,
+    "stars": 353,
     "versaoPadrao": "v0.4.10",
     "tags": [
       "Xbox 360",
@@ -5260,7 +5374,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Lost_Odyssey",
     "capaManual": null,
     "dataAtualizacao": "2026-10-26T01:12:52Z",
-    "stars": 990,
+    "stars": 997,
     "versaoPadrao": "v1.1.0",
     "tags": [
       "Xbox 360",
@@ -5284,7 +5398,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Silent_Hill:_Downpour",
     "capaManual": null,
     "dataAtualizacao": "2026-10-17T08:20:00Z",
-    "stars": 376,
+    "stars": 378,
     "versaoPadrao": "v1.1.8",
     "tags": [
       "Xbox 360",
@@ -5331,9 +5445,9 @@ const PORTS_DATABASE = [
     "descricao": "Port nativo para PC de Ninja Gaiden Black do primeiro Xbox através de recompilação estática com renderizador moderno em Vulkan.",
     "termoBuscaCapa": "Ninja_Gaiden_Black",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-17T15:57:19Z",
-    "stars": 352,
-    "versaoPadrao": "v0.9.73",
+    "dataAtualizacao": "2026-11-18T03:21:40Z",
+    "stars": 355,
+    "versaoPadrao": "v0.9.74",
     "tags": [
       "Xbox",
       "Team Ninja",
@@ -5356,7 +5470,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Burnout_3:_Takedown",
     "capaManual": null,
     "dataAtualizacao": "2026-11-06T06:16:59Z",
-    "stars": 630,
+    "stars": 632,
     "versaoPadrao": "v0.3.1",
     "tags": [
       "Xbox",
@@ -5381,7 +5495,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Black_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T12:52:13Z",
-    "stars": 392,
+    "stars": 393,
     "versaoPadrao": "v0.4.0",
     "tags": [
       "Xbox",
@@ -5405,7 +5519,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Jet_Set_Radio_Future",
     "capaManual": null,
     "dataAtualizacao": "2026-11-13T16:45:29Z",
-    "stars": 286,
+    "stars": 287,
     "versaoPadrao": "v0.6.10",
     "tags": [
       "Xbox",
@@ -5429,7 +5543,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Def_Jam:_Fight_for_NY",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T16:10:40Z",
-    "stars": 271,
+    "stars": 273,
     "versaoPadrao": "v1.2.0-beta.3",
     "tags": [
       "XBOX",
@@ -5476,7 +5590,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Twilight_Princess",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T22:00:00Z",
-    "stars": 6444,
+    "stars": 6450,
     "versaoPadrao": "v2.0.3",
     "tags": [
       "GameCube",
@@ -5501,7 +5615,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_The_Wind_Waker_HD",
     "capaManual": null,
     "dataAtualizacao": "2026-11-08T00:10:10Z",
-    "stars": 1580,
+    "stars": 1589,
     "versaoPadrao": "devel-build",
     "tags": [
       "Nintendo",
@@ -5526,7 +5640,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Majora's_Mask",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T23:53:00Z",
-    "stars": 7728,
+    "stars": 7731,
     "versaoPadrao": "v1.2.2",
     "tags": [
       "N64",
@@ -5551,7 +5665,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Ocarina_of_Time",
     "capaManual": null,
     "dataAtualizacao": "2026-10-18T21:06:27Z",
-    "stars": 6090,
+    "stars": 6094,
     "versaoPadrao": "9.3.1",
     "tags": [
       "N64",
@@ -5576,7 +5690,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Majora's_Mask",
     "capaManual": null,
     "dataAtualizacao": "2026-08-25T17:54:43Z",
-    "stars": 2487,
+    "stars": 2489,
     "versaoPadrao": "5.0.1",
     "tags": [
       "N64",
@@ -5600,7 +5714,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Banjo-Kazooie",
     "capaManual": null,
     "dataAtualizacao": "2026-09-25T14:00:00Z",
-    "stars": 2145,
+    "stars": 2146,
     "versaoPadrao": "v1.0.2",
     "tags": [
       "N64",
@@ -5624,7 +5738,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Mario_Kart_64",
     "capaManual": null,
     "dataAtualizacao": "2026-02-25T02:26:04Z",
-    "stars": 2502,
+    "stars": 2504,
     "versaoPadrao": "1.0.0",
     "tags": [
       "N64",
@@ -5648,7 +5762,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Star_Fox_64",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T11:00:00Z",
-    "stars": 2149,
+    "stars": 2151,
     "versaoPadrao": "v2.0.0",
     "tags": [
       "N64",
@@ -5699,7 +5813,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Mario_64",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T09:35:00Z",
-    "stars": 1886,
+    "stars": 1888,
     "versaoPadrao": "v1.0.0-nightly",
     "tags": [
       "N64",
@@ -5724,7 +5838,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Mario_64",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T18:00:00Z",
-    "stars": 1550,
+    "stars": 1553,
     "versaoPadrao": "v1.5.1",
     "tags": [
       "N64",
@@ -5748,7 +5862,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Perfect_Dark",
     "capaManual": null,
     "dataAtualizacao": "2024-05-14T09:41:23Z",
-    "stars": 2118,
+    "stars": 2119,
     "versaoPadrao": "ci-dev-build",
     "tags": [
       "N64",
@@ -5797,7 +5911,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Donkey_Kong_64",
     "capaManual": null,
     "dataAtualizacao": "2026-09-30T17:00:00Z",
-    "stars": 593,
+    "stars": 594,
     "versaoPadrao": "v1.0.3",
     "tags": [
       "N64",
@@ -5821,7 +5935,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Diddy_Kong_Racing",
     "capaManual": null,
     "dataAtualizacao": "2026-11-08T19:30:07Z",
-    "stars": 266,
+    "stars": 267,
     "versaoPadrao": "Version1.0.15",
     "tags": [
       "N64",
@@ -5869,7 +5983,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_A_Link_to_the_Past",
     "capaManual": null,
     "dataAtualizacao": "2023-08-17T01:18:40Z",
-    "stars": 5020,
+    "stars": 5019,
     "versaoPadrao": "v0.3",
     "tags": [
       "SNES",
@@ -5918,7 +6032,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Sonic_Mania",
     "capaManual": null,
     "dataAtualizacao": "2026-10-15T10:00:00Z",
-    "stars": 836,
+    "stars": 837,
     "versaoPadrao": "v1.1.1",
     "tags": [
       "Sega",
@@ -5946,7 +6060,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Sonic_the_Hedgehog_(1991_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2025-11-02T00:48:00Z",
-    "stars": 1164,
+    "stars": 1165,
     "versaoPadrao": "1.3.3",
     "tags": [
       "Sega",
@@ -5970,7 +6084,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Sonic_the_Hedgehog_CD",
     "capaManual": null,
     "dataAtualizacao": "2025-11-02T00:12:09Z",
-    "stars": 719,
+    "stars": 720,
     "versaoPadrao": "1.3.3",
     "tags": [
       "Sega",
@@ -5994,7 +6108,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Street_Fighter_Alpha_2",
     "capaManual": null,
     "dataAtualizacao": "2026-11-17T00:52:06Z",
-    "stars": 201,
+    "stars": 203,
     "versaoPadrao": "v1.6.0-beta.2",
     "tags": [
       "Arcade",
@@ -6018,7 +6132,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Ace_Combat_6:_Fires_of_Liberation",
     "capaManual": null,
     "dataAtualizacao": "2026-08-17T20:00:51Z",
-    "stars": 601,
+    "stars": 602,
     "versaoPadrao": "v1.0.0-beta.2",
     "tags": [
       "Xbox 360",
@@ -6140,7 +6254,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Medal_of_Honor:_Allied_Assault",
     "capaManual": null,
     "dataAtualizacao": "2025-08-05T17:01:23Z",
-    "stars": 875,
+    "stars": 876,
     "versaoPadrao": "v0.82.1",
     "tags": [
       "PC",
@@ -6213,7 +6327,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Deadly_Premonition",
     "capaManual": null,
     "dataAtualizacao": "2026-10-03T19:32:08Z",
-    "stars": 188,
+    "stars": 189,
     "versaoPadrao": "v2.0.14",
     "tags": [
       "Xbox 360",
@@ -6237,7 +6351,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Castlevania:_Symphony_of_the_Night",
     "capaManual": null,
     "dataAtualizacao": "2026-11-05T17:38:39Z",
-    "stars": 437,
+    "stars": 438,
     "versaoPadrao": "v1.5.2",
     "tags": [
       "Xbox 360",
@@ -6309,7 +6423,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Project_Gotham_Racing_4",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T14:00:04Z",
-    "stars": 268,
+    "stars": 271,
     "versaoPadrao": "v2",
     "tags": [
       "Xbox 360",
@@ -6380,7 +6494,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Simpsons_Game",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T12:48:24Z",
-    "stars": 441,
+    "stars": 442,
     "versaoPadrao": "v0.0.7.1",
     "tags": [
       "Xbox 360",
@@ -6403,7 +6517,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Viva_Piñata:_Trouble_in_Paradise",
     "capaManual": null,
     "dataAtualizacao": "2026-11-10T04:15:12Z",
-    "stars": 260,
+    "stars": 261,
     "versaoPadrao": "1.15.0",
     "tags": [
       "Xbox 360",
@@ -6427,7 +6541,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Wet_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-05T20:19:04Z",
-    "stars": 123,
+    "stars": 124,
     "versaoPadrao": "v0.6.0",
     "tags": [
       "Xbox 360",
@@ -6569,7 +6683,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Eternal_Sonata",
     "capaManual": null,
     "dataAtualizacao": "2026-11-09T22:51:06Z",
-    "stars": 213,
+    "stars": 215,
     "versaoPadrao": "v1.3.9",
     "tags": [
       "Xbox 360",
@@ -6593,7 +6707,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Fight_Night_Champion",
     "capaManual": null,
     "dataAtualizacao": "2026-10-07T00:54:34Z",
-    "stars": 119,
+    "stars": 120,
     "versaoPadrao": "v1.0",
     "tags": [
       "Xbox 360",
@@ -6616,7 +6730,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Hard_Corps:_Uprising",
     "capaManual": null,
     "dataAtualizacao": "2026-10-25T22:17:04Z",
-    "stars": 81,
+    "stars": 82,
     "versaoPadrao": "v0.7.1",
     "tags": [
       "Xbox 360",
@@ -6639,7 +6753,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Kameo",
     "capaManual": null,
     "dataAtualizacao": "2026-11-05T00:07:35Z",
-    "stars": 82,
+    "stars": 84,
     "versaoPadrao": "v0.3.4",
     "tags": [
       "Xbox 360",
@@ -6662,7 +6776,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Peter_Jackson's_King_Kong",
     "capaManual": null,
     "dataAtualizacao": "2026-11-09T04:47:29Z",
-    "stars": 294,
+    "stars": 295,
     "versaoPadrao": "v2.1.3",
     "tags": [
       "Xbox 360",
@@ -6686,7 +6800,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Lego_Dimensions",
     "capaManual": null,
     "dataAtualizacao": "2026-11-16T14:24:18Z",
-    "stars": 267,
+    "stars": 268,
     "versaoPadrao": "v0.2.0",
     "tags": [
       "Xbox 360",
@@ -6876,7 +6990,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "DoDonPachi",
     "capaManual": null,
     "dataAtualizacao": "2026-10-31T16:52:46Z",
-    "stars": 187,
+    "stars": 188,
     "versaoPadrao": "v1.51.4",
     "tags": [
       "Xbox 360",
@@ -6923,7 +7037,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "God_of_War_III",
     "capaManual": null,
     "dataAtualizacao": "2026-11-16T02:41:14Z",
-    "stars": 4916,
+    "stars": 4931,
     "versaoPadrao": "windows-v3.2.1",
     "tags": [
       "PS4",
@@ -6970,7 +7084,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Dragon_Quest_VIII:_Journey_of_the_Cursed_King",
     "capaManual": null,
     "dataAtualizacao": "2026-10-23T21:42:08Z",
-    "stars": 132,
+    "stars": 133,
     "versaoPadrao": "f6dfd96",
     "tags": [
       "PS2",
@@ -7040,7 +7154,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Resident_Evil_–_Code:_Veronica",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T12:35:21Z",
-    "stars": 277,
+    "stars": 280,
     "versaoPadrao": "v0.8.0",
     "tags": [
       "PS2",
@@ -7249,7 +7363,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Parasite_Eve_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T16:13:17Z",
-    "stars": 37,
+    "stars": 38,
     "versaoPadrao": "v0.4.2",
     "tags": [
       "PS1",
@@ -7364,7 +7478,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Mega_Man_X4",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T01:18:46Z",
-    "stars": 137,
+    "stars": 138,
     "versaoPadrao": "v1.0.31",
     "tags": [
       "PS1",
@@ -7388,7 +7502,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Halo:_Combat_Evolved",
     "capaManual": null,
     "dataAtualizacao": "2026-11-16T21:44:23Z",
-    "stars": 2017,
+    "stars": 2019,
     "versaoPadrao": "build-387",
     "tags": [
       "Xbox",
@@ -7411,9 +7525,9 @@ const PORTS_DATABASE = [
     "descricao": "Recompilação estática de Burnout 2 com o aclamado modo Crash executando nativamente no PC com 60 FPS.",
     "termoBuscaCapa": "Burnout_2:_Point_of_Impact",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-06T17:36:46Z",
-    "stars": 48,
-    "versaoPadrao": "v1.14",
+    "dataAtualizacao": "2026-11-18T02:10:18Z",
+    "stars": 50,
+    "versaoPadrao": "v1.14.1",
     "tags": [
       "Xbox",
       "Criterion",
@@ -7435,7 +7549,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Dead_or_Alive_3",
     "capaManual": null,
     "dataAtualizacao": "2026-10-24T02:14:46Z",
-    "stars": 116,
+    "stars": 118,
     "versaoPadrao": "v1.0.7",
     "tags": [
       "Xbox",
@@ -7458,7 +7572,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Dead_or_Alive_Xtreme_Beach_Volleyball",
     "capaManual": null,
     "dataAtualizacao": "2026-11-02T22:37:18Z",
-    "stars": 270,
+    "stars": 271,
     "versaoPadrao": "v0.6.2",
     "tags": [
       "Xbox",
@@ -7504,7 +7618,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Tom_Clancy's_Splinter_Cell:_Double_Agent",
     "capaManual": null,
     "dataAtualizacao": "2026-10-29T14:40:46Z",
-    "stars": 491,
+    "stars": 492,
     "versaoPadrao": "V3",
     "tags": [
       "Xbox",
@@ -7527,7 +7641,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Black_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-22T14:54:57Z",
-    "stars": 250,
+    "stars": 251,
     "versaoPadrao": "v0.1.0-alpha.5",
     "tags": [
       "Xbox",
@@ -7551,7 +7665,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Star_Fox_Adventures",
     "capaManual": null,
     "dataAtualizacao": "2026-11-02T04:55:27Z",
-    "stars": 339,
+    "stars": 340,
     "versaoPadrao": "v0.3.1-beta1",
     "tags": [
       "N64",
@@ -7599,7 +7713,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Conker's_Bad_Fur_Day",
     "capaManual": null,
     "dataAtualizacao": "2026-10-24T06:20:47Z",
-    "stars": 346,
+    "stars": 347,
     "versaoPadrao": "V0.1.6",
     "tags": [
       "N64",
@@ -7738,7 +7852,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Pok%C3%A9mon_Snap",
     "capaManual": null,
     "dataAtualizacao": "2026-11-16T04:42:16Z",
-    "stars": 138,
+    "stars": 139,
     "versaoPadrao": "v1.1.8",
     "tags": [
       "N64",
@@ -7761,7 +7875,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Harvest_Moon_64",
     "capaManual": null,
     "dataAtualizacao": "2026-09-25T21:17:14Z",
-    "stars": 182,
+    "stars": 183,
     "versaoPadrao": "v1.2.2",
     "tags": [
       "N64",
@@ -7784,7 +7898,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Jet_Force_Gemini",
     "capaManual": null,
     "dataAtualizacao": "2026-11-09T06:55:33Z",
-    "stars": 90,
+    "stars": 91,
     "versaoPadrao": "v1.5.0",
     "tags": [
       "N64",
@@ -7853,7 +7967,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Mega_Man_Legends_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-04-30T20:35:04Z",
-    "stars": 286,
+    "stars": 287,
     "versaoPadrao": "v0.9.1",
     "tags": [
       "N64",
@@ -7992,7 +8106,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Smash_Bros._Melee",
     "capaManual": null,
     "dataAtualizacao": "2026-10-21T00:08:51Z",
-    "stars": 609,
+    "stars": 610,
     "versaoPadrao": "v0.4.2",
     "tags": [
       "GameCube",
@@ -8016,7 +8130,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Mario_Galaxy",
     "capaManual": null,
     "dataAtualizacao": "2026-10-27T05:44:55Z",
-    "stars": 609,
+    "stars": 610,
     "versaoPadrao": "v1.0.2",
     "tags": [
       "Wii",
@@ -8039,7 +8153,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Mario_Kart_Wii",
     "capaManual": null,
     "dataAtualizacao": "2026-11-02T23:46:46Z",
-    "stars": 172,
+    "stars": 171,
     "versaoPadrao": "v1.4.0",
     "tags": [
       "Wii",
@@ -8061,9 +8175,9 @@ const PORTS_DATABASE = [
     "descricao": "Port nativo de Soulcalibur II com Link exclusivo da versão GameCube rodando com 60 FPS cravados no PC.",
     "termoBuscaCapa": "Soulcalibur_II",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-15T01:32:01Z",
-    "stars": 194,
-    "versaoPadrao": "v2.0",
+    "dataAtualizacao": "2026-11-18T03:39:17Z",
+    "stars": 195,
+    "versaoPadrao": "windows-latest",
     "tags": [
       "GameCube",
       "Namco",
@@ -8086,7 +8200,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Kirby's_Return_to_Dream_Land",
     "capaManual": null,
     "dataAtualizacao": "2026-07-22T13:03:43Z",
-    "stars": 187,
+    "stars": 188,
     "versaoPadrao": "kirby",
     "tags": [
       "Wii",
@@ -8155,7 +8269,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Link's_Awakening_(2019_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T08:12:05Z",
-    "stars": 2478,
+    "stars": 2489,
     "versaoPadrao": "nightly",
     "tags": [
       "Switch",
@@ -8180,7 +8294,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Breath_of_the_Wild",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T19:00:00Z",
-    "stars": 2484,
+    "stars": 2485,
     "versaoPadrao": "v1.5.0-decomp",
     "tags": [
       "Switch",
@@ -8230,7 +8344,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Smash_Bros._Ultimate",
     "capaManual": null,
     "dataAtualizacao": "2026-10-21T15:36:48Z",
-    "stars": 618,
+    "stars": 617,
     "versaoPadrao": "runtime-daa0938",
     "tags": [
       "Switch",
@@ -8303,7 +8417,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Pok%C3%A9mon_Gold_and_Silver",
     "capaManual": null,
     "dataAtualizacao": "2026-11-12T05:52:24Z",
-    "stars": 473,
+    "stars": 474,
     "versaoPadrao": "v0.8.58",
     "tags": [
       "Game Boy Color",
@@ -8326,7 +8440,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Pok%C3%A9mon_HeartGold_and_SoulSilver",
     "capaManual": null,
     "dataAtualizacao": "2026-10-18T08:12:50Z",
-    "stars": 140,
+    "stars": 141,
     "versaoPadrao": "v0.4.2",
     "tags": [
       "Nintendo DS",
@@ -8349,7 +8463,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Final_Fantasy_Tactics_Advance",
     "capaManual": null,
     "dataAtualizacao": "2026-11-01T18:36:55Z",
-    "stars": 232,
+    "stars": 234,
     "versaoPadrao": "3.1",
     "tags": [
       "GBA",
@@ -8395,7 +8509,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Mario_World",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T06:15:20Z",
-    "stars": 181,
+    "stars": 184,
     "versaoPadrao": "v0.15.10",
     "tags": [
       "SNES",
@@ -8419,7 +8533,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Metroid",
     "capaManual": null,
     "dataAtualizacao": "2026-11-13T23:38:04Z",
-    "stars": 158,
+    "stars": 159,
     "versaoPadrao": "v0.4.6",
     "tags": [
       "SNES",
@@ -8442,7 +8556,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Mega_Man_X_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-16T00:03:50Z",
-    "stars": 231,
+    "stars": 232,
     "versaoPadrao": "v2.3.14-complete.1",
     "tags": [
       "SNES",
@@ -8465,7 +8579,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Donkey_Kong_Country",
     "capaManual": null,
     "dataAtualizacao": "2026-09-19T16:19:27Z",
-    "stars": 306,
+    "stars": 307,
     "versaoPadrao": "v0.0.17",
     "tags": [
       "SNES",
@@ -8512,7 +8626,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "EA_Sports_UFC_3",
     "capaManual": null,
     "dataAtualizacao": "2026-10-21T03:27:35Z",
-    "stars": 263,
+    "stars": 265,
     "versaoPadrao": "ufc3-v0.1.14",
     "tags": [
       "PS4",
@@ -8560,7 +8674,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Darkwatch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-16T18:56:00Z",
-    "stars": 240,
+    "stars": 242,
     "versaoPadrao": "v0.8.1",
     "tags": [
       "XBOX",
@@ -8728,7 +8842,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Black_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-10-25T17:58:10Z",
-    "stars": 970,
+    "stars": 975,
     "versaoPadrao": "V3",
     "tags": [
       "XBOX",
@@ -8751,7 +8865,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Breath_of_the_Wild",
     "capaManual": null,
     "dataAtualizacao": "2026-11-16T00:38:13Z",
-    "stars": 4720,
+    "stars": 4752,
     "versaoPadrao": "v0.6.0-alpha.6",
     "tags": [
       "Switch",
