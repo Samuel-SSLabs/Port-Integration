@@ -444,6 +444,52 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "metroid-dread-recomp-pc",
+    "nome": "Metroid Dread",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "Switch-METROIDDRE",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "yozander2009-stack/Metroid-Dread-Recomp",
+    "repoUrl": "https://github.com/yozander2009-stack/Metroid-Dread-Recomp",
+    "descricao": "Static recompilation of Metroid Dread (Switch, 2.1.0) for Windows, Linux and Steam Deck. Bring your own dump: no game files, keys or dumping tools included.",
+    "termoBuscaCapa": "Metroid Dread",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-19T09:09:34Z",
+    "stars": 461,
+    "versaoPadrao": "v0.5.10",
+    "tags": [
+      "Switch",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "cubic-heroes-pc",
+    "nome": "Cubic.Heroes",
+    "console": "PS3",
+    "consoleNome": "PlayStation 3",
+    "codigoJogo": "BLUS-30490",
+    "status": "Em Desenvolvimento Ativo",
+    "statusTipo": "wip",
+    "repo": "irnutsmurt/Cubic.Heroes",
+    "repoUrl": "https://github.com/irnutsmurt/Cubic.Heroes",
+    "descricao": "Native PC port (Windows/Linux) of the US PS3 version of 3D Dot Game Heroes via static recompilation. Bring your own legally acquired disc; no game data included.",
+    "termoBuscaCapa": "Cubic.Heroes",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-20T16:04:02Z",
+    "stars": 12,
+    "versaoPadrao": "v0.2.0-beta.3",
+    "tags": [
+      "PS3",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "gr2port-pc",
     "nome": "GR2port",
     "console": "PC",
