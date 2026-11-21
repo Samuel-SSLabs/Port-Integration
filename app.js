@@ -444,6 +444,29 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "metroid-dread-recomp-pc",
+    "nome": "Metroid Dread",
+    "console": "Switch",
+    "consoleNome": "Nintendo Switch",
+    "codigoJogo": "Switch-METROIDDRE",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "yozander2009-stack/Metroid-Dread-Recomp",
+    "repoUrl": "https://github.com/yozander2009-stack/Metroid-Dread-Recomp",
+    "descricao": "Static recompilation of Metroid Dread (Switch, 2.1.0) for Windows, Linux and Steam Deck. Bring your own dump: no game files, keys or dumping tools included.",
+    "termoBuscaCapa": "Metroid Dread",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-19T09:09:34Z",
+    "stars": 460,
+    "versaoPadrao": "v0.5.10",
+    "tags": [
+      "Switch",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "gr2port-pc",
     "nome": "GR2port",
     "console": "PC",
@@ -480,7 +503,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "OpenRAC",
     "capaManual": null,
     "dataAtualizacao": "2026-10-29T05:34:49Z",
-    "stars": 224,
+    "stars": 225,
     "versaoPadrao": "launcher-dev-develop",
     "tags": [
       "PS2",
@@ -663,7 +686,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Sonic_the_Hedgehog_(2006_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T16:18:12Z",
-    "stars": 973,
+    "stars": 974,
     "versaoPadrao": "v1.0.0",
     "tags": [
       "XBOX360",
@@ -755,7 +778,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Mario_Odyssey",
     "capaManual": null,
     "dataAtualizacao": "2026-11-20T21:36:31Z",
-    "stars": 433,
+    "stars": 435,
     "versaoPadrao": "v0.5.2",
     "tags": [
       "PC",
@@ -778,7 +801,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Star_Fox_64",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T00:05:09Z",
-    "stars": 253,
+    "stars": 254,
     "versaoPadrao": "v1.1.0",
     "tags": [
       "Switch",
@@ -870,7 +893,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Diablo_III:_Reaper_of_Souls",
     "capaManual": null,
     "dataAtualizacao": "2026-11-20T21:57:18Z",
-    "stars": 113,
+    "stars": 117,
     "versaoPadrao": "v0.7.0",
     "tags": [
       "PS4",
@@ -893,7 +916,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Resistance:_Fall_of_Man",
     "capaManual": null,
     "dataAtualizacao": "2026-11-20T18:09:11Z",
-    "stars": 130,
+    "stars": 131,
     "versaoPadrao": "v0.3.0-beta",
     "tags": [
       "PS3",
@@ -1076,9 +1099,9 @@ const PORTS_DATABASE = [
     "descricao": "Pokémon Pokopia recompilado para rodar nativamente no Windows com suporte a multiplayer, modding e aprimoramentos visuais.",
     "termoBuscaCapa": "Pokemon_XD:_Gale_of_Darkness",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-20T15:43:30Z",
-    "stars": 939,
-    "versaoPadrao": "v0.16.0",
+    "dataAtualizacao": "2026-11-21T00:20:50Z",
+    "stars": 941,
+    "versaoPadrao": "coop-v2-alpha.9",
     "tags": [
       "Switch",
       "AutoDiscover",
@@ -1398,7 +1421,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Nintendo_Switch",
     "capaManual": null,
     "dataAtualizacao": "2026-11-20T23:05:16Z",
-    "stars": 9898,
+    "stars": 9900,
     "versaoPadrao": "build-366",
     "tags": [
       "Switch",
@@ -1951,7 +1974,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Medal_of_Honor:_European_Assault",
     "capaManual": null,
     "dataAtualizacao": "2026-11-20T22:58:30Z",
-    "stars": 0,
+    "stars": 1,
     "versaoPadrao": "v0.9.3-beta",
     "tags": [
       "XBOX",
@@ -2042,7 +2065,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Grand_Theft_Auto_V",
     "capaManual": null,
     "dataAtualizacao": "2026-11-02T16:40:53Z",
-    "stars": 288,
+    "stars": 289,
     "versaoPadrao": "v0.3.0",
     "tags": [
       "XBOX360",
@@ -2844,7 +2867,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Wipeout_Omega_Collection",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T04:14:45Z",
-    "stars": 352,
+    "stars": 353,
     "versaoPadrao": "windows-v0.2.76",
     "tags": [
       "PS4",
@@ -3703,7 +3726,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Mario_Sunshine",
     "capaManual": null,
     "dataAtualizacao": "2026-10-03T07:14:53Z",
-    "stars": 256,
+    "stars": 257,
     "versaoPadrao": "hd-cutscenes-ai-v1",
     "tags": [
       "GC",
@@ -3950,7 +3973,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "SSX_Tricky",
     "capaManual": null,
     "dataAtualizacao": "2026-11-13T12:17:52Z",
-    "stars": 169,
+    "stars": 170,
     "versaoPadrao": "v0.1.6",
     "tags": [
       "PS2",
@@ -4616,7 +4639,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Astro's_Playroom",
     "capaManual": null,
     "dataAtualizacao": "2026-11-11T15:01:01Z",
-    "stars": 58794,
+    "stars": 58810,
     "versaoPadrao": "v0.1.5",
     "tags": [
       "PS5",
@@ -4640,7 +4663,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Infamous_Second_Son",
     "capaManual": null,
     "dataAtualizacao": "2026-11-12T14:03:15Z",
-    "stars": 1217,
+    "stars": 1218,
     "versaoPadrao": "sunny-beta-2026.11.12",
     "tags": [
       "PS4",
@@ -4689,7 +4712,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Bloodborne",
     "capaManual": null,
     "dataAtualizacao": "2026-11-13T01:38:33Z",
-    "stars": 5571,
+    "stars": 5572,
     "versaoPadrao": "windows-v1.9.8.6",
     "tags": [
       "PS4",
@@ -4933,7 +4956,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Castlevania:_Symphony_of_the_Night",
     "capaManual": null,
     "dataAtualizacao": "2026-11-14T20:02:34Z",
-    "stars": 1154,
+    "stars": 1155,
     "versaoPadrao": "v1.2.0p",
     "tags": [
       "PS1",
@@ -5006,7 +5029,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Tomb_Raider_(1996_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2019-01-11T07:42:30Z",
-    "stars": 5160,
+    "stars": 5161,
     "versaoPadrao": "latest",
     "tags": [
       "PS1",
@@ -5273,7 +5296,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Dante's_Inferno_(video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-08T00:00:17Z",
-    "stars": 931,
+    "stars": 932,
     "versaoPadrao": "v0.8.6-beta-hotfix",
     "tags": [
       "Xbox 360",
@@ -5491,9 +5514,9 @@ const PORTS_DATABASE = [
     "descricao": "Port nativo para PC de Ninja Gaiden Black do primeiro Xbox através de recompilação estática com renderizador moderno em Vulkan.",
     "termoBuscaCapa": "Ninja_Gaiden_Black",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-20T17:10:56Z",
+    "dataAtualizacao": "2026-11-21T00:34:29Z",
     "stars": 364,
-    "versaoPadrao": "v0.9.76",
+    "versaoPadrao": "v0.9.77",
     "tags": [
       "Xbox",
       "Team Ninja",
@@ -5636,7 +5659,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Twilight_Princess",
     "capaManual": null,
     "dataAtualizacao": "2026-10-16T22:00:00Z",
-    "stars": 6492,
+    "stars": 6494,
     "versaoPadrao": "v2.0.3",
     "tags": [
       "GameCube",
@@ -6468,9 +6491,9 @@ const PORTS_DATABASE = [
     "descricao": "O auge dos simuladores arcade da Bizarre Creations rodando nativamente no PC com clima dinâmico e suporte a volantes.",
     "termoBuscaCapa": "Project_Gotham_Racing_4",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-15T14:00:04Z",
+    "dataAtualizacao": "2026-11-21T00:16:45Z",
     "stars": 272,
-    "versaoPadrao": "v2",
+    "versaoPadrao": "v2.0.1",
     "tags": [
       "Xbox 360",
       "Bizarre Creations",
@@ -8315,7 +8338,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_Link's_Awakening_(2019_video_game)",
     "capaManual": null,
     "dataAtualizacao": "2026-11-15T08:12:05Z",
-    "stars": 2523,
+    "stars": 2524,
     "versaoPadrao": "nightly",
     "tags": [
       "Switch",
@@ -8390,7 +8413,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "Super_Smash_Bros._Ultimate",
     "capaManual": null,
     "dataAtualizacao": "2026-10-21T15:36:48Z",
-    "stars": 618,
+    "stars": 619,
     "versaoPadrao": "runtime-daa0938",
     "tags": [
       "Switch",
