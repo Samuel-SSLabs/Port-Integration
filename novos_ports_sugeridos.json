@@ -1,48 +1,25 @@
 [
   {
-    "id": "metroid-dread-recomp-pc",
-    "nome": "Metroid Dread",
-    "console": "Switch",
-    "consoleNome": "Nintendo Switch",
-    "codigoJogo": "Switch-METROIDDRE",
+    "id": "regaliant-pc",
+    "nome": "Regaliant",
+    "console": "PS5",
+    "consoleNome": "PlayStation 5",
+    "codigoJogo": "PPSA01341",
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
-    "repo": "yozander2009-stack/Metroid-Dread-Recomp",
-    "repoUrl": "https://github.com/yozander2009-stack/Metroid-Dread-Recomp",
-    "descricao": "Static recompilation of Metroid Dread (Switch, 2.1.0) for Windows, Linux and Steam Deck. Bring your own dump: no game files, keys or dumping tools included.",
-    "termoBuscaCapa": "Metroid Dread",
+    "repo": "SulphurS16/Regaliant",
+    "repoUrl": "https://github.com/SulphurS16/Regaliant",
+    "descricao": "Unofficial Windows PC port of Demon's Souls (2020), Bluepoint's PS5 remake. Runs your own copy of the PS5 game (PPSA01341, version 1.07). No game files included.",
+    "termoBuscaCapa": "Regaliant",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-19T09:09:34Z",
-    "stars": 469,
-    "versaoPadrao": "v0.5.10",
+    "dataAtualizacao": "2026-11-23T12:15:24Z",
+    "stars": 62,
+    "versaoPadrao": "v0.1.0",
     "tags": [
-      "Switch",
+      "PS5",
       "AutoDiscover",
       "Binário Disponível",
-      "C++"
-    ]
-  },
-  {
-    "id": "cubic-heroes-pc",
-    "nome": "Cubic.Heroes",
-    "console": "PS3",
-    "consoleNome": "PlayStation 3",
-    "codigoJogo": "BLUS-30490",
-    "status": "Em Desenvolvimento Ativo",
-    "statusTipo": "wip",
-    "repo": "irnutsmurt/Cubic.Heroes",
-    "repoUrl": "https://github.com/irnutsmurt/Cubic.Heroes",
-    "descricao": "Native PC port (Windows/Linux) of the US PS3 version of 3D Dot Game Heroes via static recompilation. Bring your own legally acquired disc; no game data included.",
-    "termoBuscaCapa": "Cubic.Heroes",
-    "capaManual": null,
-    "dataAtualizacao": "2026-11-21T16:36:39Z",
-    "stars": 64,
-    "versaoPadrao": "v0.2.0-beta.4",
-    "tags": [
-      "PS3",
-      "AutoDiscover",
-      "Binário Disponível",
-      "C++"
+      "Rust"
     ]
   }
 ]
