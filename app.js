@@ -11070,6 +11070,11 @@ function definirIdioma(lang, atualizarUrl = true, manual = false) {
   if (typeof renderizarCatalogo === 'function') {
     renderizarCatalogo();
   }
+
+  // Atualizar card do PortWatch VI com o novo idioma
+  if (typeof window.pwRender === 'function') {
+    window.pwRender();
+  }
 }
 
 function configurarEventosSeletorIdiomas() {

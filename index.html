@@ -17,7 +17,7 @@
   <link rel="alternate" type="text/markdown" href="./llms.txt" title="LLMs Text Summary">
   <link rel="alternate" type="application/json" href="./.well-known/ai-catalog.json" title="AI Agent Catalog">
 
-  <link rel="stylesheet" href="./styles.css?v=1.086">
+  <link rel="stylesheet" href="./styles.css?v=1.087">
 
   <script>
     (function() {
@@ -154,10 +154,96 @@
   <main class="main-wrapper">
 
     <section class="hero-section">
-      <h1 class="hero-title" data-i18n="hero.title">Ports Nativos para Computador</h1>
-      <p class="hero-desc" data-i18n="hero.desc">
-        Catálogo unificado de recompilações estáticas e ports nativos de consoles para PC (PS5, PS4, Switch, Xbox 360, N64, PS2, GameCube, Wii e outros).
-      </p>
+      <div class="hero-copy-wrap">
+        <h1 class="hero-title" data-i18n="hero.title">Ports Nativos para Computador</h1>
+        <p class="hero-desc" data-i18n="hero.desc">
+          Catálogo unificado de recompilações estáticas e ports nativos de consoles para PC (PS5, PS4, Switch, Xbox 360, N64, PS2, GameCube, Wii e outros).
+        </p>
+      </div>
+
+      <a id="pw-card" class="pw-card" href="https://portwatch-vi.xyz/" target="_blank" rel="noopener noreferrer" data-state="loading">
+        <div class="pw-top-bar">
+          <div class="pw-head-left">
+            <span class="pw-brand-pill">
+              <svg class="pw-brand-mark" viewBox="0 0 32 32" aria-hidden="true">
+                <defs>
+                  <linearGradient id="pwBrandGrad" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0" stop-color="#7a5cff"/>
+                    <stop offset=".55" stop-color="#ff2e7e"/>
+                    <stop offset="1" stop-color="#ff8a3d"/>
+                  </linearGradient>
+                </defs>
+                <circle cx="16" cy="16" r="12" fill="none" stroke="rgba(148,163,184,0.3)" stroke-width="5"/>
+                <circle cx="16" cy="16" r="12" fill="none" stroke="url(#pwBrandGrad)" stroke-width="5" stroke-linecap="round" stroke-dasharray="52 76" transform="rotate(-90 16 16)"/>
+              </svg>
+              <span>PortWatch VI</span>
+            </span>
+            <span class="pw-live-badge"><span class="pulse-dot"></span><span data-pw-i18n="live">Ao Vivo</span></span>
+            <span class="pw-kicker" data-pw-i18n="kicker">Progresso geral · projeto mais perto de ser jogável</span>
+          </div>
+          <span class="pw-updated" data-pw="updated"></span>
+        </div>
+
+        <div class="pw-overall-head">
+          <div class="pw-ov-main">
+            <h3 class="pw-title" data-pw-i18n="title">Corrida do GTA VI no PC</h3>
+            <div class="pw-big-score"><span data-pw="pct">0</span><span class="pw-pct-sign">%</span></div>
+            <p class="pw-ov-leader" data-pw="leaderLine">Carregando rastreador ao vivo...</p>
+          </div>
+          <div class="pw-ov-stats">
+            <div class="pw-ov-stat"><b data-pw="stage">--</b><small data-pw-i18n="statStage">Marco mais avançado</small></div>
+            <div class="pw-ov-stat"><b data-pw="top3">--</b><small data-pw-i18n="statTop3">Média do top 3</small></div>
+            <div class="pw-ov-stat"><b data-pw="booted">--</b><small data-pw-i18n="statBoot">Iniciam o GTA VI</small></div>
+            <div class="pw-ov-stat"><b data-pw="tracked">--</b><small data-pw-i18n="statTracked">Projetos acompanhados</small></div>
+          </div>
+        </div>
+
+        <div class="pw-mega">
+          <div class="pw-mega-markers"></div>
+          <div class="pw-bar" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-label="PortWatch VI">
+            <div class="pw-fill"></div>
+            <div class="pw-ticks"></div>
+          </div>
+          <div class="pw-mega-labels"></div>
+        </div>
+
+        <div class="pw-card-foot">
+          <div class="pw-foot-info">
+            <span class="pw-exe-pill">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <polyline points="12 6 12 12 16 14"></polyline>
+              </svg>
+              <b data-pw="exe">--</b>
+              <span data-pw="exeLabel"></span>
+            </span>
+            <p class="pw-news">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"></path>
+                <path d="M18 14h-8"></path>
+                <path d="M15 18h-5"></path>
+                <path d="M10 6h8v4h-8V6Z"></path>
+              </svg>
+              <span class="pw-news-text" data-pw="news"></span>
+            </p>
+            <span class="pw-error-note">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="12" y1="8" x2="12" y2="12"></line>
+                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+              </svg>
+              <span data-pw="errorNote"></span>
+            </span>
+          </div>
+          <span class="pw-cta">
+            <span data-pw-i18n="cta">Abrir PortWatch VI</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 17 17 7"></path>
+              <path d="M7 7h10v10"></path>
+            </svg>
+          </span>
+        </div>
+      </a>
 
       <div class="hero-dashboard-row">
 
@@ -402,7 +488,7 @@
 
 <div class="footer-bottom">
         <div class="footer-bottom-brand">
-          <span data-i18n="footer.rights">© 2026 SSLabs EcoSystem • 1.086</span>
+          <span data-i18n="footer.rights">© 2026 SSLabs EcoSystem • 1.087</span>
         </div>
 
         <div class="footer-bottom-actions">
@@ -820,7 +906,8 @@
     </div>
   </div>
 
-  <script src="./locales.js?v=1.086" defer></script>
-  <script src="./app.js?v=1.086" defer></script>
+  <script src="./locales.js?v=1.087" defer></script>
+  <script src="./app.js?v=1.087" defer></script>
+  <script src="./assets/portwatch-card.js?v=1.087" defer></script>
 </body>
 </html>
