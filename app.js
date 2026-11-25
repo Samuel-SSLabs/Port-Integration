@@ -444,6 +444,75 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "vega-x-executor-pc-portable-pc",
+    "nome": "Vega X Executor Portable",
+    "console": "PC",
+    "consoleNome": "PC Nativo",
+    "codigoJogo": "PC-VEGAXEXECU",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "bonnet66/vega-x-executor-pc-portable",
+    "repoUrl": "https://github.com/bonnet66/vega-x-executor-pc-portable",
+    "descricao": "Vega X Executor PC Portable [2026] — Standalone Windows 10/11 (x64) Release, Setup & Config",
+    "termoBuscaCapa": "Vega X Executor Portable",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-24T18:11:00Z",
+    "stars": 38,
+    "versaoPadrao": "v1.2.2",
+    "tags": [
+      "PC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "soulcaliburiii_recomp-pc",
+    "nome": "SoulCaliburIII",
+    "console": "PS2",
+    "consoleNome": "PlayStation 2",
+    "codigoJogo": "SLUS-21216",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "TheBozos/SoulCaliburIII_Recomp",
+    "repoUrl": "https://github.com/TheBozos/SoulCaliburIII_Recomp",
+    "descricao": "Soulcalibur III (USA) static recompilation with PS2Recomp - configs, overrides, notes (no game data)",
+    "termoBuscaCapa": "SoulCaliburIII",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-25T04:41:43Z",
+    "stars": 30,
+    "versaoPadrao": "v0.1.1",
+    "tags": [
+      "PS2",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
+    "id": "yakuza-kenzan-recomp-pc",
+    "nome": "Ryu Ga Gotoku Kenzan!",
+    "console": "PS3",
+    "consoleNome": "PlayStation 3",
+    "codigoJogo": "BLJM-60064",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "IvanBarbosaFilho/Yakuza-Kenzan-Recomp",
+    "repoUrl": "https://github.com/IvanBarbosaFilho/Yakuza-Kenzan-Recomp",
+    "descricao": "Unofficial native PC port of Ryu ga Gotoku Kenzan! (PS3, BLJM60064) for Linux and Windows. Statically recompiled with ps3recomp and rendered with Vulkan, with the English fan translation, 30/60/120 FPS options and a launcher that installs from your own copy of the game. No game files included.",
+    "termoBuscaCapa": "Ryu Ga Gotoku Kenzan!",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-24T21:44:54Z",
+    "stars": 31,
+    "versaoPadrao": "V1.0.0",
+    "tags": [
+      "PS3",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C"
+    ]
+  },
+  {
     "id": "gta-stories-recompiled-pc",
     "nome": "Gta Stories",
     "console": "PS2",
