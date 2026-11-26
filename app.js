@@ -444,6 +444,29 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "gow-pc-port-classic-recompiled-pc",
+    "nome": "Gow Classic",
+    "console": "PC",
+    "consoleNome": "PC Nativo",
+    "codigoJogo": "PC-GOWPCPORTC",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "martina1713/gow-pc-port-classic-recompiled",
+    "repoUrl": "https://github.com/martina1713/gow-pc-port-classic-recompiled",
+    "descricao": "God of War Classic Greek Saga PC Port & Static Recompilation v3.7.9: Native Windows 10/11 (x64) studio environment with pre-configured.",
+    "termoBuscaCapa": "Gow Classic",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-25T17:06:12Z",
+    "stars": 54,
+    "versaoPadrao": "v3.7.9",
+    "tags": [
+      "PC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "vega-x-executor-pc-portable-pc",
     "nome": "Vega X Executor Portable",
     "console": "PC",
