@@ -1,48 +1,48 @@
 [
   {
-    "id": "sonic-riders-recomp-pc",
-    "nome": "Sonic Riders",
+    "id": "opengp-pc",
+    "nome": "Mario Kart Arcade GP And GP 2",
     "console": "GC",
     "consoleNome": "GameCube",
-    "codigoJogo": "GXEE8P",
+    "codigoJogo": "GGPE02",
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
-    "repo": "teclilla18/sonic-riders-recomp",
-    "repoUrl": "https://github.com/teclilla18/sonic-riders-recomp",
-    "descricao": "Native port of Sonic Riders (GameCube) for Windows, Linux / Steam Deck, Nintendo Switch, Switch 2 (experimental alpha), Android and iPhone / iPad. Built from your own disc image; no game data included.",
-    "termoBuscaCapa": "Sonic Riders",
+    "repo": "OpenGP-dev/OpenGP",
+    "repoUrl": "https://github.com/OpenGP-dev/OpenGP",
+    "descricao": "A native PC port of Mario Kart Arcade GP and GP 2 by static recompilation. Builds the games from your own disc images.",
+    "termoBuscaCapa": "Mario Kart Arcade GP And GP 2",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-27T03:36:44Z",
-    "stars": 88,
-    "versaoPadrao": "v0.10.2",
-    "tags": [
-      "GC",
-      "AutoDiscover",
-      "Binário Disponível",
-      "C"
-    ]
-  },
-  {
-    "id": "otherm-recomp-pc",
-    "nome": "Otherm",
-    "console": "GC",
-    "consoleNome": "GameCube",
-    "codigoJogo": "R3OE01",
-    "status": "Totalmente Jogável",
-    "statusTipo": "jogavel",
-    "repo": "gminustwo/otherm-recomp",
-    "repoUrl": "https://github.com/gminustwo/otherm-recomp",
-    "descricao": "Metroid: Other M (Wii) statically recompiled to run natively on PC and Steam Deck. Bring your own disc image.",
-    "termoBuscaCapa": "Otherm",
-    "capaManual": null,
-    "dataAtualizacao": "2026-11-27T06:18:18Z",
-    "stars": 92,
-    "versaoPadrao": "v1.0.1",
+    "dataAtualizacao": "2026-11-17T22:07:00Z",
+    "stars": 89,
+    "versaoPadrao": "v1.0.6",
     "tags": [
       "GC",
       "AutoDiscover",
       "Binário Disponível",
       "C++"
+    ]
+  },
+  {
+    "id": "gta6-pc-port-archive-pc",
+    "nome": "GTA6 Archive",
+    "console": "PC",
+    "consoleNome": "PC Nativo",
+    "codigoJogo": "PC-GTA6PCPORT",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "Guernica4u/GTA6-PC-Port-Archive",
+    "repoUrl": "https://github.com/Guernica4u/GTA6-PC-Port-Archive",
+    "descricao": "Archive of Leonida, xcl and VIctory (GTA VI on PC projects), saved 2026-11-23",
+    "termoBuscaCapa": "GTA6 Archive",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-27T08:12:28Z",
+    "stars": 38,
+    "versaoPadrao": "launcher-v1.9.0",
+    "tags": [
+      "PC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "Rust"
     ]
   }
 ]
