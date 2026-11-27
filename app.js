@@ -5960,7 +5960,7 @@ const PORTS_DATABASE = [
     "termoBuscaCapa": "The_Legend_of_Zelda:_The_Wind_Waker_HD",
     "capaManual": null,
     "dataAtualizacao": "2026-11-27T05:17:41Z",
-    "stars": 1751,
+    "stars": 1752,
     "versaoPadrao": "v0.5.3",
     "tags": [
       "Nintendo",
