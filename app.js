@@ -444,6 +444,52 @@ const LOCAL_COVERS_SET = new Set(LOCAL_COVERS_MANIFEST);
 
 const PORTS_DATABASE = [
   {
+    "id": "leonida-pc",
+    "nome": "Leonida",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "XBOX-LEONIDA",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "ProjectLeonidaL/leonida",
+    "repoUrl": "https://github.com/ProjectLeonidaL/leonida",
+    "descricao": "Continuation of Project Leonida, aiming to bring GTA VI from Xbox to PC through static recompilation.",
+    "termoBuscaCapa": "Leonida",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-28T13:54:58Z",
+    "stars": 569,
+    "versaoPadrao": "build-635",
+    "tags": [
+      "XBOX",
+      "AutoDiscover",
+      "Binário Disponível",
+      "Rust"
+    ]
+  },
+  {
+    "id": "medievil_2019_pc_port-pc",
+    "nome": "Medievil 2019",
+    "console": "PC",
+    "consoleNome": "PC Nativo",
+    "codigoJogo": "PC-MEDIEVIL20",
+    "status": "Totalmente Jogável",
+    "statusTipo": "jogavel",
+    "repo": "BevelTipDrip/medievil_2019_pc_port",
+    "repoUrl": "https://github.com/BevelTipDrip/medievil_2019_pc_port",
+    "descricao": "This is a port for the 2019 MediEvil Remake. The goal of this project is to optimize performance to the highest degree possible. The project can currently exceed 60 FPS on steam deck, and hold 60 in the heaviest areas. DLSS, custom Glyphs, Mouse input, and more.",
+    "termoBuscaCapa": "Medievil 2019",
+    "capaManual": null,
+    "dataAtualizacao": "2026-11-25T23:07:35Z",
+    "stars": 106,
+    "versaoPadrao": "v2.5.1",
+    "tags": [
+      "PC",
+      "AutoDiscover",
+      "Binário Disponível",
+      "C++"
+    ]
+  },
+  {
     "id": "opengp-pc",
     "nome": "Mario Kart Arcade GP And GP 2",
     "console": "GC",

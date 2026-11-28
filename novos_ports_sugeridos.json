@@ -1,48 +1,48 @@
 [
   {
-    "id": "opengp-pc",
-    "nome": "Mario Kart Arcade GP And GP 2",
-    "console": "GC",
-    "consoleNome": "GameCube",
-    "codigoJogo": "GGPE02",
+    "id": "leonida-pc",
+    "nome": "Leonida",
+    "console": "XBOX",
+    "consoleNome": "Xbox Clássico",
+    "codigoJogo": "XBOX-LEONIDA",
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
-    "repo": "OpenGP-dev/OpenGP",
-    "repoUrl": "https://github.com/OpenGP-dev/OpenGP",
-    "descricao": "A native PC port of Mario Kart Arcade GP and GP 2 by static recompilation. Builds the games from your own disc images.",
-    "termoBuscaCapa": "Mario Kart Arcade GP And GP 2",
+    "repo": "ProjectLeonidaL/leonida",
+    "repoUrl": "https://github.com/ProjectLeonidaL/leonida",
+    "descricao": "Continuation of Project Leonida, aiming to bring GTA VI from Xbox to PC through static recompilation.",
+    "termoBuscaCapa": "Leonida",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-17T22:07:00Z",
-    "stars": 89,
-    "versaoPadrao": "v1.0.6",
+    "dataAtualizacao": "2026-11-28T13:54:58Z",
+    "stars": 569,
+    "versaoPadrao": "build-635",
     "tags": [
-      "GC",
+      "XBOX",
       "AutoDiscover",
       "Binário Disponível",
-      "C++"
+      "Rust"
     ]
   },
   {
-    "id": "gta6-pc-port-archive-pc",
-    "nome": "GTA6 Archive",
+    "id": "medievil_2019_pc_port-pc",
+    "nome": "Medievil 2019",
     "console": "PC",
     "consoleNome": "PC Nativo",
-    "codigoJogo": "PC-GTA6PCPORT",
+    "codigoJogo": "PC-MEDIEVIL20",
     "status": "Totalmente Jogável",
     "statusTipo": "jogavel",
-    "repo": "Guernica4u/GTA6-PC-Port-Archive",
-    "repoUrl": "https://github.com/Guernica4u/GTA6-PC-Port-Archive",
-    "descricao": "Archive of Leonida, xcl and VIctory (GTA VI on PC projects), saved 2026-11-23",
-    "termoBuscaCapa": "GTA6 Archive",
+    "repo": "BevelTipDrip/medievil_2019_pc_port",
+    "repoUrl": "https://github.com/BevelTipDrip/medievil_2019_pc_port",
+    "descricao": "This is a port for the 2019 MediEvil Remake. The goal of this project is to optimize performance to the highest degree possible. The project can currently exceed 60 FPS on steam deck, and hold 60 in the heaviest areas. DLSS, custom Glyphs, Mouse input, and more.",
+    "termoBuscaCapa": "Medievil 2019",
     "capaManual": null,
-    "dataAtualizacao": "2026-11-27T08:12:28Z",
-    "stars": 38,
-    "versaoPadrao": "launcher-v1.9.0",
+    "dataAtualizacao": "2026-11-25T23:07:35Z",
+    "stars": 106,
+    "versaoPadrao": "v2.5.1",
     "tags": [
       "PC",
       "AutoDiscover",
       "Binário Disponível",
-      "Rust"
+      "C++"
     ]
   }
 ]
